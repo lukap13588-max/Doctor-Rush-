@@ -1,121 +1,171 @@
-# Doctor Rush v0.16 – UI & GAME MODES
+# Doctor Rush v0.17 – CAMPAIGN PROLOGUE
 
 ## Dateien
 
 - `index.html`
 - `README.md`
 
-Die `README.md` liegt zusätzlich als ZIP bei, damit sie sich auf dem iPhone zuverlässig speichern lässt.
+Die `README.md` liegt zusätzlich wieder als ZIP bei, damit sie sich auf dem iPhone zuverlässig speichern lässt.
 
 ## GitHub-Update
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.16` öffnen.
+3. Doctor Rush danach einmal mit `?v=0.17` öffnen.
 
 ---
 
-# Die zwei großen Änderungen
+# Neu in v0.17
 
-## 1. Schluss mit dem endlosen Dashboard
+## 👨‍⚕️ Du spielst jetzt deinen eigenen Arzt
 
-Doctor Rush besitzt jetzt eine feste mobile Navigation am unteren Bildschirmrand:
+Der Kampagnenmodus bekommt erstmals einen echten persönlichen Story-Einstieg.
 
-- 🏠 Home
-- 🏥 Klinik
-- 👥 Team
-- 🎯 Karriere
-- 💶 Finanzen
+Du bist nicht mehr nur der Klinikmanager.
 
-Die Systeme sind auf diese Seiten verteilt, statt alle untereinander zu stehen.
+Du startest selbst als:
 
-### Home
+**Assistenzarzt**
 
-Nur noch Spielmodus, Budget, Ruf, XP, Klinik-Level, Tagesmission und Schnellzugriffe.
+Dein bereits vorhandener Arztname wird direkt in der Story verwendet.
 
-### Klinik
-
-Krankenhaus-Ausbau, Klinik-Flow, Räume, Apotheke und Management-Upgrades.
-
-### Team
-
-Personal 2.0 mit Namen, Level, XP, Müdigkeit, Gehältern und Erholung.
-
-### Karriere
-
-Zusätzlich unterteilt in:
-
-- **Kampagne**
-- **Mein Arzt**
-- **Wissen**
-
-Damit werden Forschung, Fallbuch, Skills und Kampagne nicht mehr gleichzeitig als endlose Seite angezeigt.
-
-### Finanzen
-
-Gewinn/Verlust, Rücklage, Betriebskosten, Wartung und Klinikverträge.
+Neu kannst du außerdem einen Arzt-Avatar auswählen.
 
 ---
 
-# 🚀 Performance verbessert
+# 📖 Kampagnen-Prolog
 
-Bisher wurde beim Speichern häufig das komplette Home-Dashboard neu aufgebaut – sogar während einer laufenden Patientenbehandlung.
+Vor der ersten normalen Kampagnen-Schicht spielst du jetzt:
 
-Das passiert jetzt nicht mehr.
+## Prolog – Dein erster Arbeitstag
 
-Während einer Schicht wird Home nicht ständig im Hintergrund gerendert. Auf Home selbst wird nur der aktuell sichtbare Bereich aktualisiert.
+Der Prolog besteht aus sechs Story-Abschnitten.
 
-Das sollte Doctor Rush besonders auf dem iPhone deutlich flüssiger machen.
+### 1. Arztprofil
+
+Du siehst:
+
+- deinen Namen
+- deinen Avatar
+- Karrierestufe Assistenzarzt
+
+Du kannst den Namen weiterhin ändern und aus mehreren Avataren wählen.
+
+### 2. Treffen mit deiner Oberärztin
+
+Neue Story-Figur:
+
+**Oberärztin Dr. Emilia Hartmann**
+
+Sie begleitet dich als Mentor durch deinen ersten Dienst.
+
+### 3. Dein erster eigener Patient
+
+Du übernimmst einen persönlichen Story-Patienten.
+
+Dieser Patient gehört nicht zur normalen zufälligen Schicht.
+
+Es ist ein speziell gebauter Kampagnenfall.
+
+### 4. Erste klinische Entscheidung
+
+Du entscheidest selbst, wie du den Fall beginnst.
+
+Deine Wahl beeinflusst deine Mentor-Wertung.
+
+### 5. Diagnose und Versorgung
+
+Du musst im vereinfachten Spiel:
+
+- Hinweise einordnen
+- eine Diagnose auswählen
+- eine passende Spielstrategie für die Versorgung wählen
+
+Die medizinischen Abläufe bleiben bewusst abstrahiert.
+
+### 6. Fallbesprechung
+
+Dr. Hartmann bewertet deinen ersten Dienst.
+
+Du erhältst abhängig von deinen Entscheidungen eine Mentor-Wertung:
+
+- A
+- B
+- C
 
 ---
 
-# 2. Zwei Spielmodi
+# 🎁 Prolog-Belohnung
 
-## 👨‍⚕️ Kampagne
+Nach dem ersten Arbeitstag bekommst du einmalig:
 
-Du spielst deinen eigenen Arzt.
+- +350 €
+- +150 XP
+- +3 Ruf
+- +2 Forschungspunkte
+- +1 Prestige
 
-Im Kampagnenbereich kannst du deinem Arzt einen Namen geben.
-
-Kampagnen-Schichten werden separat gekennzeichnet mit:
-
-- Name des Arztes
-- aktuellem Kapitel
-- Kampagnenmodus
-
-Die bestehende Kapitel-Kampagne bleibt erhalten.
-
-Der nächste Schritt ist **v0.17 – Campaign Prologue**:
-
-- persönlicher erster Arbeitstag
-- Start als Assistenzarzt
-- Oberarzt und Story-Dialoge
-- erster eigener Patient
-- Entscheidungen aus Sicht deines Arztes
-- später Facharzt → Oberarzt → Chefarzt → eigene Klinik
-
-## ⚡ Freie Schicht
-
-Der bisherige schnelle Modus bleibt erhalten.
-
-Direkt starten, Patienten behandeln, Geld verdienen, Personal entwickeln und die Klinik frei ausbauen – ohne Story-Zwang.
+Der Story-Patient zählt außerdem als behandelter Patient für deinen Kampagnenfortschritt.
 
 ---
 
-# 👨‍⚕️ Eigenes Arztprofil
+# 🏆 Neuer Erfolg
 
-Im Kampagnenbereich kann der Name deines Arztes geändert werden.
+## Erster Dienst
 
-Dieser Name erscheint anschließend in Kampagnen-Schichten.
+Schließe den persönlichen Kampagnen-Prolog ab.
 
 ---
 
-## Bestehende Systeme bleiben erhalten
+# 💾 Prolog wird gespeichert
 
-- Kampagnenkapitel und Prestige
+Du musst den Prolog nicht zwingend in einem Stück spielen.
+
+Nach jeder Story-Entscheidung wird gespeichert.
+
+Wenn du zurück zur Karriere gehst, kannst du später an der gleichen Stelle fortfahren.
+
+---
+
+# 🎯 Danach geht die normale Kampagne weiter
+
+Nach Abschluss des Prologs ändert sich der Kampagnen-Button automatisch.
+
+Danach startest du wieder normale Kampagnen-Schichten – aber jetzt als dein eigener Arzt.
+
+Oben in einer Kampagnen-Schicht stehen:
+
+- dein Avatar
+- dein Name
+- aktuelles Kampagnenkapitel
+
+---
+
+# ⚡ Freie Schicht bleibt komplett getrennt
+
+Der normale Schichtmodus wurde nicht verändert.
+
+**Freie Schicht** bedeutet weiterhin:
+
+- sofort spielen
+- keine Story-Pflicht
+- zufällige Patienten
+- Klinikmanagement
+- Geld und XP
+- Personal
+- Forschung
+- Krankenhaus-Ausbau
+
+---
+
+# Bestehende Systeme bleiben erhalten
+
+- neue 5-Bereich-Navigation
+- Kampagne und freie Schicht
+- 6 Kampagnenkapitel
+- Prestige
 - Finanzen
 - Rücklage
-- Wartung
 - Klinikverträge
 - Personal 2.0
 - Krankenhaus-Ausbau
@@ -134,13 +184,15 @@ Dieser Name erscheint anschließend in Kampagnen-Schichten.
 
 ## Technisch
 
-- weiterhin nur **eine `index.html`**
+- weiterhin nur **eine einzige `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.15-Spielstand kompatibel
-- keine externen JS-/CSS-Dateien
+- v0.16-Spielstand kompatibel
+- Prologstatus wird in demselben Spielstand gespeichert
+- freie Schicht unverändert verfügbar
+- keine externen JavaScript- oder CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
-- alte Voll-Dashboard-Renderkette entfernt: **OK**
+- Kernsysteme geprüft: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.

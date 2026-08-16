@@ -909,13 +909,140 @@ body.home-nav-active #app{padding-bottom:102px}
 .shift-mode-banner.campaign{background:rgba(255,190,92,.08);border-color:rgba(255,190,92,.23);color:#ffe1ac}
 @media(max-width:360px){.mode-grid{grid-template-columns:1fr}.mode-card{min-height:145px}.home-nav button{font-size:7px}}
 
+
+/* ===== v0.17 CAMPAIGN PROLOGUE ===== */
+.story-shell{
+  padding:2px 0 18px
+}
+.story-top{
+  display:flex;align-items:center;justify-content:space-between;gap:10px;margin-bottom:10px
+}
+.story-back{
+  border:1px solid #29435f;background:#10223b;color:#d9e8f6;border-radius:11px;
+  padding:8px 10px;font-size:9px;font-weight:900
+}
+.story-badge{
+  padding:7px 10px;border-radius:999px;background:rgba(255,190,92,.12);
+  color:#ffd494;font-size:9px;font-weight:900
+}
+.story-progress{
+  padding:10px 11px;border-radius:14px;background:#0c1f35;border:1px solid #27405e;margin-bottom:10px
+}
+.story-progress-row{
+  display:flex;justify-content:space-between;gap:8px;color:var(--muted);font-size:8.5px
+}
+.story-progress-row b{color:#ffd494}
+.story-progress-bar{
+  height:7px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:6px
+}
+.story-progress-bar i{
+  display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#d9792f,#ffd36b);
+  transition:.25s width
+}
+.story-card{
+  padding:15px;border-radius:22px;background:linear-gradient(155deg,rgba(91,55,30,.50),rgba(13,30,52,.98));
+  border:1px solid rgba(255,190,92,.27)
+}
+.story-kicker{
+  color:#ffd494;font-size:8.5px;font-weight:900;letter-spacing:.08em;text-transform:uppercase
+}
+.story-card h2{margin:6px 0 5px;font-size:23px}
+.story-card p{margin:0;color:#d7e4ef;font-size:10.5px;line-height:1.55}
+.story-doctor{
+  display:grid;grid-template-columns:auto 1fr;gap:11px;align-items:center;
+  margin-top:12px;padding:11px;border-radius:14px;background:#0b1d32;border:1px solid #29435f
+}
+.story-doctor-avatar{
+  width:52px;height:52px;border-radius:16px;background:#1a3558;display:grid;place-items:center;font-size:30px
+}
+.story-doctor b{font-size:12px}.story-doctor small{display:block;color:var(--muted);font-size:8.5px;margin-top:3px}
+.story-avatar-grid{
+  display:grid;grid-template-columns:repeat(6,1fr);gap:6px;margin-top:10px
+}
+.story-avatar{
+  border:1px solid #29435f;background:#10223b;border-radius:12px;padding:8px 4px;font-size:22px
+}
+.story-avatar.active{
+  border-color:rgba(255,190,92,.55);background:rgba(255,190,92,.10)
+}
+.story-dialogue{
+  margin-top:12px;padding:12px;border-radius:15px;background:#0b1c31;border:1px solid #29415e
+}
+.story-speaker{
+  color:#9ecbff;font-size:8.5px;font-weight:900;margin-bottom:5px
+}
+.story-dialogue p{font-size:10px;line-height:1.5}
+.story-patient{
+  margin-top:12px;padding:12px;border-radius:16px;background:#10223b;border:1px solid #2d4968
+}
+.story-patient-top{
+  display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center
+}
+.story-patient-avatar{
+  width:42px;height:42px;border-radius:13px;background:#1b3657;display:grid;place-items:center;font-size:24px
+}
+.story-patient b{font-size:11px}
+.story-patient small{display:block;color:var(--muted);font-size:8px;margin-top:2px}
+.story-patient-tag{
+  font-size:7.5px;font-weight:900;padding:5px 7px;border-radius:999px;background:rgba(40,215,161,.10);color:var(--accent)
+}
+.story-findings{
+  margin-top:9px;display:grid;gap:6px
+}
+.story-finding{
+  padding:8px 9px;border-radius:10px;background:#0a1c31;border:1px solid #233c58;
+  font-size:9px;line-height:1.4;color:#d8e7f4
+}
+.story-choices{
+  display:grid;gap:8px;margin-top:12px
+}
+.story-choice{
+  width:100%;border:1px solid #2c4868;background:#10243f;color:#f4f8fb;
+  border-radius:13px;padding:11px;text-align:left;font-size:9.5px;font-weight:850
+}
+.story-choice small{
+  display:block;margin-top:3px;color:var(--muted);font-size:8px;font-weight:500;line-height:1.35
+}
+.story-choice:hover{border-color:rgba(255,190,92,.40)}
+.story-primary{
+  width:100%;margin-top:12px;border:none;border-radius:12px;padding:11px;
+  background:linear-gradient(135deg,#b86c2c,#e99b3f);color:#fff;font-size:10px;font-weight:900
+}
+.story-secondary{
+  width:100%;margin-top:8px;border:1px solid #34506f;border-radius:12px;padding:10px;
+  background:#10223b;color:#d9e7f4;font-size:9px;font-weight:900
+}
+.story-score{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:12px
+}
+.story-score div{
+  padding:9px 6px;border-radius:11px;background:#0a1d32;border:1px solid #263f5c;text-align:center
+}
+.story-score b{display:block;font-size:12px}
+.story-score small{display:block;color:var(--muted);font-size:7.8px;margin-top:2px}
+.story-evaluation{
+  margin-top:10px;padding:10px;border-radius:12px;background:rgba(40,215,161,.07);
+  border:1px solid rgba(40,215,161,.20);color:#d9f0e8;font-size:9px;line-height:1.45
+}
+.prologue-status{
+  margin-top:8px;padding:9px 10px;border-radius:12px;background:rgba(255,190,92,.07);
+  border:1px solid rgba(255,190,92,.18);font-size:8.8px;line-height:1.4;color:#ffe0aa
+}
+.prologue-status.done{
+  background:rgba(40,215,161,.07);border-color:rgba(40,215,161,.20);color:#d8f0e8
+}
+.doctor-profile-avatar{font-size:25px}
+@media(max-width:360px){
+  .story-avatar-grid{grid-template-columns:repeat(3,1fr)}
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.16 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.17 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -925,7 +1052,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.16 • UI & GAME MODES</h2>
+          <h2>Clinic Life v0.17 • CAMPAIGN PROLOGUE</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -987,12 +1114,12 @@ body.home-nav-active #app{padding-bottom:102px}
             <div><b id="campaignPercent">0 %</b><small>Gesamtfortschritt</small></div>
           </div>
           <div class="doctor-profile-card">
-            <div class="doctor-profile-avatar">🧑‍⚕️</div>
+            <div id="doctorProfileAvatar" class="doctor-profile-avatar">🧑‍⚕️</div>
             <div><b id="doctorProfileName">Mein Arzt</b><small id="doctorProfileMeta">Du bist der behandelnde Arzt der Story-Karriere.</small></div>
             <button type="button" onclick="editDoctorProfile()">Name</button>
           </div>
-          <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignShift()">Als eigener Arzt weiterspielen</button>
-          <div class="campaign-mode-note">v0.16 trennt Kampagne und freie Schicht. Als nächster Schritt wird daraus der persönliche Story-Prolog mit deinem ersten Arbeitstag.</div>
+          <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignExperience()">Kampagne starten</button>
+          <div id="prologueStatus" class="prologue-status">📖 Prolog noch offen • Dein erster Arbeitstag wartet.</div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -1239,6 +1366,26 @@ body.home-nav-active #app{padding-bottom:102px}
         </nav>
       </section>
 
+
+
+      <section id="campaignStoryScreen" class="screen">
+        <div class="story-shell">
+          <div class="story-top">
+            <button type="button" class="story-back" onclick="leaveCampaignStory()">← Karriere</button>
+            <div class="story-badge">KAMPAGNE • PROLOG</div>
+          </div>
+
+          <div class="story-progress">
+            <div class="story-progress-row">
+              <span>Erster Arbeitstag</span>
+              <b id="storyProgressText">1/6</b>
+            </div>
+            <div class="story-progress-bar"><i id="storyProgressBar" style="width:16%"></i></div>
+          </div>
+
+          <div id="storyContent"></div>
+        </div>
+      </section>
 
       <section id="waitingScreen" class="screen">
         <div class="hud waiting-hud">
@@ -3849,7 +3996,8 @@ const achievements = [
   {id:'profit10', name:'Schwarze Zahlen', desc:'Beende insgesamt 10 Schichten profitabel.'},
   {id:'contracts3', name:'Gut vernetzt', desc:'Schließe alle drei Klinikverträge ab.'},
   {id:'campaign3', name:'Auf Kurs', desc:'Schließe 3 Kampagnenkapitel ab.'},
-  {id:'campaignAll', name:'Klinik-Legende', desc:'Schließe die gesamte Karriere-Kampagne ab.'}
+  {id:'campaignAll', name:'Klinik-Legende', desc:'Schließe die gesamte Karriere-Kampagne ab.'},
+  {id:'firstDay', name:'Erster Dienst', desc:'Schließe den persönlichen Kampagnen-Prolog ab.'}
 ];
 
 const missions = [
@@ -3935,7 +4083,12 @@ const defaultState = {
   homeTab:'home',
   careerSubtab:'campaign',
   lastGameMode:'free',
-  doctorProfile:{name:'Mein Arzt'}
+  doctorProfile:{name:'Mein Arzt',avatar:'🧑‍⚕️'},
+  prologueCompleted:false,
+  prologueStep:0,
+  prologueScore:0,
+  prologueChoices:{},
+  storyCasesCompleted:0
 };
 
 let state;
@@ -3991,9 +4144,16 @@ state.totalCampaignRewards=Number.isFinite(Number(state.totalCampaignRewards))&&
 if(!['home','clinic','team','career','finance'].includes(state.homeTab))state.homeTab='home';
 if(!['campaign','doctor','knowledge'].includes(state.careerSubtab))state.careerSubtab='campaign';
 if(!['free','campaign'].includes(state.lastGameMode))state.lastGameMode='free';
-if(!state.doctorProfile||typeof state.doctorProfile!=='object')state.doctorProfile={name:'Mein Arzt'};
+if(!state.doctorProfile||typeof state.doctorProfile!=='object')state.doctorProfile={name:'Mein Arzt',avatar:'🧑‍⚕️'};
 if(typeof state.doctorProfile.name!=='string'||!state.doctorProfile.name.trim())state.doctorProfile.name='Mein Arzt';
 state.doctorProfile.name=state.doctorProfile.name.trim().slice(0,28);
+const validDoctorAvatars=['🧑‍⚕️','👨‍⚕️','👩‍⚕️','👨🏻‍⚕️','👩🏻‍⚕️','👨🏽‍⚕️'];
+if(!validDoctorAvatars.includes(state.doctorProfile.avatar))state.doctorProfile.avatar='🧑‍⚕️';
+state.prologueCompleted=!!state.prologueCompleted;
+state.prologueStep=Number.isFinite(Number(state.prologueStep))?Math.max(0,Math.min(5,Math.floor(Number(state.prologueStep)))):0;
+state.prologueScore=Number.isFinite(Number(state.prologueScore))?Math.max(0,Math.min(100,Math.floor(Number(state.prologueScore)))):0;
+if(!state.prologueChoices||typeof state.prologueChoices!=='object')state.prologueChoices={};
+state.storyCasesCompleted=Number.isFinite(Number(state.storyCasesCompleted))&&Number(state.storyCasesCompleted)>=0?Math.floor(Number(state.storyCasesCompleted)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4040,6 +4200,232 @@ function shuffle(arr){return[...arr].sort(()=>Math.random()-.5)}
 function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 
+
+const doctorAvatars=['🧑‍⚕️','👨‍⚕️','👩‍⚕️','👨🏻‍⚕️','👩🏻‍⚕️','👨🏽‍⚕️'];
+
+function doctorAvatar(){
+  return state.doctorProfile&&doctorAvatars.includes(state.doctorProfile.avatar)
+    ?state.doctorProfile.avatar:'🧑‍⚕️';
+}
+function setDoctorAvatar(avatar){
+  if(!doctorAvatars.includes(avatar))return;
+  state.doctorProfile.avatar=avatar;
+  save();
+  if($('campaignStoryScreen')&&$('campaignStoryScreen').classList.contains('active'))renderCampaignStory();
+}
+function prologueEvaluation(){
+  const s=state.prologueScore||0;
+  if(s>=80)return {rank:'A',text:'Sehr starker erster Dienst. Du arbeitest strukturiert, ruhig und patientenorientiert.'};
+  if(s>=55)return {rank:'B',text:'Guter erster Dienst. Die Grundlagen sitzen, bei einzelnen Entscheidungen ist noch Luft nach oben.'};
+  return {rank:'C',text:'Der erste Dienst war lehrreich. Genau dafür ist die Assistenzzeit da: beobachten, lernen und besser werden.'};
+}
+function prologueChoice(key,value,points){
+  if(state.prologueChoices[key])return;
+  state.prologueChoices[key]=value;
+  state.prologueScore=Math.min(100,(state.prologueScore||0)+Math.max(0,Number(points)||0));
+  state.prologueStep=Math.min(5,(state.prologueStep||0)+1);
+  beep(points>=20?860:520,.08);
+  save();
+  renderCampaignStory();
+}
+function prologueNext(){
+  state.prologueStep=Math.min(5,(state.prologueStep||0)+1);
+  save();
+  renderCampaignStory();
+}
+function startCampaignStory(){
+  state.lastGameMode='campaign';
+  showScreen('campaignStoryScreen');
+  renderCampaignStory();
+}
+function leaveCampaignStory(){
+  state.homeTab='career';
+  state.careerSubtab='campaign';
+  showScreen('homeScreen');
+}
+function startCampaignExperience(){
+  if(!state.prologueCompleted){
+    startCampaignStory();
+    return;
+  }
+  startCampaignShift();
+}
+function completeCampaignPrologue(){
+  if(state.prologueCompleted){
+    leaveCampaignStory();
+    return;
+  }
+  state.prologueCompleted=true;
+  state.prologueStep=5;
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+1;
+  state.patientsTreated=(state.patientsTreated||0)+1;
+  state.money+=350;
+  state.xp+=150;
+  state.rep=Math.min(100,(state.rep||0)+3);
+  state.researchPoints=(state.researchPoints||0)+2;
+  state.campaignPrestige=(state.campaignPrestige||0)+1;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+350;
+  if((state.prologueScore||0)>=80)state.perfectCases=(state.perfectCases||0)+1;
+  if(!state.achievements)state.achievements={};
+  state.achievements.firstDay=true;
+  beep(1080,.16);
+  save();
+  toast('🎓 Prolog abgeschlossen: Dein erster Dienst ist geschafft!');
+  leaveCampaignStory();
+}
+function storyPatientCard(){
+  return `<div class="story-patient">
+    <div class="story-patient-top">
+      <div class="story-patient-avatar">👩🏻</div>
+      <div><b>Lena M.</b><small>28 Jahre • Büroangestellte</small></div>
+      <div class="story-patient-tag">STABIL</div>
+    </div>
+    <div class="story-findings">
+      <div class="story-finding">Seit dem Nachmittag Kopfschmerz und leichter Schwindel nach einem langen Arbeitstag.</div>
+      <div class="story-finding">Vitalwerte im Spiel unauffällig • Patientin ansprechbar und kreislaufstabil.</div>
+    </div>
+  </div>`;
+}
+function renderCampaignStory(){
+  const box=$('storyContent');
+  if(!box)return;
+  const step=Math.max(0,Math.min(5,state.prologueStep||0));
+  if($('storyProgressText'))$('storyProgressText').textContent=`${step+1}/6`;
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/6*100)}%`;
+
+  const name=doctorDisplayName();
+  const avatar=doctorAvatar();
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Prolog • Tag 1</div>
+      <h2>Dein erster Arbeitstag</h2>
+      <p>Heute beginnt deine persönliche Karriere. Du bist nicht der Klinikmanager im Hintergrund – du bist selbst der Arzt, der vor den Patienten steht.</p>
+      <div class="story-doctor">
+        <div class="story-doctor-avatar">${avatar}</div>
+        <div><b>${name}</b><small>Assistenzarzt • Erster Dienst</small></div>
+      </div>
+      <div class="story-avatar-grid">
+        ${doctorAvatars.map(a=>`<button type="button" class="story-avatar ${a===avatar?'active':''}" onclick="setDoctorAvatar('${a}')">${a}</button>`).join('')}
+      </div>
+      <button type="button" class="story-secondary" onclick="editDoctorProfile();renderCampaignStory()">✏️ Namen ändern</button>
+      <button type="button" class="story-primary" onclick="prologueNext()">Dienst antreten</button>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">07:02 Uhr • Personalraum</div>
+      <h2>Willkommen im Team, ${name}</h2>
+      <div class="story-dialogue">
+        <div class="story-speaker">OBERÄRZTIN DR. EMILIA HARTMANN</div>
+        <p>„Guten Morgen. Heute arbeitest du unter meiner Aufsicht. Ich will nicht sehen, wie schnell du bist – ich will sehen, wie strukturiert du denkst. Dein erster Patient wartet bereits.“</p>
+      </div>
+      <div class="story-doctor">
+        <div class="story-doctor-avatar">${avatar}</div>
+        <div><b>${name}</b><small>Assistenzarzt • unter Supervision</small></div>
+      </div>
+      <button type="button" class="story-primary" onclick="prologueNext()">„Ich bin bereit.“</button>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">07:12 Uhr • Behandlungsraum 1</div>
+      <h2>Dein erster eigener Patient</h2>
+      <p>Die Patientin wirkt nicht akut bedroht. Dr. Hartmann beobachtet, wie du den Fall beginnst.</p>
+      ${storyPatientCard()}
+      <div class="story-dialogue">
+        <div class="story-speaker">DEINE ENTSCHEIDUNG</div>
+        <p>Wie gehst du als Erstes vor?</p>
+      </div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="prologueChoice('approach','structured',25)">💬 Ruhig Anamnese führen und Befunde strukturieren<small>Systematischer Einstieg in den Fall.</small></button>
+        <button class="story-choice" onclick="prologueChoice('approach','imaging',8)">🩻 Direkt umfangreiche Bildgebung anfordern<small>Sehr früh eine aufwendige Diagnostik einsetzen.</small></button>
+        <button class="story-choice" onclick="prologueChoice('approach','dismiss',0)">🚪 Ohne weitere Einordnung direkt entlassen<small>Der Fall wäre damit kaum bewertet.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===3){
+    const approach=state.prologueChoices.approach;
+    const feedback=approach==='structured'
+      ?'Dr. Hartmann nickt. Die strukturierte Anamnese liefert schnell die wichtigsten Hinweise.'
+      :approach==='imaging'
+      ?'Die Oberärztin bremst dich: „Technik ist hilfreich – aber zuerst solltest du wissen, welche Frage du beantworten willst.“'
+      :'Dr. Hartmann hält dich zurück: „Bevor jemand geht, brauchen wir eine nachvollziehbare klinische Einschätzung.“';
+
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Erster Fall • Diagnostik</div>
+      <h2>Die Hinweise werden klarer</h2>
+      <div class="story-dialogue">
+        <div class="story-speaker">DR. HARTMANN</div>
+        <p>${feedback}</p>
+      </div>
+      <div class="story-findings">
+        <div class="story-finding">Die Patientin berichtet im Spiel, dass sie seit dem Morgen kaum getrunken hat.</div>
+        <div class="story-finding">Keine auffälligen neurologischen Ausfälle im vereinfachten Untersuchungsbefund.</div>
+        <div class="story-finding">Kreislauf und Sauerstoffsättigung bleiben stabil.</div>
+      </div>
+      <div class="story-dialogue">
+        <div class="story-speaker">DEINE DIAGNOSE IM SPIEL</div>
+        <p>Welche Erklärung passt am besten zu diesem vereinfachten Fall?</p>
+      </div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="prologueChoice('diagnosis','dehydration',35)">💧 Leichte Dehydratation<small>Passt zu Verlauf und den gesammelten Hinweisen.</small></button>
+        <button class="story-choice" onclick="prologueChoice('diagnosis','stroke',5)">🧠 Akuter Schlaganfall<small>Die typischen Warnzeichen fehlen im Fall.</small></button>
+        <button class="story-choice" onclick="prologueChoice('diagnosis','pneumonia',0)">🫁 Pneumonie<small>Die Beschwerden sprechen im Spiel nicht dafür.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===4){
+    const correct=state.prologueChoices.diagnosis==='dehydration';
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Erster Fall • Versorgung</div>
+      <h2>${correct?'Die Diagnose passt':'Dr. Hartmann korrigiert die Einordnung'}</h2>
+      <div class="story-dialogue">
+        <div class="story-speaker">OBERÄRZTIN DR. HARTMANN</div>
+        <p>${correct
+          ?'„Gut. Jetzt geht es darum, angemessen und nicht übertrieben zu handeln.“'
+          :'„Schau noch einmal auf Verlauf und Befunde. In diesem Trainingsfall passt eine leichte Dehydratation besser.“'}</p>
+      </div>
+      <div class="story-dialogue">
+        <div class="story-speaker">DEINE NÄCHSTE ENTSCHEIDUNG</div>
+        <p>Welche vereinfachte Spielstrategie ist für die stabile Patientin am passendsten?</p>
+      </div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="prologueChoice('treatment','conservative',30)">✅ Angemessene konservative Versorgung + Verlaufskontrolle<small>Im Spiel die passende, zurückhaltende Versorgung wählen.</small></button>
+        <button class="story-choice" onclick="prologueChoice('treatment','operation',0)">🛠️ Sofort eine Notfalloperation planen<small>Für diesen stabilen Trainingsfall nicht passend.</small></button>
+        <button class="story-choice" onclick="prologueChoice('treatment','antibiotic',5)">💊 Ohne Hinweis direkt antiinfektiv behandeln<small>Im Fall gibt es keinen entsprechenden Hinweis.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const ev=prologueEvaluation();
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">07:38 Uhr • Fallbesprechung</div>
+    <h2>Dein erster Patient ist geschafft</h2>
+    <div class="story-dialogue">
+      <div class="story-speaker">OBERÄRZTIN DR. EMILIA HARTMANN</div>
+      <p>„Für den ersten Tag zählt nicht Perfektion. Entscheidend ist, dass du deine Entscheidungen begründen kannst. Morgen wird es schwieriger.“</p>
+    </div>
+    <div class="story-score">
+      <div><b>${state.prologueScore||0}/90</b><small>Entscheidungspunkte</small></div>
+      <div><b>${ev.rank}</b><small>Mentor-Wertung</small></div>
+      <div><b>Assistenzarzt</b><small>Karrierestufe</small></div>
+    </div>
+    <div class="story-evaluation">📋 ${ev.text}</div>
+    <div class="campaign-reward">Prolog-Belohnung: <b>+350 € • +150 XP • +3 Ruf • +2 RP • +1 Prestige</b></div>
+    <button type="button" class="story-primary" onclick="completeCampaignPrologue()">🎓 Ersten Arbeitstag abschließen</button>
+  </div>`;
+}
+
 const homeTabConfig={
   home:{eyebrow:'START',title:'Doctor Rush',description:'Wähle deinen Spielmodus oder springe direkt zu einem Klinikbereich.'},
   clinic:{eyebrow:'MANAGEMENT',title:'Klinik',description:'Räume, Krankenhaus-Ausbau, Stationsfluss, Apotheke und Management.'},
@@ -4060,12 +4446,31 @@ function editDoctorProfile(){
 }
 function renderModeUI(){
   const chapter=currentCampaignChapter();
-  if($('homeCampaignMeta'))$('homeCampaignMeta').textContent=`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
+  const storyOpen=!state.prologueCompleted;
+  if($('homeCampaignMeta')){
+    $('homeCampaignMeta').textContent=storyOpen
+      ?`Prolog • ${doctorDisplayName()}`
+      :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
+  }
+  if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
   if($('doctorProfileName'))$('doctorProfileName').textContent=doctorDisplayName();
-  if($('doctorProfileMeta'))$('doctorProfileMeta').textContent=chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Kampagne abgeschlossen • Medical Center';
+  if($('doctorProfileMeta')){
+    $('doctorProfileMeta').textContent=storyOpen
+      ?'Assistenzarzt • Erster Arbeitstag'
+      :chapter?`Assistenzarzt • Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Medical Center • Kampagne abgeschlossen';
+  }
+  if($('prologueStatus')){
+    $('prologueStatus').className='prologue-status'+(state.prologueCompleted?' done':'');
+    $('prologueStatus').textContent=state.prologueCompleted
+      ?`✅ Prolog abgeschlossen • Mentor-Wertung ${prologueEvaluation().rank} • Erster Story-Patient behandelt`
+      :`📖 Prolog ${state.prologueStep>0?'begonnen':'noch offen'} • Erster Arbeitstag als Assistenzarzt`;
+  }
   if($('campaignPlayBtn')){
-    $('campaignPlayBtn').disabled=!chapter;
-    $('campaignPlayBtn').textContent=chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
+    const canPlay=storyOpen||!!chapter;
+    $('campaignPlayBtn').disabled=!canPlay;
+    $('campaignPlayBtn').textContent=storyOpen
+      ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
+      :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
 function renderHomeQuickSummary(){
@@ -4125,7 +4530,7 @@ function startCampaignShift(){if(!currentCampaignChapter()){toast('Die Kampagne 
 function renderShiftModeBanners(){
   if(!run)return;
   const campaign=run.mode==='campaign',chapter=currentCampaignChapter();
-  const text=campaign?`🎯 KAMPAGNE • ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:'⚡ FREIE SCHICHT • Klinikmanagement ohne Story-Zwang';
+  const text=campaign?`🎯 KAMPAGNE • ${doctorAvatar()} ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:'⚡ FREIE SCHICHT • Klinikmanagement ohne Story-Zwang';
   ['waitingModeBanner','gameModeBanner'].forEach(id=>{const el=$(id);if(!el)return;el.textContent=text;el.className='shift-mode-banner'+(campaign?' campaign':'')});
 }
 function returnHomeAfterShift(){if(run&&run.mode==='campaign'){state.homeTab='career';state.careerSubtab='campaign'}else state.homeTab='home';showScreen('homeScreen')}
@@ -4481,6 +4886,7 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('contracts3',activeContractCount()===clinicContracts.length);
   check('campaign3',campaignCompletedCount()>=3);
   check('campaignAll',campaignCompletedCount()===campaignChapters.length);
+  check('firstDay',!!state.prologueCompleted);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
