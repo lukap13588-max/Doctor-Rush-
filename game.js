@@ -284,9 +284,33 @@ const defaultState = {
   inventory:{pain:5,antibiotic:4,glucose:5,inhaler:4,fluids:5,emergencyDrug:3}
 };
 
-let state = JSON.parse(localStorage.getItem('doctorRushSaveV3') || 'null') || JSON.parse(JSON.stringify(defaultState));
-for(const [k,v] of Object.entries(defaultState)) if(state[k]===undefined) state[k]=JSON.parse(JSON.stringify(v));
-for(const [k,v] of Object.entries(defaultState.inventory)) if(state.inventory[k]===undefined) state.inventory[k]=v;
+let state;
+try{
+  state=JSON.parse(localStorage.getItem('doctorRushSaveV3') || 'null');
+}catch(_){
+  state=null;
+}
+if(!state || typeof state!=='object') state=JSON.parse(JSON.stringify(defaultState));
+
+for(const [k,v] of Object.entries(defaultState)){
+  if(state[k]===undefined || state[k]===null){
+    state[k]=JSON.parse(JSON.stringify(v));
+  }
+}
+if(!state.upgrades || typeof state.upgrades!=='object') state.upgrades={};
+if(!state.achievements || typeof state.achievements!=='object') state.achievements={};
+if(!state.inventory || typeof state.inventory!=='object') state.inventory={};
+
+for(const [k,v] of Object.entries(defaultState.inventory)){
+  const n=Number(state.inventory[k]);
+  state.inventory[k]=Number.isFinite(n) && n>=0 ? Math.floor(n) : v;
+}
+
+for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urgentSaved','bestCombo','bestShift']){
+  const fallback=Number(defaultState[key]||0);
+  const n=Number(state[key]);
+  state[key]=Number.isFinite(n) ? n : fallback;
+}
 let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, examined=new Set(), soundOn=true;
 let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
@@ -375,12 +399,70 @@ function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';ite
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
 function stockAvailable(treatment){return requiredStock(treatment).every(id=>(state.inventory[id]||0)>0)}
 function renderTreatmentButtons(){
-  const box=$('treatmentButtons');box.innerHTML='';current.treatments.forEach(item=>{const needs=requiredStock(item),ok=stockAvailable(item),btn=document.createElement('button');btn.className='choice'+(!ok?' locked':'');btn.disabled=!ok;btn.innerHTML=`${item}${needs.length?`<small>${needs.map(id=>{const m=medicines.find(x=>x.id===id);return `${m.icon} ${m.name}: ${state.inventory[id]}`}).join(' • ')}</small>`:''}${!ok?'<small>❌ Bestand fehlt</small>':''}`;btn.onclick=()=>{selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})
+  const box=$('treatmentButtons');box.innerHTML='';
+  current.treatments.forEach(item=>{
+    const needs=requiredStock(item),ok=stockAvailable(item),btn=document.createElement('button');
+    btn.className='choice'+(!ok?' low-stock':'');
+    btn.innerHTML=`${item}${needs.length?`<small>${needs.map(id=>{const m=medicines.find(x=>x.id===id);return `${m.icon} ${m.name}: ${state.inventory[id]||0}`}).join(' • ')}</small>`:''}${!ok?'<small>⚠️ Fehlender Bestand wird als Notfallmaterial berechnet</small>':''}`;
+    btn.onclick=()=>{
+      selectedTreatment=item;
+      [...box.children].forEach(b=>b.classList.remove('selected'));
+      btn.classList.add('selected');
+      beep(700);
+      updateSubmit();
+    };
+    box.appendChild(btn);
+  });
 }
-function updateSubmit(){$('submitBtn').disabled=!(selectedDiagnosis&&selectedTreatment)}
-function consumeStock(treatment){for(const id of requiredStock(treatment))state.inventory[id]=Math.max(0,(state.inventory[id]||0)-1)}
+function updateSubmit(){
+  const btn=$('submitBtn');
+  if(!btn)return;
+  const ready=!!(selectedDiagnosis&&selectedTreatment);
+  btn.classList.toggle('ready',ready);
+  btn.textContent=ready?'Fall abschließen':'Fall abschließen';
+}
+function emergencySupplyCost(treatment){
+  let total=0;
+  for(const id of requiredStock(treatment)){
+    if((state.inventory[id]||0)>0) continue;
+    const m=medicines.find(x=>x.id===id);
+    if(m) total+=Math.ceil((m.price/m.pack)*1.5);
+  }
+  return total;
+}
+function consumeStock(treatment){
+  for(const id of requiredStock(treatment)){
+    if((state.inventory[id]||0)>0){
+      state.inventory[id]=Math.max(0,(state.inventory[id]||0)-1);
+    }
+  }
+}
 
 function finishCase(){
+  if(!current || !run){
+    toast('Kein aktiver Patientenfall.');
+    return;
+  }
+  if(!selectedDiagnosis){
+    toast('Bitte zuerst eine Diagnose auswählen.');
+    return;
+  }
+  if(!selectedTreatment){
+    toast('Bitte zuerst eine Behandlung auswählen.');
+    return;
+  }
+
+  const supplyCost=emergencySupplyCost(selectedTreatment);
+  if(supplyCost>0){
+    if(state.money<supplyCost){
+      toast(`Für diese Behandlung fehlen Medikamente (${supplyCost} € Notfallmaterial).`);
+      return;
+    }
+    state.money-=supplyCost;
+    run.examSpend+=supplyCost;
+    toast(`Notfallmaterial: -${supplyCost} €`);
+  }
+
   const diagOK=selectedDiagnosis===current.correctDiagnosis,treatOK=selectedTreatment===current.correctTreatment,perfect=diagOK&&treatOK;
   consumeStock(selectedTreatment);run.timeLeft=Math.max(0,run.timeLeft-5);
   let reward=perfect?current.reward:diagOK?Math.round(current.reward*.45):0;if(state.upgrades.reception)reward+=10;
