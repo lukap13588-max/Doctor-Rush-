@@ -664,13 +664,73 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .condition-result-mid{color:var(--warning)}
 .condition-result-bad{color:var(--danger)}
 
+
+/* ===== v0.12 HOSPITAL EXPANSION ===== */
+.hospital-expansion{
+  margin-top:14px;padding:15px;border-radius:24px;
+  background:linear-gradient(155deg,rgba(28,68,78,.88),rgba(12,29,50,.98));
+  border:1px solid rgba(40,215,161,.30)
+}
+.hospital-expansion-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.hospital-expansion h3{margin:0;font-size:18px}
+.hospital-expansion p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.hospital-tier{
+  padding:7px 10px;border-radius:999px;background:rgba(40,215,161,.11);
+  color:var(--accent);font-size:10px;font-weight:900;white-space:nowrap
+}
+.hospital-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.hospital-stat{
+  background:#0c1f35;border:1px solid #25405e;border-radius:12px;padding:8px 6px;text-align:center
+}
+.hospital-stat b{display:block;font-size:12px}.hospital-stat small{font-size:8.5px;color:var(--muted)}
+.expansion-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:11px}
+.expansion-card{
+  padding:11px;border-radius:16px;background:#10233c;border:1px solid #294461;
+  min-height:174px;display:flex;flex-direction:column
+}
+.expansion-card.unlocked{
+  border-color:rgba(40,215,161,.38);
+  background:linear-gradient(145deg,rgba(40,215,161,.05),#10233c)
+}
+.expansion-card h4{margin:0;font-size:12px}
+.expansion-card p{margin:5px 0;color:var(--muted);font-size:9.5px;line-height:1.35}
+.expansion-status{
+  display:inline-block;margin-top:5px;padding:4px 6px;border-radius:999px;
+  background:rgba(255,255,255,.06);font-size:8px;font-weight:900;color:var(--muted)
+}
+.expansion-card.unlocked .expansion-status{background:rgba(40,215,161,.10);color:var(--accent)}
+.expansion-effect{margin-top:7px;font-size:9px;line-height:1.35;color:#d6e7f5}
+.expansion-requirement{margin-top:7px;font-size:8.5px;color:var(--warning);line-height:1.35}
+.expansion-card button{
+  margin-top:auto;width:100%;border:none;border-radius:10px;padding:9px 7px;
+  background:linear-gradient(135deg,#1a8069,#20ad8b);color:white;font-weight:900;font-size:9.5px
+}
+.expansion-card button:disabled{opacity:.45}
+.hospital-building{
+  margin-top:11px;display:grid;gap:6px
+}
+.hospital-floor{
+  display:flex;justify-content:space-between;align-items:center;gap:10px;
+  padding:9px 10px;border-radius:12px;background:#0b1d32;border:1px solid #243d59;
+  font-size:9.5px
+}
+.hospital-floor b{font-size:10px}
+.hospital-floor.locked{opacity:.48}
+.hospital-floor.active{border-color:rgba(40,215,161,.28)}
+.hospital-floor span{color:var(--muted);text-align:right}
+.hospital-badge{
+  display:inline-block;margin-left:5px;padding:3px 6px;border-radius:999px;
+  background:rgba(40,215,161,.10);color:var(--accent);font-size:8px;font-weight:900
+}
+@media(max-width:360px){.expansion-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.11 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.12 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -680,7 +740,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.11 • PATIENT CONDITION</h2>
+          <h2>Clinic Life v0.12 • HOSPITAL EXPANSION</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -689,6 +749,24 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
 
 
+
+
+        <section class="hospital-expansion">
+          <div class="hospital-expansion-head">
+            <div>
+              <h3>🏥 Krankenhaus-Ausbau</h3>
+              <p>Baue deine Klinik schrittweise zu einem vollständigen medizinischen Zentrum aus.</p>
+            </div>
+            <div id="hospitalTier" class="hospital-tier">KLINIK</div>
+          </div>
+          <div class="hospital-stats">
+            <div class="hospital-stat"><b id="hospitalProjects">0/4</b><small>Großprojekte</small></div>
+            <div class="hospital-stat"><b id="hospitalCapacity">6</b><small>Patienten/Schicht</small></div>
+            <div class="hospital-stat"><b id="hospitalInvestment">0 €</b><small>Investiert</small></div>
+          </div>
+          <div id="hospitalBuilding" class="hospital-building"></div>
+          <div id="expansionGrid" class="expansion-grid"></div>
+        </section>
 
         <section class="condition-dashboard">
           <div class="condition-head">
@@ -1607,6 +1685,66 @@ const patients = [
     treatments:["Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle","Antibiotikum","Gipsverband","Notoperation"],
     correctTreatment:"Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle",
     reward:160, xp:76
+  },
+  {
+    name:"Gerhard T.", age:69, job:"Pensionist", avatar:"👴🏼", urgency:"medium",
+    complaint:"Seit heute schlägt mein Herz plötzlich unregelmäßig und schnell. Mir ist etwas schwindlig, aber ich habe keine starken Schmerzen.",
+    vitals:{pulse:"138",temp:"36,7°",spo2:"97%",bp:"116/74"},
+    exams:[
+      {name:"Puls kontrollieren", result:"Unregelmäßig-irregulärer schneller Puls.", cost:0, time:3},
+      {name:"EKG", result:"Unregelmäßiger Rhythmus ohne erkennbare P-Wellen.", cost:30, time:7, req:"cardio"},
+      {name:"Elektrolyte", result:"Keine schwere Elektrolytstörung.", cost:24, time:7, req:"lab"}
+    ],
+    diagnoses:["Vorhofflimmern","Panikattacke","Akutes Koronarsyndrom","Hypoglykämie"],
+    correctDiagnosis:"Vorhofflimmern",
+    treatments:["Überwachte ärztliche Rhythmus- und Schlaganfallrisiko-Abklärung","Nur Bettruhe","Antibiotikum","Gipsverband"],
+    correctTreatment:"Überwachte ärztliche Rhythmus- und Schlaganfallrisiko-Abklärung",
+    reward:215, xp:102
+  },
+  {
+    name:"Nadine K.", age:36, job:"Tourismusmanagerin", avatar:"👩🏻‍💼", urgency:"medium",
+    complaint:"Ich habe hohes Fieber, Schmerzen in der rechten Flanke und fühle mich seit gestern richtig krank.",
+    vitals:{pulse:"112",temp:"39,2°",spo2:"98%",bp:"108/69"},
+    exams:[
+      {name:"Flanke untersuchen", result:"Deutlicher Klopfschmerz rechts.", cost:0, time:4},
+      {name:"Urinstatus", result:"Leukozyten und Nitrit positiv.", cost:18, time:6, req:"lab"},
+      {name:"Blutbild", result:"Leukozytose und erhöhte Entzündungswerte.", cost:24, time:7, req:"lab"}
+    ],
+    diagnoses:["Pyelonephritis","Harnwegsinfekt","Nierenstein","Gastroenteritis"],
+    correctDiagnosis:"Pyelonephritis",
+    treatments:["Ärztliche antiinfektive Behandlung + Flüssigkeit und Verlaufskontrolle","Nur Schmerzgel","Gipsverband","Inhalation"],
+    correctTreatment:"Ärztliche antiinfektive Behandlung + Flüssigkeit und Verlaufskontrolle",
+    reward:205, xp:98
+  },
+  {
+    name:"Michael S.", age:48, job:"Hotelier", avatar:"🧔🏼", urgency:"medium",
+    complaint:"Seit gestern habe ich sehr starke Schmerzen im Oberbauch, die bis in den Rücken ziehen. Mir ist übel und Essen macht es schlimmer.",
+    vitals:{pulse:"106",temp:"37,7°",spo2:"98%",bp:"132/82"},
+    exams:[
+      {name:"Bauch untersuchen", result:"Deutlicher Oberbauchschmerz ohne harte Bauchdecke.", cost:0, time:5},
+      {name:"Lipase", result:"Lipase deutlich erhöht.", cost:28, time:7, req:"lab"},
+      {name:"Ultraschall Abdomen", result:"Hinweise auf entzündliche Veränderungen, keine klare freie Flüssigkeit.", cost:55, time:12, req:"imaging"}
+    ],
+    diagnoses:["Akute Pankreatitis","Gastroenteritis","Akute Cholezystitis","Nierenstein"],
+    correctDiagnosis:"Akute Pankreatitis",
+    treatments:["Überwachte stationäre Behandlung + Flüssigkeit und Schmerztherapie","Nur nach Hause und abwarten","Gipsverband","Inhalation"],
+    correctTreatment:"Überwachte stationäre Behandlung + Flüssigkeit und Schmerztherapie",
+    reward:230, xp:110
+  },
+  {
+    name:"Eva M.", age:57, job:"Bürokauffrau", avatar:"👩🏼‍💻", urgency:"medium",
+    complaint:"Mein Unterschenkel ist seit zwei Tagen stark gerötet, warm und schmerzhaft. Heute ist die Rötung größer geworden.",
+    vitals:{pulse:"98",temp:"38,2°",spo2:"99%",bp:"126/78"},
+    exams:[
+      {name:"Haut untersuchen", result:"Flächige warme Rötung mit unscharfer Begrenzung.", cost:0, time:4},
+      {name:"CRP", result:"Entzündungswert erhöht.", cost:20, time:7, req:"lab"},
+      {name:"Beinstatus", result:"Keine typische tiefe Wadenschwellung, Durchblutung erhalten.", cost:0, time:4}
+    ],
+    diagnoses:["Erysipel","Tiefe Venenthrombose","Hautabszess","Allergische Reaktion"],
+    correctDiagnosis:"Erysipel",
+    treatments:["Ärztliche antiinfektive Behandlung + Verlaufskontrolle","Nur kühlen","Glukose oral","Gipsverband"],
+    correctTreatment:"Ärztliche antiinfektive Behandlung + Verlaufskontrolle",
+    reward:185, xp:88
   }
 ];
 
@@ -1636,6 +1774,133 @@ const departments = [
 
 
 
+
+
+const hospitalProjects=[
+  {
+    id:'floor2',icon:'🏢',name:'2. Klinik-Etage',cost:3000,
+    desc:'Mehr Behandlungsfläche und zusätzliche Patientenkapazität.',
+    effect:'+12 min Schichtzeit • +1 Patient pro Schicht',
+    requirement:()=>({ok:(state.patientsTreated||0)>=15,text:`15 Patienten behandeln (${Math.min(state.patientsTreated||0,15)}/15)`})
+  },
+  {
+    id:'specialistWing',icon:'🧑‍⚕️',name:'Spezialisten-Flügel',cost:4200,
+    desc:'Eigener Bereich für spezialisierte Diagnostik und Konsile.',
+    effect:'5 % günstigere Untersuchungen • +5 % XP',
+    prerequisite:'floor2',
+    requirement:()=>({ok:(state.rep||0)>=60,text:`60 Ruf erreichen (${state.rep||0}/60)`})
+  },
+  {
+    id:'icu',icon:'🫀',name:'Intensivbereich',cost:5500,
+    desc:'Bessere Überwachung und Stabilisierung kritischer Patienten.',
+    effect:'30 % langsamere Verschlechterung bei Notfällen • stärkere Stabilisierung',
+    prerequisite:'floor2',
+    requirement:()=>({ok:(state.urgentSaved||0)>=5,text:`5 dringende Patienten retten (${Math.min(state.urgentSaved||0,5)}/5)`})
+  },
+  {
+    id:'recovery',icon:'🛏️',name:'Aufwach- & Nachsorgestation',cost:4800,
+    desc:'Patienten werden nach Eingriffen und Behandlungen besser stabilisiert.',
+    effect:'+5 Zustand nach richtiger Behandlung • +10 € Stabilitätsbonus',
+    prerequisite:'specialistWing',
+    requirement:()=>({ok:(state.procedureCorrect||0)>=3,text:`3 Eingriffe erfolgreich (${Math.min(state.procedureCorrect||0,3)}/3)`})
+  }
+];
+
+function expansionUnlocked(id){
+  return !!(state.expansions&&state.expansions[id]);
+}
+function expansionCount(){
+  return hospitalProjects.filter(p=>expansionUnlocked(p.id)).length;
+}
+function hospitalTier(){
+  const n=expansionCount();
+  return ['KLINIK','REGIONALKLINIK','FACHKLINIK','KRANKENHAUS','MEDICAL CENTER'][n]||'MEDICAL CENTER';
+}
+function hospitalPatientCapacity(){
+  let n=6;
+  if(expansionUnlocked('floor2'))n+=1;
+  if(expansionUnlocked('specialistWing')&&expansionUnlocked('recovery'))n+=1;
+  return n;
+}
+function hospitalShiftTimeBonus(){
+  return expansionUnlocked('floor2')?12:0;
+}
+function hospitalExamDiscount(){
+  return expansionUnlocked('specialistWing')?.05:0;
+}
+function hospitalXpMultiplier(){
+  return expansionUnlocked('specialistWing')?1.05:1;
+}
+function hospitalCriticalDecayMultiplier(){
+  return expansionUnlocked('icu')?.70:1;
+}
+function hospitalStabilizeBonus(){
+  return expansionUnlocked('icu')?4:0;
+}
+function hospitalRecoveryConditionBonus(){
+  return expansionUnlocked('recovery')?5:0;
+}
+function hospitalStableMoneyBonus(){
+  return expansionUnlocked('recovery')?10:0;
+}
+function expansionRequirement(project){
+  const preOk=!project.prerequisite||expansionUnlocked(project.prerequisite);
+  if(!preOk){
+    const pre=hospitalProjects.find(p=>p.id===project.prerequisite);
+    return {ok:false,text:`Benötigt zuerst: ${pre?pre.name:project.prerequisite}`};
+  }
+  return project.requirement();
+}
+function buyHospitalExpansion(id){
+  const project=hospitalProjects.find(p=>p.id===id);
+  if(!project||expansionUnlocked(id))return;
+  const req=expansionRequirement(project);
+  if(!req.ok){toast(req.text);return}
+  if(state.money<project.cost){toast('Nicht genug Klinikbudget.');return}
+  state.money-=project.cost;
+  state.hospitalInvestment=(state.hospitalInvestment||0)+project.cost;
+  state.expansions[id]=true;
+  beep(980,.13);
+  save();
+  toast(`${project.name} eröffnet!`);
+}
+function renderHospitalExpansion(){
+  if($('hospitalTier'))$('hospitalTier').textContent=hospitalTier();
+  if($('hospitalProjects'))$('hospitalProjects').textContent=`${expansionCount()}/${hospitalProjects.length}`;
+  if($('hospitalCapacity'))$('hospitalCapacity').textContent=hospitalPatientCapacity();
+  if($('hospitalInvestment'))$('hospitalInvestment').textContent=`${state.hospitalInvestment||0} €`;
+
+  const building=$('hospitalBuilding');
+  if(building){
+    const floors=[
+      {name:'3. Ebene',active:expansionUnlocked('icu')||expansionUnlocked('recovery'),text:'Intensivbereich • Nachsorge'},
+      {name:'2. Ebene',active:expansionUnlocked('floor2'),text:'Spezialisten • zusätzliche Behandlung'},
+      {name:'Erdgeschoss',active:true,text:'Triage • Diagnostik • Behandlung • Notaufnahme'}
+    ];
+    building.innerHTML=floors.map(f=>`<div class="hospital-floor ${f.active?'active':'locked'}"><b>${f.active?'✅':'🔒'} ${f.name}</b><span>${f.text}</span></div>`).join('');
+  }
+
+  const grid=$('expansionGrid');
+  if(!grid)return;
+  grid.innerHTML='';
+  hospitalProjects.forEach(project=>{
+    const unlocked=expansionUnlocked(project.id);
+    const req=expansionRequirement(project);
+    const canBuy=req.ok&&state.money>=project.cost;
+    const card=document.createElement('div');
+    card.className='expansion-card'+(unlocked?' unlocked':'');
+    card.innerHTML=`
+      <h4>${project.icon} ${project.name}</h4>
+      <span class="expansion-status">${unlocked?'ERÖFFNET':'GROSSPROJEKT'}</span>
+      <p>${project.desc}</p>
+      <div class="expansion-effect">${project.effect}</div>
+      ${!unlocked?`<div class="expansion-requirement">${req.ok?'✅ Voraussetzung erfüllt':'🔒 '+req.text}</div>`:''}
+      <button type="button" ${unlocked||!canBuy?'disabled':''}>${unlocked?'ERÖFFNET':`${project.cost} € bauen`}</button>`;
+    const btn=card.querySelector('button');
+    if(btn&&!btn.disabled)btn.onclick=()=>buyHospitalExpansion(project.id);
+    grid.appendChild(card);
+  });
+}
 
 const conditionRanks=[
   {min:0,name:'BASIS'},{min:5,name:'AUFMERKSAM'},{min:15,name:'STABILISIERER'},
@@ -1696,6 +1961,7 @@ function conditionDecayForTime(minutes,source=''){
   const m=Math.max(0,Number(minutes)||0);
   if(m<=0)return;
   let rate=current.urgency==='high'?0.65:current.urgency==='medium'?0.22:0.07;
+  if(current.urgency==='high')rate*=hospitalCriticalDecayMultiplier();
   if(conditionState.stabilized)rate*=0.55;
   const loss=Math.max(0,Math.round(m*rate));
   if(loss>0)changeCondition(-loss,`${source||'Zeit'}: Zustand -${loss}`,'bad');
@@ -1742,7 +2008,8 @@ function manualStabilize(){
   if(run.timeLeft<4){toast('Zu wenig Schichtzeit.');return}
   run.timeLeft-=4;
   conditionState.stabilized=true;
-  changeCondition(current.urgency==='high'?9:6,'Monitoring & Stabilisierung aktiviert','good');
+  const stabilizeGain=(current.urgency==='high'?9:6)+hospitalStabilizeBonus();
+  changeCondition(stabilizeGain,'Monitoring & Stabilisierung aktiviert','good');
   markFlowStation(current.urgency==='high'?'emergency':'exam',4);
   updateHud();
   save();
@@ -1750,6 +2017,9 @@ function manualStabilize(){
 function finishCondition(treatOK){
   if(!conditionState)return {score:0,bonus:0,rescued:false,stable:false};
   conditionActionBonus('treatment',treatOK);
+  if(treatOK&&hospitalRecoveryConditionBonus()>0){
+    changeCondition(hospitalRecoveryConditionBonus(),'Nachsorgestation: zusätzliche Stabilisierung','good');
+  }
   const score=Math.round(conditionState.value);
   const stable=score>=70;
   const rescued=conditionState.lowest<50&&score>=65;
@@ -1757,6 +2027,7 @@ function finishCondition(treatOK){
   if(score>=90)bonus=30;
   else if(score>=80)bonus=20;
   else if(score>=70)bonus=10;
+  if(stable)bonus+=hospitalStableMoneyBonus();
   if(stable)state.stableCasesTotal=(state.stableCasesTotal||0)+1;
   if(rescued)state.rescuedCasesTotal=(state.rescuedCasesTotal||0)+1;
   state.bestConditionScore=Math.max(state.bestConditionScore||0,score);
@@ -2109,6 +2380,9 @@ state.bestClueScore=Number.isFinite(Number(state.bestClueScore))?Math.max(15,Mat
 state.stableCasesTotal=Number.isFinite(Number(state.stableCasesTotal))&&Number(state.stableCasesTotal)>=0?Math.floor(Number(state.stableCasesTotal)):0;
 state.rescuedCasesTotal=Number.isFinite(Number(state.rescuedCasesTotal))&&Number(state.rescuedCasesTotal)>=0?Math.floor(Number(state.rescuedCasesTotal)):0;
 state.bestConditionScore=Number.isFinite(Number(state.bestConditionScore))?Math.max(0,Math.min(100,Math.floor(Number(state.bestConditionScore)))):0;
+if(!state.expansions||typeof state.expansions!=='object')state.expansions={};
+hospitalProjects.forEach(p=>state.expansions[p.id]=!!state.expansions[p.id]);
+state.hospitalInvestment=Number.isFinite(Number(state.hospitalInvestment))&&Number(state.hospitalInvestment)>=0?Math.floor(Number(state.hospitalInvestment)):0;
   const f=state.lastFlow;
   if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
   if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
@@ -2313,6 +2587,7 @@ function resolveProcedureStep(option,correct,clicked){
     markFlowStation('surgery',procMinutes);
     conditionDecayForTime(procMinutes,'Eingriff');
     conditionActionBonus('procedure',true);
+    if(hospitalRecoveryConditionBonus()>0)changeCondition(hospitalRecoveryConditionBonus(),'Nachsorgestation nach Eingriff','good');
     $('procedureSteps').innerHTML='';
     $('procedureStatus').className='procedure-status good';
     $('procedureStatus').textContent=`✅ Eingriff gelungen. +${money} €, +${xp} XP, +${rp} RP.`;
@@ -2824,7 +3099,11 @@ const treatmentStock = {
   'Frühe antivirale Behandlung + Schmerztherapie': ['pain'],
   'Flüssigkeitsausgleich + Verlaufskontrolle': ['fluids'],
   'Überwachte Behandlung + ärztliche antiinfektive Therapie': ['antibiotic','fluids'],
-  'Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle': ['pain']
+  'Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle': ['pain'],
+  'Überwachte ärztliche Rhythmus- und Schlaganfallrisiko-Abklärung': ['emergencyDrug'],
+  'Ärztliche antiinfektive Behandlung + Flüssigkeit und Verlaufskontrolle': ['antibiotic','fluids'],
+  'Überwachte stationäre Behandlung + Flüssigkeit und Schmerztherapie': ['fluids','pain'],
+  'Ärztliche antiinfektive Behandlung + Verlaufskontrolle': ['antibiotic']
 };
 
 const achievements = [
@@ -2851,7 +3130,9 @@ const achievements = [
   {id:'history50', name:'Guter Zuhörer', desc:'Stelle insgesamt 50 Anamnese-Fragen.'},
   {id:'clinical10', name:'Klinischer Blick', desc:'Schaffe 10 starke Diagnosen mit guter Anamnese.'},
   {id:'stable20', name:'Ruhige Station', desc:'Beende insgesamt 20 Patienten stabil.'},
-  {id:'rescue5', name:'Krisenmanager', desc:'Rette 5 Patienten nach kritischer Verschlechterung.'}
+  {id:'rescue5', name:'Krisenmanager', desc:'Rette 5 Patienten nach kritischer Verschlechterung.'},
+  {id:'firstExpansion', name:'Grundstein', desc:'Schließe dein erstes Krankenhaus-Großprojekt ab.'},
+  {id:'fullHospital', name:'Medizinisches Zentrum', desc:'Schließe alle Krankenhaus-Großprojekte ab.'}
 ];
 
 const missions = [
@@ -2878,7 +3159,10 @@ const missions = [
    meta:r=>`${Math.min(r.strongDiagnoses||0,3)}/3 starke Diagnosen`},
   {id:'stability', text:'Beende in einer Schicht 4 Patienten stabil.', rewardMoney:320, rewardXp:130,
    progress:r=>Math.min(r.stableCases||0,4)/4, done:r=>(r.stableCases||0)>=4,
-   meta:r=>`${Math.min(r.stableCases||0,4)}/4 Patienten stabil`}
+   meta:r=>`${Math.min(r.stableCases||0,4)}/4 Patienten stabil`},
+  {id:'hospitalCapacity', text:'Behandle in einer ausgebauten Klinik mindestens 7 Patienten in einer Schicht.', rewardMoney:380, rewardXp:145,
+   progress:r=>Math.min(r.treated||0,7)/7, done:r=>expansionUnlocked('floor2')&&(r.treated||0)>=7,
+   meta:r=>`${Math.min(r.treated||0,7)}/7 Patienten • ${expansionUnlocked('floor2')?'2. Etage aktiv':'2. Etage fehlt'}`}
 ];
 
 const defaultState = {
@@ -2903,7 +3187,9 @@ const defaultState = {
   bestClueScore:15,
   stableCasesTotal:0,
   rescuedCasesTotal:0,
-  bestConditionScore:0
+  bestConditionScore:0,
+  expansions:{floor2:false,specialistWing:false,icu:false,recovery:false},
+  hospitalInvestment:0
 };
 
 let state;
@@ -2981,7 +3267,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -3005,8 +3291,9 @@ function renderAchievements(){
 }
 
 function startShift(){
-  const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0};
+  const hospitalCap=hospitalPatientCapacity();
+  const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
+  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -3050,7 +3337,7 @@ function loadPatient(){
       ?`🚑 <b>Notaufnahme Level ${roomLevel('emergency')}</b> • kritischer Patient`
       :`🏥 <b>Behandlungsraum Level ${roomLevel('exam')}</b> • Patient wird untersucht`;
   }
-  $('patientName').textContent=current.name;$('patientMeta').innerHTML=`${current.age} Jahre • ${current.job}${current.rare?` <span class='rare-patient-tag'>SELTENER FALL</span>`:''} <span class='intake-badge'>ERSTGESPRÄCH</span>`;$('avatar').textContent=current.avatar;$('complaint').textContent=intakeComplaint(current);
+  $('patientName').textContent=current.name;$('patientMeta').innerHTML=`${current.age} Jahre • ${current.job}${current.rare?` <span class='rare-patient-tag'>SELTENER FALL</span>`:''} <span class='intake-badge'>ERSTGESPRÄCH</span>${expansionCount()>=3?` <span class='hospital-badge'>KRANKENHAUS</span>`:''}`;$('avatar').textContent=current.avatar;$('complaint').textContent=intakeComplaint(current);
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
@@ -3067,7 +3354,8 @@ function adjustedCost(exam){
   }
   discount+=specialtyExamDiscount();
   discount+=researchDiagnosticDiscount();
-  return Math.max(0,Math.ceil(cost*(1-Math.min(.70,discount))));
+  discount+=hospitalExamDiscount();
+  return Math.max(0,Math.ceil(cost*(1-Math.min(.75,discount))));
 }
 function adjustedExamTime(exam){
   let t=Number(exam.time)||0;
@@ -3186,7 +3474,7 @@ function finishCase(){
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
-    xpGain=Math.round(xpGain*specialtyXpMultiplier()*researchXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
+    xpGain=Math.round(xpGain*specialtyXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
     let repGain=perfect?4:diagOK?1:-5;
     if(repGain<0)repGain=Math.min(0,repGain+careerRepShield());
 
@@ -3274,7 +3562,7 @@ function endShift(reason=''){
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
   const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
-  $('missionResult').innerHTML=missionHtml+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -3295,6 +3583,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('clinical10',(state.strongHistoryCases||0)>=10);
   check('stable20',(state.stableCasesTotal||0)>=20);
   check('rescue5',(state.rescuedCasesTotal||0)>=5);
+  check('firstExpansion',expansionCount()>=1);
+  check('fullHospital',expansionCount()===hospitalProjects.length);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

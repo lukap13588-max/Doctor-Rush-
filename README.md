@@ -1,4 +1,4 @@
-# Doctor Rush v0.11 – PATIENT CONDITION
+# Doctor Rush v0.12 – HOSPITAL EXPANSION
 
 ## Dateien
 
@@ -7,170 +7,180 @@ Wie vereinbart:
 - `index.html`
 - `README.md`
 
-Zusätzlich gibt es die `README.md` wieder als ZIP für den sicheren Download auf dem iPhone.
+Zusätzlich gibt es die `README.md` als ZIP für den sicheren Download auf dem iPhone.
 
 ## GitHub-Update
 
 1. Öffne dein Doctor-Rush-Repository.
 2. Ersetze nur die vorhandene `index.html`.
 3. Commit speichern.
-4. Öffne die GitHub-Pages-Seite danach einmal mit `?v=0.11`.
+4. Öffne Doctor Rush danach einmal mit `?v=0.12`.
 
 ---
 
-## Neu in v0.11
+# Neu in v0.12
 
-### ❤️‍🩹 Dynamischer Patientenzustand
+## 🏥 Krankenhaus-Ausbau
 
-Jeder Patient bekommt während der Behandlung einen sichtbaren Zustandswert von **0 bis 100**.
+Doctor Rush wächst jetzt von einer Klinik zu einem medizinischen Zentrum.
 
-Startwerte hängen von der Dringlichkeit ab:
+Es gibt vier große Ausbauprojekte.
 
-- leichte Fälle starten stabil
-- mittlere Fälle starten niedriger
-- dringende Fälle starten deutlich gefährdeter
+### 🏢 2. Klinik-Etage
 
-Der Zustand verändert sich während des Falls.
+Kosten: **3.000 €**
 
-### ⏱️ Zeit hat jetzt Konsequenzen
+Voraussetzung:
+- mindestens 15 Patienten behandelt
 
-Zeitaufwendige Aktionen können den Zustand verschlechtern:
+Bonus:
+- +12 Minuten Schichtzeit
+- +1 Patient pro Schicht
 
-- Anamnese
-- Untersuchungen
-- Notfallversorgung
-- Eingriffe
+---
 
-Dringende Patienten verlieren schneller Stabilität als leichte Fälle.
+### 🧑‍⚕️ Spezialisten-Flügel
 
-### 🛡️ Monitoring & Stabilisierung
+Kosten: **4.200 €**
 
-Du kannst einmal pro Fall eine allgemeine **Monitoring-&-Stabilisierungsaktion** ausführen.
+Voraussetzungen:
+- 2. Klinik-Etage
+- mindestens 60 Ruf
 
-Sie:
+Bonus:
+- 5 % günstigere Untersuchungen
+- +5 % XP
 
-- kostet 4 Minuten
-- verbessert den Zustand
-- reduziert danach die weitere Verschlechterung
-- ist besonders wertvoll bei dringenden Patienten
+---
 
-Das ist bewusst abstrakt gehalten und keine reale medizinische Anleitung.
+### 🫀 Intensivbereich
 
-### 🚨 Notfall-Protokolle wirken auf den Zustand
+Kosten: **5.500 €**
 
-Richtiges Notfall-Protokoll:
-- verbessert den Patientenzustand
+Voraussetzungen:
+- 2. Klinik-Etage
+- mindestens 5 dringende Patienten gerettet
 
-Fehler:
-- verschlechtert ihn zusätzlich
+Bonus:
+- dringende Patienten verschlechtern sich 30 % langsamer
+- allgemeine Stabilisierung wird stärker
 
-### 🛠️ Eingriffe wirken auf den Zustand
+---
 
-Erfolgreiche Eingriffe:
-- verbessern den Zustand
+### 🛏️ Aufwach- & Nachsorgestation
 
-Fehler:
-- verschlechtern ihn
+Kosten: **4.800 €**
 
-### 💊 Behandlung entscheidet mit
+Voraussetzungen:
+- Spezialisten-Flügel
+- mindestens 3 erfolgreiche Eingriffe
 
-Die richtige Behandlung verbessert den Zustand am Ende deutlich.
+Bonus:
+- zusätzliche Stabilität nach richtiger Behandlung
+- bessere Erholung nach Eingriffen
+- +10 € auf Stabilitätsboni
 
-Eine falsche Behandlung verschlechtert ihn.
+---
 
-### 💰 Stabilitätsbonus
+## 🏥 Krankenhaus-Ränge
 
-Gute Endzustände bringen zusätzlich Geld:
+Mit jedem Großprojekt wächst deine Einrichtung.
 
-- ab 70: Bonus
-- ab 80: höherer Bonus
-- ab 90: maximaler Bonus
+Stufen:
 
-### 🛟 Rettungswertung
+1. Klinik
+2. Regionalklinik
+3. Fachklinik
+4. Krankenhaus
+5. Medical Center
 
-Wenn ein Patient zwischenzeitlich unter 50 fällt und am Ende wieder mindestens 65 erreicht, zählt der Fall als **gerettet**.
+---
 
-### 📊 Neues Dashboard
+## 🏢 Neue Gebäudeansicht
 
-Auf der Startseite gibt es jetzt **Patientenstabilität**.
+Auf der Startseite siehst du jetzt einen vereinfachten Krankenhausaufbau:
 
-Angezeigt werden:
+- Erdgeschoss
+- 2. Ebene
+- 3. Ebene
 
-- stabil beendete Fälle
-- gerettete Patienten
-- bester Endzustand
-- Stabilitäts-Rang
+Neue Bereiche erscheinen sichtbar, sobald sie freigeschaltet wurden.
 
-Ränge:
+---
 
-- Basis
-- Aufmerksam
-- Stabilisierer
-- Krisenfest
-- Intensiv-Profi
+## 👥 Größere Schichten
 
-### 🆕 3 neue Fälle
+Die Grundkapazität bleibt bei 6 Patienten.
 
-- Dehydratation
-- Schwere Pneumonie
-- Migräne mit Aura
+Mit Ausbau:
 
-### 📋 Fallauswertung erweitert
+- 2. Etage → 7 Patienten
+- vollständig ausgebaute Klinik → bis zu 8 Patienten
 
-Nach jedem Patienten siehst du:
+Dafür gibt die zweite Etage auch zusätzliche Schichtzeit.
 
-- Endzustand
-- Stabil / Kritisch / Gerettet
-- Stabilitätsbonus
+---
 
-### 📈 Schichtauswertung erweitert
+## 🆕 4 neue Patientenfälle
 
-Am Schichtende:
+- Vorhofflimmern
+- Pyelonephritis
+- Akute Pankreatitis
+- Erysipel
 
-- durchschnittlicher Patientenzustand
-- Anzahl stabil beendeter Fälle
-- Anzahl geretteter Patienten
+Damit wächst das Fallbuch erneut.
 
-### 🎯 Neue Tagesmission
+---
 
-**Stabile Station**
-- 4 Patienten in einer Schicht stabil beenden
+## 🎯 Neue Tagesmission
 
-### 🏆 Neue Erfolge
+**Große Klinik**
 
-**Ruhige Station**
-- 20 Patienten insgesamt stabil beenden
+- 2. Klinik-Etage besitzen
+- mindestens 7 Patienten in einer Schicht behandeln
 
-**Krisenmanager**
-- 5 Patienten nach kritischer Verschlechterung retten
+---
+
+## 🏆 Neue Erfolge
+
+### Grundstein
+Erstes Krankenhaus-Großprojekt abschließen.
+
+### Medizinisches Zentrum
+Alle vier Großprojekte abschließen.
+
+---
 
 ## Bestehende Systeme bleiben erhalten
 
+- dynamischer Patientenzustand
+- Stabilisierung
 - Diagnose 2.0
 - Anamnese
 - Klinik-Flow
+- Stationsauslastung
 - Wartezimmer und Triage
 - Klinikräume
-- Medikamente
+- Medikamente und Apotheke
 - Arztkarriere
 - Personal
 - Spezialisierungen
 - Forschung
 - Fallbuch
 - Notfall-Protokolle
-- Eingriffe
+- Eingriffs-Minigames
 - Tagesmissionen
 - Erfolge
 - Geld, XP und Ruf
 
 ## Technisch
 
-- weiterhin nur eine `index.html`
+- weiterhin **eine einzige `index.html`**
 - kein Service Worker
 - keine externe JavaScript-Datei
 - keine externe CSS-Datei
 - Spielstand bleibt `doctorRushSaveV3`
-- v0.10-Spielstand kompatibel
+- v0.11-Spielstand wird automatisch erweitert
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
 
