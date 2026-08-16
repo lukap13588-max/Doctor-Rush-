@@ -757,13 +757,50 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .payroll-strip span{color:var(--muted)}.payroll-strip b{color:#fff}
 .shift-team-chip.tired{border-color:rgba(255,200,87,.45);color:#ffe0a4}.shift-team-chip.exhausted{border-color:rgba(255,102,122,.48);color:#ffb0bc}
 
+
+/* ===== v0.14 ECONOMY & FINANCE ===== */
+.finance-dashboard{margin-top:14px;padding:15px;border-radius:24px;background:linear-gradient(155deg,rgba(47,78,50,.76),rgba(13,30,52,.98));border:1px solid rgba(87,215,128,.31)}
+.finance-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.finance-head h3{margin:0;font-size:18px}.finance-head p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.finance-rating{padding:7px 10px;border-radius:999px;background:rgba(87,215,128,.12);color:#8ce8aa;font-size:10px;font-weight:900;white-space:nowrap}
+.finance-rating.loss{background:rgba(255,102,122,.13);color:#ffacb8}
+.finance-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.finance-stat{background:#0c1f35;border:1px solid #25405f;border-radius:12px;padding:8px 6px;text-align:center}
+.finance-stat b{display:block;font-size:12px}.finance-stat small{font-size:8.5px;color:var(--muted)}
+.finance-result{margin-top:10px;padding:10px;border-radius:13px;background:#0a1c31;border:1px solid #233e59}
+.finance-result-row{display:flex;justify-content:space-between;gap:8px;font-size:9px;padding:3px 0}
+.finance-result-row span{color:var(--muted)}.finance-result-row b.good{color:var(--accent)}.finance-result-row b.bad{color:var(--danger)}
+.reserve-box{margin-top:10px;padding:11px;border-radius:14px;background:rgba(70,166,255,.07);border:1px solid rgba(70,166,255,.20)}
+.reserve-head{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.reserve-head b{font-size:11px}.reserve-head span{font-size:10px;color:#a9d4ff;font-weight:900}
+.reserve-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:8px}
+.reserve-actions button{border:none;border-radius:10px;padding:9px 7px;background:#1d416c;color:white;font-size:9px;font-weight:900}
+.reserve-actions button:disabled{opacity:.45}
+.maintenance-box{margin-top:10px;padding:11px;border-radius:14px;background:#0d2037;border:1px solid #29435f}
+.maintenance-top{display:flex;justify-content:space-between;gap:10px;align-items:center}
+.maintenance-top b{font-size:11px}.maintenance-top span{font-size:9px;color:var(--muted)}
+.maintenance-bar{height:7px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:7px}
+.maintenance-bar i{display:block;height:100%;background:linear-gradient(90deg,#ff667a,#ffc857,#28d7a1);border-radius:999px}
+.maintenance-note{margin-top:6px;color:var(--muted);font-size:8.5px;line-height:1.35}
+.maintenance-box button{width:100%;margin-top:8px;border:none;border-radius:10px;padding:9px;background:linear-gradient(135deg,#247b72,#2a9a86);color:#fff;font-size:9px;font-weight:900}
+.maintenance-box button:disabled{opacity:.45}
+.contract-grid{display:grid;gap:8px;margin-top:10px}
+.contract-card{padding:11px;border-radius:14px;background:#10223b;border:1px solid #29435e}
+.contract-card.active{border-color:rgba(40,215,161,.34);background:linear-gradient(145deg,rgba(40,215,161,.05),#10223b)}
+.contract-card h4{margin:0;font-size:11px}.contract-card p{margin:4px 0;color:var(--muted);font-size:9px;line-height:1.35}
+.contract-effect{font-size:9px;color:#d5e8f5;margin-top:5px}.contract-req{font-size:8.5px;color:var(--warning);margin-top:5px}
+.contract-card button{width:100%;margin-top:8px;border:none;border-radius:10px;padding:9px 7px;background:#1c7d67;color:white;font-size:9px;font-weight:900}
+.contract-card button:disabled{opacity:.45}
+.economy-warning{margin-top:9px;padding:8px 9px;border-radius:11px;background:rgba(255,200,87,.08);border:1px solid rgba(255,200,87,.19);font-size:8.5px;color:#ffe2aa;line-height:1.35}
+.finance-result-good{color:var(--accent)}.finance-result-bad{color:var(--danger)}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.13 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.14 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -773,7 +810,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.13 • STAFF 2.0</h2>
+          <h2>Clinic Life v0.14 • ECONOMY & FINANCE</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -784,6 +821,36 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
 
 
+
+
+        <section class="finance-dashboard">
+          <div class="finance-head">
+            <div><h3>💶 Finanzen & Betrieb</h3><p>Einnahmen, laufende Kosten, Rücklagen, Wartung und Klinikverträge.</p></div>
+            <div id="financeRating" class="finance-rating">STARTPHASE</div>
+          </div>
+          <div class="finance-stats">
+            <div class="finance-stat"><b id="financeRevenue">0 €</b><small>Letzte Einnahmen</small></div>
+            <div class="finance-stat"><b id="financeCosts">0 €</b><small>Letzte Kosten</small></div>
+            <div class="finance-stat"><b id="financeProfit">0 €</b><small>Letztes Ergebnis</small></div>
+          </div>
+          <div id="financeResult" class="finance-result"></div>
+          <div class="reserve-box">
+            <div class="reserve-head"><b>🏦 Klinik-Rücklage</b><span id="reserveValue">0 €</span></div>
+            <div class="reserve-actions">
+              <button id="reserveDeposit" type="button" onclick="changeReserve(250)">+250 € zurücklegen</button>
+              <button id="reserveWithdraw" type="button" onclick="changeReserve(-250)">250 € entnehmen</button>
+            </div>
+          </div>
+          <div class="maintenance-box">
+            <div class="maintenance-top"><b>🔧 Geräte & Technik</b><span id="equipmentConditionText">100 %</span></div>
+            <div class="maintenance-bar"><i id="equipmentConditionBar" style="width:100%"></i></div>
+            <div id="maintenanceNote" class="maintenance-note">Technik in ausgezeichnetem Zustand.</div>
+            <button id="maintenanceBtn" type="button" onclick="performMaintenance()">Wartung durchführen</button>
+          </div>
+          <div class="panel-title" style="margin-top:13px">📑 Klinikverträge</div>
+          <div id="contractGrid" class="contract-grid"></div>
+          <div id="economyWarning" class="economy-warning"></div>
+        </section>
 
         <section class="staff2-dashboard">
           <div class="staff2-head">
@@ -1820,6 +1887,125 @@ const departments = [
 
 
 
+
+const clinicContracts=[
+  {id:'careContract',icon:'🤝',name:'Versorgungsvertrag',cost:1600,desc:'Ein stabiler Vertrag verbessert die Vergütung behandelter Patienten.',effect:'+6 % Einnahmen aus Patientenfällen',requirement:()=>({ok:(state.rep||0)>=65,text:`65 Ruf erreichen (${state.rep||0}/65)`})},
+  {id:'supplierContract',icon:'📦',name:'Einkaufspartnerschaft',cost:1200,desc:'Bessere Konditionen für Medikamente und Verbrauchsmaterial.',effect:'8 % zusätzlicher Rabatt auf Medikamenteneinkäufe',requirement:()=>({ok:(state.patientsTreated||0)>=20,text:`20 Patienten behandeln (${Math.min(state.patientsTreated||0,20)}/20)`})},
+  {id:'researchGrant',icon:'🔬',name:'Forschungsförderung',cost:1800,desc:'Fördermittel unterstützen klinische Forschung nach jeder abgeschlossenen Schicht.',effect:'+1 Forschungspunkt pro abgeschlossener Schicht',requirement:()=>({ok:(state.strongHistoryCases||0)>=5,text:`5 starke Diagnosen erreichen (${Math.min(state.strongHistoryCases||0,5)}/5)`})}
+];
+function contractActive(id){return !!(state.contracts&&state.contracts[id])}
+function activeContractCount(){return clinicContracts.filter(c=>contractActive(c.id)).length}
+function caseRevenueMultiplier(){return contractActive('careContract')?1.06:1}
+function supplierContractDiscount(){return contractActive('supplierContract')?0.08:0}
+function equipmentCondition(){const n=Number(state.equipmentCondition);return Number.isFinite(n)?Math.max(10,Math.min(100,Math.round(n))):100}
+function equipmentTimePenalty(){const c=equipmentCondition();return c<30?2:c<55?1:0}
+function equipmentCostSurcharge(){const c=equipmentCondition();return c<30?0.12:c<55?0.06:0}
+function operatingCost(){return Math.round(55+clinicActiveRooms()*10+expansionCount()*30+Math.max(0,hospitalPatientCapacity()-6)*18)}
+function maintenanceCost(){return Math.round(180+clinicActiveRooms()*12+expansionCount()*45)}
+function equipmentWearForShift(){
+  if(!run)return 4;
+  const stationUse=Object.values(run.stationUsage||{}).reduce((a,b)=>a+(Number(b)||0),0);
+  return Math.min(16,4+Math.ceil(stationUse/5)+expansionCount());
+}
+function applyEquipmentWear(){
+  const wear=equipmentWearForShift();
+  state.equipmentCondition=Math.max(10,equipmentCondition()-wear);
+  if(run)run.equipmentWear=wear;
+}
+function performMaintenance(){
+  const condition=equipmentCondition(),cost=maintenanceCost();
+  if(condition>=100){toast('Die Technik ist bereits vollständig gewartet.');return}
+  if(state.money<cost){toast('Nicht genug Budget für die Wartung.');return}
+  state.money-=cost;state.totalMaintenancePaid=(state.totalMaintenancePaid||0)+cost;
+  state.equipmentCondition=Math.min(100,condition+30);
+  beep(820,.10);save();toast('Wartung abgeschlossen: +30 % Technikzustand.');
+}
+function changeReserve(amount){
+  const value=Math.abs(Number(amount)||0);if(!value)return;
+  if(amount>0){
+    if(state.money<value){toast('Nicht genug freies Klinikbudget.');return}
+    state.money-=value;state.financialReserve=(state.financialReserve||0)+value;
+    toast(`${value} € in die Rücklage verschoben.`);
+  }else{
+    if((state.financialReserve||0)<value){toast('Nicht genug Geld in der Rücklage.');return}
+    state.financialReserve-=value;state.money+=value;
+    toast(`${value} € aus der Rücklage entnommen.`);
+  }
+  beep(700,.06);save();
+}
+function payHospitalCost(amount){
+  const requested=Math.max(0,Math.round(Number(amount)||0));
+  let remaining=requested;
+  const fromMoney=Math.min(Math.max(0,state.money),remaining);
+  state.money-=fromMoney;remaining-=fromMoney;
+  let fromReserve=0;
+  if(remaining>0&&(state.financialReserve||0)>0){
+    fromReserve=Math.min(state.financialReserve,remaining);
+    state.financialReserve-=fromReserve;remaining-=fromReserve;
+  }
+  return {paid:requested-remaining,shortfall:remaining,reserveUsed:fromReserve};
+}
+function financeRating(profit){
+  if(profit>=350)return'SEHR STARK';
+  if(profit>=100)return'PROFITABEL';
+  if(profit>=0)return'STABIL';
+  if(profit>=-200)return'KNAPP';
+  return'VERLUST';
+}
+function buyContract(id){
+  const c=clinicContracts.find(x=>x.id===id);if(!c||contractActive(id))return;
+  const req=c.requirement();
+  if(!req.ok){toast(req.text);return}
+  if(state.money<c.cost){toast('Nicht genug Klinikbudget.');return}
+  state.money-=c.cost;state.contracts[id]=true;state.contractInvestment=(state.contractInvestment||0)+c.cost;
+  beep(900,.10);save();toast(`${c.name} abgeschlossen.`);
+}
+function finalizeFinance(missionDone){
+  const missionRevenue=missionDone?currentMission.rewardMoney:0;
+  const revenue=Math.round((run.earned||0)+missionRevenue);
+  const variable=Math.round(run.examSpend||0);
+  const payroll=Math.round(run.payroll||0);
+  const operations=Math.round(run.operatingCost||0);
+  const costs=variable+payroll+operations;
+  const profit=revenue-costs;
+  state.totalNetProfit=(state.totalNetProfit||0)+profit;
+  if(profit>0)state.profitableShifts=(state.profitableShifts||0)+1;
+  state.lastFinance={revenue,costs,profit,variable,payroll,operations,reserveUsed:Math.round(run.reserveUsed||0),equipmentWear:Math.round(run.equipmentWear||0)};
+}
+function renderFinance(){
+  const f=state.lastFinance||{revenue:0,costs:0,profit:0,variable:0,payroll:0,operations:0,reserveUsed:0};
+  const rating=financeRating(f.profit||0);
+  if($('financeRating')){$('financeRating').textContent=rating;$('financeRating').className='finance-rating'+((f.profit||0)<0?' loss':'')}
+  if($('financeRevenue'))$('financeRevenue').textContent=`${f.revenue||0} €`;
+  if($('financeCosts'))$('financeCosts').textContent=`${f.costs||0} €`;
+  if($('financeProfit'))$('financeProfit').textContent=`${(f.profit||0)>=0?'+':''}${f.profit||0} €`;
+  if($('reserveValue'))$('reserveValue').textContent=`${state.financialReserve||0} €`;
+  if($('reserveDeposit'))$('reserveDeposit').disabled=state.money<250;
+  if($('reserveWithdraw'))$('reserveWithdraw').disabled=(state.financialReserve||0)<250;
+  if($('financeResult'))$('financeResult').innerHTML=`
+    <div class="finance-result-row"><span>Untersuchungen/Material</span><b>-${f.variable||0} €</b></div>
+    <div class="finance-result-row"><span>Personal</span><b>-${f.payroll||0} €</b></div>
+    <div class="finance-result-row"><span>Betrieb & Energie</span><b>-${f.operations||0} €</b></div>
+    <div class="finance-result-row"><span>Schichtergebnis</span><b class="${(f.profit||0)>=0?'good':'bad'}">${(f.profit||0)>=0?'+':''}${f.profit||0} €</b></div>`;
+  const condition=equipmentCondition();
+  if($('equipmentConditionText'))$('equipmentConditionText').textContent=`${condition} %`;
+  if($('equipmentConditionBar'))$('equipmentConditionBar').style.width=`${condition}%`;
+  if($('maintenanceBtn')){$('maintenanceBtn').disabled=condition>=100||state.money<maintenanceCost();$('maintenanceBtn').textContent=`Wartung +30 % • ${maintenanceCost()} €`}
+  if($('maintenanceNote'))$('maintenanceNote').textContent=condition>=80?'Technik in sehr gutem Zustand.':condition>=55?'Technik zeigt Verschleiß, aber noch ohne Leistungsstrafe.':condition>=30?'Verschleiß: Untersuchungen dauern teilweise länger und werden teurer.':'Kritischer Technikzustand: deutliche Zeit- und Kostenaufschläge.';
+  const grid=$('contractGrid');
+  if(grid){
+    grid.innerHTML='';
+    clinicContracts.forEach(c=>{
+      const active=contractActive(c.id),req=c.requirement(),canBuy=req.ok&&state.money>=c.cost;
+      const card=document.createElement('div');card.className='contract-card'+(active?' active':'');
+      card.innerHTML=`<h4>${c.icon} ${c.name}</h4><p>${c.desc}</p><div class="contract-effect">${c.effect}</div>${!active?`<div class="contract-req">${req.ok?'✅ Voraussetzung erfüllt':'🔒 '+req.text}</div>`:''}<button type="button" ${active||!canBuy?'disabled':''}>${active?'AKTIV':`${c.cost} € abschließen`}</button>`;
+      const btn=card.querySelector('button');if(btn&&!btn.disabled)btn.onclick=()=>buyContract(c.id);
+      grid.appendChild(card);
+    });
+  }
+  if($('economyWarning'))$('economyWarning').textContent=`Nächste fixe Schichtkosten ca. ${totalPayroll()+operatingCost()} € • Rücklage ${state.financialReserve||0} € • ${activeContractCount()}/3 Verträge aktiv`;
+}
+
 const staffNamePools={
   nurse:['Anna','Julia','Leonie','Miriam','Sophie'],
   assistant:['David','Jonas','Felix','Lukas','Marco'],
@@ -2549,17 +2735,6 @@ function stationLoadPercent(usage,maxUsage){
 }
 function renderFlowDashboard(){
   ensureFlowState();
-state.historyQuestionsTotal=Number.isFinite(Number(state.historyQuestionsTotal))&&Number(state.historyQuestionsTotal)>=0?Math.floor(Number(state.historyQuestionsTotal)):0;
-state.strongHistoryCases=Number.isFinite(Number(state.strongHistoryCases))&&Number(state.strongHistoryCases)>=0?Math.floor(Number(state.strongHistoryCases)):0;
-state.bestClueScore=Number.isFinite(Number(state.bestClueScore))?Math.max(15,Math.min(100,Math.floor(Number(state.bestClueScore)))):15;
-state.stableCasesTotal=Number.isFinite(Number(state.stableCasesTotal))&&Number(state.stableCasesTotal)>=0?Math.floor(Number(state.stableCasesTotal)):0;
-state.rescuedCasesTotal=Number.isFinite(Number(state.rescuedCasesTotal))&&Number(state.rescuedCasesTotal)>=0?Math.floor(Number(state.rescuedCasesTotal)):0;
-state.bestConditionScore=Number.isFinite(Number(state.bestConditionScore))?Math.max(0,Math.min(100,Math.floor(Number(state.bestConditionScore)))):0;
-if(!state.expansions||typeof state.expansions!=='object')state.expansions={};
-hospitalProjects.forEach(p=>state.expansions[p.id]=!!state.expansions[p.id]);
-state.hospitalInvestment=Number.isFinite(Number(state.hospitalInvestment))&&Number(state.hospitalInvestment)>=0?Math.floor(Number(state.hospitalInvestment)):0;
-ensureStaffProfiles();
-state.totalPayrollPaid=Number.isFinite(Number(state.totalPayrollPaid))&&Number(state.totalPayrollPaid)>=0?Math.floor(Number(state.totalPayrollPaid)):0;
   const f=state.lastFlow;
   if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
   if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
@@ -3136,7 +3311,8 @@ function pharmacyDiscount(){
   let d=state.upgrades.pharmacy ? 0.20 : 0;
   d += (roomLevel('pharmacy')-1)*0.05;
   if(run&&run.active&&run.eventPharmacyDiscount)d+=run.eventPharmacyDiscount;
-  return Math.min(0.50,d);
+  d+=supplierContractDiscount();
+  return Math.min(0.58,d);
 }
 function roomEffect(room){
   const level=roomLevel(room.id);
@@ -3311,7 +3487,10 @@ const achievements = [
   {id:'firstExpansion', name:'Grundstein', desc:'Schließe dein erstes Krankenhaus-Großprojekt ab.'},
   {id:'fullHospital', name:'Medizinisches Zentrum', desc:'Schließe alle Krankenhaus-Großprojekte ab.'},
   {id:'staffVeteran', name:'Stammteam', desc:'Ein Mitarbeiter absolviert 10 Schichten.'},
-  {id:'payroll5000', name:'Arbeitgeber', desc:'Zahle insgesamt 5.000 € Personalgehälter.'}
+  {id:'payroll5000', name:'Arbeitgeber', desc:'Zahle insgesamt 5.000 € Personalgehälter.'},
+  {id:'reserve2000', name:'Sicherheitsnetz', desc:'Baue eine Klinik-Rücklage von 2.000 € auf.'},
+  {id:'profit10', name:'Schwarze Zahlen', desc:'Beende insgesamt 10 Schichten profitabel.'},
+  {id:'contracts3', name:'Gut vernetzt', desc:'Schließe alle drei Klinikverträge ab.'}
 ];
 
 const missions = [
@@ -3345,7 +3524,11 @@ const missions = [
   {id:'staffCare', text:'Beende eine Schicht mit mindestens 2 Mitarbeitern und höchstens 55 % durchschnittlicher Müdigkeit.', rewardMoney:260, rewardXp:115,
    progress:r=>hiredStaffCount()>=2?Math.max(0,Math.min(1,(100-averageStaffFatigue())/45)):0,
    done:r=>hiredStaffCount()>=2&&averageStaffFatigue()<=55,
-   meta:r=>`${hiredStaffCount()} Mitarbeiter • Ø ${averageStaffFatigue()} % Müdigkeit`}
+   meta:r=>`${hiredStaffCount()} Mitarbeiter • Ø ${averageStaffFatigue()} % Müdigkeit`},
+  {id:'profit', text:'Erwirtschafte in einer Schicht mindestens 150 € operativen Gewinn.', rewardMoney:300, rewardXp:125,
+   progress:r=>Math.max(0,Math.min(1,(((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))/150))),
+   done:r=>((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))>=150,
+   meta:r=>`Aktuell ca. ${Math.round((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))} €`}
 ];
 
 const defaultState = {
@@ -3374,7 +3557,15 @@ const defaultState = {
   expansions:{floor2:false,specialistWing:false,icu:false,recovery:false},
   hospitalInvestment:0,
   staffProfiles:{},
-  totalPayrollPaid:0
+  totalPayrollPaid:0,
+  financialReserve:0,
+  equipmentCondition:100,
+  totalMaintenancePaid:0,
+  contracts:{careContract:false,supplierContract:false,researchGrant:false},
+  contractInvestment:0,
+  totalNetProfit:0,
+  profitableShifts:0,
+  lastFinance:{revenue:0,costs:0,profit:0,variable:0,payroll:0,operations:0,reserveUsed:0,equipmentWear:0}
 };
 
 let state;
@@ -3405,6 +3596,26 @@ state.procedureAttempts=Number.isFinite(Number(state.procedureAttempts))&&Number
 state.procedureCorrect=Number.isFinite(Number(state.procedureCorrect))&&Number(state.procedureCorrect)>=0?Math.floor(Number(state.procedureCorrect)):0;
 state.procedurePerfect=Number.isFinite(Number(state.procedurePerfect))&&Number(state.procedurePerfect)>=0?Math.floor(Number(state.procedurePerfect)):0;
 ensureFlowState();
+state.historyQuestionsTotal=Number.isFinite(Number(state.historyQuestionsTotal))&&Number(state.historyQuestionsTotal)>=0?Math.floor(Number(state.historyQuestionsTotal)):0;
+state.strongHistoryCases=Number.isFinite(Number(state.strongHistoryCases))&&Number(state.strongHistoryCases)>=0?Math.floor(Number(state.strongHistoryCases)):0;
+state.bestClueScore=Number.isFinite(Number(state.bestClueScore))?Math.max(15,Math.min(100,Math.floor(Number(state.bestClueScore)))):15;
+state.stableCasesTotal=Number.isFinite(Number(state.stableCasesTotal))&&Number(state.stableCasesTotal)>=0?Math.floor(Number(state.stableCasesTotal)):0;
+state.rescuedCasesTotal=Number.isFinite(Number(state.rescuedCasesTotal))&&Number(state.rescuedCasesTotal)>=0?Math.floor(Number(state.rescuedCasesTotal)):0;
+state.bestConditionScore=Number.isFinite(Number(state.bestConditionScore))?Math.max(0,Math.min(100,Math.floor(Number(state.bestConditionScore)))):0;
+if(!state.expansions||typeof state.expansions!=='object')state.expansions={};
+hospitalProjects.forEach(p=>state.expansions[p.id]=!!state.expansions[p.id]);
+state.hospitalInvestment=Number.isFinite(Number(state.hospitalInvestment))&&Number(state.hospitalInvestment)>=0?Math.floor(Number(state.hospitalInvestment)):0;
+ensureStaffProfiles();
+state.totalPayrollPaid=Number.isFinite(Number(state.totalPayrollPaid))&&Number(state.totalPayrollPaid)>=0?Math.floor(Number(state.totalPayrollPaid)):0;
+state.financialReserve=Number.isFinite(Number(state.financialReserve))&&Number(state.financialReserve)>=0?Math.floor(Number(state.financialReserve)):0;
+state.equipmentCondition=Number.isFinite(Number(state.equipmentCondition))?Math.max(10,Math.min(100,Math.floor(Number(state.equipmentCondition)))):100;
+state.totalMaintenancePaid=Number.isFinite(Number(state.totalMaintenancePaid))&&Number(state.totalMaintenancePaid)>=0?Math.floor(Number(state.totalMaintenancePaid)):0;
+if(!state.contracts||typeof state.contracts!=='object')state.contracts={};
+clinicContracts.forEach(c=>state.contracts[c.id]=!!state.contracts[c.id]);
+state.contractInvestment=Number.isFinite(Number(state.contractInvestment))&&Number(state.contractInvestment)>=0?Math.floor(Number(state.contractInvestment)):0;
+state.totalNetProfit=Number.isFinite(Number(state.totalNetProfit))?Math.round(Number(state.totalNetProfit)):0;
+state.profitableShifts=Number.isFinite(Number(state.profitableShifts))&&Number(state.profitableShifts)>=0?Math.floor(Number(state.profitableShifts)):0;
+if(!state.lastFinance||typeof state.lastFinance!=='object')state.lastFinance=JSON.parse(JSON.stringify(defaultState.lastFinance));
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -3452,7 +3663,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderFinance();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -3478,7 +3689,7 @@ function renderAchievements(){
 function startShift(){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll()};
+  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -3540,7 +3751,8 @@ function adjustedCost(exam){
   discount+=specialtyExamDiscount();
   discount+=researchDiagnosticDiscount();
   discount+=hospitalExamDiscount();
-  return Math.max(0,Math.ceil(cost*(1-Math.min(.75,discount))));
+  const discounted=cost*(1-Math.min(.75,discount));
+  return Math.max(0,Math.ceil(discounted*(1+equipmentCostSurcharge())));
 }
 function adjustedExamTime(exam){
   let t=Number(exam.time)||0;
@@ -3548,6 +3760,7 @@ function adjustedExamTime(exam){
   if(exam.req==='imaging' && state.upgrades.imaging)t-=(roomLevel('imaging')-1)+staffImagingTimeReduction();
   if(exam.req==='cardio' && state.upgrades.cardio)t-=(roomLevel('cardio')-1);
   if(run&&run.eventExamTimePenalty)t+=run.eventExamTimePenalty;
+  t+=equipmentTimePenalty();
   return Math.max(1,t);
 }
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
@@ -3655,6 +3868,8 @@ function finishCase(){
     const staffBonus=Math.max(0,Math.round(reward*(staffRewardMultiplier()-1)));reward+=staffBonus;
     const specialtyBonus=Math.max(0,Math.round(reward*(specialtyRewardMultiplier(current)-1)));reward+=specialtyBonus;
     if(run&&run.eventMoneyMultiplier)reward=Math.round(reward*run.eventMoneyMultiplier);
+    const contractBonus=Math.max(0,Math.round(reward*(caseRevenueMultiplier()-1)));
+    reward+=contractBonus;
     if(state.upgrades.reception)reward+=10;
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
@@ -3704,6 +3919,7 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
+      ${contractBonus>0?`<div class='result-line'><span>Versorgungsvertrag</span><b>+${contractBonus} €</b></div>`:''}
       ${conditionResult.bonus>0?`<div class='result-line'><span>Stabilitätsbonus</span><b>+${conditionResult.bonus} €</b></div>`:''}
       ${historyBonus.money>0?`<div class='result-line'><span>Anamnese-Bonus</span><b>+${historyBonus.money} €</b></div>`:''}
       ${flowBonus>0?`<div class='result-line'><span>Klinik-Flow</span><b>+${flowBonus} €</b></div>`:''}
@@ -3743,22 +3959,25 @@ function endShift(reason=''){
   finalizeShiftFlow();
   grantStaffShiftProgress();
   const payroll=run?run.payroll||0:0;
-  if(payroll>0){
-    const before=state.money;
-    state.money=Math.max(0,state.money-payroll);
-    state.totalPayrollPaid=(state.totalPayrollPaid||0)+payroll;
-    if(before<payroll){
-      state.rep=Math.max(0,state.rep-2);
-      if(run){run.rep-=2;run.payrollShortfall=true}
-    }
+  const operations=run?run.operatingCost||operatingCost():operatingCost();
+  const payrollPayment=payHospitalCost(payroll);
+  const operatingPayment=payHospitalCost(operations);
+  state.totalPayrollPaid=(state.totalPayrollPaid||0)+payrollPayment.paid;
+  run.reserveUsed=(payrollPayment.reserveUsed||0)+(operatingPayment.reserveUsed||0);
+  const totalShortfall=(payrollPayment.shortfall||0)+(operatingPayment.shortfall||0);
+  if(totalShortfall>0){
+    state.rep=Math.max(0,state.rep-2);run.rep-=2;run.payrollShortfall=true;
   }
+  applyEquipmentWear();
   const missionDone=currentMission.done(run);let missionHtml=`<b>Tagesmission:</b> ${currentMission.text}<br><small>${currentMission.meta(run)}</small>`;
   if(missionDone){state.money+=currentMission.rewardMoney;state.xp+=currentMission.rewardXp;missionHtml+=`<br><br>✅ Mission geschafft: +${currentMission.rewardMoney} € und +${currentMission.rewardXp} XP`;beep(980,.14)}else missionHtml+='<br><br>❌ Mission nicht geschafft.';
+  if(contractActive('researchGrant')){state.researchPoints=(state.researchPoints||0)+1;run.researchEarned=(run.researchEarned||0)+1;missionHtml+='<br>🔬 Forschungsförderung: +1 RP';}
+  finalizeFinance(missionDone);
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
   const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
-  $('missionResult').innerHTML=missionHtml+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>💶 Schichtergebnis: <b class="${state.lastFinance.profit>=0?'finance-result-good':'finance-result-bad'}">${state.lastFinance.profit>=0?'+':''}${state.lastFinance.profit} €</b>`+`<br>📈 Einnahmen: <b>${state.lastFinance.revenue} €</b>`+`<br>📉 Gesamtkosten: <b>${state.lastFinance.costs} €</b>`+`${run.reserveUsed?`<br>🏦 Rücklage verwendet: <b>${run.reserveUsed} €</b>`:''}`+`<br>🔧 Technikverschleiß: <b>-${run.equipmentWear||0} %</b>`+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -3783,6 +4002,9 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('fullHospital',expansionCount()===hospitalProjects.length);
   check('staffVeteran',staffMembers.some(m=>staffProfile(m.id).shifts>=10));
   check('payroll5000',(state.totalPayrollPaid||0)>=5000);
+  check('reserve2000',(state.financialReserve||0)>=2000);
+  check('profit10',(state.profitableShifts||0)>=10);
+  check('contracts3',activeContractCount()===clinicContracts.length);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
