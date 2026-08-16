@@ -24,21 +24,38 @@
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life</h2>
-          <p>Behandle Patienten, triff medizinische Entscheidungen und baue deine eigene Klinik aus.</p>
+          <h2>Clinic Life v0.2</h2>
+          <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
 
-        <div class="stats-grid">
+        <div class="stats-grid four">
           <div class="stat"><span>💰</span><b id="homeMoney">500 €</b><small>Budget</small></div>
           <div class="stat"><span>⭐</span><b id="homeRep">50</b><small>Ruf</small></div>
           <div class="stat"><span>🧠</span><b id="homeXp">0 XP</b><small>Erfahrung</small></div>
           <div class="stat"><span>🏥</span><b id="homeLevel">1</b><small>Klinik-Level</small></div>
         </div>
 
+        <div class="panel compact">
+          <div class="panel-head"><div class="panel-title">Tagesmission</div><div class="pill">Bonus</div></div>
+          <div id="missionText" class="mission-text">—</div>
+          <div class="progress"><div id="missionProgress"></div></div>
+          <div class="panel-footer"><span id="missionMeta">Belohnung</span><b id="missionReward">+0 € / +0 XP</b></div>
+        </div>
+
+        <div class="panel compact">
+          <div class="panel-head"><div class="panel-title">Freigeschaltete Abteilungen</div><div class="pill blue">Progress</div></div>
+          <div id="departmentList" class="dept-list"></div>
+        </div>
+
         <div class="panel">
           <div class="panel-title">Klinik verbessern</div>
           <div id="upgradeList" class="upgrade-list"></div>
+        </div>
+
+        <div class="panel compact">
+          <div class="panel-title">Erfolge</div>
+          <div id="achievementList" class="achievement-list"></div>
         </div>
       </section>
 
@@ -47,11 +64,12 @@
           <span>💰 <b id="money">500</b> €</span>
           <span>⭐ <b id="rep">50</b></span>
           <span>🧠 <b id="xp">0</b> XP</span>
+          <span>⏱️ <b id="timeLeft">100</b> min</span>
           <span>📅 Tag <b id="day">1</b></span>
         </div>
 
         <div class="progress-wrap">
-          <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/5</span></div>
+          <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/6</span></div>
           <div class="progress"><div id="shiftProgress"></div></div>
         </div>
 
@@ -76,7 +94,7 @@
         </article>
 
         <section class="panel">
-          <div class="panel-title">1. Anamnese & Untersuchung</div>
+          <div class="panel-head"><div class="panel-title">1. Untersuchungen</div><div class="pill">Kosten & Zeit</div></div>
           <div id="examButtons" class="choice-list"></div>
           <div id="findings" class="findings"></div>
         </section>
@@ -92,7 +110,7 @@
         </section>
 
         <button id="submitBtn" class="primary big" disabled>Fall abschließen</button>
-        <button id="quitBtn" class="secondary">Schicht beenden</button>
+        <button id="quitBtn" class="secondary">Schicht vorzeitig beenden</button>
       </section>
 
       <section id="resultScreen" class="screen">
@@ -110,12 +128,14 @@
           <div class="hero-icon">🏥</div>
           <h2>Schicht beendet</h2>
           <p id="shiftSummary"></p>
-          <div class="stats-grid">
+          <div class="stats-grid four">
             <div class="stat"><span>💰</span><b id="sumMoney">0 €</b><small>Verdient</small></div>
             <div class="stat"><span>🧠</span><b id="sumXp">0 XP</b><small>Erfahrung</small></div>
             <div class="stat"><span>⭐</span><b id="sumRep">0</b><small>Ruf</small></div>
-            <div class="stat"><span>✅</span><b id="sumCorrect">0/5</b><small>Richtig</small></div>
+            <div class="stat"><span>✅</span><b id="sumCorrect">0/6</b><small>Perfekt</small></div>
           </div>
+          <div id="missionResult" class="summary-box"></div>
+          <div id="newAchievements" class="summary-box"></div>
           <button id="backHomeBtn" class="primary big">Zur Klinik</button>
         </div>
       </section>
