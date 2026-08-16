@@ -1224,13 +1224,82 @@ body.home-nav-active #app{padding-bottom:102px}
   display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2b8b91,#60d6d6)
 }
 
+
+/* ===== v0.21 WARD RESPONSIBILITY ===== */
+.story-journey{
+  margin-top:10px;padding:11px;border-radius:15px;background:#0b1d32;border:1px solid #29435f
+}
+.story-journey-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.story-journey-head b{font-size:10px}
+.story-journey-head span{font-size:8px;color:#a9c9ed;font-weight:900}
+.story-journey-track{display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding-bottom:2px}
+.story-milestone{
+  min-width:84px;padding:8px 7px;border-radius:11px;background:#0e223b;border:1px solid #27415e;text-align:center;opacity:.5
+}
+.story-milestone.done{opacity:1;border-color:rgba(40,215,161,.25)}
+.story-milestone.active{opacity:1;border-color:rgba(255,190,92,.36);background:rgba(255,190,92,.06)}
+.story-milestone b{display:block;font-size:8.5px}
+.story-milestone small{display:block;color:var(--muted);font-size:7px;margin-top:2px}
+
+.ward-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(42,77,60,.78),rgba(12,28,49,.98));
+  border:1px solid rgba(72,210,143,.28)
+}
+.ward-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.ward-head h4{margin:0;font-size:13px}
+.ward-head p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.ward-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(72,210,143,.11);
+  color:#a8f0cb;font-size:8px;font-weight:900;white-space:nowrap
+}
+.ward-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.ward-stat{
+  padding:8px 5px;border-radius:10px;background:#0c1f35;border:1px solid #263f5d;text-align:center
+}
+.ward-stat b{display:block;font-size:10px}.ward-stat small{display:block;color:var(--muted);font-size:7.2px;margin-top:2px}
+.ward-consequence{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(72,210,143,.06);
+  border:1px solid rgba(72,210,143,.16);font-size:8.5px;line-height:1.45;color:#d8f3e5
+}
+.ward-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#2f8c68,#43b583);color:#fff;font-size:9.5px;font-weight:900
+}
+.ward-start:disabled{opacity:.45}
+.ward-board{display:grid;gap:7px;margin-top:10px}
+.ward-patient{
+  padding:9px;border-radius:12px;background:#0a1c31;border:1px solid #253e59;
+  display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center
+}
+.ward-patient .icon{font-size:20px}
+.ward-patient b{font-size:9.5px}.ward-patient small{display:block;color:var(--muted);font-size:7.7px;margin-top:2px;line-height:1.35}
+.ward-priority{
+  padding:4px 6px;border-radius:999px;background:rgba(255,255,255,.06);
+  color:var(--muted);font-size:7px;font-weight:900
+}
+.ward-priority.high{background:rgba(255,102,122,.10);color:#ffb3bd}
+.ward-priority.medium{background:rgba(255,200,87,.10);color:#ffe0a1}
+.autonomy-card{
+  margin-top:9px;padding:10px;border-radius:12px;background:rgba(112,160,255,.06);
+  border:1px solid rgba(112,160,255,.17)
+}
+.autonomy-row{display:flex;justify-content:space-between;gap:8px;font-size:8.5px}
+.autonomy-row span{color:var(--muted)}.autonomy-row b{color:#b9d5ff}
+.autonomy-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
+.autonomy-bar i{display:block;height:100%;background:linear-gradient(90deg,#4976c2,#72a2ef);border-radius:999px}
+.ward-outcome{
+  margin-top:10px;padding:10px;border-radius:12px;background:rgba(40,215,161,.07);
+  border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#daf2e9
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.20 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.21 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1240,7 +1309,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.20 • ROTATION & CONSEQUENCES</h2>
+          <h2>Clinic Life v0.21 • WARD RESPONSIBILITY</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1308,9 +1377,11 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
           <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignExperience()">Kampagne starten</button>
           <div id="prologueStatus" class="prologue-status">📖 Prolog noch offen • Dein erster Arbeitstag wartet.</div>
+          <div id="storyJourneyHub" class="story-journey"></div>
           <div id="firstWeekHub" class="week-hub" style="display:none"></div>
           <div id="careerPathHub" class="relationship-hub" style="display:none"></div>
           <div id="rotationHub" class="rotation-hub" style="display:none"></div>
+          <div id="wardHub" class="ward-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -4193,7 +4264,9 @@ const achievements = [
   {id:'pathChosen', name:'Mein Weg', desc:'Wähle deine erste Kampagnen-Fachrichtungspräferenz.'},
   {id:'teamBond', name:'Starkes Team', desc:'Erreiche bei Mia und Leon jeweils mindestens 65 Beziehungspunkte.'},
   {id:'firstRotation', name:'Erste Rotation', desc:'Schließe deine erste persönliche Fachrotation ab.'},
-  {id:'rotationExcellent', name:'Starker Eindruck', desc:'Schließe deine erste Rotation mit dem Ergebnis Ausgezeichnet ab.'}
+  {id:'rotationExcellent', name:'Starker Eindruck', desc:'Schließe deine erste Rotation mit dem Ergebnis Ausgezeichnet ab.'},
+  {id:'firstWard', name:'Eigene Verantwortung', desc:'Führe erstmals einen eigenen kleinen Stationsbereich durch einen Dienst.'},
+  {id:'autonomy75', name:'Vertrauensvorschuss', desc:'Erreiche mindestens 75 Autonomie in der Kampagne.'}
 ];
 
 const missions = [
@@ -4304,7 +4377,14 @@ const defaultState = {
   focusMastery:0,
   rotationOutcome:'',
   rotationSupport:'',
-  consequenceFlags:{}
+  consequenceFlags:{},
+  wardResponsibilityCompleted:false,
+  wardStep:0,
+  wardScore:0,
+  wardChoices:{},
+  autonomy:20,
+  wardOutcome:'',
+  wardCasesCompleted:0
 };
 
 let state;
@@ -4396,6 +4476,13 @@ state.focusMastery=Number.isFinite(Number(state.focusMastery))?Math.max(0,Math.m
 if(!['excellent','solid','learning',''].includes(state.rotationOutcome))state.rotationOutcome='';
 if(!['mia','leon','both','none',''].includes(state.rotationSupport))state.rotationSupport='';
 if(!state.consequenceFlags||typeof state.consequenceFlags!=='object')state.consequenceFlags={};
+state.wardResponsibilityCompleted=!!state.wardResponsibilityCompleted;
+state.wardStep=Number.isFinite(Number(state.wardStep))?Math.max(0,Math.min(3,Math.floor(Number(state.wardStep)))):0;
+state.wardScore=Number.isFinite(Number(state.wardScore))?Math.max(0,Math.min(100,Math.floor(Number(state.wardScore)))):0;
+if(!state.wardChoices||typeof state.wardChoices!=='object')state.wardChoices={};
+state.autonomy=Number.isFinite(Number(state.autonomy))?Math.max(0,Math.min(100,Math.floor(Number(state.autonomy)))):20;
+if(!['excellent','solid','learning',''].includes(state.wardOutcome))state.wardOutcome='';
+state.wardCasesCompleted=Number.isFinite(Number(state.wardCasesCompleted))&&Number(state.wardCasesCompleted)>=0?Math.floor(Number(state.wardCasesCompleted)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4457,6 +4544,216 @@ function setDoctorAvatar(avatar){
 }
 
 
+
+
+const personalStoryMilestones=[
+  {id:'prologue',icon:'🩺',name:'Erster Dienst',done:()=>!!state.prologueCompleted},
+  {id:'week1',icon:'📅',name:'Woche 1',done:()=>!!state.firstWeekCompleted},
+  {id:'team',icon:'🤝',name:'Team',done:()=>!!state.careerPathCompleted},
+  {id:'rotation',icon:'🏥',name:'Rotation',done:()=>!!state.rotationCompleted},
+  {id:'ward',icon:'🛏️',name:'Station',done:()=>!!state.wardResponsibilityCompleted}
+];
+
+function currentPersonalStoryMilestone(){
+  const i=personalStoryMilestones.findIndex(x=>!x.done());
+  return i<0?personalStoryMilestones.length:i;
+}
+function renderStoryJourney(){
+  const hub=$('storyJourneyHub');if(!hub)return;
+  const current=currentPersonalStoryMilestone(),done=personalStoryMilestones.filter(x=>x.done()).length;
+  hub.innerHTML=`
+    <div class="story-journey-head"><b>🧭 Persönlicher Karriereweg</b><span>${done}/${personalStoryMilestones.length} Meilensteine</span></div>
+    <div class="story-journey-track">
+      ${personalStoryMilestones.map((m,i)=>`<div class="story-milestone ${m.done()?'done':i===current?'active':''}">
+        <b>${m.done()?'✅':m.icon} ${m.name}</b><small>${m.done()?'erledigt':i===current?'aktuell':'später'}</small>
+      </div>`).join('')}
+    </div>`;
+}
+function baseAutonomyFromHistory(){
+  let a=20;
+  a+=Math.round((state.mentorTrust||50)*.25);
+  if(state.rotationOutcome==='excellent')a+=15;
+  else if(state.rotationOutcome==='solid')a+=8;
+  if(relationshipValue('mia')>=70)a+=4;
+  if(relationshipValue('leon')>=70)a+=4;
+  return Math.max(20,Math.min(75,a));
+}
+function effectiveAutonomy(){
+  return Math.max(state.autonomy||20,baseAutonomyFromHistory());
+}
+function addAutonomy(amount){state.autonomy=Math.max(0,Math.min(100,effectiveAutonomy()+(Number(amount)||0)))}
+function wardHistoryText(){
+  const parts=[];
+  if(state.rotationOutcome==='excellent')parts.push('Deine ausgezeichnete Rotation verschafft dir früh mehr Vertrauen.');
+  else if(state.rotationOutcome==='learning')parts.push('Nach der Rotations-Lernphase plant Dr. Hartmann zunächst engere Supervision.');
+  else parts.push('Deine solide Rotation reicht für erste eigene Verantwortung.');
+  if(state.mentorTrust>=75)parts.push('Dr. Hartmann lässt dir wegen des hohen Vertrauens mehr Freiraum.');
+  else if(state.mentorTrust<45)parts.push('Das Mentor-Vertrauen ist noch niedrig – Entscheidungen werden enger begleitet.');
+  const support=state.consequenceFlags&&state.consequenceFlags.rotationSupport;
+  if(support==='both')parts.push('Mia und Leon kennen deinen Arbeitsstil bereits gut.');
+  else if(support==='mia')parts.push('Mia ist deine stärkste Stütze im Team.');
+  else if(support==='leon')parts.push('Leon ist dein wichtigster Sparringspartner.');
+  return parts.join(' ');
+}
+function renderWardHub(){
+  const hub=$('wardHub');if(!hub)return;
+  if(!state.rotationCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const done=!!state.wardResponsibilityCompleted,aut=effectiveAutonomy();
+  hub.innerHTML=`
+    <div class="ward-head">
+      <div><h4>🛏️ Eigener Stationsbereich</h4><p>${done?'Du hast erstmals einen kleinen Stationsbereich eigenverantwortlich durch einen Dienst geführt.':'Nach deiner Rotation überträgt Dr. Hartmann dir erstmals begrenzte Verantwortung für mehrere Patienten gleichzeitig.'}</p></div>
+      <div class="ward-badge">${done?'ABSCHNITT FERTIG':'WOCHE 4'}</div>
+    </div>
+    <div class="ward-stats">
+      <div class="ward-stat"><b>${state.wardScore||0}</b><small>Verantwortung</small></div>
+      <div class="ward-stat"><b>${aut}</b><small>Autonomie</small></div>
+      <div class="ward-stat"><b>${state.mentorTrust||50}</b><small>Mentor</small></div>
+    </div>
+    <div class="autonomy-card">
+      <div class="autonomy-row"><span>Selbstständigkeits-Freigabe</span><b>${aut}/100</b></div>
+      <div class="autonomy-bar"><i style="width:${aut}%"></i></div>
+    </div>
+    <div class="ward-consequence">🌿 ${wardHistoryText()}</div>
+    ${done
+      ?`<div class="ward-outcome">✅ Stationsabschnitt abgeschlossen • Ergebnis: <b>${state.wardOutcome==='excellent'?'Sehr souverän':state.wardOutcome==='solid'?'Solide':'Mit Lernbedarf'}</b>. Deine Autonomie bleibt für spätere Kampagnenphasen gespeichert.</div>`
+      :'<button type="button" class="ward-start" onclick="startWardStory()">🛏️ Verantwortung übernehmen</button>'}
+  `;
+}
+function startWardStory(){
+  if(!state.rotationCompleted){startRotationStory();return}
+  if(state.wardResponsibilityCompleted){toast('Der erste Stationsabschnitt ist bereits abgeschlossen.');return}
+  if((state.autonomy||20)<baseAutonomyFromHistory())state.autonomy=baseAutonomyFromHistory();
+  showScreen('campaignStoryScreen');
+  renderWardStory();
+}
+function wardChoose(key,value,points,skill,gain,autonomyGain,rel=''){
+  if(state.wardChoices[key])return;
+  state.wardChoices[key]=value;
+  state.wardScore=Math.min(100,(state.wardScore||0)+(Number(points)||0));
+  if(skill)addDoctorSkill(skill,gain||0);
+  addAutonomy(autonomyGain||0);
+  if(rel==='mia')changeRelationship('mia',4);
+  if(rel==='leon')changeRelationship('leon',4);
+  if(rel==='both'){changeRelationship('mia',2);changeRelationship('leon',2)}
+  if(points>=25)addMentorTrust(5);
+  else if(points<10)addMentorTrust(-4);
+  state.wardStep=Math.min(3,(state.wardStep||0)+1);
+  beep(points>=25?940:points>=10?700:480,.08);
+  save();
+  renderWardStory();
+}
+function completeWardResponsibility(){
+  if(state.wardResponsibilityCompleted){leaveCampaignStory();return}
+  const score=state.wardScore||0;
+  state.wardResponsibilityCompleted=true;
+  state.wardOutcome=score>=75?'excellent':score>=45?'solid':'learning';
+  state.wardCasesCompleted=(state.wardCasesCompleted||0)+3;
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+3;
+  state.campaignDaysCompleted=(state.campaignDaysCompleted||1)+2;
+  state.money+=1600;
+  state.xp+=500;
+  state.rep=Math.min(100,(state.rep||0)+(score>=75?7:5));
+  state.researchPoints=(state.researchPoints||0)+5;
+  state.campaignPrestige=(state.campaignPrestige||0)+2;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+1600;
+  state.consequenceFlags.firstWard=state.wardOutcome;
+  state.consequenceFlags.autonomy=effectiveAutonomy();
+  if(!state.achievements)state.achievements={};
+  state.achievements.firstWard=true;
+  beep(1100,.16);
+  save();
+  toast('🛏️ Erster eigener Stationsabschnitt abgeschlossen!');
+  leaveCampaignStory();
+}
+function wardTeamSupport(){
+  const mia=relationshipValue('mia'),leon=relationshipValue('leon');
+  if(mia>=70&&leon>=70)return'both';
+  if(mia>=70)return'mia';
+  if(leon>=70)return'leon';
+  return'none';
+}
+function renderWardStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.wardStep||0,aut=effectiveAutonomy(),support=wardTeamSupport();
+  if($('storyProgressText'))$('storyProgressText').textContent=`${step+1}/4`;
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/4*100)}%`;
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Woche 4 • 06:55 Uhr</div>
+      <h2>Dein erster eigener Stationsbereich</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Heute betreust du drei stabile Patienten gleichzeitig. Ich bin erreichbar, aber du strukturierst den Dienst selbst.“</p></div>
+      <div class="autonomy-card"><div class="autonomy-row"><span>Deine aktuelle Autonomie</span><b>${aut}/100</b></div><div class="autonomy-bar"><i style="width:${aut}%"></i></div></div>
+      <div class="ward-consequence">🌿 ${wardHistoryText()}</div>
+      <button class="story-primary" onclick="wardChoose('handover','accepted',15,'stress',3,4,'${support}')">Übergabe übernehmen</button>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">07:15 Uhr • Übergabe</div>
+      <h2>Drei Patienten, eine Reihenfolge</h2>
+      <div class="ward-board">
+        <div class="ward-patient"><div class="icon">👩🏼</div><div><b>Zimmer 4 • Frau L.</b><small>neu aufgetretener Schwindel beim Aufstehen • aktuell stabil</small></div><div class="ward-priority medium">PRÜFEN</div></div>
+        <div class="ward-patient"><div class="icon">👨🏻</div><div><b>Zimmer 7 • Herr B.</b><small>wartet auf Entlassgespräch • Beschwerden gebessert</small></div><div class="ward-priority">STABIL</div></div>
+        <div class="ward-patient"><div class="icon">👴🏼</div><div><b>Zimmer 9 • Herr K.</b><small>Pflege meldet eine deutliche Veränderung gegenüber der Nacht</small></div><div class="ward-priority high">PRIORITÄT</div></div>
+      </div>
+      <div class="story-dialogue"><div class="story-speaker">DEINE ENTSCHEIDUNG</div><p>Wie organisierst du den Start des Dienstes?</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="wardChoose('priority','k',30,'clinical',7,8)">🚨 Zuerst die gemeldete Veränderung bei Herrn K. selbst einschätzen<small>Neue Veränderung bekommt im Trainingsfall Vorrang.</small></button>
+        <button class="story-choice" onclick="wardChoose('priority','discharge',8,'efficiency',2,-2)">📄 Zuerst das schnelle Entlassgespräch erledigen<small>Effizient, aber nicht die wichtigste neue Information.</small></button>
+        <button class="story-choice" onclick="wardChoose('priority','routine',4,'communication',1,-3)">📋 Einfach die Zimmernummern der Reihe nach abarbeiten<small>Ignoriert die Priorität der neuen Veränderung.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    const prior=state.wardChoices.priority;
+    const supportText=support==='both'
+      ?'Mia kann das Entlassgespräch übernehmen, während Leon den offenen Befund organisiert.'
+      :support==='mia'
+      ?'Mia bietet an, das Entlassgespräch zu übernehmen.'
+      :support==='leon'
+      ?'Leon bietet an, einen offenen Befund nachzuverfolgen.'
+      :'Das Team ist heute knapp besetzt – du musst Aufgaben sehr bewusst selbst strukturieren.';
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">09:40 Uhr • Stationsalltag</div>
+      <h2>Delegieren oder alles selbst machen?</h2>
+      <div class="story-dialogue"><div class="story-speaker">TEAM</div><p>${supportText}</p></div>
+      <div class="story-evaluation">${prior==='k'?'✅ Deine erste Priorisierung war sauber und gibt dir jetzt Luft für die restlichen Aufgaben.':'⚠️ Dr. Hartmann erinnert dich daran, neue Zustandsveränderungen konsequent höher zu priorisieren.'}</div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="wardChoose('delegation','smart',30,'efficiency',7,9,'${support==='none'?'':support}')">🤝 Aufgaben passend verteilen und selbst den wichtigsten klinischen Punkt behalten<small>Delegation mit klarer Verantwortung.</small></button>
+        <button class="story-choice" onclick="wardChoose('delegation','allself',10,'stress',2,-2)">🧍 Alles persönlich erledigen<small>Engagiert, aber auf Dauer ineffizient und fehleranfällig.</small></button>
+        <button class="story-choice" onclick="wardChoose('delegation','allaway',3,'clinical',0,-5)">➡️ Fast alle Aufgaben weitergeben<small>Delegation ohne eigene Übersicht schwächt deine Verantwortung.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const score=state.wardScore||0;
+  const outcome=score>=75?'Sehr souverän':score>=45?'Solide':'Mit Lernbedarf';
+  const autonomyAfter=effectiveAutonomy();
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">16:35 Uhr • Dienstende</div>
+    <h2>${outcome}</h2>
+    <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>${score>=75
+      ?'„Heute hast du gezeigt, dass du mehrere Patienten priorisieren, Aufgaben verteilen und trotzdem den Überblick behalten kannst.“'
+      :score>=45
+      ?'„Das war ein solider erster Schritt. Verantwortung heißt vor allem, Prioritäten nicht aus den Augen zu verlieren.“'
+      :'„Mehrere Patienten gleichzeitig zu führen ist eine eigene Fähigkeit. Wir gehen die Entscheidungen noch einmal gemeinsam durch.“'}</p></div>
+    <div class="story-score">
+      <div><b>${score}/100</b><small>Verantwortung</small></div>
+      <div><b>${autonomyAfter}/100</b><small>Autonomie</small></div>
+      <div><b>${state.mentorTrust}/100</b><small>Mentor</small></div>
+    </div>
+    <div class="ward-outcome">🌿 Deine Selbstständigkeits-Freigabe wird gespeichert und kann spätere Kampagnenaufgaben, Supervision und Karriereentscheidungen beeinflussen.</div>
+    <div class="campaign-reward">Belohnung: <b>+1.600 € • +500 XP • +${score>=75?7:5} Ruf • +5 RP • +2 Prestige</b></div>
+    <button class="story-primary" onclick="completeWardResponsibility()">🛏️ Stationsabschnitt abschließen</button>
+  </div>`;
+}
 
 const rotationCases={
   general:{
@@ -4529,15 +4826,22 @@ function supportText(){
   if(s==='leon')return'👨🏻‍⚕️ Leon steigt in den Fall ein und fordert dich zu einer schnellen, klaren Entscheidung heraus.';
   return'👤 Du musst die Rotation weitgehend selbst tragen. Die Beziehungen zu deinen Kollegen sind noch nicht stark genug für einen aktiven Bonus.';
 }
+
+function campaignAutonomyTimeBonus(){
+  if(!run||run.mode!=='campaign'||!state.wardResponsibilityCompleted)return 0;
+  const a=effectiveAutonomy();
+  return a>=80?5:a>=65?3:a>=50?2:0;
+}
+
 function rotationMasteryMultiplier(){
   if(!run||run.mode!=='campaign'||!state.rotationCompleted)return 1;
   return 1+Math.min(.04,(state.focusMastery||0)/100*0.04);
 }
 function renderRotationHub(){
   const hub=$('rotationHub');if(!hub)return;
-  if(!state.careerPathCompleted){hub.style.display='none';return}
+  if(!state.careerPathCompleted||state.rotationCompleted){hub.style.display='none';return}
   hub.style.display='block';
-  const rc=rotationCase(),focus=focusDef(),done=!!state.rotationCompleted;
+  const rc=rotationCase(),focus=focusDef(),done=false;
   const support=determineRotationSupport();
   hub.innerHTML=`
     <div class="rotation-head">
@@ -4725,9 +5029,9 @@ function campaignRelationshipXpMultiplier(){
 }
 function renderCareerPathHub(){
   const hub=$('careerPathHub');if(!hub)return;
-  if(!state.firstWeekCompleted){hub.style.display='none';return}
+  if(!state.firstWeekCompleted||state.careerPathCompleted){hub.style.display='none';return}
   hub.style.display='block';
-  const done=!!state.careerPathCompleted;
+  const done=false;
   const step=state.careerPathStep||0;
   const focus=focusDef();
   const mia=relationshipValue('mia'),leon=relationshipValue('leon');
@@ -4901,9 +5205,9 @@ function firstWeekEpisode(){
 }
 function renderFirstWeekHub(){
   const hub=$('firstWeekHub');if(!hub)return;
-  if(!state.prologueCompleted){hub.style.display='none';return}
+  if(!state.prologueCompleted||state.firstWeekCompleted){hub.style.display='none';return}
   hub.style.display='block';
-  const done=!!state.firstWeekCompleted;
+  const done=false;
   const step=state.firstWeekStep||0;
   const ep=done?null:firstWeekEpisode();
   hub.innerHTML=`
@@ -5085,6 +5389,7 @@ function startCampaignExperience(){
   if(!state.firstWeekCompleted){startFirstWeekEpisode();return}
   if(!state.careerPathCompleted){startCareerPathStory();return}
   if(!state.rotationCompleted){startRotationStory();return}
+  if(!state.wardResponsibilityCompleted){startWardStory();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -5287,6 +5592,7 @@ function renderModeUI(){
   const weekOpen=state.prologueCompleted&&!state.firstWeekCompleted;
   const pathOpen=state.firstWeekCompleted&&!state.careerPathCompleted;
   const rotationOpen=state.careerPathCompleted&&!state.rotationCompleted;
+  const wardOpen=state.rotationCompleted&&!state.wardResponsibilityCompleted;
   const focus=focusDef();
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
@@ -5294,6 +5600,7 @@ function renderModeUI(){
       :weekOpen?`Woche 1 • ${doctorDisplayName()}`
       :pathOpen?`Woche 2 • Team & Fachrichtung`
       :rotationOpen?`Woche 3 • ${focus?focus.name:'Rotation'}`
+      :wardOpen?'Woche 4 • Eigener Stationsbereich'
       :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
@@ -5304,25 +5611,28 @@ function renderModeUI(){
       :weekOpen?`Assistenzarzt • Woche 1 • ${state.campaignDaysCompleted||1} Tage erlebt`
       :pathOpen?'Assistenzarzt • Woche 2 • Rotation und Team'
       :rotationOpen?`Assistenzarzt • Woche 3 • ${focus?focus.icon+' '+focus.name:'erste Rotation'}`
-      :`${focus?`${focus.icon} ${focus.name} • Mastery ${state.focusMastery||0} • `:''}Mentor ${state.mentorTrust||50}/100`;
+      :wardOpen?`Assistenzarzt • Woche 4 • Autonomie ${effectiveAutonomy()}/100`
+      :`${focus?`${focus.icon} ${focus.name} • Mastery ${state.focusMastery||0} • `:''}Autonomie ${effectiveAutonomy()} • Mentor ${state.mentorTrust||50}`;
   }
   if($('prologueStatus')){
+    $('prologueStatus').style.display=state.prologueCompleted?'none':'block';
     $('prologueStatus').className='prologue-status'+(state.prologueCompleted?' done':'');
-    $('prologueStatus').textContent=state.prologueCompleted
-      ?`✅ Prolog abgeschlossen • Mentor-Wertung ${prologueEvaluation().rank} • Erster Story-Patient behandelt`
-      :`📖 Prolog ${state.prologueStep>0?'begonnen':'noch offen'} • Erster Arbeitstag als Assistenzarzt`;
+    $('prologueStatus').textContent=`📖 Prolog ${state.prologueStep>0?'begonnen':'noch offen'} • Erster Arbeitstag als Assistenzarzt`;
   }
+  renderStoryJourney();
   renderFirstWeekHub();
   renderCareerPathHub();
   renderRotationHub();
+  renderWardHub();
   if($('campaignPlayBtn')){
-    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||wardOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
     $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
       :weekOpen?'📅 Erste Arbeitswoche fortsetzen'
       :pathOpen?'🤝 Team & Fachrichtung weiterspielen'
       :rotationOpen?`🏥 ${focus?focus.name:'Erste Rotation'} starten`
+      :wardOpen?'🛏️ Eigenen Stationsbereich übernehmen'
       :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
@@ -5419,7 +5729,7 @@ function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
   run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
-  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus();
+  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus();
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -5751,6 +6061,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('teamBond',relationshipValue('mia')>=65&&relationshipValue('leon')>=65);
   check('firstRotation',!!state.rotationCompleted);
   check('rotationExcellent',state.rotationOutcome==='excellent');
+  check('firstWard',!!state.wardResponsibilityCompleted);
+  check('autonomy75',effectiveAutonomy()>=75);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

@@ -1,4 +1,4 @@
-# Doctor Rush v0.20 – ROTATION & CONSEQUENCES
+# Doctor Rush v0.21 – WARD RESPONSIBILITY
 
 ## Dateien
 
@@ -11,169 +11,171 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.20` öffnen.
+3. Doctor Rush einmal mit `?v=0.21` öffnen.
 
 ---
 
-# Neu in v0.20
+# Neu in v0.21
 
-## 🏥 Deine erste persönliche Rotation
+## 🧭 Kampagnenbereich wieder kompakter
 
-Nach:
+Mit Prolog, erster Woche, Teamphase und Rotation wäre die Kampagnenseite sonst wieder immer länger geworden.
 
-1. Prolog
-2. erster Arbeitswoche
-3. Team & Fachrichtungswahl
+Deshalb gibt es jetzt eine kompakte **persönliche Karriere-Timeline**.
 
-folgt jetzt erstmals eine echte **fachrichtungsabhängige Rotation**.
+Sie zeigt:
 
-Deine Wahl aus v0.19 entscheidet, welchen Story-Fall du bekommst.
+- Erster Dienst
+- Woche 1
+- Team
+- Rotation
+- Station
 
----
+Abgeschlossene große Story-Karten werden nicht mehr dauerhaft vollständig angezeigt.
 
-# 🩺 Allgemeinmedizin
+Es bleibt nur die aktuell relevante Story-Phase groß sichtbar.
 
-Wenn du Allgemeinmedizin gewählt hast, bekommst du einen unspezifischen stabilen Fall.
-
-Das Story-Ziel:
-
-- strukturiert denken
-- gut kommunizieren
-- nicht unnötig alles gleichzeitig untersuchen
+Damit wird die Kampagne trotz wachsendem Inhalt nicht wieder zu einem endlosen Dashboard.
 
 ---
 
-# 🚑 Notfallmedizin
+# 🛏️ Eigener Stationsbereich
 
-Wenn du Notfallmedizin gewählt hast, bekommst du einen sich verschlechternden Trainingsfall.
+Nach deiner ersten Rotation bekommst du erstmals begrenzte Verantwortung für mehrere Patienten gleichzeitig.
 
-Das Story-Ziel:
+Dr. Hartmann ist weiterhin deine Oberärztin und erreichbar.
 
-- Dringlichkeit erkennen
-- ruhig bleiben
-- Team aktivieren
-- als Assistenzarzt rechtzeitig Unterstützung holen
+Aber:
 
----
-
-# ❤️ Kardiologie
-
-Wenn du Kardiologie gewählt hast, bekommst du einen Rhythmus-Fall.
-
-Das Story-Ziel:
-
-- Befund und Fragestellung zusammenbringen
-- nicht wahllos untersuchen
-- klinische Muster sinnvoll einordnen
+**Du strukturierst den Dienst selbst.**
 
 ---
 
-# 🔬 Diagnostik
+# 🧠 Neue Herausforderung: mehrere Patienten gleichzeitig
 
-Wenn du Diagnostik gewählt hast, bekommst du einen unklaren Fall mit mehreren Möglichkeiten.
+Im neuen Story-Abschnitt bekommst du drei unterschiedliche Situationen gleichzeitig.
 
-Das Story-Ziel:
+Du musst entscheiden:
 
-- Hypothesen ordnen
-- gezielt untersuchen
-- unnötige Tests vermeiden
+- welcher Patient zuerst Aufmerksamkeit braucht
+- was warten kann
+- welche Aufgaben delegiert werden können
+- welche Verantwortung du selbst behalten musst
 
----
-
-# 🌿 Frühere Entscheidungen haben Folgen
-
-v0.20 verwendet erstmals konkrete Entscheidungen aus v0.19.
-
-Wenn du im gemeinsamen Fall:
-
-- Mia unterstützt hast
-- Leon unterstützt hast
-- beide Ansätze verbunden hast
-
-wird das in der Rotationsstory erwähnt und beeinflusst die Teamdynamik.
+Der Fokus liegt auf Priorisierung und Organisation – nicht auf detaillierten medizinischen Handlungsanweisungen.
 
 ---
 
-# 🤝 Kollegen helfen abhängig von Beziehung
+# 🌿 Frühere Entscheidungen wirken weiter
 
-## Mia ≥ 70
+Deine Ausgangslage hängt von deiner bisherigen Kampagne ab.
 
-Mia bietet dir aktiv einen strukturierten Gegencheck an.
+Berücksichtigt werden:
 
-## Leon ≥ 70
+- Rotationswertung
+- Mentor-Vertrauen
+- Beziehung zu Mia
+- Beziehung zu Leon
+- wichtigste Unterstützung aus der Rotation
 
-Leon wird zu deinem Sparringspartner für schnelle Entscheidungen.
+Beispiel:
 
-## Mia + Leon ≥ 70
-
-Beide unterstützen dich.
-
-Der Story-Text verändert sich entsprechend.
-
----
-
-# 🎯 Teamentscheidung während der Rotation
-
-Während des Falls kannst du entscheiden:
-
-- Mia um Unterstützung bitten
-- Leon einbinden
-- beide Perspektiven zusammenführen
-
-Diese Entscheidung verändert die Beziehungen erneut.
+Eine ausgezeichnete Rotation und hohes Mentor-Vertrauen geben dir von Anfang an mehr Selbstständigkeit.
 
 ---
 
-# 📊 Rotationswertung
+# 📊 Neues Autonomie-System
 
-Du sammelst Rotationspunkte.
+Dein Arzt besitzt jetzt zusätzlich einen dauerhaften Wert:
+
+## Autonomie
+
+0 bis 100.
+
+Autonomie beschreibt im Spiel, wie viel selbstständige Verantwortung Dr. Hartmann dir zutraut.
+
+Der Startwert wird aus deiner bisherigen Karriere berechnet.
+
+Einfluss haben:
+
+- Mentor-Vertrauen
+- Rotationsleistung
+- Mia-Beziehung
+- Leon-Beziehung
+
+---
+
+# ⬆️ Autonomie steigt durch gute Entscheidungen
+
+Während des Stationsabschnitts kannst du Autonomie gewinnen.
+
+Gute Entscheidungen sind zum Beispiel:
+
+- neue Veränderungen sinnvoll priorisieren
+- Aufgaben bewusst delegieren
+- den wichtigsten klinischen Punkt selbst im Blick behalten
+- Teamressourcen sinnvoll einsetzen
+
+---
+
+# 🤝 Delegation
+
+Zum ersten Mal ist Delegation ein echtes Story-System.
+
+Du kannst:
+
+- Aufgaben passend verteilen
+- alles selbst machen
+- zu viel Verantwortung abgeben
+
+Die Entscheidung beeinflusst:
+
+- Stationswertung
+- Effizienz
+- Autonomie
+- Mentor-Vertrauen
+- Beziehungen
+
+---
+
+# 📋 Stationswertung
 
 Am Ende bekommst du eine Bewertung:
 
-- **Ausgezeichnet**
+- **Sehr souverän**
 - **Solide**
-- **Lernphase**
+- **Mit Lernbedarf**
 
-Die Bewertung hängt von deinen Story-Entscheidungen ab.
-
----
-
-# 🧠 Fachrichtungs-Mastery
-
-Nach Abschluss der Rotation erhält deine gewählte Kampagnen-Fachrichtung einen Mastery-Wert.
-
-Je nach Rotationsleistung:
-
-- Lernphase → 15 Mastery
-- Solide → 25 Mastery
-- Ausgezeichnet → 35 Mastery
-
-Mastery ist dauerhaft gespeichert.
+Diese Bewertung wird dauerhaft gespeichert.
 
 ---
 
-# 💰 Mastery wirkt auf spätere Kampagnen-Schichten
+# 🎮 Autonomie beeinflusst spätere Kampagnen-Schichten
 
-Nach abgeschlossener Rotation gibt Mastery einen kleinen zusätzlichen Bonus auf:
+Nach Abschluss des Stationsabschnitts kann hohe Autonomie einen kleinen Zeitbonus geben.
 
-- Geld
-- XP
+## Autonomie ab 50
++2 Minuten
 
-in **Kampagnen-Schichten**.
+## Autonomie ab 65
++3 Minuten
 
-Der Bonus ist auf maximal 4 % begrenzt.
+## Autonomie ab 80
++5 Minuten
 
-Freie Schichten werden nicht beeinflusst.
+Nur in **Kampagnen-Schichten**.
+
+Freie Schichten bleiben davon unberührt.
 
 ---
 
-# 🎁 Rotationsbelohnung
+# 🎁 Belohnung
 
 Nach Abschluss:
 
-- +1.300 €
-- +420 XP
-- +4 bis +6 Ruf
+- +1.600 €
+- +500 XP
+- +5 bis +7 Ruf
 - +5 Forschungspunkte
 - +2 Prestige
 
@@ -181,52 +183,38 @@ Nach Abschluss:
 
 # 🏆 Neue Erfolge
 
-## Erste Rotation
+## Eigene Verantwortung
 
-Schließe deine erste persönliche Fachrotation ab.
+Führe erstmals einen eigenen kleinen Stationsbereich durch einen Dienst.
 
-## Starker Eindruck
+## Vertrauensvorschuss
 
-Beende die Rotation mit der Bewertung **Ausgezeichnet**.
-
----
-
-# 🧬 Konsequenz-System
-
-Das Spiel speichert jetzt zusätzlich:
-
-- Ergebnis der ersten Rotation
-- gewählte Fachrichtung
-- wichtigste Teamunterstützung
-
-Diese Werte können in späteren Kampagnenkapiteln wieder aufgegriffen werden.
-
-Damit beginnt die Story erstmals, frühere Entscheidungen wirklich langfristig zu verwenden.
+Erreiche mindestens 75 Autonomie.
 
 ---
 
 # Persönlicher Kampagnenweg
 
-Der Weg ist jetzt:
+Der Karriereweg ist jetzt:
 
 1. Erster Arbeitstag
 2. Erste Arbeitswoche
-3. Mia & Leon kennenlernen
-4. Fachrichtungspräferenz wählen
-5. Erste persönliche Rotation
-6. Normale Kampagnen-Schichten
-7. langfristige Karriere-Kapitel
+3. Mia & Leon
+4. Fachrichtungspräferenz
+5. Erste Rotation
+6. Eigener Stationsbereich
+7. danach weitere Kampagnen-Schichten und Karriere-Kapitel
 
 ---
 
 # ⚡ Freie Schicht bleibt getrennt
 
-Alle neuen Rotationsboni greifen nur im Kampagnenmodus.
+Autonomie-Boni greifen nur im Kampagnenmodus.
 
 Freie Schichten bleiben:
 
 - ohne Story
-- ohne Rotations-Mastery-Boni
+- ohne Autonomiebonus
 - sofort spielbar
 - klassisches Klinikmanagement
 
@@ -237,7 +225,6 @@ Freie Schichten bleiben:
 - 5-Bereich-Navigation
 - Freie Schicht / Kampagne
 - eigener Arzt
-- Arztavatar
 - Prolog
 - erste Arbeitswoche
 - Arztwerte
@@ -245,6 +232,7 @@ Freie Schichten bleiben:
 - Mia & Leon
 - Beziehungen
 - Fachrichtungspräferenz
+- Rotations-Mastery
 - 6 Kampagnenkapitel
 - Prestige
 - Finanzen
@@ -264,9 +252,10 @@ Freie Schichten bleiben:
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.19-Spielstand kompatibel
-- Rotationsfortschritt und Konsequenzen werden gespeichert
-- Mastery-Bonus ist auf Kampagnen-Schichten begrenzt
+- v0.20-Spielstand kompatibel
+- neue Autonomie und Stationsentscheidungen werden gespeichert
+- abgeschlossene Story-Hubs werden kompakt ausgeblendet
+- Autonomiebonus gilt nur für Kampagnen-Schichten
 - keine externen JS-/CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
