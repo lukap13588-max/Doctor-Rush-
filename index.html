@@ -1165,13 +1165,72 @@ body.home-nav-active #app{padding-bottom:102px}
 }
 @media(max-width:360px){.relationship-grid,.focus-grid{grid-template-columns:1fr}}
 
+
+/* ===== v0.20 ROTATION & CONSEQUENCES ===== */
+.rotation-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(38,76,88,.76),rgba(12,28,49,.98));
+  border:1px solid rgba(87,210,214,.28)
+}
+.rotation-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.rotation-head h4{margin:0;font-size:13px}
+.rotation-head p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.rotation-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(87,210,214,.11);
+  color:#a8edf0;font-size:8px;font-weight:900;white-space:nowrap
+}
+.rotation-focus{
+  margin-top:9px;padding:10px;border-radius:13px;background:#0b1d32;border:1px solid #29435f
+}
+.rotation-focus-row{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.rotation-focus-row b{font-size:10px}.rotation-focus-row span{font-size:8px;color:#a8edf0;font-weight:900}
+.rotation-focus small{display:block;color:var(--muted);font-size:8px;line-height:1.4;margin-top:4px}
+.rotation-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.rotation-stat{
+  padding:8px 5px;border-radius:10px;background:#0c1f35;border:1px solid #263f5d;text-align:center
+}
+.rotation-stat b{display:block;font-size:10px}.rotation-stat small{display:block;color:var(--muted);font-size:7.3px;margin-top:2px}
+.rotation-consequence{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(255,190,92,.06);
+  border:1px solid rgba(255,190,92,.16);font-size:8.5px;line-height:1.45;color:#ffe1ad
+}
+.rotation-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#2d8d91,#43b7ba);color:#fff;font-size:9.5px;font-weight:900
+}
+.rotation-start:disabled{opacity:.45}
+.rotation-case{
+  margin-top:10px;padding:11px;border-radius:14px;background:#0c1f35;border:1px solid #29435f
+}
+.rotation-case h4{margin:0;font-size:11px}
+.rotation-case p{margin:5px 0 0;color:var(--muted);font-size:8.7px;line-height:1.45}
+.rotation-clues{display:grid;gap:6px;margin-top:8px}
+.rotation-clue{
+  padding:8px 9px;border-radius:10px;background:#091a2e;border:1px solid #223a56;
+  font-size:8.8px;line-height:1.4;color:#dbe8f3
+}
+.rotation-support{
+  margin-top:9px;padding:9px;border-radius:11px;background:rgba(181,130,255,.06);
+  border:1px solid rgba(181,130,255,.17);font-size:8.6px;line-height:1.45;color:#e5daf8
+}
+.rotation-outcome{
+  margin-top:10px;padding:10px;border-radius:12px;background:rgba(40,215,161,.07);
+  border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#dbf2ea
+}
+.mastery-bar{
+  height:7px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:6px
+}
+.mastery-bar i{
+  display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2b8b91,#60d6d6)
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.19 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.20 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1181,7 +1240,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.19 • SPECIALIZATION & RELATIONSHIPS</h2>
+          <h2>Clinic Life v0.20 • ROTATION & CONSEQUENCES</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1251,6 +1310,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="prologueStatus" class="prologue-status">📖 Prolog noch offen • Dein erster Arbeitstag wartet.</div>
           <div id="firstWeekHub" class="week-hub" style="display:none"></div>
           <div id="careerPathHub" class="relationship-hub" style="display:none"></div>
+          <div id="rotationHub" class="rotation-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -4131,7 +4191,9 @@ const achievements = [
   {id:'firstDay', name:'Erster Dienst', desc:'Schließe den persönlichen Kampagnen-Prolog ab.'},
   {id:'firstWeek', name:'Die erste Woche', desc:'Schließe deine erste Arbeitswoche als Assistenzarzt ab.'},
   {id:'pathChosen', name:'Mein Weg', desc:'Wähle deine erste Kampagnen-Fachrichtungspräferenz.'},
-  {id:'teamBond', name:'Starkes Team', desc:'Erreiche bei Mia und Leon jeweils mindestens 65 Beziehungspunkte.'}
+  {id:'teamBond', name:'Starkes Team', desc:'Erreiche bei Mia und Leon jeweils mindestens 65 Beziehungspunkte.'},
+  {id:'firstRotation', name:'Erste Rotation', desc:'Schließe deine erste persönliche Fachrotation ab.'},
+  {id:'rotationExcellent', name:'Starker Eindruck', desc:'Schließe deine erste Rotation mit dem Ergebnis Ausgezeichnet ab.'}
 ];
 
 const missions = [
@@ -4234,7 +4296,15 @@ const defaultState = {
   campaignFocus:'',
   relationships:{mia:50,leon:50},
   careerPathChoices:{},
-  colleagueCasesCompleted:0
+  colleagueCasesCompleted:0,
+  rotationCompleted:false,
+  rotationStep:0,
+  rotationScore:0,
+  rotationChoices:{},
+  focusMastery:0,
+  rotationOutcome:'',
+  rotationSupport:'',
+  consequenceFlags:{}
 };
 
 let state;
@@ -4318,6 +4388,14 @@ for(const k of ['mia','leon']){
 }
 if(!state.careerPathChoices||typeof state.careerPathChoices!=='object')state.careerPathChoices={};
 state.colleagueCasesCompleted=Number.isFinite(Number(state.colleagueCasesCompleted))&&Number(state.colleagueCasesCompleted)>=0?Math.floor(Number(state.colleagueCasesCompleted)):0;
+state.rotationCompleted=!!state.rotationCompleted;
+state.rotationStep=Number.isFinite(Number(state.rotationStep))?Math.max(0,Math.min(3,Math.floor(Number(state.rotationStep)))):0;
+state.rotationScore=Number.isFinite(Number(state.rotationScore))?Math.max(0,Math.min(100,Math.floor(Number(state.rotationScore)))):0;
+if(!state.rotationChoices||typeof state.rotationChoices!=='object')state.rotationChoices={};
+state.focusMastery=Number.isFinite(Number(state.focusMastery))?Math.max(0,Math.min(100,Math.floor(Number(state.focusMastery)))):0;
+if(!['excellent','solid','learning',''].includes(state.rotationOutcome))state.rotationOutcome='';
+if(!['mia','leon','both','none',''].includes(state.rotationSupport))state.rotationSupport='';
+if(!state.consequenceFlags||typeof state.consequenceFlags!=='object')state.consequenceFlags={};
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4378,6 +4456,229 @@ function setDoctorAvatar(avatar){
   if($('campaignStoryScreen')&&$('campaignStoryScreen').classList.contains('active'))renderCampaignStory();
 }
 
+
+
+const rotationCases={
+  general:{
+    icon:'🩺',title:'Allgemeinmedizinische Rotation',patient:'Sabrina K.',avatar:'👩🏻',
+    intro:'Ein stabiler, aber unspezifischer Fall verlangt vor allem Struktur und gute Kommunikation.',
+    clues:['Seit mehreren Tagen Müdigkeit und gelegentlicher Schwindel.','Keine akuten Warnzeichen im vereinfachten Trainingsfall.','Mehrere harmlose Erklärungen sind möglich – vorschnelle Festlegung wäre unklug.'],
+    choices:[
+      {id:'structured',label:'💬 Beschwerden strukturiert eingrenzen und gezielt nach Alltag, Verlauf und Auslösern fragen',points:30,skill:'communication',gain:7},
+      {id:'broad',label:'📋 Möglichst viele Untersuchungen ohne klare Fragestellung anordnen',points:10,skill:'efficiency',gain:1},
+      {id:'dismiss',label:'🚪 Den Fall wegen stabiler Vitalwerte sofort beenden',points:0,skill:'clinical',gain:0}
+    ],
+    evaluation:'Breite Medizin bedeutet nicht, alles gleichzeitig zu tun – sondern aus vielen Möglichkeiten einen sinnvollen nächsten Schritt zu wählen.'
+  },
+  emergency:{
+    icon:'🚑',title:'Notfallrotation',patient:'Markus P.',avatar:'🧔🏻',
+    intro:'Ein Patient verschlechtert sich sichtbar. Das Trainingsziel ist Priorisierung, Teamarbeit und frühe Eskalation.',
+    clues:['Der Patient wirkt plötzlich deutlich schlechter als bei der Aufnahme.','Im Spiel sind Kreislauf und Atmung nicht mehr stabil.','Du bist weiterhin Assistenzarzt und arbeitest unter Supervision.'],
+    choices:[
+      {id:'escalate',label:'📞 Lage erfassen, Team aktivieren und frühzeitig Unterstützung holen',points:30,skill:'stress',gain:8},
+      {id:'solo',label:'🧍 Ohne Rückmeldung versuchen, alles alleine zu lösen',points:5,skill:'clinical',gain:1},
+      {id:'wait',label:'⏳ Trotz Verschlechterung erst einmal abwarten',points:0,skill:'efficiency',gain:0}
+    ],
+    evaluation:'Notfallkompetenz zeigt sich nicht darin, alles alleine zu können, sondern Gefahren früh zu erkennen und Ressourcen sicher zu nutzen.'
+  },
+  cardio:{
+    icon:'❤️',title:'Kardiologische Rotation',patient:'Elisabeth G.',avatar:'👩🏼',
+    intro:'Wiederkehrendes Herzklopfen fordert dich dazu auf, Befund und klinische Fragestellung zusammenzubringen.',
+    clues:['Kurze Episoden von schnellem Herzschlag, dazwischen beschwerdefrei.','Aktuell kein akuter Brustschmerz im Trainingsfall.','Ein dokumentierter Rhythmusbefund ist wichtiger als Spekulation.'],
+    choices:[
+      {id:'rhythm',label:'❤️ Zuerst den dokumentierten Rhythmus gezielt einordnen und den Fall daran ausrichten',points:30,skill:'clinical',gain:8},
+      {id:'random',label:'🧪 Viele unspezifische Tests ohne Bezug zur Rhythmusfrage auswählen',points:8,skill:'efficiency',gain:1},
+      {id:'ignore',label:'🙈 Die Rhythmusbeschwerden als nebensächlich einstufen',points:0,skill:'communication',gain:0}
+    ],
+    evaluation:'Kardiologie belohnt saubere Mustererkennung – aber nur, wenn du den Befund immer im klinischen Kontext interpretierst.'
+  },
+  diagnostics:{
+    icon:'🔬',title:'Diagnostische Rotation',patient:'Thomas W.',avatar:'👨🏼',
+    intro:'Mehrere mögliche Erklärungen stehen im Raum. Du sollst mit wenigen gezielten Schritten maximalen Informationsgewinn erreichen.',
+    clues:['Unspezifische Beschwerden mit mehreren plausiblen Ursachen.','Keine akute Instabilität im Trainingsfall.','Dr. Hartmann möchte sehen, ob du Untersuchungen nach einer klaren Fragestellung auswählst.'],
+    choices:[
+      {id:'targeted',label:'🎯 Erst Hypothesen ordnen und dann eine gezielte Untersuchung mit hoher Aussagekraft wählen',points:30,skill:'efficiency',gain:8},
+      {id:'everything',label:'🧪 Möglichst alle verfügbaren Untersuchungen gleichzeitig anfordern',points:6,skill:'clinical',gain:1},
+      {id:'guess',label:'🎲 Ohne zusätzliche Evidenz direkt eine Diagnose festlegen',points:0,skill:'communication',gain:0}
+    ],
+    evaluation:'Gute Diagnostik bedeutet nicht maximale Testmenge, sondern gezielten Informationsgewinn bei möglichst wenig unnötigem Aufwand.'
+  }
+};
+
+function rotationCase(){
+  return rotationCases[state.campaignFocus]||rotationCases.general;
+}
+function previousTeamConsequence(){
+  const joint=state.careerPathChoices&&state.careerPathChoices.jointCase;
+  if(joint==='combine')return 'Du hast Mia und Leon im letzten gemeinsamen Fall eingebunden. Beide gehen grundsätzlich positiv in die Rotation.';
+  if(joint==='mia')return 'Du hast zuletzt deutlich Mias Ansatz unterstützt. Mia vertraut dir, Leon beobachtet dich kritischer.';
+  if(joint==='leon')return 'Du hast zuletzt deutlich Leons Ansatz unterstützt. Leon sieht dich als Partner, Mia erwartet mehr Einbindung.';
+  return 'Deine bisherigen Teamentscheidungen waren eher neutral. Die Rotation wird zeigen, wem du wirklich vertraust.';
+}
+function determineRotationSupport(){
+  const mia=relationshipValue('mia'),leon=relationshipValue('leon');
+  if(mia>=70&&leon>=70)return'both';
+  if(mia>=70)return'mia';
+  if(leon>=70)return'leon';
+  return'none';
+}
+function supportText(){
+  const s=determineRotationSupport();
+  if(s==='both')return'🤝 Mia und Leon unterstützen dich aktiv – das Team funktioniert inzwischen sehr gut.';
+  if(s==='mia')return'👩🏼‍⚕️ Mia bietet dir aktiv Hilfe bei der strukturierten Fallbesprechung an.';
+  if(s==='leon')return'👨🏻‍⚕️ Leon steigt in den Fall ein und fordert dich zu einer schnellen, klaren Entscheidung heraus.';
+  return'👤 Du musst die Rotation weitgehend selbst tragen. Die Beziehungen zu deinen Kollegen sind noch nicht stark genug für einen aktiven Bonus.';
+}
+function rotationMasteryMultiplier(){
+  if(!run||run.mode!=='campaign'||!state.rotationCompleted)return 1;
+  return 1+Math.min(.04,(state.focusMastery||0)/100*0.04);
+}
+function renderRotationHub(){
+  const hub=$('rotationHub');if(!hub)return;
+  if(!state.careerPathCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const rc=rotationCase(),focus=focusDef(),done=!!state.rotationCompleted;
+  const support=determineRotationSupport();
+  hub.innerHTML=`
+    <div class="rotation-head">
+      <div><h4>🏥 Erste Rotation</h4><p>${done?'Deine erste fachbezogene Rotation ist abgeschlossen.':`Deine Präferenz ${focus?focus.icon+' '+focus.name:''} bestimmt nun einen eigenen Story-Fall.`}</p></div>
+      <div class="rotation-badge">${done?'ROTATION FERTIG':'WOCHE 3'}</div>
+    </div>
+    <div class="rotation-focus">
+      <div class="rotation-focus-row"><b>${rc.icon} ${rc.title}</b><span>${done?state.rotationOutcome.toUpperCase():'AKTIV'}</span></div>
+      <small>${done?`Mastery ${state.focusMastery||0}/100 • bis zu ${Math.round((rotationMasteryMultiplier()-1)*100)} % zusätzlicher Kampagnenbonus.`:rc.intro}</small>
+      <div class="mastery-bar"><i style="width:${state.focusMastery||0}%"></i></div>
+    </div>
+    <div class="rotation-stats">
+      <div class="rotation-stat"><b>${state.rotationScore||0}</b><small>Rotationspunkte</small></div>
+      <div class="rotation-stat"><b>${state.focusMastery||0}</b><small>Mastery</small></div>
+      <div class="rotation-stat"><b>${support==='both'?'Mia + Leon':support==='mia'?'Mia':support==='leon'?'Leon':'–'}</b><small>Unterstützung</small></div>
+    </div>
+    <div class="rotation-consequence">🌿 ${previousTeamConsequence()}</div>
+    ${done
+      ?`<div class="rotation-outcome">✅ Rotation abgeschlossen • Ergebnis: <b>${state.rotationOutcome==='excellent'?'Ausgezeichnet':state.rotationOutcome==='solid'?'Solide':'Lernphase'}</b>. Frühere Teamentscheidungen und deine Fachrichtungswahl haben diese Story sichtbar beeinflusst.</div>`
+      :`<button type="button" class="rotation-start" onclick="startRotationStory()">🏥 ${rc.title} starten</button>`}
+  `;
+}
+function startRotationStory(){
+  if(!state.careerPathCompleted){startCareerPathStory();return}
+  if(state.rotationCompleted){toast('Die erste Rotation ist bereits abgeschlossen.');return}
+  state.rotationSupport=determineRotationSupport();
+  showScreen('campaignStoryScreen');
+  renderRotationStory();
+}
+function rotationChoose(key,value,points,skill,gain,relationship=''){
+  if(state.rotationChoices[key])return;
+  state.rotationChoices[key]=value;
+  state.rotationScore=Math.min(100,(state.rotationScore||0)+(Number(points)||0));
+  if(skill)addDoctorSkill(skill,gain||0);
+  if(relationship==='mia')changeRelationship('mia',5);
+  if(relationship==='leon')changeRelationship('leon',5);
+  if(relationship==='both'){changeRelationship('mia',3);changeRelationship('leon',3)}
+  if(points>=25)addMentorTrust(6);
+  else if(points>=10)addMentorTrust(1);
+  else addMentorTrust(-4);
+  state.rotationStep=Math.min(3,(state.rotationStep||0)+1);
+  beep(points>=25?930:points>=10?700:480,.08);
+  save();
+  renderRotationStory();
+}
+function completeRotation(){
+  if(state.rotationCompleted){leaveCampaignStory();return}
+  const score=state.rotationScore||0;
+  state.rotationCompleted=true;
+  state.rotationOutcome=score>=75?'excellent':score>=45?'solid':'learning';
+  state.focusMastery=Math.min(100,score>=75?35:score>=45?25:15);
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+1;
+  state.campaignDaysCompleted=(state.campaignDaysCompleted||1)+2;
+  state.money+=1300;
+  state.xp+=420;
+  state.rep=Math.min(100,(state.rep||0)+(score>=75?6:4));
+  state.researchPoints=(state.researchPoints||0)+5;
+  state.campaignPrestige=(state.campaignPrestige||0)+2;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+1300;
+  state.consequenceFlags.firstRotation=state.rotationOutcome;
+  state.consequenceFlags.rotationFocus=state.campaignFocus;
+  state.consequenceFlags.rotationSupport=state.rotationSupport||determineRotationSupport();
+  if(!state.achievements)state.achievements={};
+  state.achievements.firstRotation=true;
+  beep(1080,.16);
+  save();
+  toast('🏥 Erste Rotation abgeschlossen!');
+  leaveCampaignStory();
+}
+function renderRotationStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.rotationStep||0,rc=rotationCase(),focus=focusDef(),support=state.rotationSupport||determineRotationSupport();
+  if($('storyProgressText'))$('storyProgressText').textContent=`${step+1}/4`;
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/4*100)}%`;
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Woche 3 • Erste Rotation</div>
+      <h2>${rc.icon} ${rc.title}</h2>
+      <p>${rc.intro}</p>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Du wolltest diese Rotation. Jetzt interessiert mich nicht nur, ob du die richtige Antwort findest – sondern wie du dorthin kommst.“</p></div>
+      <div class="rotation-support">${supportText()}</div>
+      <div class="rotation-consequence">🌿 Folge aus Woche 2: ${previousTeamConsequence()}</div>
+      <button type="button" class="story-primary" onclick="rotationChoose('briefing','accepted',15,'stress',3,'${support==='both'?'both':support}')">Rotation beginnen</button>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">${rc.title} • Story-Fall</div>
+      <h2>${rc.patient}</h2>
+      <div class="story-patient">
+        <div class="story-patient-top"><div class="story-patient-avatar">${rc.avatar}</div><div><b>${rc.patient}</b><small>Persönlicher Rotationsfall • ${focus?focus.name:''}</small></div><div class="story-patient-tag">TRAINING</div></div>
+      </div>
+      <div class="rotation-clues">${rc.clues.map(x=>`<div class="rotation-clue">${x}</div>`).join('')}</div>
+      <div class="story-dialogue"><div class="story-speaker">DEINE ENTSCHEIDUNG</div><p>Welcher Ansatz passt in diesem abstrahierten Trainingsfall am besten?</p></div>
+      <div class="story-choices">
+        ${rc.choices.map(c=>`<button class="story-choice" onclick="rotationChoose('case','${c.id}',${c.points},'${c.skill}',${c.gain})">${c.label}</button>`).join('')}
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    const caseChoice=state.rotationChoices.case;
+    const best=rc.choices[0].id===caseChoice;
+    const mia=relationshipValue('mia'),leon=relationshipValue('leon');
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Rotation • Teamdynamik</div>
+      <h2>Jetzt zeigt sich, wem du vertraust</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>${best?'„Guter Ansatz. Jetzt erkläre deinem Team, warum du ihn gewählt hast.“':'„Der Fall ist noch nicht verloren. Entscheidend ist, ob du Feedback annimmst und deinen Plan korrigierst.“'}</p></div>
+      <div class="colleague-card"><div class="colleague-avatar">👩🏼‍⚕️</div><div><b>Mia Berger</b><small>${relationshipLabel(mia)} • bietet einen strukturierten Gegencheck an</small></div><div class="colleague-score">${mia}/100</div></div>
+      <div class="colleague-card"><div class="colleague-avatar">👨🏻‍⚕️</div><div><b>Leon Wagner</b><small>${relationshipLabel(leon)} • will den Plan schnell auf den Punkt bringen</small></div><div class="colleague-score">${leon}/100</div></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="rotationChoose('team','mia',20,'communication',4,'mia')">👩🏼‍⚕️ Mia um einen strukturierten Gegencheck bitten<small>Stärkt eure Zusammenarbeit.</small></button>
+        <button class="story-choice" onclick="rotationChoose('team','leon',20,'efficiency',4,'leon')">👨🏻‍⚕️ Leon um eine knappe zweite Einschätzung bitten<small>Stärkt eure Zusammenarbeit.</small></button>
+        <button class="story-choice" onclick="rotationChoose('team','both',25,'communication',3,'both')">🤝 Beide Perspektiven kurz zusammenführen<small>Stärkt das Team als Ganzes.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const score=state.rotationScore||0;
+  const outcome=score>=75?'Ausgezeichnet':score>=45?'Solide':'Lernphase';
+  const team=state.rotationChoices.team||'none';
+  const teamText=team==='both'?'Du hast beide Kollegen eingebunden.':team==='mia'?'Mia wurde zu deiner wichtigsten Unterstützung in dieser Rotation.':team==='leon'?'Leon wurde zu deinem wichtigsten Sparringspartner in dieser Rotation.':'Du hast den Fall überwiegend selbst getragen.';
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">Woche 3 • Rotationsfeedback</div>
+    <h2>${rc.icon} ${outcome}</h2>
+    <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„${rc.evaluation}“</p></div>
+    <div class="rotation-outcome">🌿 ${teamText}<br>${previousTeamConsequence()}</div>
+    <div class="story-score">
+      <div><b>${score}/100</b><small>Rotationspunkte</small></div>
+      <div><b>${state.mentorTrust}/100</b><small>Mentor-Vertrauen</small></div>
+      <div><b>${focus?focus.icon:''} ${focus?focus.name:'Rotation'}</b><small>Fokus</small></div>
+    </div>
+    <div class="campaign-reward">Belohnung: <b>+1.300 € • +420 XP • +${score>=75?6:4} Ruf • +5 RP • +2 Prestige</b></div>
+    <button type="button" class="story-primary" onclick="completeRotation()">🏥 Rotation abschließen</button>
+  </div>`;
+}
 
 const campaignFocusDefs=[
   {id:'general',icon:'🩺',name:'Allgemeinmedizin',desc:'Breite Patientenversorgung und starke Kommunikation.',story:'+6 Kommunikation',perk:'+5 % XP in Kampagnen-Schichten'},
@@ -4783,6 +5084,7 @@ function startCampaignExperience(){
   if(!state.prologueCompleted){startCampaignStory();return}
   if(!state.firstWeekCompleted){startFirstWeekEpisode();return}
   if(!state.careerPathCompleted){startCareerPathStory();return}
+  if(!state.rotationCompleted){startRotationStory();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -4984,12 +5286,14 @@ function renderModeUI(){
   const prologueOpen=!state.prologueCompleted;
   const weekOpen=state.prologueCompleted&&!state.firstWeekCompleted;
   const pathOpen=state.firstWeekCompleted&&!state.careerPathCompleted;
+  const rotationOpen=state.careerPathCompleted&&!state.rotationCompleted;
   const focus=focusDef();
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
       ?`Prolog • ${doctorDisplayName()}`
       :weekOpen?`Woche 1 • ${doctorDisplayName()}`
       :pathOpen?`Woche 2 • Team & Fachrichtung`
+      :rotationOpen?`Woche 3 • ${focus?focus.name:'Rotation'}`
       :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
@@ -4999,7 +5303,8 @@ function renderModeUI(){
       ?'Assistenzarzt • Erster Arbeitstag'
       :weekOpen?`Assistenzarzt • Woche 1 • ${state.campaignDaysCompleted||1} Tage erlebt`
       :pathOpen?'Assistenzarzt • Woche 2 • Rotation und Team'
-      :`${focus?`${focus.icon} ${focus.name} • `:''}Assistenzarzt • Mentor ${state.mentorTrust||50}/100`;
+      :rotationOpen?`Assistenzarzt • Woche 3 • ${focus?focus.icon+' '+focus.name:'erste Rotation'}`
+      :`${focus?`${focus.icon} ${focus.name} • Mastery ${state.focusMastery||0} • `:''}Mentor ${state.mentorTrust||50}/100`;
   }
   if($('prologueStatus')){
     $('prologueStatus').className='prologue-status'+(state.prologueCompleted?' done':'');
@@ -5009,13 +5314,15 @@ function renderModeUI(){
   }
   renderFirstWeekHub();
   renderCareerPathHub();
+  renderRotationHub();
   if($('campaignPlayBtn')){
-    const canPlay=prologueOpen||weekOpen||pathOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
     $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
       :weekOpen?'📅 Erste Arbeitswoche fortsetzen'
       :pathOpen?'🤝 Team & Fachrichtung weiterspielen'
+      :rotationOpen?`🏥 ${focus?focus.name:'Erste Rotation'} starten`
       :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
@@ -5292,6 +5599,7 @@ function finishCase(){
     const staffBonus=Math.max(0,Math.round(reward*(staffRewardMultiplier()-1)));reward+=staffBonus;
     const specialtyBonus=Math.max(0,Math.round(reward*(specialtyRewardMultiplier(current)-1)));reward+=specialtyBonus;
     const campaignFocusBonus=Math.max(0,Math.round(reward*(campaignFocusRewardMultiplier(current)-1)));reward+=campaignFocusBonus;
+    const rotationMasteryBonus=Math.max(0,Math.round(reward*(rotationMasteryMultiplier()-1)));reward+=rotationMasteryBonus;
     if(run&&run.eventMoneyMultiplier)reward=Math.round(reward*run.eventMoneyMultiplier);
     const contractBonus=Math.max(0,Math.round(reward*(caseRevenueMultiplier()-1)));
     reward+=contractBonus;
@@ -5301,7 +5609,7 @@ function finishCase(){
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
-    xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
+    xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*rotationMasteryMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
     let repGain=perfect?4:diagOK?1:-5;
     if(repGain<0)repGain=Math.min(0,repGain+careerRepShield());
 
@@ -5357,6 +5665,7 @@ function finishCase(){
       ${staffBonus>0?`<div class='result-line'><span>Teambonus</span><b>+${staffBonus} €</b></div>`:''}
       ${specialtyBonus>0?`<div class='result-line'><span>Spezialisierung</span><b>+${specialtyBonus} €</b></div>`:''}
       ${campaignFocusBonus>0?`<div class='result-line'><span>Kampagnen-Fokus</span><b>+${campaignFocusBonus} €</b></div>`:''}
+      ${rotationMasteryBonus>0?`<div class='result-line'><span>Rotations-Mastery</span><b>+${rotationMasteryBonus} €</b></div>`:''}
       <div class='result-line'><span>Erfahrung</span><b>+${xpGain} XP</b></div>
       <div class='result-line'><span>Forschung</span><b class='result-rp'>+${researchGain} RP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
@@ -5440,6 +5749,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('firstWeek',!!state.firstWeekCompleted);
   check('pathChosen',!!state.careerPathCompleted&&!!state.campaignFocus);
   check('teamBond',relationshipValue('mia')>=65&&relationshipValue('leon')>=65);
+  check('firstRotation',!!state.rotationCompleted);
+  check('rotationExcellent',state.rotationOutcome==='excellent');
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

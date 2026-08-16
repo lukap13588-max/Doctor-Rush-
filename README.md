@@ -1,4 +1,4 @@
-# Doctor Rush v0.19 – SPECIALIZATION & RELATIONSHIPS
+# Doctor Rush v0.20 – ROTATION & CONSEQUENCES
 
 ## Dateien
 
@@ -11,195 +11,224 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.19` öffnen.
+3. Doctor Rush einmal mit `?v=0.20` öffnen.
 
 ---
 
-# Neu in v0.19
+# Neu in v0.20
 
-## 🧭 Erste Fachrichtungspräferenz
+## 🏥 Deine erste persönliche Rotation
 
-Nach deiner ersten Arbeitswoche beginnt eine neue persönliche Kampagnenphase.
+Nach:
 
-Dr. Hartmann fragt dich erstmals, welche Rotation dich besonders interessiert.
+1. Prolog
+2. erster Arbeitswoche
+3. Team & Fachrichtungswahl
 
-Du kannst wählen:
+folgt jetzt erstmals eine echte **fachrichtungsabhängige Rotation**.
 
-### 🩺 Allgemeinmedizin
-- Story: +6 Kommunikation
-- Kampagnenbonus: +5 % XP in Kampagnen-Schichten
-
-### 🚑 Notfallmedizin
-- Story: +7 Stresssicherheit
-- Kampagnenbonus: +8 % Geld bei dringenden Fällen in Kampagnen-Schichten
-
-### ❤️ Kardiologie
-- Story: +7 klinisches Denken
-- Kampagnenbonus: +8 % Geld bei passenden Herzfällen in Kampagnen-Schichten
-
-### 🔬 Diagnostik
-- Story: +5 klinisches Denken und +3 Effizienz
-- Kampagnenbonus: Untersuchungen in Kampagnen-Schichten 5 % günstiger
-
-Diese Entscheidung ist zunächst deine persönliche **Kampagnen-Rotationspräferenz** als Assistenzarzt.
-
-Das bestehende allgemeine Spezialisierungs-/Karrieresystem bleibt erhalten.
+Deine Wahl aus v0.19 entscheidet, welchen Story-Fall du bekommst.
 
 ---
 
-# 🤝 Zwei neue wiederkehrende Kollegen
+# 🩺 Allgemeinmedizin
 
-## 👩🏼‍⚕️ Mia Berger
+Wenn du Allgemeinmedizin gewählt hast, bekommst du einen unspezifischen stabilen Fall.
 
-Assistenzärztin.
+Das Story-Ziel:
 
-Charakter:
-- ruhig
-- gründlich
-- teamorientiert
-
-## 👨🏻‍⚕️ Leon Wagner
-
-Assistenzarzt.
-
-Charakter:
-- ehrgeizig
-- schnell
-- direkt
-
-Beide besitzen einen dauerhaften Beziehungswert von 0 bis 100.
+- strukturiert denken
+- gut kommunizieren
+- nicht unnötig alles gleichzeitig untersuchen
 
 ---
 
-# 🌿 Beziehungen verändern sich
+# 🚑 Notfallmedizin
 
-Deine Story-Entscheidungen können:
+Wenn du Notfallmedizin gewählt hast, bekommst du einen sich verschlechternden Trainingsfall.
 
-- Mia näher an dich binden
-- Leon näher an dich binden
-- einen Kollegen verärgern
-- beide Beziehungen gleichzeitig verbessern
+Das Story-Ziel:
 
-Die Beziehungen bleiben gespeichert und können in späteren Story-Kapiteln verwendet werden.
-
----
-
-# 🎬 Neue Story-Phase
-
-Die neue Kampagnenphase besteht aus vier Abschnitten.
-
-## 1. Das neue Team
-
-Du lernst Mia und Leon kennen.
-
-Du entscheidest, ob du:
-
-- teamorientiert auftrittst
-- Konkurrenz suchst
-- zunächst neutral bleibst
-
-## 2. Rotationsgespräch
-
-Dr. Hartmann fragt nach deiner Fachrichtungspräferenz.
-
-Deine Wahl beeinflusst deine persönlichen Arztwerte und spätere Kampagnenboni.
-
-## 3. Gemeinsamer Fall
-
-Mia und Leon wollen denselben stabilen Trainingsfall unterschiedlich angehen.
-
-Du kannst:
-
-- beide Ansätze verbinden
-- Mia unterstützen
-- Leon unterstützen
-
-Das verändert die Beziehungen sichtbar.
-
-## 4. Feedback
-
-Dr. Hartmann fasst zusammen, wie sich dein Arbeitsstil entwickelt.
-
-Du siehst:
-
-- deine gewählte Fachrichtungspräferenz
-- Beziehung zu Mia
-- Beziehung zu Leon
-- mögliche spätere Story-Konsequenzen
+- Dringlichkeit erkennen
+- ruhig bleiben
+- Team aktivieren
+- als Assistenzarzt rechtzeitig Unterstützung holen
 
 ---
 
-# 🎁 Belohnung
+# ❤️ Kardiologie
 
-Nach Abschluss der Story-Phase erhältst du:
+Wenn du Kardiologie gewählt hast, bekommst du einen Rhythmus-Fall.
 
-- +900 €
-- +300 XP
-- +4 Ruf
-- +3 Forschungspunkte
+Das Story-Ziel:
+
+- Befund und Fragestellung zusammenbringen
+- nicht wahllos untersuchen
+- klinische Muster sinnvoll einordnen
+
+---
+
+# 🔬 Diagnostik
+
+Wenn du Diagnostik gewählt hast, bekommst du einen unklaren Fall mit mehreren Möglichkeiten.
+
+Das Story-Ziel:
+
+- Hypothesen ordnen
+- gezielt untersuchen
+- unnötige Tests vermeiden
+
+---
+
+# 🌿 Frühere Entscheidungen haben Folgen
+
+v0.20 verwendet erstmals konkrete Entscheidungen aus v0.19.
+
+Wenn du im gemeinsamen Fall:
+
+- Mia unterstützt hast
+- Leon unterstützt hast
+- beide Ansätze verbunden hast
+
+wird das in der Rotationsstory erwähnt und beeinflusst die Teamdynamik.
+
+---
+
+# 🤝 Kollegen helfen abhängig von Beziehung
+
+## Mia ≥ 70
+
+Mia bietet dir aktiv einen strukturierten Gegencheck an.
+
+## Leon ≥ 70
+
+Leon wird zu deinem Sparringspartner für schnelle Entscheidungen.
+
+## Mia + Leon ≥ 70
+
+Beide unterstützen dich.
+
+Der Story-Text verändert sich entsprechend.
+
+---
+
+# 🎯 Teamentscheidung während der Rotation
+
+Während des Falls kannst du entscheiden:
+
+- Mia um Unterstützung bitten
+- Leon einbinden
+- beide Perspektiven zusammenführen
+
+Diese Entscheidung verändert die Beziehungen erneut.
+
+---
+
+# 📊 Rotationswertung
+
+Du sammelst Rotationspunkte.
+
+Am Ende bekommst du eine Bewertung:
+
+- **Ausgezeichnet**
+- **Solide**
+- **Lernphase**
+
+Die Bewertung hängt von deinen Story-Entscheidungen ab.
+
+---
+
+# 🧠 Fachrichtungs-Mastery
+
+Nach Abschluss der Rotation erhält deine gewählte Kampagnen-Fachrichtung einen Mastery-Wert.
+
+Je nach Rotationsleistung:
+
+- Lernphase → 15 Mastery
+- Solide → 25 Mastery
+- Ausgezeichnet → 35 Mastery
+
+Mastery ist dauerhaft gespeichert.
+
+---
+
+# 💰 Mastery wirkt auf spätere Kampagnen-Schichten
+
+Nach abgeschlossener Rotation gibt Mastery einen kleinen zusätzlichen Bonus auf:
+
+- Geld
+- XP
+
+in **Kampagnen-Schichten**.
+
+Der Bonus ist auf maximal 4 % begrenzt.
+
+Freie Schichten werden nicht beeinflusst.
+
+---
+
+# 🎁 Rotationsbelohnung
+
+Nach Abschluss:
+
+- +1.300 €
+- +420 XP
+- +4 bis +6 Ruf
+- +5 Forschungspunkte
 - +2 Prestige
-
----
-
-# 🎮 Beziehungen beeinflussen Kampagnen-Schichten
-
-Hohe Beziehungen geben erstmals kleine echte Gameplay-Vorteile.
-
-## Mia ab 70 Beziehung
-
-- +3 Minuten in Kampagnen-Schichten
-
-Begründung im Spiel:
-bessere Teamabstimmung.
-
-## Leon ab 70 Beziehung
-
-- +3 % XP in Kampagnen-Schichten
-
-Begründung im Spiel:
-gegenseitiger Leistungsantrieb.
-
-Diese Boni gelten **nicht** für Freie Schichten.
 
 ---
 
 # 🏆 Neue Erfolge
 
-## Mein Weg
+## Erste Rotation
 
-Schließe die neue Story-Phase ab und wähle eine Fachrichtungspräferenz.
+Schließe deine erste persönliche Fachrotation ab.
 
-## Starkes Team
+## Starker Eindruck
 
-Erreiche sowohl bei Mia als auch bei Leon mindestens 65 Beziehungspunkte.
+Beende die Rotation mit der Bewertung **Ausgezeichnet**.
 
 ---
 
-# 🎯 Neuer Kampagnenablauf
+# 🧬 Konsequenz-System
 
-Der persönliche Kampagnenweg ist jetzt:
+Das Spiel speichert jetzt zusätzlich:
 
-1. Prolog
-2. Erster Arbeitstag
-3. Erste Arbeitswoche
-4. Team & Fachrichtungspräferenz
-5. Normale Kampagnen-Schichten
-6. langfristige Kampagnenkapitel
+- Ergebnis der ersten Rotation
+- gewählte Fachrichtung
+- wichtigste Teamunterstützung
 
-Der Kampagnenbutton erkennt automatisch, wo du weiterspielen musst.
+Diese Werte können in späteren Kampagnenkapiteln wieder aufgegriffen werden.
+
+Damit beginnt die Story erstmals, frühere Entscheidungen wirklich langfristig zu verwenden.
+
+---
+
+# Persönlicher Kampagnenweg
+
+Der Weg ist jetzt:
+
+1. Erster Arbeitstag
+2. Erste Arbeitswoche
+3. Mia & Leon kennenlernen
+4. Fachrichtungspräferenz wählen
+5. Erste persönliche Rotation
+6. Normale Kampagnen-Schichten
+7. langfristige Karriere-Kapitel
 
 ---
 
 # ⚡ Freie Schicht bleibt getrennt
 
-Alle neuen Fachrichtungs- und Beziehungsboni aus v0.19 werden nur aktiv, wenn `run.mode === campaign`.
+Alle neuen Rotationsboni greifen nur im Kampagnenmodus.
 
 Freie Schichten bleiben:
 
-- ohne Story-Zwang
-- ohne Mia-/Leon-Boni
-- ohne Kampagnen-Fokusbonus
-- weiterhin sofort spielbar
+- ohne Story
+- ohne Rotations-Mastery-Boni
+- sofort spielbar
+- klassisches Klinikmanagement
 
 ---
 
@@ -208,10 +237,14 @@ Freie Schichten bleiben:
 - 5-Bereich-Navigation
 - Freie Schicht / Kampagne
 - eigener Arzt
-- Kampagnen-Prolog
+- Arztavatar
+- Prolog
 - erste Arbeitswoche
 - Arztwerte
 - Mentor-Vertrauen
+- Mia & Leon
+- Beziehungen
+- Fachrichtungspräferenz
 - 6 Kampagnenkapitel
 - Prestige
 - Finanzen
@@ -231,10 +264,10 @@ Freie Schichten bleiben:
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.18-Spielstand kompatibel
-- Beziehungen und Fachrichtungspräferenz werden gespeichert
-- Kampagnenboni sind gegen Freie Schichten abgegrenzt
-- keine externen JavaScript- oder CSS-Dateien
+- v0.19-Spielstand kompatibel
+- Rotationsfortschritt und Konsequenzen werden gespeichert
+- Mastery-Bonus ist auf Kampagnen-Schichten begrenzt
+- keine externen JS-/CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
