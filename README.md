@@ -1,4 +1,4 @@
-# Doctor Rush v0.22 – PROMOTION REVIEW
+# Doctor Rush v0.23 – TEAM LEADERSHIP
 
 ## Dateien
 
@@ -11,237 +11,241 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.22` öffnen.
+3. Doctor Rush einmal mit `?v=0.23` öffnen.
 
 ---
 
-# Neu in v0.22
+# Neu in v0.23
 
-## 🎓 Erste echte Beförderung
+## 👨‍⚕️ Du führst jetzt andere Ärzte
 
-Nach deinem ersten eigenen Stationsbereich folgt jetzt eine offizielle Karrierebeurteilung.
+Nach deiner Beförderung zum Stationsarzt beginnt die nächste persönliche Story-Phase.
 
-Deine bisherige persönliche Kampagne fließt direkt in die Bewertung ein.
+Du bist erstmals nicht nur für deine eigenen Patienten verantwortlich.
 
-Berücksichtigt werden:
+Du bekommst eine junge Assistenzärztin zur direkten Supervision:
 
-- Autonomie
-- Mentor-Vertrauen bei Dr. Hartmann
-- erste Rotationswertung
-- Stationswertung
-- Beziehung zu Mia
-- Beziehung zu Leon
+## 👩🏻‍⚕️ Sofia Keller
 
-Damit beginnt die Beförderung nicht bei 0 – deine bisherige Story hat echte Auswirkungen.
+- Assistenzärztin
+- neu im Team
+- motiviert
+- noch unerfahren
+
+Ihre Entwicklung hängt davon ab, wie du sie führst.
 
 ---
 
-# 📋 Beförderungsreview
+# 🧠 Neues Teaching-System
 
-Das Review besteht aus vier Abschnitten.
+Dein persönlicher Arzt besitzt jetzt zusätzlich:
 
-## 1. Ausgangslage
+## Teaching
 
-Dr. Hartmann fasst deine bisherige Entwicklung zusammen.
+0 bis 100.
 
-Du siehst deinen Basiswert aus:
+Teaching beschreibt, wie gut du:
 
-- Rotation
-- Station
-- Autonomie
-- Mentor-Vertrauen
-- Teambeziehungen
+- Verantwortung sinnvoll überträgst
+- Lernziele setzt
+- Feedback gibst
+- andere selbst denken lässt
+- Sicherheit und Lernfreiheit miteinander verbindest
 
-## 2. Selbstreflexion
+Teaching bleibt dauerhaft gespeichert.
 
-Du wirst gefragt, was du aus schwierigen Diensten gelernt hast.
+---
+
+# 🤝 Sofia-Vertrauen
+
+Sofia besitzt einen eigenen Vertrauenswert von 0 bis 100.
+
+Deine Entscheidungen beeinflussen diesen Wert.
+
+Beispiele:
+
+### Vertrauen steigt
+
+- klare Aufgaben geben
+- erreichbar bleiben
+- Unsicherheit als Lernmoment nutzen
+- konstruktiv Feedback geben
+
+### Vertrauen sinkt
+
+- bloßstellen
+- alles selbst übernehmen
+- sie ohne Supervision alleinlassen
+- keinen eigenen Denkraum zulassen
+
+---
+
+# 🎬 Neue Story-Phase
+
+Der erste Supervisionsabschnitt besteht aus vier Teilen.
+
+## 1. Neue Verantwortung
+
+Dr. Hartmann erklärt dir, dass Sofia unter deiner Supervision arbeitet.
+
+## 2. Aufgaben delegieren
+
+Sofia möchte einen stabilen Trainingsfall übernehmen.
 
 Du kannst:
 
-- eigene Fehler reflektieren
-- hauptsächlich auf Ergebnisse verweisen
-- Verantwortung bei anderen suchen
+- den Fall mit klaren Grenzen übertragen
+- jeden Schritt kontrollieren
+- den Fall fast vollständig abgeben
 
-Die Wahl beeinflusst:
+## 3. Sofia ist unsicher
 
-- Review-Score
-- Leadership
-- Mentor-Vertrauen
-- teilweise Beziehungen
+Sofia kommt mit zwei möglichen Erklärungen zurück.
 
-## 3. Führungssituation
+Du kannst:
 
-Mia und Leon stehen wieder für zwei unterschiedliche Arbeitsstile.
+- sie mit Fragen durch ihre Überlegungen führen
+- den Fall sofort selbst übernehmen
+- ihre Unsicherheit vor dem Team kritisieren
 
-Du entscheidest, wie du sie als zukünftige Führungskraft einsetzen würdest.
+## 4. Feedback
 
-Die stärkste Antwort versucht nicht einfach, einen Kollegen zu bevorzugen, sondern beide Stärken sinnvoll einzusetzen.
-
-## 4. Entscheidung
-
-Am Ende erhältst du deine Bewertung.
+Dr. Hartmann bewertet erstmals deinen Führungs- und Teaching-Stil.
 
 ---
 
-# 🏅 Drei mögliche Review-Ergebnisse
+# 📊 Drei mögliche Führungsbewertungen
 
-## Mit Auszeichnung
+## MENTOR
 
-Sehr starke bisherige Karriere + gute Review-Entscheidungen.
+Du gibst Verantwortung ab, setzt sichere Grenzen und nutzt Fehler als Lernchance.
 
-## Bestanden
+## SOLIDE FÜHRUNG
 
-Du erfüllst die Erwartungen an den nächsten Karriereschritt.
+Du führst verlässlich, kannst Coaching aber noch bewusster einsetzen.
 
-## Mit Entwicklungsplan
+## ZU KONTROLLIERT
 
-Du steigst ebenfalls auf, bekommst aber im Story-Kontext zusätzliche Entwicklungsziele.
+Du hältst die Versorgung sicher, gibst Sofia aber zu wenig Raum für eigene Entwicklung.
 
-Der Fortschritt wird also nicht dauerhaft blockiert.
-
----
-
-# 👨‍⚕️ Assistenzarzt → Stationsarzt
-
-Nach Abschluss des Reviews steigst du in der persönlichen Kampagne auf:
-
-**STATIONSARZT**
-
-Der neue Titel wird anschließend angezeigt:
-
-- im Arztprofil
-- im Karrierebereich
-- auf dem Kampagnenbutton
+Die Story wird dadurch nicht blockiert.
 
 ---
 
-# 🧭 Neues Leadership-System
+# 🎮 Neue Kampagnenboni
 
-Dein Arzt besitzt jetzt zusätzlich einen dauerhaften Leadership-Wert.
+## Sofia-Vertrauen ab 70
 
-Leadership wird beeinflusst durch:
+**+1 Minute** in Kampagnen-Schichten.
 
-- Selbstreflexion
-- Teamführung
-- Beförderungswertung
+Begründung im Spiel:
 
-Spätere Story-Kapitel können Leadership wieder verwenden.
+Sofia arbeitet inzwischen zuverlässig mit dir zusammen.
 
----
+## Teaching ab 50
 
-# ⏱️ Stationsarzt-Bonus
+**+2 % XP** in Kampagnen-Schichten.
 
-Nach deiner Beförderung erhältst du in Kampagnen-Schichten:
+Begründung im Spiel:
 
-**+2 Minuten**
+Du entwickelst dein Team effektiver.
 
-Dieser Bonus gilt nur im Kampagnenmodus.
-
-Freie Schichten bleiben vollständig unabhängig.
+Beide Boni gelten nur im Kampagnenmodus.
 
 ---
 
-# 🎁 Beförderungsbonus
+# 🎁 Belohnung
 
-Bei normalem Bestehen:
+Nach Abschluss:
 
-- +1.800 €
+- +1.700 €
 - +550 XP
-- +6 Ruf
-- +6 Forschungspunkte
-- +3 Prestige
-
-Bei einer Beförderung mit Auszeichnung:
-
-- +2.200 €
-- +700 XP
-- +8 Ruf
-- +6 Forschungspunkte
-- +3 Prestige
+- +5 bis +7 Ruf
+- +5 Forschungspunkte
+- +2 Prestige
 
 ---
 
 # 🏆 Neue Erfolge
 
-## Nächste Stufe
+## Jetzt bist du der Mentor
 
-Steige zum Stationsarzt auf.
+Schließe deinen ersten Supervisionsabschnitt als Stationsarzt ab.
 
-## Mit Auszeichnung
+## Vertrauensperson
 
-Schließe das erste Beförderungsreview mit Auszeichnung ab.
-
----
-
-# 🔧 Technische Verbesserungen
-
-## Anamnese jetzt wirklich 100/100
-
-Seit Diagnose 2.0 war der maximal erreichbare Anamnese-Hinweiswert intern nur 90/100.
-
-Das ist jetzt korrigiert.
-
-Neue Verteilung:
-
-- Startwert: 15
-- Frage 1: +30
-- Frage 2: +25
-- Frage 3: +20
-- Frage 4: +10
-
-Maximal:
-
-**100/100**
-
-## Robuster Klinik-Flow
-
-Beim Laden eines Patienten wird die Stationsnutzung jetzt zur Sicherheit initialisiert, falls ein älterer oder ungewöhnlicher Spielstand den Flow-Zustand nicht vollständig enthält.
-
-## Schutz gegen doppelten Fallabschluss
-
-Mehrfaches schnelles Tippen auf „Fall abschließen“ kann denselben Patienten nicht mehr gleichzeitig mehrfach abrechnen.
+Erreiche mindestens 75 Vertrauen bei Sofia.
 
 ---
 
-# Persönlicher Karriereweg
+# 🧭 Karriere-Timeline erweitert
 
-Die Timeline enthält jetzt:
+Der persönliche Weg lautet jetzt:
 
 1. Erster Dienst
 2. Woche 1
 3. Team
 4. Rotation
 5. Station
-6. Beförderung
+6. Beförderung zum Stationsarzt
+7. Erste Supervision
 
-Danach bist du **Stationsarzt**.
+Die abgeschlossene Beförderungs-Karte wird wieder ausgeblendet und bleibt nur kompakt in der Timeline sichtbar.
+
+Damit wächst die Kampagnenseite nicht wieder endlos nach unten.
 
 ---
 
 # ⚡ Freie Schicht bleibt getrennt
 
-Die persönliche Beförderung und der Stationsarzt-Zeitbonus gelten nur im Kampagnenmodus.
+Teaching- und Sofia-Boni greifen nur im Kampagnenmodus.
 
 Freie Schichten bleiben:
 
-- ohne Story-Pflicht
-- ohne persönlichen Rangbonus
+- ohne Story
+- ohne Sofia-Bonus
+- ohne Teaching-XP-Bonus
 - sofort spielbar
 - klassisches Klinikmanagement
 
 ---
 
-# Technisch
+# Bestehende Systeme bleiben erhalten
+
+- Stationsarzt
+- Leadership
+- Autonomie
+- Rotations-Mastery
+- Fachrichtungspräferenz
+- Mia & Leon
+- Mentor-Vertrauen
+- persönlicher Arzt
+- Kampagnen-Timeline
+- Finanzen
+- Personal 2.0
+- Krankenhaus-Ausbau
+- Diagnose 2.0
+- Anamnese 100/100
+- Patientenstabilität
+- Klinik-Flow
+- Forschung
+- Fallbuch
+- Notfälle
+- Eingriffe
+- Missionen
+- Erfolge
+
+## Technisch
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.21-Spielstand kompatibel
-- Beförderung, Leadership und Review-Ergebnis werden gespeichert
+- v0.22-Spielstand kompatibel
+- Teaching, Sofia-Vertrauen und Supervisionsausgang werden gespeichert
+- abgeschlossene Beförderung wird kompakt in die Timeline verschoben
+- neue Boni sind auf Kampagnen-Schichten begrenzt
 - keine externen JavaScript- oder CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
-- Anamnese-Maximum: **100/100**
-- Doppeltipp-Schutz: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.

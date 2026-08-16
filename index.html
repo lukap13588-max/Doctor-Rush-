@@ -1360,13 +1360,74 @@ body.home-nav-active #app{padding-bottom:102px}
 .leadership-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
 .leadership-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#7651b7,#c68ef0)}
 
+
+/* ===== v0.23 TEAM LEADERSHIP ===== */
+.teamlead-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(52,58,102,.78),rgba(12,28,49,.98));
+  border:1px solid rgba(135,145,255,.28)
+}
+.teamlead-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.teamlead-head h4{margin:0;font-size:13px}
+.teamlead-head p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.teamlead-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(135,145,255,.11);
+  color:#c9ceff;font-size:8px;font-weight:900;white-space:nowrap
+}
+.teamlead-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.teamlead-stat{
+  padding:8px 5px;border-radius:10px;background:#0c1f35;border:1px solid #263f5d;text-align:center
+}
+.teamlead-stat b{display:block;font-size:10px}
+.teamlead-stat small{display:block;color:var(--muted);font-size:7.2px;margin-top:2px}
+.junior-card{
+  margin-top:9px;padding:10px;border-radius:13px;background:#0b1d32;border:1px solid #29435f;
+  display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center
+}
+.junior-avatar{
+  width:42px;height:42px;border-radius:13px;background:#1a3558;display:grid;place-items:center;font-size:24px
+}
+.junior-card b{font-size:10px}
+.junior-card small{display:block;color:var(--muted);font-size:7.8px;margin-top:2px;line-height:1.35}
+.junior-trust{font-size:8px;font-weight:900;color:#c9ceff;text-align:right}
+.teaching-card{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(181,130,255,.06);
+  border:1px solid rgba(181,130,255,.16)
+}
+.teaching-row{display:flex;justify-content:space-between;gap:8px;font-size:8.5px}
+.teaching-row span{color:var(--muted)}.teaching-row b{color:#dec7ff}
+.teaching-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
+.teaching-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#6c58b5,#b68af0)}
+.teamlead-note{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(112,160,255,.06);
+  border:1px solid rgba(112,160,255,.16);font-size:8.5px;line-height:1.45;color:#dce9f7
+}
+.teamlead-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#5f68bd,#828ce4);color:#fff;font-size:9.5px;font-weight:900
+}
+.teamlead-start:disabled{opacity:.45}
+.supervision-card{
+  margin-top:10px;padding:11px;border-radius:14px;background:#0c1f35;border:1px solid #29435f
+}
+.supervision-card h4{margin:0;font-size:11px}
+.supervision-card p{margin:5px 0 0;color:var(--muted);font-size:8.7px;line-height:1.45}
+.supervision-rule{
+  margin-top:7px;padding:8px 9px;border-radius:10px;background:#091a2e;border:1px solid #223a56;
+  font-size:8.5px;line-height:1.4;color:#dce8f3
+}
+.teamlead-result{
+  margin-top:10px;padding:10px;border-radius:12px;background:rgba(40,215,161,.07);
+  border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#daf2e9
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.22 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.23 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1376,7 +1437,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.22 • PROMOTION REVIEW</h2>
+          <h2>Clinic Life v0.23 • TEAM LEADERSHIP</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1450,6 +1511,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="rotationHub" class="rotation-hub" style="display:none"></div>
           <div id="wardHub" class="ward-hub" style="display:none"></div>
           <div id="promotionHub" class="promotion-hub" style="display:none"></div>
+          <div id="teamLeadHub" class="teamlead-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -4336,7 +4398,9 @@ const achievements = [
   {id:'firstWard', name:'Eigene Verantwortung', desc:'Führe erstmals einen eigenen kleinen Stationsbereich durch einen Dienst.'},
   {id:'autonomy75', name:'Vertrauensvorschuss', desc:'Erreiche mindestens 75 Autonomie in der Kampagne.'},
   {id:'stationsarzt', name:'Nächste Stufe', desc:'Steige in der persönlichen Kampagne zum Stationsarzt auf.'},
-  {id:'promotionDistinction', name:'Mit Auszeichnung', desc:'Schließe die erste Beförderungsbeurteilung mit Auszeichnung ab.'}
+  {id:'promotionDistinction', name:'Mit Auszeichnung', desc:'Schließe die erste Beförderungsbeurteilung mit Auszeichnung ab.'},
+  {id:'firstSupervision', name:'Jetzt bist du der Mentor', desc:'Schließe deinen ersten Supervisionsabschnitt als Stationsarzt ab.'},
+  {id:'trustedSupervisor', name:'Vertrauensperson', desc:'Erreiche mindestens 75 Vertrauen bei Sofia.'}
 ];
 
 const missions = [
@@ -4461,7 +4525,16 @@ const defaultState = {
   promotionChoices:{},
   promotionOutcome:'',
   storyCareerTitle:'Assistenzarzt',
-  leadership:10
+  leadership:10,
+  teamLeadCompleted:false,
+  teamLeadStep:0,
+  teamLeadScore:0,
+  teamLeadChoices:{},
+  teaching:10,
+  juniorTrust:50,
+  juniorOutcome:'',
+  juniorDoctor:{name:'Sofia Keller',avatar:'👩🏻‍⚕️'},
+  supervisedCases:0
 };
 
 let state;
@@ -4567,6 +4640,17 @@ if(!state.promotionChoices||typeof state.promotionChoices!=='object')state.promo
 if(!['distinction','regular','development',''].includes(state.promotionOutcome))state.promotionOutcome='';
 if(!['Assistenzarzt','Stationsarzt'].includes(state.storyCareerTitle))state.storyCareerTitle=state.promotionReviewCompleted?'Stationsarzt':'Assistenzarzt';
 state.leadership=Number.isFinite(Number(state.leadership))?Math.max(0,Math.min(100,Math.floor(Number(state.leadership)))):10;
+state.teamLeadCompleted=!!state.teamLeadCompleted;
+state.teamLeadStep=Number.isFinite(Number(state.teamLeadStep))?Math.max(0,Math.min(3,Math.floor(Number(state.teamLeadStep)))):0;
+state.teamLeadScore=Number.isFinite(Number(state.teamLeadScore))?Math.max(0,Math.min(100,Math.floor(Number(state.teamLeadScore)))):0;
+if(!state.teamLeadChoices||typeof state.teamLeadChoices!=='object')state.teamLeadChoices={};
+state.teaching=Number.isFinite(Number(state.teaching))?Math.max(0,Math.min(100,Math.floor(Number(state.teaching)))):10;
+state.juniorTrust=Number.isFinite(Number(state.juniorTrust))?Math.max(0,Math.min(100,Math.floor(Number(state.juniorTrust)))):50;
+if(!['mentor','balanced','controlling',''].includes(state.juniorOutcome))state.juniorOutcome='';
+if(!state.juniorDoctor||typeof state.juniorDoctor!=='object')state.juniorDoctor={name:'Sofia Keller',avatar:'👩🏻‍⚕️'};
+if(typeof state.juniorDoctor.name!=='string'||!state.juniorDoctor.name.trim())state.juniorDoctor.name='Sofia Keller';
+if(typeof state.juniorDoctor.avatar!=='string'||!state.juniorDoctor.avatar)state.juniorDoctor.avatar='👩🏻‍⚕️';
+state.supervisedCases=Number.isFinite(Number(state.supervisedCases))&&Number(state.supervisedCases)>=0?Math.floor(Number(state.supervisedCases)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4631,6 +4715,211 @@ function setDoctorAvatar(avatar){
 
 
 
+
+function addTeaching(amount){
+  state.teaching=Math.max(0,Math.min(100,(Number(state.teaching)||10)+(Number(amount)||0)));
+}
+function addJuniorTrust(amount){
+  state.juniorTrust=Math.max(0,Math.min(100,(Number(state.juniorTrust)||50)+(Number(amount)||0)));
+}
+function juniorName(){
+  return state.juniorDoctor&&state.juniorDoctor.name?state.juniorDoctor.name:'Sofia Keller';
+}
+function juniorAvatar(){
+  return state.juniorDoctor&&state.juniorDoctor.avatar?state.juniorDoctor.avatar:'👩🏻‍⚕️';
+}
+function teamLeadBaseScore(){
+  let score=20;
+  score+=Math.round((state.leadership||10)*.20);
+  score+=Math.round(effectiveAutonomy()*.15);
+  score+=Math.round((state.mentorTrust||50)*.10);
+  if(state.promotionOutcome==='distinction')score+=10;
+  else if(state.promotionOutcome==='regular')score+=6;
+  else if(state.promotionOutcome==='development')score+=2;
+  return Math.max(25,Math.min(65,score));
+}
+function teamLeadTotalScore(){
+  return Math.max(0,Math.min(100,teamLeadBaseScore()+(state.teamLeadScore||0)));
+}
+function teamLeadRating(score=teamLeadTotalScore()){
+  if(score>=85)return {id:'mentor',label:'MENTOR',text:'Du gibst Verantwortung ab, setzt klare Grenzen und nutzt Fehler als Lernchance.'};
+  if(score>=62)return {id:'balanced',label:'SOLIDE FÜHRUNG',text:'Du führst verlässlich, kannst aber beim Coaching noch gezielter werden.'};
+  return {id:'controlling',label:'ZU KONTROLLIERT',text:'Du schützt die Versorgung, gibst deiner Assistenzärztin aber noch zu wenig Raum zum Lernen.'};
+}
+function supervisionPerkText(){
+  const parts=[];
+  if(state.juniorTrust>=70)parts.push('Sofia ≥70 Vertrauen: +1 Minute in Kampagnen-Schichten.');
+  else parts.push('Sofia 70 Vertrauen: schaltet später +1 Kampagnen-Minute frei.');
+  if(state.teaching>=50)parts.push('Teaching ≥50: +2 % Kampagnen-XP.');
+  else parts.push('Teaching 50: schaltet später +2 % Kampagnen-XP frei.');
+  return parts.join(' ');
+}
+function renderTeamLeadHub(){
+  const hub=$('teamLeadHub');if(!hub)return;
+  if(!state.promotionReviewCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const done=!!state.teamLeadCompleted,rating=teamLeadRating();
+  hub.innerHTML=`
+    <div class="teamlead-head">
+      <div><h4>👨‍⚕️ Führung & Supervision</h4><p>${done?'Du hast deinen ersten Supervisionsabschnitt als Stationsarzt abgeschlossen.':'Als Stationsarzt bekommst du erstmals eine junge Assistenzärztin zur direkten Supervision.'}</p></div>
+      <div class="teamlead-badge">${done?'ABSCHNITT FERTIG':'STATIONSARZT'}</div>
+    </div>
+    <div class="teamlead-stats">
+      <div class="teamlead-stat"><b>${state.leadership||10}</b><small>Leadership</small></div>
+      <div class="teamlead-stat"><b>${state.teaching||10}</b><small>Teaching</small></div>
+      <div class="teamlead-stat"><b>${state.juniorTrust||50}</b><small>Vertrauen</small></div>
+    </div>
+    <div class="junior-card">
+      <div class="junior-avatar">${juniorAvatar()}</div>
+      <div><b>${juniorName()}</b><small>Assistenzärztin • erster Monat im Team • arbeitet unter deiner Supervision</small></div>
+      <div class="junior-trust">${state.juniorTrust||50}/100<br>${state.juniorTrust>=70?'VERTRAUT':'LERNPHASE'}</div>
+    </div>
+    <div class="teaching-card">
+      <div class="teaching-row"><span>Teaching-Kompetenz</span><b>${state.teaching||10}/100</b></div>
+      <div class="teaching-bar"><i style="width:${state.teaching||10}%"></i></div>
+    </div>
+    <div class="teamlead-note">🎓 ${done?`${rating.label}: ${rating.text}`:supervisionPerkText()}</div>
+    ${done
+      ?'<div class="teamlead-result">✅ Deine Entscheidungen gegenüber Sofia bleiben gespeichert. Spätere Story-Phasen können ihr Vertrauen, deine Teaching-Kompetenz und deinen Führungsstil wieder aufgreifen.</div>'
+      :'<button type="button" class="teamlead-start" onclick="startTeamLeadStory()">👩🏻‍⚕️ Erste Supervision beginnen</button>'}
+  `;
+}
+function startTeamLeadStory(){
+  if(!state.promotionReviewCompleted){startPromotionReview();return}
+  if(state.teamLeadCompleted){toast('Der erste Supervisionsabschnitt ist bereits abgeschlossen.');return}
+  showScreen('campaignStoryScreen');
+  renderTeamLeadStory();
+}
+function teamLeadChoose(key,value,points,leadGain,teachGain,trustGain,mia=0,leon=0){
+  if(state.teamLeadChoices[key])return;
+  state.teamLeadChoices[key]=value;
+  state.teamLeadScore=Math.min(60,(state.teamLeadScore||0)+(Number(points)||0));
+  addLeadership(leadGain||0);
+  addTeaching(teachGain||0);
+  addJuniorTrust(trustGain||0);
+  if(mia)changeRelationship('mia',mia);
+  if(leon)changeRelationship('leon',leon);
+  if(points>=15)addMentorTrust(2);
+  state.teamLeadStep=Math.min(3,(state.teamLeadStep||0)+1);
+  beep(points>=15?930:points>=7?700:480,.08);
+  save();
+  renderTeamLeadStory();
+}
+function teamLeadTimeBonus(){
+  return run&&run.mode==='campaign'&&state.teamLeadCompleted&&state.juniorTrust>=70?1:0;
+}
+function teamLeadXpMultiplier(){
+  return run&&run.mode==='campaign'&&state.teamLeadCompleted&&state.teaching>=50?1.02:1;
+}
+function completeTeamLead(){
+  if(state.teamLeadCompleted){leaveCampaignStory();return}
+  const total=teamLeadTotalScore(),rating=teamLeadRating(total);
+  state.teamLeadCompleted=true;
+  state.juniorOutcome=rating.id;
+  state.supervisedCases=(state.supervisedCases||0)+2;
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+2;
+  state.campaignDaysCompleted=(state.campaignDaysCompleted||1)+2;
+  addLeadership(rating.id==='mentor'?9:rating.id==='balanced'?6:3);
+  addTeaching(rating.id==='mentor'?12:rating.id==='balanced'?8:5);
+  addJuniorTrust(rating.id==='mentor'?10:rating.id==='balanced'?6:2);
+  state.money+=1700;
+  state.xp+=550;
+  state.rep=Math.min(100,(state.rep||0)+(rating.id==='mentor'?7:5));
+  state.researchPoints=(state.researchPoints||0)+5;
+  state.campaignPrestige=(state.campaignPrestige||0)+2;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+1700;
+  state.consequenceFlags.firstSupervision=rating.id;
+  state.consequenceFlags.juniorTrust=state.juniorTrust;
+  if(!state.achievements)state.achievements={};
+  state.achievements.firstSupervision=true;
+  beep(1100,.16);
+  save();
+  toast('👩🏻‍⚕️ Erster Supervisionsabschnitt abgeschlossen!');
+  leaveCampaignStory();
+}
+function renderTeamLeadStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.teamLeadStep||0,total=teamLeadTotalScore();
+  if($('storyProgressText'))$('storyProgressText').textContent=`${step+1}/4`;
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/4*100)}%`;
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Stationsarzt • 07:10 Uhr</div>
+      <h2>Du bist jetzt der Supervisor</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Sofia Keller startet heute bei uns. Sie soll lernen, selbstständig zu denken – aber die Verantwortung für die Supervision liegt bei dir.“</p></div>
+      <div class="junior-card">
+        <div class="junior-avatar">${juniorAvatar()}</div>
+        <div><b>${juniorName()}</b><small>Assistenzärztin • motiviert, aber noch unerfahren</small></div>
+        <div class="junior-trust">${state.juniorTrust}/100</div>
+      </div>
+      <div class="supervision-card"><h4>Deine Aufgabe</h4><p>Gib ihr genug Raum zum Lernen, ohne die Verantwortung einfach abzugeben.</p>
+        <div class="supervision-rule">Supervision im Spiel = klare Aufgabe + erreichbare Unterstützung + gemeinsames Feedback.</div>
+      </div>
+      <button class="story-primary" onclick="teamLeadChoose('intro','accepted',8,3,3,2)">Supervision übernehmen</button>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">08:05 Uhr • Aufgabenverteilung</div>
+      <h2>Wie viel Verantwortung gibst du ab?</h2>
+      <p>Ein stabiler Trainingspatient braucht eine strukturierte Anamnese und eine erste Einschätzung. Sofia möchte den Fall selbst übernehmen.</p>
+      <div class="story-choices">
+        <button class="story-choice" onclick="teamLeadChoose('delegation','guided',18,6,8,8)">✅ Den stabilen Fall übertragen, klare Grenzen setzen und eine kurze Rücksprache vereinbaren<small>Verantwortung mit definierter Supervision.</small></button>
+        <button class="story-choice" onclick="teamLeadChoose('delegation','micromanage',8,2,2,-4)">🔍 Jeden einzelnen Schritt selbst vorgeben<small>Sicher, aber Sofia bekommt kaum Raum für eigenes Denken.</small></button>
+        <button class="story-choice" onclick="teamLeadChoose('delegation','dump',2,0,0,-8)">➡️ Den Fall komplett abgeben und erst am Ende wiederkommen<small>Delegation ohne ausreichende Supervision.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    const d=state.teamLeadChoices.delegation;
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">11:20 Uhr • Rücksprache</div>
+      <h2>Sofia ist unsicher</h2>
+      <div class="story-dialogue"><div class="story-speaker">${juniorName().toUpperCase()}</div><p>„Ich habe zwei mögliche Erklärungen im Kopf, aber ich bin mir nicht sicher, welche besser passt.“</p></div>
+      <div class="teamlead-note">${d==='guided'
+        ?'✅ Weil du vorher klare Grenzen gesetzt hast, kommt Sofia rechtzeitig zur Rücksprache.'
+        :d==='micromanage'
+        ?'⚠️ Sofia fragt bei fast jedem Schritt nach – sie hat bisher wenig eigenen Entscheidungsraum.'
+        :'⚠️ Sofia war lange allein mit dem Fall und meldet sich erst spät.'}</div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="teamLeadChoose('feedback','coach',20,7,10,10,2,1)">🧠 Mit Fragen durch ihre Überlegungen führen und sie selbst begründen lassen<small>Coaching statt Antwort vorsagen.</small></button>
+        <button class="story-choice" onclick="teamLeadChoose('feedback','takeover',8,3,2,-3)">🧑‍⚕️ Den Fall sofort komplett übernehmen<small>Löst die Situation schnell, bringt ihr aber wenig Lerngewinn.</small></button>
+        <button class="story-choice" onclick="teamLeadChoose('feedback','shame',0,-2,-3,-12,-1,-1)">❌ Die Unsicherheit vor dem Team kritisieren<small>Schwächt Vertrauen und Lernkultur.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const rating=teamLeadRating(total);
+  const feedback=state.teamLeadChoices.feedback;
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">16:10 Uhr • Feedbackgespräch</div>
+    <h2>${rating.label}</h2>
+    <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>${rating.id==='mentor'
+      ?'„Gute Supervision bedeutet, Verantwortung nicht abzunehmen, sondern Denken sicher zu ermöglichen. Das hast du heute gut gemacht.“'
+      :rating.id==='balanced'
+      ?'„Du hältst die Versorgung stabil. Der nächste Schritt ist, Lernmomente noch bewusster zu nutzen.“'
+      :'„Du kontrollierst viel selbst. Als Stationsarzt musst du lernen, andere besser werden zu lassen – nicht nur Fehler zu verhindern.“'}</p></div>
+    <div class="story-score">
+      <div><b>${total}/100</b><small>Führungswertung</small></div>
+      <div><b>${state.teaching}/100</b><small>Teaching</small></div>
+      <div><b>${state.juniorTrust}/100</b><small>Sofia-Vertrauen</small></div>
+    </div>
+    <div class="teamlead-result">👩🏻‍⚕️ Sofia: ${feedback==='coach'
+      ?'„Danke. So habe ich selbst verstanden, warum ich unsicher war.“'
+      :feedback==='takeover'
+      ?'„Ich war froh, dass du übernommen hast – aber beim nächsten Mal würde ich es gerne selbst besser verstehen.“'
+      :'„Ich werde beim nächsten Mal wahrscheinlich lieber jemand anderen fragen.“'}</div>
+    <div class="campaign-reward">Belohnung: <b>+1.700 € • +550 XP • +${rating.id==='mentor'?7:5} Ruf • +5 RP • +2 Prestige</b></div>
+    <button class="story-primary" onclick="completeTeamLead()">👨‍⚕️ Supervisionsabschnitt abschließen</button>
+  </div>`;
+}
+
 function personalCareerTitle(){
   return state.storyCareerTitle||'Assistenzarzt';
 }
@@ -4670,9 +4959,9 @@ function promotionHistoryText(){
 }
 function renderPromotionHub(){
   const hub=$('promotionHub');if(!hub)return;
-  if(!state.wardResponsibilityCompleted){hub.style.display='none';return}
+  if(!state.wardResponsibilityCompleted||state.promotionReviewCompleted){hub.style.display='none';return}
   hub.style.display='block';
-  const done=!!state.promotionReviewCompleted,score=promotionTotalScore(),rating=promotionRating(score);
+  const done=false,score=promotionTotalScore(),rating=promotionRating(score);
   hub.innerHTML=`
     <div class="promotion-head">
       <div><h4>🎓 Beförderungsbeurteilung</h4><p>${done?'Die erste große Karrierebeurteilung ist abgeschlossen.':'Nach deinem ersten eigenen Stationsbereich lädt Dr. Hartmann dich zur offiziellen Entwicklungsbeurteilung ein.'}</p></div>
@@ -4823,7 +5112,8 @@ const personalStoryMilestones=[
   {id:'team',icon:'🤝',name:'Team',done:()=>!!state.careerPathCompleted},
   {id:'rotation',icon:'🏥',name:'Rotation',done:()=>!!state.rotationCompleted},
   {id:'ward',icon:'🛏️',name:'Station',done:()=>!!state.wardResponsibilityCompleted},
-  {id:'promotion',icon:'🎓',name:'Beförderung',done:()=>!!state.promotionReviewCompleted}
+  {id:'promotion',icon:'🎓',name:'Beförderung',done:()=>!!state.promotionReviewCompleted},
+  {id:'supervision',icon:'👩🏻‍⚕️',name:'Supervision',done:()=>!!state.teamLeadCompleted}
 ];
 
 function currentPersonalStoryMilestone(){
@@ -5663,6 +5953,7 @@ function startCampaignExperience(){
   if(!state.rotationCompleted){startRotationStory();return}
   if(!state.wardResponsibilityCompleted){startWardStory();return}
   if(!state.promotionReviewCompleted){startPromotionReview();return}
+  if(!state.teamLeadCompleted){startTeamLeadStory();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -5867,6 +6158,7 @@ function renderModeUI(){
   const rotationOpen=state.careerPathCompleted&&!state.rotationCompleted;
   const wardOpen=state.rotationCompleted&&!state.wardResponsibilityCompleted;
   const promotionOpen=state.wardResponsibilityCompleted&&!state.promotionReviewCompleted;
+  const teamLeadOpen=state.promotionReviewCompleted&&!state.teamLeadCompleted;
   const focus=focusDef();
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
@@ -5876,6 +6168,7 @@ function renderModeUI(){
       :rotationOpen?`Woche 3 • ${focus?focus.name:'Rotation'}`
       :wardOpen?'Woche 4 • Eigener Stationsbereich'
       :promotionOpen?'Karriere-Review • Beförderung'
+      :teamLeadOpen?'Stationsarzt • Erste Supervision'
       :`${personalCareerTitle()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
@@ -5888,7 +6181,8 @@ function renderModeUI(){
       :rotationOpen?`Assistenzarzt • Woche 3 • ${focus?focus.icon+' '+focus.name:'erste Rotation'}`
       :wardOpen?`Assistenzarzt • Woche 4 • Autonomie ${effectiveAutonomy()}/100`
       :promotionOpen?`Assistenzarzt • Beförderungsreview • Leadership ${state.leadership||10}`
-      :`${personalCareerTitle()} • ${focus?focus.icon+' '+focus.name+' • ':''}Autonomie ${effectiveAutonomy()} • Leadership ${state.leadership||10}`;
+      :teamLeadOpen?`Stationsarzt • Supervision ${juniorName()} • Teaching ${state.teaching||10}`
+      :`${personalCareerTitle()} • ${focus?focus.icon+' '+focus.name+' • ':''}Leadership ${state.leadership||10} • Teaching ${state.teaching||10}`;
   }
   if($('prologueStatus')){
     $('prologueStatus').style.display=state.prologueCompleted?'none':'block';
@@ -5901,8 +6195,9 @@ function renderModeUI(){
   renderRotationHub();
   renderWardHub();
   renderPromotionHub();
+  renderTeamLeadHub();
   if($('campaignPlayBtn')){
-    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||wardOpen||promotionOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||wardOpen||promotionOpen||teamLeadOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
     $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
@@ -5911,6 +6206,7 @@ function renderModeUI(){
       :rotationOpen?`🏥 ${focus?focus.name:'Erste Rotation'} starten`
       :wardOpen?'🛏️ Eigenen Stationsbereich übernehmen'
       :promotionOpen?'🎓 Beförderungsbeurteilung beginnen'
+      :teamLeadOpen?'👩🏻‍⚕️ Erste Supervision als Stationsarzt'
       :chapter?`👨‍⚕️ Als ${personalCareerTitle()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
@@ -6007,7 +6303,7 @@ function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
   run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
-  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus()+campaignRankTimeBonus();
+  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus()+campaignRankTimeBonus()+teamLeadTimeBonus();
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -6202,7 +6498,7 @@ function finishCase(){
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
-    xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*rotationMasteryMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
+    xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*rotationMasteryMultiplier()*teamLeadXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
     let repGain=perfect?4:diagOK?1:-5;
     if(repGain<0)repGain=Math.min(0,repGain+careerRepShield());
 
@@ -6351,6 +6647,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('autonomy75',effectiveAutonomy()>=75);
   check('stationsarzt',!!state.promotionReviewCompleted&&personalCareerTitle()==='Stationsarzt');
   check('promotionDistinction',state.promotionOutcome==='distinction');
+  check('firstSupervision',!!state.teamLeadCompleted);
+  check('trustedSupervisor',(state.juniorTrust||0)>=75);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
