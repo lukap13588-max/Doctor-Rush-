@@ -1,4 +1,4 @@
-# Doctor Rush v0.9 – CLINIC FLOW 2.0
+# Doctor Rush v0.10 – DIAGNOSIS 2.0
 
 ## Dateien
 
@@ -14,116 +14,120 @@ Zusätzlich gibt es die `README.md` wieder als ZIP für den sicheren Download au
 1. Öffne dein Doctor-Rush-Repository.
 2. Ersetze nur die vorhandene `index.html`.
 3. Commit speichern.
-4. Öffne deine GitHub-Pages-Seite danach einmal mit `?v=0.9`.
+4. Öffne die GitHub-Pages-Seite danach einmal mit `?v=0.10`.
 
 ---
 
-## Neu in v0.9
+## Neu in v0.10
 
-### 🏥 Echter Patientenfluss
+### 💬 Anamnese-System
 
-Patienten durchlaufen jetzt sichtbar verschiedene Stationen.
+Patienten verraten jetzt beim ersten Kontakt nicht mehr sofort ihre komplette Geschichte.
 
-Typischer Ablauf:
+Stattdessen siehst du zunächst nur eine kurze Hauptbeschwerde.
 
-**Triage → Behandlungsraum → Labor / Bildgebung / Kardiologie / Notaufnahme / Eingriffsraum → Entlassung**
+Danach kannst du gezielte Fragen stellen:
 
-Welche Stationen angezeigt werden, hängt vom jeweiligen Patientenfall ab.
+- Verlauf und Beginn
+- Begleitsymptome
+- Risikofaktoren
+- allgemeine Zusatzfrage
 
-### 🧭 Live-Patientenweg
+Jede Frage kostet Schichtzeit.
 
-Während eines Falls siehst du:
+### 🧠 Hinweis-Score
 
-- aktuelle Station
-- bereits erledigte Stationen
-- noch offene Stationen
-- aktuelle Fallzeit
-- aktuellen Flow-Score
+Jede sinnvolle Anamnese-Frage erhöht deinen klinischen Hinweis-Score.
 
-Untersuchungen markieren automatisch die tatsächlich verwendete Station.
+Start:
+- 15/100
 
-Beispiele:
+Je gezielter du fragst, desto höher steigt der Wert.
 
-- Blutbild → Labor
-- Röntgen / CT / Ultraschall → Bildgebung
-- EKG → Kardiologie
-- Notfall-Protokoll → Notaufnahme
-- Eingriffs-Minigame → Eingriffsraum
+Ab 60 Punkten erhältst du eine **klinische Einordnung**, zum Beispiel:
 
-### 📊 Klinikbetrieb-Dashboard
+- Atemwege/Lunge
+- Neurologie
+- Herz/Kreislauf
+- Bauch/innere Organe
+- Harnwege
+- Gefäße
+- systemische Erkrankung
+- Haut/Weichteile
+- Verletzung
 
-Auf der Startseite gibt es einen neuen Bereich **Klinikbetrieb**.
+Die genaue Diagnose wird dabei nicht verraten.
 
-Er zeigt die letzte Schicht:
+### 💰 Anamnese-Bonus
 
-- durchschnittlicher Flow-Score
-- behandelte Patienten
-- durchschnittliche Fallzeit
-- größten Engpass
-- Stationsauslastung
+Wenn deine Diagnose richtig ist, bekommst du abhängig vom Hinweis-Score zusätzliche Belohnungen.
 
-### 🚧 Stationsauslastung
+Hoher Hinweis-Score:
+- mehr Geld
+- zusätzliche XP
+- zählt als starke Diagnose
 
-Für jede Station wird gespeichert, wie oft sie in der letzten Schicht genutzt wurde.
+### 🧠 Diagnostik-Dashboard
 
-Stark beanspruchte Stationen werden als hohe Auslastung markiert.
+Auf der Startseite gibt es jetzt **Diagnostik 2.0**.
 
-### 💰 Flow-Bonus
+Angezeigt werden:
 
-Effiziente Patientenwege bringen zusätzlich Geld:
+- insgesamt gestellte Anamnese-Fragen
+- starke Diagnosen
+- bester Hinweis-Score
+- Diagnostik-Rang
 
-- Flow 90–100 → +25 €
-- Flow 78–89 → +15 €
-- Flow 65–77 → +8 €
+Ränge:
 
-### 🏥 Live-Betrieb im Wartezimmer
+- Anfänger
+- Beobachter
+- Klinisch sicher
+- Diagnose-Profi
+- Diagnostiker
 
-Im Wartezimmer siehst du während der laufenden Schicht:
+### 🆕 4 neue Fälle
 
-- Nutzung von Triage
-- Behandlungsraum
-- Labor
-- Bildgebung
-- Kardiologie
-- Notaufnahme
-- Eingriffsraum
+- Eisenmangelanämie
+- Appendizitis
+- Benigner Lagerungsschwindel
+- Herpes Zoster
 
-Die aktuell stärkste Auslastung wird hervorgehoben.
+Diese Fälle profitieren besonders von einer guten Anamnese.
 
 ### 📋 Fallauswertung erweitert
 
-Nach jedem Patienten erscheinen zusätzlich:
+Nach einem Fall siehst du zusätzlich:
 
-- Klinik-Flow
-- Flow-Bewertung
-- Fallzeit
-- Flow-Bonus
+- Anamnese-Score
+- Anzahl gestellter Fragen
+- möglichen Anamnese-Bonus
 
 ### 📈 Schichtauswertung erweitert
 
-Nach jeder Schicht erscheinen:
+Am Ende der Schicht erscheinen zusätzlich:
 
-- durchschnittlicher Klinik-Flow
-- durchschnittliche Fallzeit
-- größter Engpass
+- Anzahl gestellter Anamnese-Fragen
+- Anzahl starker Diagnosen
 
 ### 🎯 Neue Tagesmission
 
-**Klinikfluss**
-- durchschnittlichen Flow von mindestens 80 erreichen
+**Gute Anamnese**
+- 3 starke Diagnosen in einer Schicht erreichen
 
 ### 🏆 Neue Erfolge
 
-**Perfekter Ablauf**
-- eine Schicht mit mindestens 90 Flow beenden
+**Guter Zuhörer**
+- insgesamt 50 Anamnese-Fragen stellen
 
-**Volle Auslastung**
-- 6 Patienten in einer Schicht behandeln
+**Klinischer Blick**
+- 10 starke Diagnosen erreichen
 
 ## Bestehende Systeme bleiben erhalten
 
 - Wartezimmer und Triage
 - stabiler Fallabschluss
+- Klinik-Flow und Stationsauslastung
 - Klinikräume
 - Medikamente und Apotheke
 - Arztkarriere
@@ -147,7 +151,7 @@ Nach jeder Schicht erscheinen:
 - keine externe JavaScript-Datei
 - keine externe CSS-Datei
 - Spielstand bleibt `doctorRushSaveV3`
-- v0.8-Spielstand kompatibel
+- v0.9-Spielstand kompatibel
 - JavaScript-Syntaxprüfung: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
