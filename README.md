@@ -1,4 +1,4 @@
-# Doctor Rush v0.8 – PROCEDURES & OPERATIONS
+# Doctor Rush v0.9 – CLINIC FLOW 2.0
 
 ## Dateien
 
@@ -14,94 +14,111 @@ Zusätzlich gibt es die `README.md` wieder als ZIP für den sicheren Download au
 1. Öffne dein Doctor-Rush-Repository.
 2. Ersetze nur die vorhandene `index.html`.
 3. Commit speichern.
-4. Öffne die GitHub-Pages-Seite einmal mit `?v=0.8`.
+4. Öffne deine GitHub-Pages-Seite danach einmal mit `?v=0.9`.
 
 ---
 
-## Neu in v0.8
+## Neu in v0.9
 
-### 🛠️ Neuer Eingriffsraum
+### 🏥 Echter Patientenfluss
 
-Die Klinik bekommt einen achten Raum:
+Patienten durchlaufen jetzt sichtbar verschiedene Stationen.
 
-**Eingriffsraum**
+Typischer Ablauf:
 
-- Freischaltung: 2.200 €
-- Level 1 bis 3
-- höhere Level geben mehr Eingriffsbonus
-- höhere Level sparen Zeit bei Eingriffs-Minigames
+**Triage → Behandlungsraum → Labor / Bildgebung / Kardiologie / Notaufnahme / Eingriffsraum → Entlassung**
 
-Wichtig:
-Patientenfälle bleiben auch ohne freigeschalteten Eingriffsraum spielbar.
-Nur das zusätzliche Minigame ist dann gesperrt.
+Welche Stationen angezeigt werden, hängt vom jeweiligen Patientenfall ab.
 
-### 🛠️ Eingriffs-Minigame
+### 🧭 Live-Patientenweg
 
-Bestimmte Patientenfälle haben jetzt einen optionalen vereinfachten Eingriff.
+Während eines Falls siehst du:
 
-Du musst mehrere Schritte in der richtigen Reihenfolge auswählen.
+- aktuelle Station
+- bereits erledigte Stationen
+- noch offene Stationen
+- aktuelle Fallzeit
+- aktuellen Flow-Score
 
-Beispiele der abstrakten Schritte:
+Untersuchungen markieren automatisch die tatsächlich verwendete Station.
 
-- Vorbereitung
-- Durchführung
-- Abschlusskontrolle
+Beispiele:
 
-Das Minigame enthält bewusst keine detaillierte echte Operationsanleitung.
+- Blutbild → Labor
+- Röntgen / CT / Ultraschall → Bildgebung
+- EKG → Kardiologie
+- Notfall-Protokoll → Notaufnahme
+- Eingriffs-Minigame → Eingriffsraum
 
-**Erfolgreicher Eingriff:**
-- Geldbonus
-- +20 XP
-- +1 Forschungspunkt
-- bessere Eingriffs-Statistik
+### 📊 Klinikbetrieb-Dashboard
 
-**Fehler:**
-- -1 Ruf
-- Zeitverlust
+Auf der Startseite gibt es einen neuen Bereich **Klinikbetrieb**.
 
-Das normale Diagnostizieren und der Fallabschluss werden nicht blockiert.
+Er zeigt die letzte Schicht:
 
-### 🧑‍⚕️ Eingriffs-Skill
+- durchschnittlicher Flow-Score
+- behandelte Patienten
+- durchschnittliche Fallzeit
+- größten Engpass
+- Stationsauslastung
 
-Neue Rangfolge:
+### 🚧 Stationsauslastung
 
-- Basis
-- Routiniert
-- Eingriffs-Profi
-- OP-Team
-- Spezialist
+Für jede Station wird gespeichert, wie oft sie in der letzten Schicht genutzt wurde.
 
-Angezeigt werden:
+Stark beanspruchte Stationen werden als hohe Auslastung markiert.
 
-- erfolgreich abgeschlossene Eingriffe
-- Trefferquote
-- perfekte Eingriffe
+### 💰 Flow-Bonus
 
-### 🆕 5 neue Fälle
+Effiziente Patientenwege bringen zusätzlich Geld:
 
-- Schnittverletzung
-- Hautabszess
-- Schulterluxation
-- Fremdkörper in der Hand
-- Akute Cholezystitis
+- Flow 90–100 → +25 €
+- Flow 78–89 → +15 €
+- Flow 65–77 → +8 €
 
-Akute Cholezystitis ist als seltener Fall markiert.
+### 🏥 Live-Betrieb im Wartezimmer
 
-### 📖 Fallbuch erweitert
+Im Wartezimmer siehst du während der laufenden Schicht:
 
-Fälle mit Eingriff werden zusätzlich mit **EINGRIFF** markiert.
+- Nutzung von Triage
+- Behandlungsraum
+- Labor
+- Bildgebung
+- Kardiologie
+- Notaufnahme
+- Eingriffsraum
+
+Die aktuell stärkste Auslastung wird hervorgehoben.
+
+### 📋 Fallauswertung erweitert
+
+Nach jedem Patienten erscheinen zusätzlich:
+
+- Klinik-Flow
+- Flow-Bewertung
+- Fallzeit
+- Flow-Bonus
+
+### 📈 Schichtauswertung erweitert
+
+Nach jeder Schicht erscheinen:
+
+- durchschnittlicher Klinik-Flow
+- durchschnittliche Fallzeit
+- größter Engpass
 
 ### 🎯 Neue Tagesmission
 
-- 2 Eingriffe in einer Schicht erfolgreich abschließen.
+**Klinikfluss**
+- durchschnittlichen Flow von mindestens 80 erreichen
 
 ### 🏆 Neue Erfolge
 
-**Ruhige Hand**
-- 10 Eingriffe erfolgreich
+**Perfekter Ablauf**
+- eine Schicht mit mindestens 90 Flow beenden
 
-**OP-Zentrum**
-- Eingriffsraum auf Level 3
+**Volle Auslastung**
+- 6 Patienten in einer Schicht behandeln
 
 ## Bestehende Systeme bleiben erhalten
 
@@ -116,6 +133,8 @@ Fälle mit Eingriff werden zusätzlich mit **EINGRIFF** markiert.
 - Fallbuch
 - Notfall-Protokolle
 - Notfall-Skill
+- Eingriffsraum
+- Eingriffs-Minigames
 - Schicht-Ereignisse
 - Tagesmissionen
 - Erfolge
@@ -128,7 +147,7 @@ Fälle mit Eingriff werden zusätzlich mit **EINGRIFF** markiert.
 - keine externe JavaScript-Datei
 - keine externe CSS-Datei
 - Spielstand bleibt `doctorRushSaveV3`
-- v0.7-Spielstand kompatibel
+- v0.8-Spielstand kompatibel
 - JavaScript-Syntaxprüfung: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.

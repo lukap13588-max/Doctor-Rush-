@@ -444,13 +444,102 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .procedure-result-good{color:var(--accent)}
 .procedure-result-bad{color:var(--danger)}
 
+
+/* ===== v0.9 CLINIC FLOW 2.0 ===== */
+.flow-dashboard{
+  margin-top:14px;padding:15px;border-radius:22px;
+  background:linear-gradient(155deg,rgba(19,50,76,.94),rgba(12,28,49,.98));
+  border:1px solid rgba(70,166,255,.32)
+}
+.flow-dashboard-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.flow-dashboard h3{margin:0;font-size:17px}
+.flow-dashboard p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.flow-score-pill{
+  padding:7px 10px;border-radius:999px;background:rgba(40,215,161,.11);
+  color:var(--accent);font-size:10px;font-weight:900;white-space:nowrap
+}
+.flow-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.flow-stat{
+  background:#0c1e35;border:1px solid #233b5d;border-radius:12px;
+  padding:8px 6px;text-align:center
+}
+.flow-stat b{display:block;font-size:12px}.flow-stat small{font-size:8.5px;color:var(--muted)}
+.station-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}
+.station-card{
+  background:#10213a;border:1px solid var(--line);border-radius:14px;padding:10px
+}
+.station-card.busy{
+  border-color:rgba(255,200,87,.40);
+  background:linear-gradient(145deg,rgba(255,200,87,.05),#10213a)
+}
+.station-card h4{margin:0;font-size:11px}
+.station-card small{display:block;color:var(--muted);font-size:9px;margin-top:3px}
+.station-load{
+  margin-top:7px;height:5px;border-radius:999px;background:#07182b;overflow:hidden
+}
+.station-load > i{display:block;height:100%;border-radius:999px;background:currentColor}
+.station-load-label{font-size:8.5px;color:var(--muted);margin-top:4px}
+
+.patient-flow{
+  margin:10px 0 12px;padding:11px;border-radius:16px;
+  background:#0d1f37;border:1px solid #274161
+}
+.patient-flow-head{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-bottom:9px}
+.patient-flow-head b{font-size:11px}
+.patient-flow-head span{font-size:9px;color:var(--muted)}
+.patient-flow-track{
+  display:flex;gap:6px;overflow-x:auto;padding-bottom:2px
+}
+.flow-step{
+  min-width:82px;padding:8px 7px;border-radius:12px;text-align:center;
+  background:#10233e;border:1px solid #294360;color:var(--muted)
+}
+.flow-step .icon{display:block;font-size:17px;margin-bottom:3px}
+.flow-step b{display:block;font-size:9px;color:#d5e5f5}
+.flow-step small{font-size:8px;color:var(--muted)}
+.flow-step.done{
+  background:rgba(40,215,161,.09);border-color:rgba(40,215,161,.34)
+}
+.flow-step.done b{color:var(--accent)}
+.flow-step.active{
+  background:rgba(70,166,255,.12);border-color:rgba(70,166,255,.45);
+  box-shadow:0 0 0 1px rgba(70,166,255,.08) inset
+}
+.flow-step.active b{color:#a9d4ff}
+.flow-step.skipped{opacity:.45}
+
+.flow-case-score{
+  margin-top:9px;display:grid;grid-template-columns:1fr 1fr;gap:7px
+}
+.flow-case-score > div{
+  background:#0d2037;border:1px solid #263f61;border-radius:12px;padding:8px;text-align:center
+}
+.flow-case-score b{display:block;font-size:11px}
+.flow-case-score small{font-size:8.5px;color:var(--muted)}
+
+.waiting-ops{
+  margin:10px 0 12px;padding:10px;border-radius:14px;
+  background:rgba(70,166,255,.07);border:1px solid rgba(70,166,255,.20)
+}
+.waiting-ops-head{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.waiting-ops-head b{font-size:11px}.waiting-ops-head span{font-size:9px;color:var(--muted)}
+.waiting-ops-row{display:flex;gap:6px;overflow-x:auto;margin-top:8px}
+.ops-chip{
+  white-space:nowrap;padding:6px 8px;border-radius:999px;
+  background:#10223c;border:1px solid #29415f;font-size:9px;color:#d8e8f7
+}
+.ops-chip.hot{border-color:rgba(255,200,87,.42);color:#ffe1a4}
+.result-flow-good{color:var(--accent)}
+.result-flow-mid{color:var(--warning)}
+@media(max-width:360px){.station-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.8 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.9 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -460,12 +549,29 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.8 • PROCEDURES & OPERATIONS</h2>
+          <h2>Clinic Life v0.9 • CLINIC FLOW 2.0</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
 
 
+
+
+        <section class="flow-dashboard">
+          <div class="flow-dashboard-head">
+            <div>
+              <h3>🏥 Klinikbetrieb</h3>
+              <p>Wie effizient bewegen sich Patienten durch deine Klinik?</p>
+            </div>
+            <div id="flowRating" class="flow-score-pill">FLOW 100</div>
+          </div>
+          <div class="flow-stats">
+            <div class="flow-stat"><b id="flowPatients">0</b><small>Letzte Schicht</small></div>
+            <div class="flow-stat"><b id="flowAvgTime">0 min</b><small>Ø Fallzeit</small></div>
+            <div class="flow-stat"><b id="flowBottleneck">–</b><small>Engpass</small></div>
+          </div>
+          <div id="stationGrid" class="station-grid"></div>
+        </section>
 
         <section class="procedure-skill-card">
           <div class="procedure-skill-head">
@@ -610,6 +716,13 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         </div>
         <div id="shiftEvent" class="event-banner"></div>
         <div id="shiftTeam" class="shift-team-strip"></div>
+        <div class="waiting-ops">
+          <div class="waiting-ops-head">
+            <b>🏥 Klinikbetrieb live</b>
+            <span id="waitingOpsScore">Flow 100</span>
+          </div>
+          <div id="waitingOpsRow" class="waiting-ops-row"></div>
+        </div>
         <div id="triageHint" class="triage-hint">Wähle den nächsten Patienten.</div>
         <div id="waitingPatients" class="waiting-patients"></div>
         <div class="summary-box">💡 Tipp: Dringende Patienten verschlechtern sich schneller. Mit dem <b>Notfallraum</b> gewinnst du mehr Zeit.</div>
@@ -630,7 +743,19 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         </div>
 
         <div id="activeTeam" class="shift-team-strip"></div>
+
         <div id="roomRoute" class="room-route">🏥 <b>Behandlungsraum</b> • Patient wird untersucht</div>
+        <section class="patient-flow">
+          <div class="patient-flow-head">
+            <b>🧭 Patientenweg</b>
+            <span id="patientFlowLabel">Triage → Behandlung</span>
+          </div>
+          <div id="patientFlowTrack" class="patient-flow-track"></div>
+          <div class="flow-case-score">
+            <div><b id="currentFlowScore">100</b><small>Flow-Score</small></div>
+            <div><b id="currentCaseMinutes">0 min</b><small>Fallzeit</small></div>
+          </div>
+        </section>
 
         <article class="patient-card">
           <div class="patient-head">
@@ -1208,6 +1333,195 @@ const departments = [
 
 
 
+
+const stationDefs=[
+  {id:'triage',icon:'🩺',name:'Triage'},
+  {id:'exam',icon:'🧑‍⚕️',name:'Behandlung'},
+  {id:'lab',icon:'🧪',name:'Labor'},
+  {id:'imaging',icon:'🩻',name:'Bildgebung'},
+  {id:'cardio',icon:'❤️',name:'Kardiologie'},
+  {id:'emergency',icon:'🚑',name:'Notaufnahme'},
+  {id:'surgery',icon:'🛠️',name:'Eingriffsraum'},
+  {id:'discharge',icon:'✅',name:'Entlassung'}
+];
+
+function blankStationUsage(){
+  const obj={};
+  stationDefs.forEach(s=>obj[s.id]=0);
+  return obj;
+}
+function flowStationName(id){
+  return (stationDefs.find(s=>s.id===id)||{}).name||id;
+}
+function flowStationIcon(id){
+  return (stationDefs.find(s=>s.id===id)||{}).icon||'•';
+}
+function ensureFlowState(){
+  if(!state.lastFlow||typeof state.lastFlow!=='object'){
+    state.lastFlow={score:100,patients:0,avgTime:0,bottleneck:'–',usage:blankStationUsage()};
+  }
+  if(!state.lastFlow.usage||typeof state.lastFlow.usage!=='object')state.lastFlow.usage=blankStationUsage();
+  stationDefs.forEach(s=>{
+    const n=Number(state.lastFlow.usage[s.id]);
+    state.lastFlow.usage[s.id]=Number.isFinite(n)&&n>=0?Math.floor(n):0;
+  });
+}
+function newPatientFlow(patient){
+  const planned=['triage','exam'];
+  if(patient.urgency==='high')planned.push('emergency');
+  planned.push('lab','imaging','cardio');
+  if(patient.procedure)planned.push('surgery');
+  planned.push('discharge');
+  return {
+    visited:['triage','exam'],
+    planned,
+    active:'exam',
+    minutes:0,
+    extraStops:0,
+    unnecessaryExams:0,
+    startedAt:run?run.timeLeft:0
+  };
+}
+function markFlowStation(id,minutes=0){
+  if(!patientFlow)return;
+  if(!patientFlow.visited.includes(id)){
+    patientFlow.visited.push(id);
+    if(!patientFlow.planned.includes(id))patientFlow.extraStops++;
+  }
+  patientFlow.active=id;
+  patientFlow.minutes+=Math.max(0,Number(minutes)||0);
+  if(run){
+    if(!run.stationUsage)run.stationUsage=blankStationUsage();
+    run.stationUsage[id]=(run.stationUsage[id]||0)+1;
+  }
+  renderPatientFlow();
+  renderWaitingOps();
+}
+function examStation(exam){
+  if(exam.req==='lab')return'lab';
+  if(exam.req==='imaging')return'imaging';
+  if(exam.req==='cardio')return'cardio';
+  return'exam';
+}
+function patientNeedsStation(patient,id){
+  if(id==='emergency')return patient.urgency==='high';
+  if(id==='surgery')return !!patient.procedure;
+  if(id==='lab')return patient.exams.some(e=>e.req==='lab');
+  if(id==='imaging')return patient.exams.some(e=>e.req==='imaging');
+  if(id==='cardio')return patient.exams.some(e=>e.req==='cardio');
+  return true;
+}
+function currentFlowScore(){
+  if(!patientFlow)return 100;
+  let score=100;
+  score-=patientFlow.extraStops*7;
+  score-=patientFlow.unnecessaryExams*5;
+  score-=Math.max(0,patientFlow.minutes-22);
+  if(current&&current.urgency==='high'&&patientFlow.visited.includes('emergency'))score+=5;
+  if(current&&current.procedure&&patientFlow.visited.includes('surgery'))score+=5;
+  return Math.max(35,Math.min(100,Math.round(score)));
+}
+function renderPatientFlow(){
+  const track=$('patientFlowTrack');
+  if(!track||!current||!patientFlow)return;
+  track.innerHTML='';
+  const visible=['triage','exam'];
+  ['emergency','lab','imaging','cardio','surgery'].forEach(id=>{
+    if(patientNeedsStation(current,id))visible.push(id);
+  });
+  visible.push('discharge');
+
+  visible.forEach(id=>{
+    const done=patientFlow.visited.includes(id) && patientFlow.active!==id;
+    const active=patientFlow.active===id;
+    const step=document.createElement('div');
+    step.className='flow-step'+(done?' done':'')+(active?' active':'');
+    step.innerHTML=`<span class="icon">${flowStationIcon(id)}</span><b>${flowStationName(id)}</b><small>${done?'erledigt':active?'aktuell':'offen'}</small>`;
+    track.appendChild(step);
+  });
+
+  const score=currentFlowScore();
+  if($('currentFlowScore'))$('currentFlowScore').textContent=score;
+  if($('currentCaseMinutes'))$('currentCaseMinutes').textContent=`${patientFlow.minutes} min`;
+  if($('patientFlowLabel'))$('patientFlowLabel').textContent=visible.map(flowStationName).join(' → ');
+}
+function flowRatingText(score){
+  if(score>=90)return'EXZELLENT';
+  if(score>=78)return'SEHR GUT';
+  if(score>=65)return'GUT';
+  if(score>=50)return'OK';
+  return'CHAOTISCH';
+}
+function stationLoadPercent(usage,maxUsage){
+  if(!maxUsage)return 0;
+  return Math.min(100,Math.round((usage/maxUsage)*100));
+}
+function renderFlowDashboard(){
+  ensureFlowState();
+  const f=state.lastFlow;
+  if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
+  if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
+  if($('flowAvgTime'))$('flowAvgTime').textContent=`${f.avgTime||0} min`;
+  if($('flowBottleneck'))$('flowBottleneck').textContent=f.bottleneck||'–';
+  const grid=$('stationGrid');
+  if(!grid)return;
+  grid.innerHTML='';
+  const usage=f.usage||blankStationUsage();
+  const maxUsage=Math.max(1,...Object.values(usage).map(Number));
+  stationDefs.filter(s=>s.id!=='discharge').forEach(st=>{
+    const value=usage[st.id]||0;
+    const percent=stationLoadPercent(value,maxUsage);
+    const card=document.createElement('div');
+    card.className='station-card'+(percent>=75&&value>0?' busy':'');
+    card.innerHTML=`<h4>${st.icon} ${st.name}</h4><small>${value} Nutzungen in letzter Schicht</small>
+      <div class="station-load"><i style="width:${percent}%"></i></div>
+      <div class="station-load-label">${percent>=75&&value>0?'Hohe Auslastung':'Auslastung normal'}</div>`;
+    grid.appendChild(card);
+  });
+}
+function renderWaitingOps(){
+  const row=$('waitingOpsRow');
+  if(!row||!run)return;
+  if(!run.stationUsage)run.stationUsage=blankStationUsage();
+  const entries=stationDefs.filter(s=>!['discharge'].includes(s.id)).map(s=>({
+    ...s,value:run.stationUsage[s.id]||0
+  }));
+  const max=Math.max(1,...entries.map(e=>e.value));
+  row.innerHTML=entries.map(e=>`<div class="ops-chip ${e.value===max&&e.value>0?'hot':''}">${e.icon} ${e.name}: ${e.value}</div>`).join('');
+  const liveScore=run.flowScores&&run.flowScores.length
+    ?Math.round(run.flowScores.reduce((a,b)=>a+b,0)/run.flowScores.length)
+    :100;
+  if($('waitingOpsScore'))$('waitingOpsScore').textContent=`Flow ${liveScore}`;
+}
+function finishPatientFlow(){
+  if(!patientFlow)return 100;
+  markFlowStation('discharge',0);
+  patientFlow.active='discharge';
+  const score=currentFlowScore();
+  if(run){
+    if(!run.flowScores)run.flowScores=[];
+    if(!run.flowTimes)run.flowTimes=[];
+    run.flowScores.push(score);
+    run.flowTimes.push(patientFlow.minutes);
+  }
+  renderPatientFlow();
+  return score;
+}
+function finalizeShiftFlow(){
+  if(!run)return;
+  const scores=run.flowScores||[];
+  const times=run.flowTimes||[];
+  const usage=run.stationUsage||blankStationUsage();
+  const score=scores.length?Math.round(scores.reduce((a,b)=>a+b,0)/scores.length):100;
+  const avgTime=times.length?Math.round(times.reduce((a,b)=>a+b,0)/times.length):0;
+  let bottleneck='–',highest=0;
+  stationDefs.filter(s=>!['triage','discharge'].includes(s.id)).forEach(s=>{
+    const v=usage[s.id]||0;
+    if(v>highest){highest=v;bottleneck=s.name;}
+  });
+  state.lastFlow={score,patients:run.treated||0,avgTime,bottleneck,usage:{...usage}};
+}
+
 const procedureSkillRanks=[
   {min:0,name:'BASIS'},{min:3,name:'ROUTINIERT'},{min:8,name:'EINGRIFFS-PROFI'},
   {min:15,name:'OP-TEAM'},{min:25,name:'SPEZIALIST'}
@@ -1320,6 +1634,7 @@ function resolveProcedureStep(option,correct,clicked){
     run.procedureAttempts=(run.procedureAttempts||0)+1;
     state.rep=Math.max(0,state.rep-1);run.rep-=1;
     run.timeLeft=Math.max(0,run.timeLeft-4);
+    markFlowStation('surgery',4);
     $('procedureStatus').className='procedure-status bad';
     $('procedureStatus').textContent=`⚠️ Eingriff nicht optimal. Besser wäre: ${correct}. -1 Ruf, -4 Minuten.`;
     beep(330,.12);updateHud();save();return;
@@ -1340,7 +1655,9 @@ function resolveProcedureStep(option,correct,clicked){
     procedureOutcome.money=money;procedureOutcome.xp=xp;procedureOutcome.rp=rp;
     state.money+=money;state.xp+=xp;state.researchPoints=(state.researchPoints||0)+rp;
     run.earned+=money;run.xp+=xp;run.researchEarned=(run.researchEarned||0)+rp;
-    run.timeLeft=Math.max(0,run.timeLeft-(3-procedureTimeReduction()));
+    const procMinutes=Math.max(1,3-procedureTimeReduction());
+    run.timeLeft=Math.max(0,run.timeLeft-procMinutes);
+    markFlowStation('surgery',procMinutes);
     $('procedureSteps').innerHTML='';
     $('procedureStatus').className='procedure-status good';
     $('procedureStatus').textContent=`✅ Eingriff gelungen. +${money} €, +${xp} XP, +${rp} RP.`;
@@ -1434,6 +1751,7 @@ function resolveEmergencyProtocol(option,set,clicked){
     state.emergencyProtocolCorrect=(state.emergencyProtocolCorrect||0)+1;
     run.protocolCorrect=(run.protocolCorrect||0)+1;run.earned+=25;run.xp+=15;run.researchEarned=(run.researchEarned||0)+1;
     run.timeLeft=Math.max(0,run.timeLeft-2);
+    markFlowStation('emergency',2);
     $('protocolFeedback').className='protocol-feedback good';
     $('protocolFeedback').textContent=`✅ Stabilisierung gelungen. +25 €, +15 XP, +1 RP • ${set.feedback}`;
     beep(930,.12);
@@ -1441,6 +1759,7 @@ function resolveEmergencyProtocol(option,set,clicked){
     clicked.classList.add('wrong');
     protocolOutcome={attempted:true,correct:false,money:0,xp:0,rp:0,rep:-2};
     state.rep=Math.max(0,state.rep-2);run.rep-=2;run.timeLeft=Math.max(0,run.timeLeft-5);
+    markFlowStation('emergency',5);
     $('protocolFeedback').className='protocol-feedback bad';
     $('protocolFeedback').textContent=`⚠️ Nicht optimal. -2 Ruf und 5 Minuten. Besser wäre: ${set.correct}.`;
     beep(330,.12);
@@ -1860,7 +2179,9 @@ const achievements = [
   {id:'protocol10', name:'Notfall-Profi', desc:'Schließe 10 Notfall-Protokolle korrekt ab.'},
   {id:'critical5', name:'Lebensretter', desc:'Behandle 5 dringende Fälle perfekt.'},
   {id:'procedure10', name:'Ruhige Hand', desc:'Schließe 10 Eingriffe erfolgreich ab.'},
-  {id:'surgeryMax', name:'OP-Zentrum', desc:'Baue den Eingriffsraum auf Level 3 aus.'}
+  {id:'surgeryMax', name:'OP-Zentrum', desc:'Baue den Eingriffsraum auf Level 3 aus.'},
+  {id:'flow90', name:'Perfekter Ablauf', desc:'Beende eine Schicht mit mindestens 90 Klinik-Flow.'},
+  {id:'throughput6', name:'Volle Auslastung', desc:'Behandle 6 Patienten in einer Schicht.'}
 ];
 
 const missions = [
@@ -1877,7 +2198,11 @@ const missions = [
   {id:'protocols', text:'Schließe in einer Schicht 2 Notfall-Protokolle korrekt ab.', rewardMoney:260, rewardXp:105,
    progress:r=>Math.min(r.protocolCorrect||0,2)/2, done:r=>(r.protocolCorrect||0)>=2, meta:r=>`${Math.min(r.protocolCorrect||0,2)}/2 Protokolle richtig`},
   {id:'procedures', text:'Schließe in einer Schicht 2 Eingriffe erfolgreich ab.', rewardMoney:280, rewardXp:115,
-   progress:r=>Math.min(r.procedureCorrect||0,2)/2, done:r=>(r.procedureCorrect||0)>=2, meta:r=>`${Math.min(r.procedureCorrect||0,2)}/2 Eingriffe erfolgreich`}
+   progress:r=>Math.min(r.procedureCorrect||0,2)/2, done:r=>(r.procedureCorrect||0)>=2, meta:r=>`${Math.min(r.procedureCorrect||0,2)}/2 Eingriffe erfolgreich`},
+  {id:'flow', text:'Erreiche einen durchschnittlichen Klinik-Flow von mindestens 80.', rewardMoney:300, rewardXp:120,
+   progress:r=>Math.min((r.flowScores&&r.flowScores.length?r.flowScores.reduce((a,b)=>a+b,0)/r.flowScores.length:0),80)/80,
+   done:r=>(r.flowScores&&r.flowScores.length?Math.round(r.flowScores.reduce((a,b)=>a+b,0)/r.flowScores.length):0)>=80,
+   meta:r=>`Flow ${r.flowScores&&r.flowScores.length?Math.round(r.flowScores.reduce((a,b)=>a+b,0)/r.flowScores.length):0}/80`}
 ];
 
 const defaultState = {
@@ -1895,7 +2220,8 @@ const defaultState = {
   criticalPerfect:0,
   procedureAttempts:0,
   procedureCorrect:0,
-  procedurePerfect:0
+  procedurePerfect:0,
+  lastFlow:{score:100,patients:0,avgTime:0,bottleneck:'–',usage:{triage:0,exam:0,lab:0,imaging:0,cardio:0,emergency:0,surgery:0,discharge:0}}
 };
 
 let state;
@@ -1925,6 +2251,7 @@ state.criticalPerfect=Number.isFinite(Number(state.criticalPerfect))&&Number(sta
 state.procedureAttempts=Number.isFinite(Number(state.procedureAttempts))&&Number(state.procedureAttempts)>=0?Math.floor(Number(state.procedureAttempts)):0;
 state.procedureCorrect=Number.isFinite(Number(state.procedureCorrect))&&Number(state.procedureCorrect)>=0?Math.floor(Number(state.procedureCorrect)):0;
 state.procedurePerfect=Number.isFinite(Number(state.procedurePerfect))&&Number(state.procedurePerfect)>=0?Math.floor(Number(state.procedurePerfect)):0;
+ensureFlowState();
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -1949,6 +2276,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
 let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, examined=new Set(), soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
+let patientFlow=null;
 let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
 
@@ -1969,7 +2297,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -1994,8 +2322,8 @@ function renderAchievements(){
 
 function startShift(){
   const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0};
-  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();save();showWaitingRoom();
+  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[]};
+  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
   // queue already holds all remaining patients; display first up to 3 by arrival order
@@ -2025,6 +2353,11 @@ function ageWaitingPatients(){
 
 function loadPatient(){
   selectedDiagnosis=null;selectedTreatment=null;examined=new Set();
+  patientFlow=newPatientFlow(current);
+  if(run){
+    run.stationUsage.triage=(run.stationUsage.triage||0)+1;
+    run.stationUsage.exam=(run.stationUsage.exam||0)+1;
+  }
   const route=$('roomRoute');
   if(route){
     route.innerHTML=current.urgency==='high' && state.upgrades.emergency
@@ -2035,7 +2368,7 @@ function loadPatient(){
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderEmergencyProtocol();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
+  renderPatientFlow();renderEmergencyProtocol();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -2060,7 +2393,10 @@ function adjustedExamTime(exam){
 }
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
 function renderExamButtons(){
-  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
+  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);
+    const station=examStation(e);
+    markFlowStation(station,time);
+    if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
 }
 function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis')selectedDiagnosis=item;else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})}
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
@@ -2144,7 +2480,10 @@ function finishCase(){
     consumeStock(selectedTreatment);
     run.timeLeft=Math.max(0,run.timeLeft-5);
 
+    const flowScore=finishPatientFlow();
     let reward=perfect?current.reward:diagOK?Math.round(current.reward*.45):0;
+    const flowBonus=flowScore>=90?25:flowScore>=78?15:flowScore>=65?8:0;
+    reward+=flowBonus;
     const researchTherapyBonus=perfect?Math.max(0,Math.round(reward*(researchPerfectMoneyMultiplier()-1))):0;
     reward+=researchTherapyBonus;
     const treatmentRoomBonus=Math.max(0,Math.round(reward*(clinicCashMultiplier()-1)));reward+=treatmentRoomBonus;
@@ -2195,6 +2534,7 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
+      ${flowBonus>0?`<div class='result-line'><span>Klinik-Flow</span><b>+${flowBonus} €</b></div>`:''}
       ${researchTherapyBonus>0?`<div class='result-line'><span>Forschungsbonus</span><b>+${researchTherapyBonus} €</b></div>`:''}
       ${treatmentRoomBonus>0?`<div class='result-line'><span>Raumbonus</span><b>+${treatmentRoomBonus} €</b></div>`:''}
       ${careerBonus>0?`<div class='result-line'><span>Karrierebonus</span><b>+${careerBonus} €</b></div>`:''}
@@ -2204,6 +2544,8 @@ function finishCase(){
       <div class='result-line'><span>Forschung</span><b class='result-rp'>+${researchGain} RP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
+      <div class='result-line'><span>Klinik-Flow</span><b class='${flowScore>=78?'result-flow-good':'result-flow-mid'}'>${flowScore} • ${flowRatingText(flowScore)}</b></div>
+      <div class='result-line'><span>Fallzeit</span><b>${patientFlow?patientFlow.minutes:0} min</b></div>
       <div class='result-line'><span>Restzeit</span><b>${run.timeLeft} min</b></div>
       ${current.urgency==='high'?`<div class='result-line'><span>Notfall-Protokoll</span><b class='${protocolOutcome.attempted?(protocolOutcome.correct?'protocol-result-good':'protocol-result-bad'):''}'>${protocolOutcome.attempted?(protocolOutcome.correct?'✅ Richtig':'⚠️ Fehler'):'Nicht gespielt'}</b></div>`:''}
       ${current.procedure?`<div class='result-line'><span>Eingriff</span><b class='${procedureOutcome.attempted?(procedureOutcome.correct?'procedure-result-good':'procedure-result-bad'):''}'>${procedureOutcome.attempted?(procedureOutcome.correct?'✅ Erfolgreich':'⚠️ Fehler'):(state.upgrades.surgery?'Nicht gespielt':'Raum gesperrt')}</b></div>`:''}
@@ -2224,12 +2566,13 @@ function nextPatient(){if(run.treated>=run.total||run.timeLeft<=0){endShift();re
 
 function endShift(reason=''){
   if(run)run.active=false;
+  finalizeShiftFlow();
   const missionDone=currentMission.done(run);let missionHtml=`<b>Tagesmission:</b> ${currentMission.text}<br><small>${currentMission.meta(run)}</small>`;
   if(missionDone){state.money+=currentMission.rewardMoney;state.xp+=currentMission.rewardXp;missionHtml+=`<br><br>✅ Mission geschafft: +${currentMission.rewardMoney} € und +${currentMission.rewardXp} XP`;beep(980,.14)}else missionHtml+='<br><br>❌ Mission nicht geschafft.';
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
-  $('missionResult').innerHTML=missionHtml+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -2244,6 +2587,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('critical5',(state.criticalPerfect||0)>=5);
   check('procedure10',(state.procedureCorrect||0)>=10);
   check('surgeryMax',!!state.upgrades.surgery&&roomLevel('surgery')>=3);
+  check('flow90',state.lastFlow&&state.lastFlow.score>=90);
+  check('throughput6',run&&run.treated>=6);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
