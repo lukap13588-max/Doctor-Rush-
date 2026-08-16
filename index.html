@@ -264,13 +264,27 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
   .room-card h4{font-size:13px}
 }
 
+
+/* ===== v0.5 TEAM & CAREER ===== */
+.career-card{margin-top:14px;background:linear-gradient(155deg,#172f50,#0d2038);border:1px solid #2b466d;border-radius:22px;padding:15px}
+.career-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.career-title{font-weight:900;font-size:17px}
+.career-rank{padding:7px 10px;border-radius:999px;background:rgba(40,215,161,.12);color:var(--accent);font-size:11px;font-weight:900}
+.career-sub{color:var(--muted);font-size:11px;margin-top:3px}.career-xp-row{display:flex;justify-content:space-between;color:var(--muted);font-size:11px;margin:12px 0 6px}
+.career-perks{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:10px}.career-perk{background:#0d1d33;border:1px solid #233b5d;border-radius:13px;padding:9px;text-align:center}.career-perk b{display:block;font-size:12px}.career-perk small{color:var(--muted);font-size:9px}
+.staff-grid{display:grid;gap:9px}.staff-card{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center;background:#10213a;border:1px solid var(--line);border-radius:16px;padding:12px}
+.staff-avatar{width:44px;height:44px;border-radius:14px;background:#1c3557;display:grid;place-items:center;font-size:25px}.staff-card h4{margin:0;font-size:14px}.staff-card p{margin:3px 0 0;color:var(--muted);font-size:10.5px;line-height:1.35}
+.staff-status{text-align:right;min-width:88px}.staff-status b{display:block;font-size:11px}.staff-status small{color:var(--muted);font-size:9px}.staff-status button{margin-top:6px;border:none;border-radius:10px;padding:8px 9px;background:#1d416c;color:#fff;font-weight:900;font-size:10px}.staff-status button:disabled{opacity:.45}
+.event-banner{margin:10px 0 12px;padding:11px 12px;border-radius:14px;background:rgba(255,200,87,.09);border:1px solid rgba(255,200,87,.28);color:#f6e6b7;font-size:11px;line-height:1.4}.event-banner.good{background:rgba(40,215,161,.09);border-color:rgba(40,215,161,.24);color:#c9f5e8}.event-banner.bad{background:rgba(255,102,122,.09);border-color:rgba(255,102,122,.24);color:#ffd0d7}.event-banner:empty{display:none}
+.specialty-list{display:grid;gap:8px}.specialty-card{display:flex;justify-content:space-between;gap:10px;align-items:center;padding:11px 12px;border-radius:14px;background:#10213a;border:1px solid var(--line)}.specialty-card.locked{opacity:.55}.specialty-card h4{margin:0;font-size:13px}.specialty-card small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.specialty-tag{font-size:9px;font-weight:900;padding:6px 8px;border-radius:999px;background:rgba(70,166,255,.12);color:var(--accent2)}.specialty-tag.on{background:rgba(40,215,161,.12);color:var(--accent)}
+.shift-team-strip{display:flex;gap:7px;overflow:auto;margin:10px 0 12px;padding-bottom:2px}.shift-team-chip{white-space:nowrap;background:#10213a;border:1px solid #2a4266;border-radius:999px;padding:7px 9px;font-size:10px;color:#dcecff}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • ONE-FILE BUILD</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.5 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -280,10 +294,23 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.4 • CLINIC EXPANSION</h2>
+          <h2>Clinic Life v0.5 • TEAM & CAREER</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
+
+        <section class="career-card">
+          <div class="career-head">
+            <div><div class="career-title">👨‍⚕️ Arztkarriere</div><div id="careerSubtitle" class="career-sub">Deine Karriere wächst mit jedem Patienten.</div></div>
+            <div id="careerRank" class="career-rank">Assistenzarzt</div>
+          </div>
+          <div class="career-xp-row"><span id="careerXpText">0 / 700 XP</span><span id="careerNextRank">→ Stationsarzt</span></div>
+          <div class="progress"><div id="careerProgress"></div></div>
+          <div class="career-perks">
+            <div class="career-perk"><b id="careerMoneyBonus">+0 %</b><small>Karriere-Geldbonus</small></div>
+            <div class="career-perk"><b id="careerRepBonus">+0</b><small>Rufschutz bei Fehlern</small></div>
+          </div>
+        </section>
 
         <div class="stats-grid four">
           <div class="stat"><span>💰</span><b id="homeMoney">500 €</b><small>Budget</small></div>
@@ -321,6 +348,16 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         </div>
 
         <div class="panel">
+          <div class="panel-head"><div class="panel-title">👥 Klinik-Team</div><div class="pill blue">Personal</div></div>
+          <div id="staffList" class="staff-grid"></div>
+        </div>
+
+        <div class="panel compact">
+          <div class="panel-head"><div class="panel-title">🎯 Spezialisierung</div><div class="pill">Karriere</div></div>
+          <div id="specialtyList" class="specialty-list"></div>
+        </div>
+
+        <div class="panel">
           <div class="panel-title">Management & Fortbildung</div>
           <div id="upgradeList" class="upgrade-list"></div>
         </div>
@@ -345,6 +382,8 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           </div>
           <div class="waiting-icon">🪑</div>
         </div>
+        <div id="shiftEvent" class="event-banner"></div>
+        <div id="shiftTeam" class="shift-team-strip"></div>
         <div id="triageHint" class="triage-hint">Wähle den nächsten Patienten.</div>
         <div id="waitingPatients" class="waiting-patients"></div>
         <div class="summary-box">💡 Tipp: Dringende Patienten verschlechtern sich schneller. Mit dem <b>Notfallraum</b> gewinnst du mehr Zeit.</div>
@@ -364,6 +403,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           <div class="progress"><div id="shiftProgress"></div></div>
         </div>
 
+        <div id="activeTeam" class="shift-team-strip"></div>
         <div id="roomRoute" class="room-route">🏥 <b>Behandlungsraum</b> • Patient wird untersucht</div>
 
         <article class="patient-card">
@@ -672,6 +712,59 @@ const departments = [
 ];
 
 
+
+const careerRanks=[
+  {name:'Assistenzarzt',minXp:0,money:0,repShield:0},
+  {name:'Stationsarzt',minXp:700,money:.03,repShield:1},
+  {name:'Facharzt',minXp:1600,money:.06,repShield:1},
+  {name:'Oberarzt',minXp:3000,money:.10,repShield:2},
+  {name:'Chefarzt',minXp:5000,money:.15,repShield:3}
+];
+const staffMembers=[
+  {id:'nurse',icon:'👩‍⚕️',name:'Pflegekraft',desc:'Spart Zeit in jeder Schicht.',hireCost:800,levelCost:550,maxLevel:3},
+  {id:'assistant',icon:'🧑‍⚕️',name:'Arztassistent',desc:'Erhöht die Fallbelohnung.',hireCost:1100,levelCost:700,maxLevel:3},
+  {id:'labtech',icon:'🧑‍🔬',name:'Labortechniker',desc:'Senkt Laborzeit und Laborkosten.',hireCost:1250,levelCost:800,maxLevel:3,requires:'lab'},
+  {id:'radiology',icon:'🩻',name:'Radiologie-Techniker',desc:'Beschleunigt Bildgebung.',hireCost:1500,levelCost:900,maxLevel:3,requires:'imaging'},
+  {id:'paramedic',icon:'🚑',name:'Notfallpfleger',desc:'Kritische Patienten warten sicherer.',hireCost:1600,levelCost:1000,maxLevel:3,requires:'emergency'}
+];
+const specialties=[
+  {id:'general',icon:'🩺',name:'Allgemeinmedizin',minRank:0,desc:'+5 % XP auf alle Fälle.'},
+  {id:'emergency',icon:'🚑',name:'Notfallmedizin',minRank:2,desc:'+20 % Belohnung bei dringenden Fällen.'},
+  {id:'cardio',icon:'❤️',name:'Kardiologie',minRank:2,desc:'+20 % Belohnung bei Herzfällen.'},
+  {id:'diagnostics',icon:'🔬',name:'Diagnostik',minRank:3,desc:'Untersuchungen zusätzlich 10 % günstiger.'}
+];
+const shiftEvents=[
+  {id:'quiet',type:'good',text:'Ruhiger Vormittag: +10 Minuten Schichtzeit.',apply:r=>{r.timeLeft+=10}},
+  {id:'rush',type:'bad',text:'Patientenansturm: -10 Minuten, dafür +10 % Geld.',apply:r=>{r.timeLeft=Math.max(45,r.timeLeft-10);r.eventMoneyMultiplier=1.10}},
+  {id:'donation',type:'good',text:'Spende erhalten: +150 € Klinikbudget.',apply:r=>{state.money+=150}},
+  {id:'supplier',type:'good',text:'Lieferantenrabatt: Medikamente heute 15 % günstiger.',apply:r=>{r.eventPharmacyDiscount=.15}},
+  {id:'staff_shortage',type:'bad',text:'Personalausfall: Untersuchungen dauern +1 Minute.',apply:r=>{r.eventExamTimePenalty=1}},
+  {id:'training_day',type:'good',text:'Fortbildungstag: +15 % XP in dieser Schicht.',apply:r=>{r.eventXpMultiplier=1.15}}
+];
+function currentCareerRank(){let rank=careerRanks[0],index=0;for(let i=0;i<careerRanks.length;i++)if(state.xp>=careerRanks[i].minXp){rank=careerRanks[i];index=i}return{rank,index}}
+function careerMoneyMultiplier(){return 1+currentCareerRank().rank.money}
+function careerRepShield(){return currentCareerRank().rank.repShield}
+function staffLevel(id){const n=Number(state.staff&&state.staff[id]);return Number.isFinite(n)&&n>0?Math.min(3,Math.floor(n)):0}
+function hiredStaffCount(){return staffMembers.filter(s=>staffLevel(s.id)>0).length}
+function staffTimeBonus(){const n=staffLevel('nurse');return n>0?4+(n-1)*3:0}
+function staffRewardMultiplier(){return 1+staffLevel('assistant')*.03}
+function staffLabDiscount(){return staffLevel('labtech')*.04}
+function staffLabTimeReduction(){return staffLevel('labtech')}
+function staffImagingTimeReduction(){return staffLevel('radiology')}
+function staffEmergencyTolerance(){return staffLevel('paramedic')}
+function staffUpgradeCost(member,level){return Math.round((member.levelCost*(1+(level-1)*.6))/50)*50}
+function specialtyUnlocked(spec){return currentCareerRank().index>=spec.minRank}
+function specialtyRewardMultiplier(patient){const id=state.specialty||'general';if(id==='emergency'&&patient.urgency==='high')return 1.20;if(id==='cardio'&&/Koronar|Herz|Kardio|Brust|EKG|Troponin/i.test([patient.correctDiagnosis,patient.complaint,...patient.exams.map(e=>e.name)].join(' ')))return 1.20;return 1}
+function specialtyXpMultiplier(){return(state.specialty||'general')==='general'?1.05:1}
+function specialtyExamDiscount(){return(state.specialty||'general')==='diagnostics'?.10:0}
+function renderCareer(){const{rank,index}=currentCareerRank(),next=careerRanks[index+1];if($('careerRank'))$('careerRank').textContent=rank.name;if($('careerSubtitle'))$('careerSubtitle').textContent=`${state.patientsTreated||0} Patienten behandelt • ${state.perfectCases||0} perfekte Fälle`;if($('careerMoneyBonus'))$('careerMoneyBonus').textContent=`+${Math.round(rank.money*100)} %`;if($('careerRepBonus'))$('careerRepBonus').textContent=`+${rank.repShield}`;if(next){const span=Math.max(1,next.minXp-rank.minXp),cur=Math.max(0,state.xp-rank.minXp);$('careerXpText').textContent=`${state.xp} / ${next.minXp} XP`;$('careerNextRank').textContent=`→ ${next.name}`;$('careerProgress').style.width=`${Math.min(100,Math.round(cur/span*100))}%`}else{$('careerXpText').textContent=`${state.xp} XP`;$('careerNextRank').textContent='Maximaler Rang';$('careerProgress').style.width='100%'}}
+function renderStaff(){const box=$('staffList');if(!box)return;box.innerHTML='';staffMembers.forEach(member=>{const level=staffLevel(member.id),requirementOk=!member.requires||!!state.upgrades[member.requires],card=document.createElement('div');card.className='staff-card';let button='';if(!requirementOk)button='<button disabled>Raum fehlt</button>';else if(level===0)button=`<button ${state.money>=member.hireCost?'':'disabled'}>Einstellen ${member.hireCost} €</button>`;else if(level<member.maxLevel){const cost=staffUpgradeCost(member,level);button=`<button ${state.money>=cost?'':'disabled'}>Level ${level+1} • ${cost} €</button>`}else button='<button disabled>MAX</button>';card.innerHTML=`<div class="staff-avatar">${member.icon}</div><div><h4>${member.name}</h4><p>${member.desc}</p></div><div class="staff-status"><b>${level?`Level ${level}`:'Nicht angestellt'}</b><small>${requirementOk?'Bereit':'Raum gesperrt'}</small>${button}</div>`;const btn=card.querySelector('button');if(btn&&!btn.disabled)btn.onclick=()=>{const current=staffLevel(member.id);if(current===0){if(state.money<member.hireCost)return;state.money-=member.hireCost;state.staff[member.id]=1;toast(`${member.name} eingestellt`)}else{const cost=staffUpgradeCost(member,current);if(state.money<cost||current>=member.maxLevel)return;state.money-=cost;state.staff[member.id]=current+1;toast(`${member.name} jetzt Level ${current+1}`)}beep(900,.09);save()};box.appendChild(card)})}
+function renderSpecialties(){const box=$('specialtyList');if(!box)return;box.innerHTML='';const currentId=state.specialty||'general';specialties.forEach(spec=>{const unlocked=specialtyUnlocked(spec),active=currentId===spec.id,row=document.createElement('div');row.className='specialty-card'+(!unlocked?' locked':'');row.innerHTML=`<div><h4>${spec.icon} ${spec.name}</h4><small>${spec.desc}</small></div><div class="specialty-tag ${active?'on':''}">${active?'AKTIV':unlocked?'WÄHLEN':`RANG ${spec.minRank+1}`}</div>`;if(unlocked&&!active)row.onclick=()=>{state.specialty=spec.id;save();toast(`${spec.name} gewählt`)};box.appendChild(row)})}
+function teamHtml(){const hired=staffMembers.filter(s=>staffLevel(s.id)>0);return hired.length?hired.map(s=>`<div class="shift-team-chip">${s.icon} ${s.name} L${staffLevel(s.id)}</div>`).join(''):'<div class="shift-team-chip">👤 Du arbeitest heute allein</div>'}
+function renderShiftTeam(){if($('shiftTeam'))$('shiftTeam').innerHTML=teamHtml();if($('activeTeam'))$('activeTeam').innerHTML=teamHtml()}
+function pickShiftEvent(){return shiftEvents[Math.floor(Math.random()*shiftEvents.length)]}
+function applyShiftEvent(){const event=pickShiftEvent();run.shiftEvent=event.id;run.eventMoneyMultiplier=1;run.eventXpMultiplier=1;run.eventPharmacyDiscount=0;run.eventExamTimePenalty=0;event.apply(run);if($('shiftEvent')){$('shiftEvent').className=`event-banner ${event.type||''}`;$('shiftEvent').textContent=`📣 ${event.text}`}}
+
 const clinicRooms = [
   {
     id:'waiting', icon:'🪑', name:'Wartezimmer', always:true, maxLevel:3, baseUpgrade:450,
@@ -732,7 +825,8 @@ function clinicCashMultiplier(){
 function pharmacyDiscount(){
   let d=state.upgrades.pharmacy ? 0.20 : 0;
   d += (roomLevel('pharmacy')-1)*0.05;
-  return Math.min(0.35,d);
+  if(run&&run.active&&run.eventPharmacyDiscount)d+=run.eventPharmacyDiscount;
+  return Math.min(0.50,d);
 }
 function roomEffect(room){
   const level=roomLevel(room.id);
@@ -860,7 +954,9 @@ const achievements = [
   {id:'triage', name:'Triage-Profi', desc:'Behandle 5 dringende Patienten rechtzeitig.'},
   {id:'combo4', name:'Diagnose-Serie', desc:'Erreiche eine 4er-Combo perfekter Fälle.'},
   {id:'clinic10', name:'Klinikbauer', desc:'Erreiche Klinikstufe 10.'},
-  {id:'allrooms', name:'Vollversorgung', desc:'Schalte alle Klinikräume frei.'}
+  {id:'allrooms', name:'Vollversorgung', desc:'Schalte alle Klinikräume frei.'},
+  {id:'team3', name:'Teamleiter', desc:'Stelle mindestens 3 Mitarbeiter ein.'},
+  {id:'chief', name:'Chefarzt', desc:'Erreiche den höchsten Karriere-Rang.'}
 ];
 
 const missions = [
@@ -878,7 +974,9 @@ const defaultState = {
   money:500, rep:50, xp:0, day:1, upgrades:{}, patientsTreated:0, perfectCases:0, urgentSaved:0,
   bestCombo:0, bestShift:0, achievements:{},
   inventory:{pain:5,antibiotic:4,glucose:5,inhaler:4,fluids:5,emergencyDrug:3},
-  roomLevels:{waiting:1,exam:1,lab:1,imaging:1,pharmacy:1,emergency:1,cardio:1}
+  roomLevels:{waiting:1,exam:1,lab:1,imaging:1,pharmacy:1,emergency:1,cardio:1},
+  staff:{nurse:0,assistant:0,labtech:0,radiology:0,paramedic:0},
+  specialty:'general'
 };
 
 let state;
@@ -898,6 +996,9 @@ if(!state.upgrades || typeof state.upgrades!=='object') state.upgrades={};
 if(!state.achievements || typeof state.achievements!=='object') state.achievements={};
 if(!state.inventory || typeof state.inventory!=='object') state.inventory={};
 if(!state.roomLevels || typeof state.roomLevels!=='object') state.roomLevels={};
+if(!state.staff || typeof state.staff!=='object') state.staff={};
+for(const member of staffMembers){const n=Number(state.staff[member.id]);state.staff[member.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0}
+if(!specialties.some(s=>s.id===state.specialty))state.specialty='general';
 for(const [k,v] of Object.entries(defaultState.roomLevels)){
   const n=Number(state.roomLevels[k]);
   state.roomLevels[k]=Number.isFinite(n) && n>=1 ? Math.min(3,Math.floor(n)) : v;
@@ -934,7 +1035,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderClinicMap();renderInventory();renderUpgrades();renderAchievements();
+  renderMissionCard();renderCareer();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -959,15 +1060,15 @@ function renderAchievements(){
 
 function startShift(){
   const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0};
-  fillWaitingRoom();renderMissionCard();showWaitingRoom();
+  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0};
+  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
   // queue already holds all remaining patients; display first up to 3 by arrival order
 }
 function showWaitingRoom(){
   if(run.treated>=run.total||run.queue.length===0||run.timeLeft<=0){endShift(run.timeLeft<=0?'Die Zeit ist abgelaufen.':'');return}
-  renderWaitingRoom();showScreen('waitingScreen')
+  renderWaitingRoom();renderShiftTeam();showScreen('waitingScreen')
 }
 function renderWaitingRoom(){
   $('waitingShiftText').textContent=`${run.treated}/${run.total} behandelt`;$('waitingTime').textContent=run.timeLeft+' min';$('waitingRep').textContent=state.rep;
@@ -983,7 +1084,7 @@ function selectPatient(id){
   loadPatient();showScreen('gameScreen');
 }
 function ageWaitingPatients(){
-  const extra=state.upgrades.emergency?roomLevel('emergency'):0;const collapsed=[];
+  const extra=(state.upgrades.emergency?roomLevel('emergency'):0)+staffEmergencyTolerance();const collapsed=[];
   for(const p of run.queue){p.wait++;const limit=(p.urgency==='high'?1:p.urgency==='medium'?3:99)+extra;if(p.wait>limit){collapsed.push(p.queueId);run.collapsed++;state.rep=Math.max(0,state.rep-(p.urgency==='high'?10:5));run.rep-=(p.urgency==='high'?10:5);if(p.urgency==='high')toast(`${p.name}: Zustand kritisch verschlechtert!`)}}
   run.queue=run.queue.filter(p=>!collapsed.includes(p.queueId));
 }
@@ -1009,14 +1110,17 @@ function adjustedCost(exam){
   if(cost<=0) return 0;
   let discount=0;
   if(exam.req==='lab' && state.upgrades.lab){
-    discount=0.20+(roomLevel('lab')-1)*0.05;
+    discount=0.20+(roomLevel('lab')-1)*0.05+staffLabDiscount();
   }
-  return Math.max(0,Math.ceil(cost*(1-discount)));
+  discount+=specialtyExamDiscount();
+  return Math.max(0,Math.ceil(cost*(1-Math.min(.65,discount))));
 }
 function adjustedExamTime(exam){
   let t=Number(exam.time)||0;
-  if(exam.req==='imaging' && state.upgrades.imaging) t-=(roomLevel('imaging')-1);
-  if(exam.req==='cardio' && state.upgrades.cardio) t-=(roomLevel('cardio')-1);
+  if(exam.req==='lab' && state.upgrades.lab)t-=staffLabTimeReduction();
+  if(exam.req==='imaging' && state.upgrades.imaging)t-=(roomLevel('imaging')-1)+staffImagingTimeReduction();
+  if(exam.req==='cardio' && state.upgrades.cardio)t-=(roomLevel('cardio')-1);
+  if(run&&run.eventExamTimePenalty)t+=run.eventExamTimePenalty;
   return Math.max(1,t);
 }
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
@@ -1106,12 +1210,17 @@ function finishCase(){
     run.timeLeft=Math.max(0,run.timeLeft-5);
 
     let reward=perfect?current.reward:diagOK?Math.round(current.reward*.45):0;
-    const treatmentRoomBonus=Math.max(0,Math.round(reward*(clinicCashMultiplier()-1)));
-    reward+=treatmentRoomBonus;
+    const treatmentRoomBonus=Math.max(0,Math.round(reward*(clinicCashMultiplier()-1)));reward+=treatmentRoomBonus;
+    const careerBonus=Math.max(0,Math.round(reward*(careerMoneyMultiplier()-1)));reward+=careerBonus;
+    const staffBonus=Math.max(0,Math.round(reward*(staffRewardMultiplier()-1)));reward+=staffBonus;
+    const specialtyBonus=Math.max(0,Math.round(reward*(specialtyRewardMultiplier(current)-1)));reward+=specialtyBonus;
+    if(run&&run.eventMoneyMultiplier)reward=Math.round(reward*run.eventMoneyMultiplier);
     if(state.upgrades.reception)reward+=10;
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
-    const repGain=perfect?4:diagOK?1:-5;
+    xpGain=Math.round(xpGain*specialtyXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
+    let repGain=perfect?4:diagOK?1:-5;
+    if(repGain<0)repGain=Math.min(0,repGain+careerRepShield());
 
     state.money+=reward;
     state.xp+=xpGain;
@@ -1148,6 +1257,9 @@ function finishCase(){
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
       ${treatmentRoomBonus>0?`<div class='result-line'><span>Raumbonus</span><b>+${treatmentRoomBonus} €</b></div>`:''}
+      ${careerBonus>0?`<div class='result-line'><span>Karrierebonus</span><b>+${careerBonus} €</b></div>`:''}
+      ${staffBonus>0?`<div class='result-line'><span>Teambonus</span><b>+${staffBonus} €</b></div>`:''}
+      ${specialtyBonus>0?`<div class='result-line'><span>Spezialisierung</span><b>+${specialtyBonus} €</b></div>`:''}
       <div class='result-line'><span>Erfahrung</span><b>+${xpGain} XP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
@@ -1168,6 +1280,7 @@ function finishCase(){
 function nextPatient(){if(run.treated>=run.total||run.timeLeft<=0){endShift();return}showWaitingRoom()}
 
 function endShift(reason=''){
+  if(run)run.active=false;
   const missionDone=currentMission.done(run);let missionHtml=`<b>Tagesmission:</b> ${currentMission.text}<br><small>${currentMission.meta(run)}</small>`;
   if(missionDone){state.money+=currentMission.rewardMoney;state.xp+=currentMission.rewardXp;missionHtml+=`<br><br>✅ Mission geschafft: +${currentMission.rewardMoney} € und +${currentMission.rewardXp} XP`;beep(980,.14)}else missionHtml+='<br><br>❌ Mission nicht geschafft.';
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
@@ -1178,7 +1291,9 @@ function endShift(reason=''){
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
   check('clinic10',clinicPower()>=10);
-  check('allrooms',clinicActiveRooms()===clinicRooms.length);if(got.length)toast('🏆 Neuer Erfolg!');return got}
+  check('allrooms',clinicActiveRooms()===clinicRooms.length);
+  check('team3',hiredStaffCount()>=3);
+  check('chief',currentCareerRank().index===careerRanks.length-1);if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
 renderHome();
