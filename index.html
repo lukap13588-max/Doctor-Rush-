@@ -867,13 +867,55 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 }
 .campaign-result-good{color:var(--accent)}
 
+
+/* ===== v0.16 UI & GAME MODES ===== */
+body.home-nav-active #app{padding-bottom:102px}
+.home-section-hidden{display:none!important}
+.home-page-header{display:none;margin-bottom:12px;padding:2px 2px 6px}
+.home-page-header.active{display:block}
+.home-page-header .eyebrow{margin-bottom:4px}
+.home-page-header h2{margin:0;font-size:24px}
+.home-page-header p{margin:5px 0 0;color:var(--muted);font-size:10.5px;line-height:1.45}
+.home-nav{position:fixed;z-index:80;left:50%;transform:translateX(-50%);bottom:max(8px,env(safe-area-inset-bottom));width:min(calc(100% - 20px),540px);padding:7px;border-radius:22px;background:rgba(8,20,36,.94);border:1px solid rgba(255,255,255,.10);box-shadow:0 18px 45px rgba(0,0,0,.38);backdrop-filter:blur(18px);display:grid;grid-template-columns:repeat(5,1fr);gap:4px}
+.home-nav button{min-width:0;border:none;background:transparent;color:var(--muted);padding:8px 2px 7px;border-radius:15px;font-size:8px;font-weight:800;display:grid;gap:3px;place-items:center}
+.home-nav button span{font-size:18px;line-height:1}
+.home-nav button.active{background:rgba(70,166,255,.13);color:#d7ebff}
+.mode-grid{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:14px;text-align:left}
+.mode-card{padding:13px;border-radius:18px;background:#10233e;border:1px solid #2b4568;display:flex;flex-direction:column;min-height:184px}
+.mode-card.campaign{background:linear-gradient(155deg,rgba(120,70,35,.33),#10233e);border-color:rgba(255,190,92,.30)}
+.mode-card.free{background:linear-gradient(155deg,rgba(32,93,92,.31),#10233e);border-color:rgba(40,215,161,.25)}
+.mode-icon{font-size:29px}.mode-card h3{font-size:13px;margin:7px 0 3px}
+.mode-card p{font-size:9.3px!important;line-height:1.4!important;margin:0!important;color:var(--muted)}
+.mode-card .mode-meta{font-size:8px;color:#c8d8e8;margin-top:7px;line-height:1.35}
+.mode-card button{margin-top:auto;border:none;border-radius:11px;padding:9px 7px;font-weight:900;font-size:9px}
+.mode-card.campaign button{background:linear-gradient(135deg,#b86c2c,#e99b3f);color:#fff}
+.mode-card.free button{background:linear-gradient(135deg,var(--accent),#11b8a6);color:#05241d}
+.home-quick-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin:12px 0}
+.home-quick{border:1px solid #263f60;background:#0e2139;color:#fff;border-radius:15px;padding:11px;text-align:left}
+.home-quick .quick-icon{font-size:20px}.home-quick b{display:block;margin-top:5px;font-size:11px}
+.home-quick small{display:block;margin-top:2px;font-size:8.5px;color:var(--muted);line-height:1.3}
+.career-subnav{display:none;gap:6px;overflow-x:auto;margin-top:10px;padding-bottom:2px}
+.career-subnav.active{display:flex}
+.career-subnav button{white-space:nowrap;border:1px solid #29435f;background:#10223b;color:var(--muted);border-radius:999px;padding:7px 10px;font-size:8.5px;font-weight:900}
+.career-subnav button.active{background:rgba(255,190,92,.10);border-color:rgba(255,190,92,.34);color:#ffd494}
+.doctor-profile-card{margin-top:10px;padding:11px;border-radius:14px;background:linear-gradient(145deg,rgba(255,190,92,.07),#0c1f35);border:1px solid rgba(255,190,92,.22);display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.doctor-profile-avatar{width:44px;height:44px;border-radius:14px;background:#1b3657;display:grid;place-items:center;font-size:25px}
+.doctor-profile-card b{font-size:11px}.doctor-profile-card small{display:block;color:var(--muted);font-size:8.5px;margin-top:2px}
+.doctor-profile-card button{border:1px solid #3a5475;background:#142b49;color:#dcecff;border-radius:9px;padding:7px 8px;font-size:8px;font-weight:900}
+.campaign-play{width:100%;margin-top:8px;border:none;border-radius:12px;padding:11px;background:linear-gradient(135deg,#b86c2c,#e99b3f);color:#fff;font-size:10px;font-weight:900}
+.campaign-play:disabled{opacity:.45}
+.campaign-mode-note{margin-top:7px;color:var(--muted);font-size:8.5px;line-height:1.4}
+.shift-mode-banner{margin:8px 0 10px;padding:8px 10px;border-radius:12px;background:rgba(70,166,255,.08);border:1px solid rgba(70,166,255,.20);color:#d5eaff;font-size:9px;font-weight:800;line-height:1.35}
+.shift-mode-banner.campaign{background:rgba(255,190,92,.08);border-color:rgba(255,190,92,.23);color:#ffe1ac}
+@media(max-width:360px){.mode-grid{grid-template-columns:1fr}.mode-card{min-height:145px}.home-nav button{font-size:7px}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.15 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.16 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -881,12 +923,45 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
     <main>
       <section id="homeScreen" class="screen active">
-        <div class="hero-card">
+        <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.15 • CAREER CAMPAIGN</h2>
-          <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
-          <button class="primary big" id="startBtn">Schicht starten</button>
+          <h2>Clinic Life v0.16 • UI & GAME MODES</h2>
+          <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
+          <div class="mode-grid">
+            <div class="mode-card campaign">
+              <div class="mode-icon">👨‍⚕️</div>
+              <h3>Kampagne</h3>
+              <p>Du spielst deinen eigenen Arzt und arbeitest dich Kapitel für Kapitel nach oben.</p>
+              <div id="homeCampaignMeta" class="mode-meta">Kapitel 1 • Mein Arzt</div>
+              <button id="campaignModeBtn" type="button">Kampagne öffnen</button>
+            </div>
+            <div class="mode-card free">
+              <div class="mode-icon">⚡</div>
+              <h3>Freie Schicht</h3>
+              <p>Die klassische schnelle Klinikschicht ohne Story-Zwang. Behandeln, verdienen, ausbauen.</p>
+              <div class="mode-meta">Sofort spielen • voller Klinikbetrieb</div>
+              <button id="freeShiftBtn" type="button">Freie Schicht starten</button>
+            </div>
+          </div>
         </div>
+        <div id="homePageHeader" class="home-page-header">
+          <div id="homeTabEyebrow" class="eyebrow">ÜBERSICHT</div>
+          <h2 id="homeTabTitle">Klinik</h2>
+          <p id="homeTabDescription">Verwalte einen Bereich deiner Klinik.</p>
+          <div id="careerSubnav" class="career-subnav">
+            <button type="button" data-career-sub="campaign">🎯 Kampagne</button>
+            <button type="button" data-career-sub="doctor">👨‍⚕️ Mein Arzt</button>
+            <button type="button" data-career-sub="knowledge">📚 Wissen</button>
+          </div>
+        </div>
+
+        <div id="homeQuickSummary" class="home-quick-grid">
+          <button class="home-quick" type="button" onclick="setHomeTab('career')"><span class="quick-icon">🎯</span><b id="quickCampaign">0/6 Kapitel</b><small>Kampagne & Arztkarriere</small></button>
+          <button class="home-quick" type="button" onclick="setHomeTab('clinic')"><span class="quick-icon">🏥</span><b id="quickHospital">Klinik</b><small>Räume & Krankenhaus-Ausbau</small></button>
+          <button class="home-quick" type="button" onclick="setHomeTab('team')"><span class="quick-icon">👥</span><b id="quickTeam">0 Mitarbeiter</b><small>Team & Müdigkeit</small></button>
+          <button class="home-quick" type="button" onclick="setHomeTab('finance')"><span class="quick-icon">💶</span><b id="quickFinance">0 €</b><small>Letztes Schichtergebnis</small></button>
+        </div>
+
 
 
 
@@ -911,6 +986,13 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
             <div><b id="campaignPrestige">0</b><small>Prestige</small></div>
             <div><b id="campaignPercent">0 %</b><small>Gesamtfortschritt</small></div>
           </div>
+          <div class="doctor-profile-card">
+            <div class="doctor-profile-avatar">🧑‍⚕️</div>
+            <div><b id="doctorProfileName">Mein Arzt</b><small id="doctorProfileMeta">Du bist der behandelnde Arzt der Story-Karriere.</small></div>
+            <button type="button" onclick="editDoctorProfile()">Name</button>
+          </div>
+          <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignShift()">Als eigener Arzt weiterspielen</button>
+          <div class="campaign-mode-note">v0.16 trennt Kampagne und freie Schicht. Als nächster Schritt wird daraus der persönliche Story-Prolog mit deinem ersten Arbeitstag.</div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -1070,14 +1152,14 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           </div>
         </section>
 
-        <div class="stats-grid four">
+        <div id="homeStats" class="stats-grid four">
           <div class="stat"><span>💰</span><b id="homeMoney">500 €</b><small>Budget</small></div>
           <div class="stat"><span>⭐</span><b id="homeRep">50</b><small>Ruf</small></div>
           <div class="stat"><span>🧠</span><b id="homeXp">0 XP</b><small>Erfahrung</small></div>
           <div class="stat"><span>🏥</span><b id="homeLevel">1</b><small>Klinik-Level</small></div>
         </div>
 
-        <div class="panel compact">
+        <div id="homeMissionCard" class="panel compact">
           <div class="panel-head"><div class="panel-title">Tagesmission</div><div class="pill">Bonus</div></div>
           <div id="missionText" class="mission-text">—</div>
           <div class="progress"><div id="missionProgress"></div></div>
@@ -1147,6 +1229,14 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           <div class="panel-title">Erfolge</div>
           <div id="achievementList" class="achievement-list"></div>
         </div>
+
+        <nav id="homeNav" class="home-nav" aria-label="Hauptnavigation">
+          <button type="button" data-home-nav="home" onclick="setHomeTab('home')"><span>🏠</span>Home</button>
+          <button type="button" data-home-nav="clinic" onclick="setHomeTab('clinic')"><span>🏥</span>Klinik</button>
+          <button type="button" data-home-nav="team" onclick="setHomeTab('team')"><span>👥</span>Team</button>
+          <button type="button" data-home-nav="career" onclick="setHomeTab('career')"><span>🎯</span>Karriere</button>
+          <button type="button" data-home-nav="finance" onclick="setHomeTab('finance')"><span>💶</span>Finanzen</button>
+        </nav>
       </section>
 
 
@@ -1163,6 +1253,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           </div>
           <div class="waiting-icon">🪑</div>
         </div>
+        <div id="waitingModeBanner" class="shift-mode-banner">⚡ FREIE SCHICHT</div>
         <div id="shiftEvent" class="event-banner"></div>
         <div id="shiftTeam" class="shift-team-strip"></div>
         <div class="waiting-ops">
@@ -1185,6 +1276,8 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           <span>⏱️ <b id="timeLeft">100</b> min</span>
           <span>📅 Tag <b id="day">1</b></span>
         </div>
+
+        <div id="gameModeBanner" class="shift-mode-banner">⚡ FREIE SCHICHT</div>
 
         <div class="progress-wrap">
           <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/6</span></div>
@@ -3838,7 +3931,11 @@ const defaultState = {
   lastFinance:{revenue:0,costs:0,profit:0,variable:0,payroll:0,operations:0,reserveUsed:0,equipmentWear:0},
   campaignClaimed:[],
   campaignPrestige:0,
-  totalCampaignRewards:0
+  totalCampaignRewards:0,
+  homeTab:'home',
+  careerSubtab:'campaign',
+  lastGameMode:'free',
+  doctorProfile:{name:'Mein Arzt'}
 };
 
 let state;
@@ -3891,6 +3988,12 @@ state.profitableShifts=Number.isFinite(Number(state.profitableShifts))&&Number(s
 if(!state.lastFinance||typeof state.lastFinance!=='object')state.lastFinance=JSON.parse(JSON.stringify(defaultState.lastFinance));
 ensureCampaignState();
 state.totalCampaignRewards=Number.isFinite(Number(state.totalCampaignRewards))&&Number(state.totalCampaignRewards)>=0?Math.floor(Number(state.totalCampaignRewards)):0;
+if(!['home','clinic','team','career','finance'].includes(state.homeTab))state.homeTab='home';
+if(!['campaign','doctor','knowledge'].includes(state.careerSubtab))state.careerSubtab='campaign';
+if(!['free','campaign'].includes(state.lastGameMode))state.lastGameMode='free';
+if(!state.doctorProfile||typeof state.doctorProfile!=='object')state.doctorProfile={name:'Mein Arzt'};
+if(typeof state.doctorProfile.name!=='string'||!state.doctorProfile.name.trim())state.doctorProfile.name='Mein Arzt';
+state.doctorProfile.name=state.doctorProfile.name.trim().slice(0,28);
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -3924,21 +4027,112 @@ const $=id=>document.getElementById(id);
 function save(){
   try{ localStorage.setItem('doctorRushSaveV3',JSON.stringify(state)); }
   catch(e){ console.warn('Speichern fehlgeschlagen',e); }
-  try{ renderHome(); }
+  try{const home=$('homeScreen');if(home&&home.classList.contains('active'))renderHome();}
   catch(e){ console.warn('Home-UI Aktualisierung fehlgeschlagen',e); }
 }
 function levelFromXp(xp){return 1+Math.floor(xp/350)}
 function hasDept(id){return id==='general'||!!state.upgrades[id]}
 function getMissionForDay(day){return missions[(day-1)%missions.length]}
-function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');window.scrollTo({top:0,behavior:'smooth'})}
+function showScreen(id){document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));$(id).classList.add('active');document.body.classList.toggle('home-nav-active',id==='homeScreen');if(id==='homeScreen')renderHome();window.scrollTo({top:0,behavior:'smooth'})}
 function toast(t){$('toast').textContent=t;$('toast').classList.add('show');setTimeout(()=>$('toast').classList.remove('show'),1700)}
 function beep(freq=660,dur=.055){if(!soundOn)return;try{const ac=new(window.AudioContext||window.webkitAudioContext)(),o=ac.createOscillator(),g=ac.createGain();o.frequency.value=freq;g.gain.value=.035;o.connect(g);g.connect(ac.destination);o.start();setTimeout(()=>{o.stop();ac.close()},dur*1000)}catch(e){}}
 function shuffle(arr){return[...arr].sort(()=>Math.random()-.5)}
 function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
+
+const homeTabConfig={
+  home:{eyebrow:'START',title:'Doctor Rush',description:'Wähle deinen Spielmodus oder springe direkt zu einem Klinikbereich.'},
+  clinic:{eyebrow:'MANAGEMENT',title:'Klinik',description:'Räume, Krankenhaus-Ausbau, Stationsfluss, Apotheke und Management.'},
+  team:{eyebrow:'PERSONAL',title:'Team',description:'Mitarbeiter, Erfahrung, Müdigkeit, Gehälter und Erholung.'},
+  career:{eyebrow:'KARRIERE',title:'Karriere',description:'Kampagne, dein Arzt, Forschung, Fallbuch und Fähigkeiten.'},
+  finance:{eyebrow:'BETRIEB',title:'Finanzen',description:'Gewinn, Kosten, Rücklagen, Wartung und Verträge.'}
+};
+function doctorDisplayName(){
+  const n=state.doctorProfile&&typeof state.doctorProfile.name==='string'?state.doctorProfile.name.trim():'';
+  return n||'Mein Arzt';
+}
+function editDoctorProfile(){
+  const current=doctorDisplayName()==='Mein Arzt'?'':doctorDisplayName();
+  const value=window.prompt('Wie soll dein Arzt in der Kampagne heißen?',current);
+  if(value===null)return;
+  state.doctorProfile.name=value.trim().slice(0,28)||'Mein Arzt';
+  save();toast(`Arztprofil: ${doctorDisplayName()}`);
+}
+function renderModeUI(){
+  const chapter=currentCampaignChapter();
+  if($('homeCampaignMeta'))$('homeCampaignMeta').textContent=`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
+  if($('doctorProfileName'))$('doctorProfileName').textContent=doctorDisplayName();
+  if($('doctorProfileMeta'))$('doctorProfileMeta').textContent=chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Kampagne abgeschlossen • Medical Center';
+  if($('campaignPlayBtn')){
+    $('campaignPlayBtn').disabled=!chapter;
+    $('campaignPlayBtn').textContent=chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
+  }
+}
+function renderHomeQuickSummary(){
+  if($('quickCampaign'))$('quickCampaign').textContent=`${campaignCompletedCount()}/${campaignChapters.length} Kapitel`;
+  if($('quickHospital'))$('quickHospital').textContent=hospitalTier();
+  if($('quickTeam'))$('quickTeam').textContent=`${hiredStaffCount()} Mitarbeiter`;
+  const p=state.lastFinance&&Number.isFinite(Number(state.lastFinance.profit))?Number(state.lastFinance.profit):0;
+  if($('quickFinance'))$('quickFinance').textContent=`${p>=0?'+':''}${p} €`;
+}
+function assignHomeSection(el,tab,careerSub=''){if(!el)return;el.dataset.homeTab=tab;if(careerSub)el.dataset.careerSub=careerSub}
+function setupHomeSections(){
+  assignHomeSection($('homeHero'),'home');assignHomeSection($('homeQuickSummary'),'home');assignHomeSection($('homeStats'),'home');assignHomeSection($('homeMissionCard'),'home');
+  assignHomeSection(document.querySelector('.hospital-expansion'),'clinic');assignHomeSection(document.querySelector('.flow-dashboard'),'clinic');assignHomeSection(document.querySelector('.clinic-overview'),'clinic');
+  assignHomeSection($('inventoryList')&&$('inventoryList').closest('.panel'),'clinic');assignHomeSection($('upgradeList')&&$('upgradeList').closest('.panel'),'clinic');
+  assignHomeSection(document.querySelector('.staff2-dashboard'),'team');
+  assignHomeSection(document.querySelector('.campaign-dashboard'),'career','campaign');
+  assignHomeSection(document.querySelector('.condition-dashboard'),'career','doctor');assignHomeSection(document.querySelector('.diagnostic-dashboard'),'career','doctor');assignHomeSection(document.querySelector('.procedure-skill-card'),'career','doctor');assignHomeSection(document.querySelector('.emergency-skill-card'),'career','doctor');assignHomeSection(document.querySelector('.career-card'),'career','doctor');assignHomeSection($('specialtyList')&&$('specialtyList').closest('.panel'),'career','doctor');
+  assignHomeSection(document.querySelector('.research-panel'),'career','knowledge');assignHomeSection($('casebookGrid')&&$('casebookGrid').closest('.panel'),'career','knowledge');assignHomeSection($('achievementList')&&$('achievementList').closest('.panel'),'career','knowledge');
+  assignHomeSection(document.querySelector('.finance-dashboard'),'finance');
+}
+function renderHomeTabContent(tab){
+  if(tab==='clinic'){renderHospitalExpansion();renderFlowDashboard();renderClinicMap();renderInventory();renderUpgrades()}
+  else if(tab==='team')renderStaff2();
+  else if(tab==='career'){
+    if(state.careerSubtab==='campaign')renderCampaign();
+    else if(state.careerSubtab==='doctor'){renderConditionDashboard();renderDiagnosticDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderSpecialties()}
+    else{renderResearch();renderCasebook();renderAchievements()}
+  }else if(tab==='finance')renderFinance();
+}
+function applyHomeVisibility(){
+  setupHomeSections();
+  const tab=state.homeTab||'home';
+  document.querySelectorAll('#homeScreen [data-home-tab]').forEach(el=>{
+    let show=el.dataset.homeTab===tab;
+    if(show&&tab==='career'&&el.dataset.careerSub)show=el.dataset.careerSub===state.careerSubtab;
+    el.classList.toggle('home-section-hidden',!show);
+  });
+  const cfg=homeTabConfig[tab]||homeTabConfig.home,header=$('homePageHeader');
+  if(header){header.classList.toggle('active',tab!=='home');$('homeTabEyebrow').textContent=cfg.eyebrow;$('homeTabTitle').textContent=cfg.title;$('homeTabDescription').textContent=cfg.description}
+  const sub=$('careerSubnav');
+  if(sub){sub.classList.toggle('active',tab==='career');sub.querySelectorAll('[data-career-sub]').forEach(btn=>btn.classList.toggle('active',btn.dataset.careerSub===state.careerSubtab))}
+  document.querySelectorAll('[data-home-nav]').forEach(btn=>btn.classList.toggle('active',btn.dataset.homeNav===tab));
+}
+function setHomeTab(tab){
+  if(!homeTabConfig[tab])tab='home';state.homeTab=tab;
+  try{localStorage.setItem('doctorRushSaveV3',JSON.stringify(state))}catch(e){}
+  renderHome();window.scrollTo({top:0,behavior:'smooth'});
+}
+function setCareerSubtab(sub){
+  if(!['campaign','doctor','knowledge'].includes(sub))return;state.careerSubtab=sub;
+  try{localStorage.setItem('doctorRushSaveV3',JSON.stringify(state))}catch(e){}
+  renderHome();window.scrollTo({top:0,behavior:'smooth'});
+}
+function openCampaignMode(){state.lastGameMode='campaign';state.homeTab='career';state.careerSubtab='campaign';try{localStorage.setItem('doctorRushSaveV3',JSON.stringify(state))}catch(e){}setHomeTab('career')}
+function startFreeShift(){state.lastGameMode='free';startShift('free')}
+function startCampaignShift(){if(!currentCampaignChapter()){toast('Die Kampagne ist bereits abgeschlossen.');return}state.lastGameMode='campaign';startShift('campaign')}
+function renderShiftModeBanners(){
+  if(!run)return;
+  const campaign=run.mode==='campaign',chapter=currentCampaignChapter();
+  const text=campaign?`🎯 KAMPAGNE • ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:'⚡ FREIE SCHICHT • Klinikmanagement ohne Story-Zwang';
+  ['waitingModeBanner','gameModeBanner'].forEach(id=>{const el=$(id);if(!el)return;el.textContent=text;el.className='shift-mode-banner'+(campaign?' campaign':'')});
+}
+function returnHomeAfterShift(){if(run&&run.mode==='campaign'){state.homeTab='career';state.careerSubtab='campaign'}else state.homeTab='home';showScreen('homeScreen')}
+
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderCampaign();renderFinance();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderModeUI();renderHomeQuickSummary();applyHomeVisibility();renderHomeTabContent(state.homeTab||'home');
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -3961,11 +4155,13 @@ function renderAchievements(){
   const list=$('achievementList');list.innerHTML='';achievements.forEach(a=>{const on=!!state.achievements[a.id],el=document.createElement('div');el.className='ach';el.innerHTML=`<div><div class='ach-name'>${on?'🏆':'🔒'} ${a.name}</div><small>${a.desc}</small></div><div class='status ${on?'on':'off'}'>${on?'ERHALTEN':'OFFEN'}</div>`;list.appendChild(el)})
 }
 
-function startShift(){
+document.querySelectorAll('[data-career-sub]').forEach(btn=>btn.addEventListener('click',()=>setCareerSubtab(btn.dataset.careerSub)));
+
+function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
-  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
+  run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
+  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
   // queue already holds all remaining patients; display first up to 3 by arrival order
@@ -4012,7 +4208,7 @@ function loadPatient(){
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -4287,7 +4483,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('campaignAll',campaignCompletedCount()===campaignChapters.length);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
-$('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
+$('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
+document.body.classList.add('home-nav-active');
 renderHome();
 
 </script>

@@ -1,183 +1,121 @@
-# Doctor Rush v0.15 – CAREER CAMPAIGN
+# Doctor Rush v0.16 – UI & GAME MODES
 
 ## Dateien
-
-Wie vereinbart:
 
 - `index.html`
 - `README.md`
 
-Zusätzlich liegt die `README.md` wieder als ZIP bei, damit der Download auf dem iPhone zuverlässig funktioniert.
+Die `README.md` liegt zusätzlich als ZIP bei, damit sie sich auf dem iPhone zuverlässig speichern lässt.
 
 ## GitHub-Update
 
-1. Ersetze im Doctor-Rush-Repository nur die bisherige `index.html`.
+1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush danach einmal mit `?v=0.15` öffnen.
+3. Doctor Rush einmal mit `?v=0.16` öffnen.
 
 ---
 
-# Neu in v0.15
+# Die zwei großen Änderungen
 
-## 🎯 Echte Karriere-Kampagne
+## 1. Schluss mit dem endlosen Dashboard
 
-Doctor Rush bekommt erstmals eine übergeordnete Kampagne.
+Doctor Rush besitzt jetzt eine feste mobile Navigation am unteren Bildschirmrand:
 
-Das Ziel ist nicht mehr nur, einzelne Schichten zu spielen.
+- 🏠 Home
+- 🏥 Klinik
+- 👥 Team
+- 🎯 Karriere
+- 💶 Finanzen
 
-Du entwickelst deine Einrichtung Schritt für Schritt:
+Die Systeme sind auf diese Seiten verteilt, statt alle untereinander zu stehen.
 
-**kleine Klinik → verlässliche Klinik → Diagnostikzentrum → Notfallzentrum → Regionalkrankenhaus → Medical Center**
+### Home
 
----
+Nur noch Spielmodus, Budget, Ruf, XP, Klinik-Level, Tagesmission und Schnellzugriffe.
 
-## 📚 6 Kampagnenkapitel
+### Klinik
 
-### Kapitel 1 – Die ersten Patienten
+Krankenhaus-Ausbau, Klinik-Flow, Räume, Apotheke und Management-Upgrades.
 
-Ziele:
+### Team
 
-- 3 Patienten behandeln
-- 35 Ruf erreichen
+Personal 2.0 mit Namen, Level, XP, Müdigkeit, Gehältern und Erholung.
 
-Belohnung:
+### Karriere
 
-- 500 €
-- 180 XP
-- 2 RP
-- 1 Prestige
+Zusätzlich unterteilt in:
 
-### Kapitel 2 – Eine verlässliche Klinik
+- **Kampagne**
+- **Mein Arzt**
+- **Wissen**
 
-Ziele:
+Damit werden Forschung, Fallbuch, Skills und Kampagne nicht mehr gleichzeitig als endlose Seite angezeigt.
 
-- 12 Patienten behandeln
-- mindestens 1 Mitarbeiter einstellen
-- mindestens 75 Klinik-Flow erreichen
+### Finanzen
 
-### Kapitel 3 – Diagnostisches Zentrum
-
-Ziele:
-
-- 5 starke Diagnosen
-- insgesamt 4 Forschungslevel
-- 8 Diagnosen im Fallbuch entdecken
-
-### Kapitel 4 – Bereit für Notfälle
-
-Ziele:
-
-- 5 dringende Patienten erfolgreich behandeln
-- 5 Notfall-Protokolle korrekt abschließen
-- 10 Patienten stabil beenden
-
-### Kapitel 5 – Das Regionalkrankenhaus
-
-Ziele:
-
-- 2 Krankenhaus-Großprojekte
-- 3 Mitarbeiter
-- 1.000 € Klinik-Rücklage
-
-### Kapitel 6 – Medical Center
-
-Finale Ziele:
-
-- alle 4 Krankenhaus-Großprojekte
-- alle 3 Klinikverträge
-- insgesamt 50 Patienten
-- 90 Ruf
+Gewinn/Verlust, Rücklage, Betriebskosten, Wartung und Klinikverträge.
 
 ---
 
-## 🎁 Kapitelbelohnungen
+# 🚀 Performance verbessert
 
-Jedes Kapitel gibt einmalig:
+Bisher wurde beim Speichern häufig das komplette Home-Dashboard neu aufgebaut – sogar während einer laufenden Patientenbehandlung.
 
-- Klinikbudget
-- XP
-- Forschungspunkte
-- Prestige
+Das passiert jetzt nicht mehr.
 
-Spätere Kapitel haben deutlich größere Belohnungen.
+Während einer Schicht wird Home nicht ständig im Hintergrund gerendert. Auf Home selbst wird nur der aktuell sichtbare Bereich aktualisiert.
 
----
-
-## 🌟 Prestige
-
-Abgeschlossene Kampagnenkapitel geben Prestige.
-
-Prestige zeigt deinen langfristigen Karrierefortschritt.
-
-Zusätzlich bringt es einen kleinen Bonus auf erfolgreiche Patientenfälle.
-
-Der Bonus ist bewusst begrenzt, damit die Wirtschaft nicht aus dem Gleichgewicht gerät.
+Das sollte Doctor Rush besonders auf dem iPhone deutlich flüssiger machen.
 
 ---
 
-## 🗺️ Kampagnen-Roadmap
+# 2. Zwei Spielmodi
 
-Auf der Startseite gibt es jetzt eine sichtbare Roadmap.
+## 👨‍⚕️ Kampagne
 
-Du siehst:
+Du spielst deinen eigenen Arzt.
 
-- abgeschlossene Kapitel
-- aktuelles Kapitel
-- kommende Kapitel
-- Gesamtfortschritt in Prozent
-- aktuelles Prestige
+Im Kampagnenbereich kannst du deinem Arzt einen Namen geben.
 
----
+Kampagnen-Schichten werden separat gekennzeichnet mit:
 
-## ✅ Live-Zielfortschritt
+- Name des Arztes
+- aktuellem Kapitel
+- Kampagnenmodus
 
-Jedes Kampagnenziel zeigt direkt:
+Die bestehende Kapitel-Kampagne bleibt erhalten.
 
-- aktuellen Wert
-- Zielwert
-- erledigt / offen
+Der nächste Schritt ist **v0.17 – Campaign Prologue**:
 
-Beispiele:
+- persönlicher erster Arbeitstag
+- Start als Assistenzarzt
+- Oberarzt und Story-Dialoge
+- erster eigener Patient
+- Entscheidungen aus Sicht deines Arztes
+- später Facharzt → Oberarzt → Chefarzt → eigene Klinik
 
-- 8/12 Patienten
-- 2/3 Mitarbeiter
-- 72/75 Flow
-- 3/5 starke Diagnosen
+## ⚡ Freie Schicht
 
----
+Der bisherige schnelle Modus bleibt erhalten.
 
-## 🎯 Neue Tagesmission
-
-**Kampagnen-Schub**
-
-Steigere den Fortschritt des aktuellen Kampagnenkapitels während einer Schicht deutlich.
+Direkt starten, Patienten behandeln, Geld verdienen, Personal entwickeln und die Klinik frei ausbauen – ohne Story-Zwang.
 
 ---
 
-## 🏆 Neue Erfolge
+# 👨‍⚕️ Eigenes Arztprofil
 
-### Auf Kurs
-3 Kampagnenkapitel abschließen.
+Im Kampagnenbereich kann der Name deines Arztes geändert werden.
 
-### Klinik-Legende
-Die komplette Karriere-Kampagne abschließen.
-
----
-
-## 📋 Schichtauswertung erweitert
-
-Nach einer Schicht siehst du jetzt zusätzlich:
-
-- abgeschlossene Kampagnenkapitel
-- gesamten Kampagnenfortschritt
+Dieser Name erscheint anschließend in Kampagnen-Schichten.
 
 ---
 
 ## Bestehende Systeme bleiben erhalten
 
-- Finanzen & Betrieb
-- Rücklagen
-- Wartung und Technikverschleiß
+- Kampagnenkapitel und Prestige
+- Finanzen
+- Rücklage
+- Wartung
 - Klinikverträge
 - Personal 2.0
 - Krankenhaus-Ausbau
@@ -186,25 +124,23 @@ Nach einer Schicht siehst du jetzt zusätzlich:
 - Anamnese
 - Klinik-Flow
 - Klinikräume
-- Medikamente
-- Karriere
+- Apotheke
 - Forschung
 - Fallbuch
-- Notfall-Protokolle
+- Notfälle
 - Eingriffe
 - Missionen
 - Erfolge
 
 ## Technisch
 
-- weiterhin **eine einzige `index.html`**
-- kein Service Worker
-- keine externen JavaScript- oder CSS-Dateien
+- weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.14-Spielstand kompatibel
-- Kampagnenfortschritt wird aus bestehenden Spielständen automatisch erkannt
+- v0.15-Spielstand kompatibel
+- keine externen JS-/CSS-Dateien
+- kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
-- Kernsysteme von v0.14 geprüft: **OK**
+- alte Voll-Dashboard-Renderkette entfernt: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
