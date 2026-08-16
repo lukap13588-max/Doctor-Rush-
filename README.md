@@ -1,16 +1,16 @@
-# Doctor Rush: Clinic Life v0.3.2 HOTFIX
+# Doctor Rush v0.3.3 STABLE – Ein-Datei-Version
 
-## Behoben
-- „Fall abschließen“ wird nicht mehr durch einen alten/fehlerhaften Spielstand blockiert.
-- Alte v0.3-Spielstände werden beim Laden automatisch normalisiert.
-- Fehlende Medikamentenbestände deaktivieren die Behandlung nicht mehr komplett.
-- Falls Material fehlt, wird beim Abschluss automatisch Notfallmaterial berechnet.
-- Der Abschlussbutton bleibt anklickbar und zeigt bei fehlender Diagnose/Behandlung eine klare Meldung.
-- Der alte Service-Worker wird nicht mehr registriert.
-- Spielstand bleibt unter `doctorRushSaveV3` erhalten.
+Diese Version wurde absichtlich auf **eine einzige Datei** reduziert, um iPhone-/GitHub-Pages-Cacheprobleme und gemischte Dateiversionen auszuschließen.
 
-## GitHub Pages
-Alle Dateien aus dieser ZIP wieder in dasselbe Verzeichnis hochladen/ersetzen.
-Danach einmal mit `?v=0.3.2` öffnen.
+## Upload auf GitHub
+1. Die bisherige `index.html` ersetzen.
+2. Die alte `game.js`, `style.css`, `sw.js`, `manifest.webmanifest` und `version.json` kannst du löschen. Sie werden nicht mehr benötigt.
+3. Danach einmal `?v=0.3.3` an deine GitHub-Pages-Adresse hängen.
+4. Wenn oben **Clinic Life v0.3.3 STABLE** steht, läuft die neue Version.
 
-Hinweis: Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
+## Fallabschluss
+- Der Button ist immer anklickbar.
+- Ohne Diagnose/Behandlung erscheint eine klare Meldung.
+- Fehlende Medikamente blockieren den Fall nicht.
+- Technische Fehler werden direkt unter dem Fall angezeigt statt still zu passieren.
+- Der bisherige Spielstand `doctorRushSaveV3` bleibt erhalten.
