@@ -724,13 +724,46 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 }
 @media(max-width:360px){.expansion-grid{grid-template-columns:1fr}}
 
+
+/* ===== v0.13 STAFF 2.0 ===== */
+.staff2-dashboard{margin-top:14px;padding:15px;border-radius:24px;background:linear-gradient(155deg,rgba(55,44,94,.78),rgba(13,30,52,.98));border:1px solid rgba(145,128,255,.32)}
+.staff2-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.staff2-head h3{margin:0;font-size:18px}.staff2-head p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.staff2-badge{padding:7px 10px;border-radius:999px;background:rgba(145,128,255,.13);color:#c7bdff;font-size:10px;font-weight:900;white-space:nowrap}
+.staff2-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.staff2-stat{background:#0c1e35;border:1px solid #263e5e;border-radius:12px;padding:8px 6px;text-align:center}
+.staff2-stat b{display:block;font-size:12px}.staff2-stat small{font-size:8.5px;color:var(--muted)}
+.staff2-grid{display:grid;gap:9px;margin-top:11px}
+.staff2-card{padding:12px;border-radius:16px;background:#10213a;border:1px solid #29435f}
+.staff2-card.tired{border-color:rgba(255,200,87,.42)}.staff2-card.exhausted{border-color:rgba(255,102,122,.50)}
+.staff2-top{display:grid;grid-template-columns:auto 1fr auto;gap:10px;align-items:center}
+.staff2-avatar{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:#1a3558;font-size:25px}
+.staff2-name{font-weight:900;font-size:12px}.staff2-role{font-size:9px;color:var(--muted);margin-top:2px}
+.staff2-level{text-align:right;font-size:9px;font-weight:900;color:#c8bfff}
+.staff2-bars{display:grid;gap:6px;margin-top:10px}
+.staff2-bar-row{display:grid;grid-template-columns:72px 1fr 48px;gap:7px;align-items:center}
+.staff2-bar-row span,.staff2-bar-row b{font-size:8.5px}.staff2-bar-row span{color:var(--muted)}.staff2-bar-row b{text-align:right}
+.staff2-bar{height:6px;border-radius:999px;background:#08192c;overflow:hidden}.staff2-bar i{display:block;height:100%;border-radius:999px}
+.staff2-bar.xp i{background:linear-gradient(90deg,#725cff,#57a8ff)}.staff2-bar.fatigue i{background:linear-gradient(90deg,#28d7a1,#ffc857,#ff667a)}
+.staff2-meta{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.staff2-meta div{background:#0b1d32;border:1px solid #223b58;border-radius:10px;padding:7px 5px;text-align:center}
+.staff2-meta b{display:block;font-size:9.5px}.staff2-meta small{font-size:8px;color:var(--muted)}
+.staff2-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.staff2-actions button{border:none;border-radius:10px;padding:9px 7px;font-size:9px;font-weight:900;color:white;background:#1d416c}
+.staff2-actions button.rest{background:linear-gradient(135deg,#7659a8,#9a78d0)}.staff2-actions button:disabled{opacity:.45}
+.staff2-perk{margin-top:8px;padding:8px 9px;border-radius:10px;background:rgba(40,215,161,.07);border:1px solid rgba(40,215,161,.18);font-size:8.8px;line-height:1.35;color:#d4efe6}
+.staff2-warning{margin-top:7px;padding:7px 8px;border-radius:10px;background:rgba(255,200,87,.08);border:1px solid rgba(255,200,87,.20);color:#ffe0a1;font-size:8.5px;line-height:1.35}
+.payroll-strip{margin-top:10px;padding:9px 10px;border-radius:12px;background:#0a1c31;border:1px solid #233d5a;display:flex;justify-content:space-between;gap:10px;font-size:9px}
+.payroll-strip span{color:var(--muted)}.payroll-strip b{color:#fff}
+.shift-team-chip.tired{border-color:rgba(255,200,87,.45);color:#ffe0a4}.shift-team-chip.exhausted{border-color:rgba(255,102,122,.48);color:#ffb0bc}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.12 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.13 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -740,7 +773,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.12 • HOSPITAL EXPANSION</h2>
+          <h2>Clinic Life v0.13 • STAFF 2.0</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -750,6 +783,21 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
 
 
+
+
+        <section class="staff2-dashboard">
+          <div class="staff2-head">
+            <div><h3>👥 Personal 2.0</h3><p>Mitarbeiter sammeln Erfahrung, werden müde und verursachen laufende Gehaltskosten.</p></div>
+            <div id="staff2Badge" class="staff2-badge">TEAM</div>
+          </div>
+          <div class="staff2-stats">
+            <div class="staff2-stat"><b id="staff2Count">0</b><small>Mitarbeiter</small></div>
+            <div class="staff2-stat"><b id="staff2Payroll">0 €</b><small>Gehalt/Schicht</small></div>
+            <div class="staff2-stat"><b id="staff2AvgFatigue">0 %</b><small>Ø Müdigkeit</small></div>
+          </div>
+          <div id="staff2Grid" class="staff2-grid"></div>
+          <div class="payroll-strip"><span>Nächste Personalkosten</span><b id="nextPayroll">0 €</b></div>
+        </section>
 
         <section class="hospital-expansion">
           <div class="hospital-expansion-head">
@@ -906,11 +954,6 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         <div class="panel compact">
           <div class="panel-head"><div class="panel-title">Klinikapotheke</div><div class="pill blue">Vorräte</div></div>
           <div id="inventoryList" class="inventory-list"></div>
-        </div>
-
-        <div class="panel">
-          <div class="panel-head"><div class="panel-title">👥 Klinik-Team</div><div class="pill blue">Personal</div></div>
-          <div id="staffList" class="staff-grid"></div>
         </div>
 
         <div class="panel compact">
@@ -1776,6 +1819,138 @@ const departments = [
 
 
 
+
+const staffNamePools={
+  nurse:['Anna','Julia','Leonie','Miriam','Sophie'],
+  assistant:['David','Jonas','Felix','Lukas','Marco'],
+  labtech:['Elena','Sarah','Nina','Clara','Maja'],
+  radiology:['Tobias','Daniel','Matthias','Florian','Simon'],
+  paramedic:['Lisa','Katrin','Max','Andreas','Nico']
+};
+const staffRoleData={
+  nurse:{salary:85,perk:'Spart Schichtzeit und unterstützt die Patientenversorgung.'},
+  assistant:{salary:105,perk:'Erhöht die Einnahmen pro erfolgreichem Fall.'},
+  labtech:{salary:115,perk:'Reduziert Laborzeit und Laborkosten.'},
+  radiology:{salary:125,perk:'Beschleunigt Bildgebung und reduziert Engpässe.'},
+  paramedic:{salary:135,perk:'Verbessert die Sicherheit bei dringenden Patienten.'}
+};
+function ensureStaffProfiles(){
+  if(!state.staffProfiles||typeof state.staffProfiles!=='object')state.staffProfiles={};
+  staffMembers.forEach((member,idx)=>{
+    if(!state.staffProfiles[member.id]||typeof state.staffProfiles[member.id]!=='object'){
+      const pool=staffNamePools[member.id]||['Teammitglied'];
+      state.staffProfiles[member.id]={name:pool[idx%pool.length],xp:0,fatigue:0,shifts:0};
+    }
+    const p=state.staffProfiles[member.id],pool=staffNamePools[member.id]||['Teammitglied'];
+    if(!p.name||typeof p.name!=='string')p.name=pool[idx%pool.length];
+    p.xp=Number.isFinite(Number(p.xp))&&Number(p.xp)>=0?Math.floor(Number(p.xp)):0;
+    p.fatigue=Number.isFinite(Number(p.fatigue))?Math.max(0,Math.min(100,Math.floor(Number(p.fatigue)))):0;
+    p.shifts=Number.isFinite(Number(p.shifts))&&Number(p.shifts)>=0?Math.floor(Number(p.shifts)):0;
+  });
+}
+function staffProfile(id){ensureStaffProfiles();return state.staffProfiles[id]}
+function staffXpToNext(id){return Math.max(100,100+staffLevel(id)*80)}
+function staffEfficiency(id){
+  if(staffLevel(id)<=0)return 0;
+  const f=staffProfile(id).fatigue;
+  let e=1-f*.0045;
+  if(f>=85)e-=.10;
+  return Math.max(.45,Math.min(1,e));
+}
+function effectiveStaffLevel(id){return staffLevel(id)*staffEfficiency(id)}
+function staffSalary(id){
+  const lvl=staffLevel(id);if(lvl<=0)return 0;
+  const base=(staffRoleData[id]||{salary:100}).salary;
+  return Math.round(base*(1+(lvl-1)*.25));
+}
+function totalPayroll(){return staffMembers.reduce((s,m)=>s+staffSalary(m.id),0)}
+function averageStaffFatigue(){
+  const hired=staffMembers.filter(m=>staffLevel(m.id)>0);
+  return hired.length?Math.round(hired.reduce((s,m)=>s+staffProfile(m.id).fatigue,0)/hired.length):0;
+}
+function staffFatigueClass(id){const f=staffProfile(id).fatigue;return f>=80?'exhausted':f>=55?'tired':''}
+function staffShiftUsage(id){
+  if(!run)return 0;const u=run.stationUsage||{};
+  if(id==='nurse'||id==='assistant')return Math.min(5,run.treated||0);
+  if(id==='labtech')return Math.min(5,u.lab||0);
+  if(id==='radiology')return Math.min(5,u.imaging||0);
+  if(id==='paramedic')return Math.min(5,u.emergency||0);
+  return 0;
+}
+function grantStaffShiftProgress(){
+  staffMembers.filter(m=>staffLevel(m.id)>0).forEach(member=>{
+    const p=staffProfile(member.id),usage=staffShiftUsage(member.id);
+    p.xp+=12+usage*6;
+    p.fatigue=Math.min(100,p.fatigue+10+usage*4);
+    p.shifts++;
+    const needed=staffXpToNext(member.id);
+    if(p.xp>=needed&&staffLevel(member.id)<member.maxLevel){
+      p.xp-=needed;state.staff[member.id]=staffLevel(member.id)+1;
+      if(run)run.staffPromotions=(run.staffPromotions||0)+1;
+    }
+  });
+}
+function restStaff(id){
+  if(staffLevel(id)<=0)return;
+  const p=staffProfile(id),cost=45+staffLevel(id)*15;
+  if(p.fatigue<=0){toast(`${p.name} ist bereits erholt.`);return}
+  if(state.money<cost){toast('Nicht genug Budget für Erholung.');return}
+  state.money-=cost;p.fatigue=Math.max(0,p.fatigue-35);beep(760,.08);save();toast(`${p.name} hat sich erholt.`);
+}
+function hireStaff2(id){
+  const member=staffMembers.find(m=>m.id===id);if(!member||staffLevel(id)>0)return;
+  const reqOk=!member.requires||!!state.upgrades[member.requires];
+  if(!reqOk){toast('Benötigter Klinikraum fehlt.');return}
+  if(state.money<member.hireCost){toast('Nicht genug Budget.');return}
+  state.money-=member.hireCost;state.staff[id]=1;
+  const p=staffProfile(id);p.xp=0;p.fatigue=0;p.shifts=0;
+  beep(900,.09);save();toast(`${p.name} wurde als ${member.name} eingestellt.`);
+}
+function renderStaff2(){
+  ensureStaffProfiles();
+  const hired=staffMembers.filter(m=>staffLevel(m.id)>0);
+  if($('staff2Count'))$('staff2Count').textContent=hired.length;
+  if($('staff2Payroll'))$('staff2Payroll').textContent=`${totalPayroll()} €`;
+  if($('staff2AvgFatigue'))$('staff2AvgFatigue').textContent=`${averageStaffFatigue()} %`;
+  if($('nextPayroll'))$('nextPayroll').textContent=`${totalPayroll()} €`;
+  if($('staff2Badge'))$('staff2Badge').textContent=hired.length>=5?'VOLLES TEAM':hired.length>=3?'KERNTEAM':'TEAM';
+  const grid=$('staff2Grid');if(!grid)return;grid.innerHTML='';
+  staffMembers.forEach(member=>{
+    const lvl=staffLevel(member.id),p=staffProfile(member.id),role=staffRoleData[member.id]||{perk:''};
+    const cls=staffFatigueClass(member.id),needed=staffXpToNext(member.id);
+    const xpPct=lvl>0&&lvl<member.maxLevel?Math.min(100,Math.round(p.xp/needed*100)):100;
+    const reqOk=!member.requires||!!state.upgrades[member.requires],restCost=45+Math.max(1,lvl)*15;
+    const card=document.createElement('div');card.className=`staff2-card ${cls}`;
+    card.innerHTML=`
+      <div class="staff2-top">
+        <div class="staff2-avatar">${member.icon}</div>
+        <div><div class="staff2-name">${lvl>0?p.name:member.name}</div><div class="staff2-role">${member.name}${lvl>0?` • ${p.shifts} Schichten`:''}</div></div>
+        <div class="staff2-level">${lvl>0?`LEVEL ${lvl}`:'NICHT<br>ANGESTELLT'}</div>
+      </div>
+      ${lvl>0?`
+        <div class="staff2-bars">
+          <div class="staff2-bar-row"><span>Erfahrung</span><div class="staff2-bar xp"><i style="width:${xpPct}%"></i></div><b>${lvl>=member.maxLevel?'MAX':`${p.xp}/${needed}`}</b></div>
+          <div class="staff2-bar-row"><span>Müdigkeit</span><div class="staff2-bar fatigue"><i style="width:${p.fatigue}%"></i></div><b>${p.fatigue}%</b></div>
+        </div>
+        <div class="staff2-meta">
+          <div><b>${staffSalary(member.id)} €</b><small>Gehalt</small></div>
+          <div><b>${Math.round(staffEfficiency(member.id)*100)} %</b><small>Leistung</small></div>
+          <div><b>${p.shifts}</b><small>Schichten</small></div>
+        </div>
+        <div class="staff2-perk">✨ ${role.perk}</div>
+        ${p.fatigue>=55?'<div class="staff2-warning">⚠️ Hohe Müdigkeit reduziert den Mitarbeiter-Bonus.</div>':''}
+        <div class="staff2-actions"><button type="button" disabled>${lvl>=member.maxLevel?'MAX LEVEL':`Auto-Level bei ${needed} XP`}</button><button type="button" class="rest" ${p.fatigue<=0||state.money<restCost?'disabled':''}>Erholen • ${restCost} €</button></div>
+      `:`
+        <div class="staff2-perk">✨ ${role.perk}</div>
+        <div class="staff2-actions"><button type="button" ${!reqOk||state.money<member.hireCost?'disabled':''}>${reqOk?`Einstellen • ${member.hireCost} €`:'Raum fehlt'}</button><button type="button" class="rest" disabled>Erholen</button></div>
+      `}`;
+    const buttons=card.querySelectorAll('button');
+    if(lvl<=0&&buttons[0]&&!buttons[0].disabled)buttons[0].onclick=()=>hireStaff2(member.id);
+    if(lvl>0&&buttons[1]&&!buttons[1].disabled)buttons[1].onclick=()=>restStaff(member.id);
+    grid.appendChild(card);
+  });
+}
+
 const hospitalProjects=[
   {
     id:'floor2',icon:'🏢',name:'2. Klinik-Etage',cost:3000,
@@ -2383,6 +2558,8 @@ state.bestConditionScore=Number.isFinite(Number(state.bestConditionScore))?Math.
 if(!state.expansions||typeof state.expansions!=='object')state.expansions={};
 hospitalProjects.forEach(p=>state.expansions[p.id]=!!state.expansions[p.id]);
 state.hospitalInvestment=Number.isFinite(Number(state.hospitalInvestment))&&Number(state.hospitalInvestment)>=0?Math.floor(Number(state.hospitalInvestment)):0;
+ensureStaffProfiles();
+state.totalPayrollPaid=Number.isFinite(Number(state.totalPayrollPaid))&&Number(state.totalPayrollPaid)>=0?Math.floor(Number(state.totalPayrollPaid)):0;
   const f=state.lastFlow;
   if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
   if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
@@ -2875,12 +3052,12 @@ function careerMoneyMultiplier(){return 1+currentCareerRank().rank.money}
 function careerRepShield(){return currentCareerRank().rank.repShield}
 function staffLevel(id){const n=Number(state.staff&&state.staff[id]);return Number.isFinite(n)&&n>0?Math.min(3,Math.floor(n)):0}
 function hiredStaffCount(){return staffMembers.filter(s=>staffLevel(s.id)>0).length}
-function staffTimeBonus(){const n=staffLevel('nurse');return n>0?4+(n-1)*3:0}
-function staffRewardMultiplier(){return 1+staffLevel('assistant')*.03}
-function staffLabDiscount(){return staffLevel('labtech')*.04}
-function staffLabTimeReduction(){return staffLevel('labtech')}
-function staffImagingTimeReduction(){return staffLevel('radiology')}
-function staffEmergencyTolerance(){return staffLevel('paramedic')}
+function staffTimeBonus(){const n=effectiveStaffLevel('nurse');return n>0?Math.round(4+Math.max(0,n-1)*3):0}
+function staffRewardMultiplier(){return 1+effectiveStaffLevel('assistant')*.03}
+function staffLabDiscount(){return effectiveStaffLevel('labtech')*.04}
+function staffLabTimeReduction(){return Math.floor(effectiveStaffLevel('labtech'))}
+function staffImagingTimeReduction(){return Math.floor(effectiveStaffLevel('radiology'))}
+function staffEmergencyTolerance(){return Math.floor(effectiveStaffLevel('paramedic'))}
 function staffUpgradeCost(member,level){return Math.round((member.levelCost*(1+(level-1)*.6))/50)*50}
 function specialtyUnlocked(spec){return currentCareerRank().index>=spec.minRank}
 function specialtyRewardMultiplier(patient){const id=state.specialty||'general';if(id==='emergency'&&patient.urgency==='high')return 1.20;if(id==='cardio'&&/Koronar|Herz|Kardio|Brust|EKG|Troponin/i.test([patient.correctDiagnosis,patient.complaint,...patient.exams.map(e=>e.name)].join(' ')))return 1.20;return 1}
@@ -2889,7 +3066,7 @@ function specialtyExamDiscount(){return(state.specialty||'general')==='diagnosti
 function renderCareer(){const{rank,index}=currentCareerRank(),next=careerRanks[index+1];if($('careerRank'))$('careerRank').textContent=rank.name;if($('careerSubtitle'))$('careerSubtitle').textContent=`${state.patientsTreated||0} Patienten behandelt • ${state.perfectCases||0} perfekte Fälle`;if($('careerMoneyBonus'))$('careerMoneyBonus').textContent=`+${Math.round(rank.money*100)} %`;if($('careerRepBonus'))$('careerRepBonus').textContent=`+${rank.repShield}`;if(next){const span=Math.max(1,next.minXp-rank.minXp),cur=Math.max(0,state.xp-rank.minXp);$('careerXpText').textContent=`${state.xp} / ${next.minXp} XP`;$('careerNextRank').textContent=`→ ${next.name}`;$('careerProgress').style.width=`${Math.min(100,Math.round(cur/span*100))}%`}else{$('careerXpText').textContent=`${state.xp} XP`;$('careerNextRank').textContent='Maximaler Rang';$('careerProgress').style.width='100%'}}
 function renderStaff(){const box=$('staffList');if(!box)return;box.innerHTML='';staffMembers.forEach(member=>{const level=staffLevel(member.id),requirementOk=!member.requires||!!state.upgrades[member.requires],card=document.createElement('div');card.className='staff-card';let button='';if(!requirementOk)button='<button disabled>Raum fehlt</button>';else if(level===0)button=`<button ${state.money>=member.hireCost?'':'disabled'}>Einstellen ${member.hireCost} €</button>`;else if(level<member.maxLevel){const cost=staffUpgradeCost(member,level);button=`<button ${state.money>=cost?'':'disabled'}>Level ${level+1} • ${cost} €</button>`}else button='<button disabled>MAX</button>';card.innerHTML=`<div class="staff-avatar">${member.icon}</div><div><h4>${member.name}</h4><p>${member.desc}</p></div><div class="staff-status"><b>${level?`Level ${level}`:'Nicht angestellt'}</b><small>${requirementOk?'Bereit':'Raum gesperrt'}</small>${button}</div>`;const btn=card.querySelector('button');if(btn&&!btn.disabled)btn.onclick=()=>{const current=staffLevel(member.id);if(current===0){if(state.money<member.hireCost)return;state.money-=member.hireCost;state.staff[member.id]=1;toast(`${member.name} eingestellt`)}else{const cost=staffUpgradeCost(member,current);if(state.money<cost||current>=member.maxLevel)return;state.money-=cost;state.staff[member.id]=current+1;toast(`${member.name} jetzt Level ${current+1}`)}beep(900,.09);save()};box.appendChild(card)})}
 function renderSpecialties(){const box=$('specialtyList');if(!box)return;box.innerHTML='';const currentId=state.specialty||'general';specialties.forEach(spec=>{const unlocked=specialtyUnlocked(spec),active=currentId===spec.id,row=document.createElement('div');row.className='specialty-card'+(!unlocked?' locked':'');row.innerHTML=`<div><h4>${spec.icon} ${spec.name}</h4><small>${spec.desc}</small></div><div class="specialty-tag ${active?'on':''}">${active?'AKTIV':unlocked?'WÄHLEN':`RANG ${spec.minRank+1}`}</div>`;if(unlocked&&!active)row.onclick=()=>{state.specialty=spec.id;save();toast(`${spec.name} gewählt`)};box.appendChild(row)})}
-function teamHtml(){const hired=staffMembers.filter(s=>staffLevel(s.id)>0);return hired.length?hired.map(s=>`<div class="shift-team-chip">${s.icon} ${s.name} L${staffLevel(s.id)}</div>`).join(''):'<div class="shift-team-chip">👤 Du arbeitest heute allein</div>'}
+function teamHtml(){const hired=staffMembers.filter(s=>staffLevel(s.id)>0);return hired.length?hired.map(s=>{const p=staffProfile(s.id),cls=staffFatigueClass(s.id);return `<div class="shift-team-chip ${cls}">${s.icon} ${p.name} • ${s.name} L${staffLevel(s.id)} • ${p.fatigue}% müde</div>`}).join(''):'<div class="shift-team-chip">👤 Du arbeitest heute allein</div>'}
 function renderShiftTeam(){if($('shiftTeam'))$('shiftTeam').innerHTML=teamHtml();if($('activeTeam'))$('activeTeam').innerHTML=teamHtml()}
 function pickShiftEvent(){return shiftEvents[Math.floor(Math.random()*shiftEvents.length)]}
 function applyShiftEvent(){const event=pickShiftEvent();run.shiftEvent=event.id;run.eventMoneyMultiplier=1;run.eventXpMultiplier=1;run.eventPharmacyDiscount=0;run.eventExamTimePenalty=0;event.apply(run);if($('shiftEvent')){$('shiftEvent').className=`event-banner ${event.type||''}`;$('shiftEvent').textContent=`📣 ${event.text}`}}
@@ -3132,7 +3309,9 @@ const achievements = [
   {id:'stable20', name:'Ruhige Station', desc:'Beende insgesamt 20 Patienten stabil.'},
   {id:'rescue5', name:'Krisenmanager', desc:'Rette 5 Patienten nach kritischer Verschlechterung.'},
   {id:'firstExpansion', name:'Grundstein', desc:'Schließe dein erstes Krankenhaus-Großprojekt ab.'},
-  {id:'fullHospital', name:'Medizinisches Zentrum', desc:'Schließe alle Krankenhaus-Großprojekte ab.'}
+  {id:'fullHospital', name:'Medizinisches Zentrum', desc:'Schließe alle Krankenhaus-Großprojekte ab.'},
+  {id:'staffVeteran', name:'Stammteam', desc:'Ein Mitarbeiter absolviert 10 Schichten.'},
+  {id:'payroll5000', name:'Arbeitgeber', desc:'Zahle insgesamt 5.000 € Personalgehälter.'}
 ];
 
 const missions = [
@@ -3162,7 +3341,11 @@ const missions = [
    meta:r=>`${Math.min(r.stableCases||0,4)}/4 Patienten stabil`},
   {id:'hospitalCapacity', text:'Behandle in einer ausgebauten Klinik mindestens 7 Patienten in einer Schicht.', rewardMoney:380, rewardXp:145,
    progress:r=>Math.min(r.treated||0,7)/7, done:r=>expansionUnlocked('floor2')&&(r.treated||0)>=7,
-   meta:r=>`${Math.min(r.treated||0,7)}/7 Patienten • ${expansionUnlocked('floor2')?'2. Etage aktiv':'2. Etage fehlt'}`}
+   meta:r=>`${Math.min(r.treated||0,7)}/7 Patienten • ${expansionUnlocked('floor2')?'2. Etage aktiv':'2. Etage fehlt'}`},
+  {id:'staffCare', text:'Beende eine Schicht mit mindestens 2 Mitarbeitern und höchstens 55 % durchschnittlicher Müdigkeit.', rewardMoney:260, rewardXp:115,
+   progress:r=>hiredStaffCount()>=2?Math.max(0,Math.min(1,(100-averageStaffFatigue())/45)):0,
+   done:r=>hiredStaffCount()>=2&&averageStaffFatigue()<=55,
+   meta:r=>`${hiredStaffCount()} Mitarbeiter • Ø ${averageStaffFatigue()} % Müdigkeit`}
 ];
 
 const defaultState = {
@@ -3189,7 +3372,9 @@ const defaultState = {
   rescuedCasesTotal:0,
   bestConditionScore:0,
   expansions:{floor2:false,specialistWing:false,icu:false,recovery:false},
-  hospitalInvestment:0
+  hospitalInvestment:0,
+  staffProfiles:{},
+  totalPayrollPaid:0
 };
 
 let state;
@@ -3267,7 +3452,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -3293,7 +3478,7 @@ function renderAchievements(){
 function startShift(){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0};
+  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll()};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -3556,13 +3741,24 @@ function nextPatient(){if(run.treated>=run.total||run.timeLeft<=0){endShift();re
 function endShift(reason=''){
   if(run)run.active=false;
   finalizeShiftFlow();
+  grantStaffShiftProgress();
+  const payroll=run?run.payroll||0:0;
+  if(payroll>0){
+    const before=state.money;
+    state.money=Math.max(0,state.money-payroll);
+    state.totalPayrollPaid=(state.totalPayrollPaid||0)+payroll;
+    if(before<payroll){
+      state.rep=Math.max(0,state.rep-2);
+      if(run){run.rep-=2;run.payrollShortfall=true}
+    }
+  }
   const missionDone=currentMission.done(run);let missionHtml=`<b>Tagesmission:</b> ${currentMission.text}<br><small>${currentMission.meta(run)}</small>`;
   if(missionDone){state.money+=currentMission.rewardMoney;state.xp+=currentMission.rewardXp;missionHtml+=`<br><br>✅ Mission geschafft: +${currentMission.rewardMoney} € und +${currentMission.rewardXp} XP`;beep(980,.14)}else missionHtml+='<br><br>❌ Mission nicht geschafft.';
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
   const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
-  $('missionResult').innerHTML=missionHtml+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -3585,6 +3781,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('rescue5',(state.rescuedCasesTotal||0)>=5);
   check('firstExpansion',expansionCount()>=1);
   check('fullHospital',expansionCount()===hospitalProjects.length);
+  check('staffVeteran',staffMembers.some(m=>staffProfile(m.id).shifts>=10));
+  check('payroll5000',(state.totalPayrollPaid||0)>=5000);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

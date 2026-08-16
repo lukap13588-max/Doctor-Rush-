@@ -1,186 +1,146 @@
-# Doctor Rush v0.12 – HOSPITAL EXPANSION
+# Doctor Rush v0.13 – STAFF 2.0
 
 ## Dateien
-
-Wie vereinbart:
 
 - `index.html`
 - `README.md`
 
-Zusätzlich gibt es die `README.md` als ZIP für den sicheren Download auf dem iPhone.
+Die `README.md` liegt zusätzlich als ZIP bei, damit der Download auf dem iPhone zuverlässig funktioniert.
 
 ## GitHub-Update
 
-1. Öffne dein Doctor-Rush-Repository.
-2. Ersetze nur die vorhandene `index.html`.
-3. Commit speichern.
-4. Öffne Doctor Rush danach einmal mit `?v=0.12`.
+1. Im Doctor-Rush-Repository die bisherige `index.html` ersetzen.
+2. Commit speichern.
+3. Doctor Rush einmal mit `?v=0.13` öffnen.
 
 ---
 
-# Neu in v0.12
+# Neu in v0.13
 
-## 🏥 Krankenhaus-Ausbau
+## 👥 Personal 2.0
 
-Doctor Rush wächst jetzt von einer Klinik zu einem medizinischen Zentrum.
+Deine Mitarbeiter sind jetzt echte Teammitglieder mit:
 
-Es gibt vier große Ausbauprojekte.
+- eigenem Namen
+- Level
+- Erfahrungspunkten
+- Müdigkeit
+- absolvierten Schichten
+- Gehalt
+- individueller Rolle und Bonus
 
-### 🏢 2. Klinik-Etage
+Die bisherigen Mitarbeiter aus deinem Spielstand werden automatisch übernommen.
 
-Kosten: **3.000 €**
+## ⭐ Erfahrung und automatische Entwicklung
 
-Voraussetzung:
-- mindestens 15 Patienten behandelt
+Nach jeder Schicht sammeln Mitarbeiter XP.
 
-Bonus:
-- +12 Minuten Schichtzeit
-- +1 Patient pro Schicht
+Wie viel XP sie bekommen, hängt von ihrer tatsächlichen Arbeit ab:
 
----
+- Pflegekraft und Arztassistent: behandelte Patienten
+- Labortechniker: Labornutzung
+- Radiologie-Techniker: Bildgebung
+- Notfallpfleger: Notfallversorgung
 
-### 🧑‍⚕️ Spezialisten-Flügel
+Bei genug XP steigt ein Mitarbeiter automatisch bis maximal Level 3 auf.
 
-Kosten: **4.200 €**
+## 😴 Müdigkeit
 
-Voraussetzungen:
-- 2. Klinik-Etage
-- mindestens 60 Ruf
+Nach jeder Schicht steigt die Müdigkeit.
 
-Bonus:
-- 5 % günstigere Untersuchungen
-- +5 % XP
+Stark beanspruchtes Personal wird schneller müde.
 
----
+Hohe Müdigkeit schwächt die tatsächlichen Boni des Mitarbeiters.
 
-### 🫀 Intensivbereich
+## 🛌 Erholung
 
-Kosten: **5.500 €**
+Mitarbeiter können im Personalbereich gezielt Erholung bekommen.
 
-Voraussetzungen:
-- 2. Klinik-Etage
-- mindestens 5 dringende Patienten gerettet
+- kostet Klinikbudget
+- reduziert Müdigkeit um 35 Punkte
+- stellt dadurch einen größeren Teil der Leistung wieder her
 
-Bonus:
-- dringende Patienten verschlechtern sich 30 % langsamer
-- allgemeine Stabilisierung wird stärker
+## 💶 Gehälter
 
----
+Jeder Mitarbeiter hat jetzt ein Gehalt pro Schicht.
 
-### 🛏️ Aufwach- & Nachsorgestation
+Höhere Level kosten mehr.
 
-Kosten: **4.800 €**
+Die Personalkosten werden am Ende der Schicht automatisch abgezogen.
 
-Voraussetzungen:
-- Spezialisten-Flügel
-- mindestens 3 erfolgreiche Eingriffe
+Reicht das Budget nicht:
 
-Bonus:
-- zusätzliche Stabilität nach richtiger Behandlung
-- bessere Erholung nach Eingriffen
-- +10 € auf Stabilitätsboni
+- Geld fällt nicht unter 0 €
+- die Klinik verliert 2 Ruf
 
----
+## 📊 Neues Personal-Dashboard
 
-## 🏥 Krankenhaus-Ränge
+Es zeigt:
 
-Mit jedem Großprojekt wächst deine Einrichtung.
+- Anzahl Mitarbeiter
+- Gesamtgehalt pro Schicht
+- durchschnittliche Müdigkeit
+- Namen
+- Level
+- XP
+- Müdigkeit
+- Gehalt
+- Leistung
+- absolvierte Schichten
+- Rollenbonus
 
-Stufen:
+## 👥 Team während der Schicht
 
-1. Klinik
-2. Regionalklinik
-3. Fachklinik
-4. Krankenhaus
-5. Medical Center
+In laufenden Schichten werden jetzt die persönlichen Namen angezeigt.
 
----
+Außerdem siehst du direkt die Müdigkeit des Teams.
 
-## 🏢 Neue Gebäudeansicht
+## 📈 Schichtauswertung
 
-Auf der Startseite siehst du jetzt einen vereinfachten Krankenhausaufbau:
+Neu:
 
-- Erdgeschoss
-- 2. Ebene
-- 3. Ebene
-
-Neue Bereiche erscheinen sichtbar, sobald sie freigeschaltet wurden.
-
----
-
-## 👥 Größere Schichten
-
-Die Grundkapazität bleibt bei 6 Patienten.
-
-Mit Ausbau:
-
-- 2. Etage → 7 Patienten
-- vollständig ausgebaute Klinik → bis zu 8 Patienten
-
-Dafür gibt die zweite Etage auch zusätzliche Schichtzeit.
-
----
-
-## 🆕 4 neue Patientenfälle
-
-- Vorhofflimmern
-- Pyelonephritis
-- Akute Pankreatitis
-- Erysipel
-
-Damit wächst das Fallbuch erneut.
-
----
+- Personalkosten
+- mögliche Beförderungen
+- Warnung bei Gehaltsengpass
 
 ## 🎯 Neue Tagesmission
 
-**Große Klinik**
+**Gutes Personalmanagement**
 
-- 2. Klinik-Etage besitzen
-- mindestens 7 Patienten in einer Schicht behandeln
-
----
+- mindestens 2 Mitarbeiter
+- höchstens 55 % durchschnittliche Müdigkeit
 
 ## 🏆 Neue Erfolge
 
-### Grundstein
-Erstes Krankenhaus-Großprojekt abschließen.
+### Stammteam
+Ein Mitarbeiter absolviert 10 Schichten.
 
-### Medizinisches Zentrum
-Alle vier Großprojekte abschließen.
-
----
+### Arbeitgeber
+Insgesamt 5.000 € Personalgehälter bezahlen.
 
 ## Bestehende Systeme bleiben erhalten
 
-- dynamischer Patientenzustand
-- Stabilisierung
-- Diagnose 2.0
-- Anamnese
+- Krankenhaus-Ausbau
+- Patientenstabilität
+- Diagnose 2.0 und Anamnese
 - Klinik-Flow
-- Stationsauslastung
-- Wartezimmer und Triage
 - Klinikräume
-- Medikamente und Apotheke
-- Arztkarriere
-- Personal
+- Medikamente
+- Karriere
 - Spezialisierungen
 - Forschung
 - Fallbuch
 - Notfall-Protokolle
-- Eingriffs-Minigames
-- Tagesmissionen
-- Erfolge
-- Geld, XP und Ruf
+- Eingriffe
+- Missionen und Erfolge
 
 ## Technisch
 
-- weiterhin **eine einzige `index.html`**
+- weiterhin nur **eine `index.html`**
 - kein Service Worker
-- keine externe JavaScript-Datei
-- keine externe CSS-Datei
+- keine externen JS-/CSS-Dateien
 - Spielstand bleibt `doctorRushSaveV3`
-- v0.11-Spielstand wird automatisch erweitert
+- v0.12-Spielstand kompatibel
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
 
