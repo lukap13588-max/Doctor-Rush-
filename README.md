@@ -1,30 +1,16 @@
-# Doctor Rush: Clinic Life v0.2
+# Doctor Rush: Clinic Life v0.3
 
-Neuer Mobile-Game-Prototyp rund um Medizin.
+## Neu
+- Wartezimmer mit 3 Patienten gleichzeitig
+- echte Triage: dringende Patienten können sich verschlechtern
+- Notfallraum-Upgrade für mehr Reaktionszeit
+- Klinikapotheke und Medikamentenvorräte
+- Medikamente nachkaufen und im Fall verbrauchen
+- 14 Patientenfälle
+- neue Notfälle: Schlaganfall und Anaphylaxie
+- neue Erfolge für Triage und Combos
+- Missionen, Klinik-Ausbau, Zeit, XP, Ruf und Autosave bleiben enthalten
 
-## Neu in Version 0.2
-- 12 Patientenfälle
-- 6 Patienten pro Schicht
-- Zeitmanagement pro Schicht
-- Tagesmissionen mit Boni
-- Freischaltbare Abteilungen: Labor, Bildgebung, Kardiologie
-- Erweiterte Klinik-Upgrades
-- Combo-System
-- Erfolge / Achievements
-- Bestwerte und Fortschritt bleiben gespeichert
+Standalone-Datei zum schnellen Testen oder ZIP als komplettes Projekt.
 
-## Schnell testen
-- Standalone-Datei direkt im Browser öffnen
-- oder ZIP entpacken und index.html lokal hosten
-
-## Lokal starten
-Am einfachsten über einen lokalen Webserver:
-1. Ordner entpacken
-2. Terminal im Ordner öffnen
-3. `python -m http.server 8080`
-4. Im Browser `http://localhost:8080`
-
-## Handy
-Am besten über GitHub Pages, Netlify, Vercel oder Cloudflare Pages hosten und dann am Handy zum Homescreen hinzufügen.
-
-Hinweis: Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
+Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
