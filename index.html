@@ -794,13 +794,86 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .economy-warning{margin-top:9px;padding:8px 9px;border-radius:11px;background:rgba(255,200,87,.08);border:1px solid rgba(255,200,87,.19);font-size:8.5px;color:#ffe2aa;line-height:1.35}
 .finance-result-good{color:var(--accent)}.finance-result-bad{color:var(--danger)}
 
+
+/* ===== v0.15 CAREER CAMPAIGN ===== */
+.campaign-dashboard{
+  margin-top:14px;padding:15px;border-radius:24px;
+  background:linear-gradient(155deg,rgba(80,52,32,.78),rgba(13,30,52,.98));
+  border:1px solid rgba(255,190,92,.34)
+}
+.campaign-head{display:flex;justify-content:space-between;gap:12px;align-items:flex-start}
+.campaign-head h3{margin:0;font-size:18px}
+.campaign-head p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.campaign-chapter-badge{
+  padding:7px 10px;border-radius:999px;background:rgba(255,190,92,.12);
+  color:#ffd494;font-size:10px;font-weight:900;white-space:nowrap
+}
+.campaign-progress{
+  margin-top:11px;padding:11px;border-radius:14px;background:#0c1f35;border:1px solid #27405e
+}
+.campaign-progress-top{display:flex;justify-content:space-between;gap:8px;font-size:9px}
+.campaign-progress-top span{color:var(--muted)}
+.campaign-progress-top b{color:#ffd494}
+.campaign-bar{height:8px;margin-top:6px;border-radius:999px;background:#07182a;overflow:hidden}
+.campaign-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#ff9e4d,#ffd36b);transition:.2s width}
+.campaign-card{
+  margin-top:10px;padding:12px;border-radius:16px;background:#10223b;border:1px solid #2b4665
+}
+.campaign-card.complete{border-color:rgba(40,215,161,.38);background:linear-gradient(145deg,rgba(40,215,161,.05),#10223b)}
+.campaign-card h4{margin:0;font-size:13px}
+.campaign-story{margin-top:5px;color:#d4e4f2;font-size:9.5px;line-height:1.45}
+.campaign-objectives{display:grid;gap:7px;margin-top:10px}
+.campaign-objective{
+  padding:8px 9px;border-radius:11px;background:#0a1c31;border:1px solid #233d59;
+  display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center
+}
+.campaign-objective.done{border-color:rgba(40,215,161,.28)}
+.campaign-objective-icon{font-size:14px}
+.campaign-objective-text{font-size:9px;line-height:1.35}
+.campaign-objective-text small{display:block;color:var(--muted);font-size:8px;margin-top:2px}
+.campaign-objective-value{font-size:8.5px;font-weight:900;color:#ffd494;text-align:right}
+.campaign-reward{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(255,190,92,.07);
+  border:1px solid rgba(255,190,92,.18);font-size:9px;line-height:1.4
+}
+.campaign-reward b{color:#ffd494}
+.campaign-claim{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#b86c2c,#e99b3f);color:white;font-weight:900;font-size:10px
+}
+.campaign-claim.ready{box-shadow:0 0 0 2px rgba(255,190,92,.12) inset}
+.campaign-claim:disabled{opacity:.45}
+.campaign-roadmap{
+  display:flex;gap:7px;overflow-x:auto;margin-top:10px;padding-bottom:2px
+}
+.campaign-road-step{
+  min-width:94px;padding:9px 8px;border-radius:13px;background:#0d2037;border:1px solid #29435f;
+  text-align:center;opacity:.52
+}
+.campaign-road-step.done{opacity:1;border-color:rgba(40,215,161,.28)}
+.campaign-road-step.active{opacity:1;border-color:rgba(255,190,92,.40);background:rgba(255,190,92,.07)}
+.campaign-road-step b{display:block;font-size:9px}
+.campaign-road-step small{display:block;color:var(--muted);font-size:7.8px;margin-top:3px}
+.campaign-meta{
+  display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:10px
+}
+.campaign-meta div{
+  background:#0c1f35;border:1px solid #263f5d;border-radius:11px;padding:8px 5px;text-align:center
+}
+.campaign-meta b{display:block;font-size:11px}.campaign-meta small{font-size:8px;color:var(--muted)}
+.campaign-finished{
+  margin-top:10px;padding:11px;border-radius:13px;background:rgba(40,215,161,.08);
+  border:1px solid rgba(40,215,161,.22);font-size:9.5px;line-height:1.45;color:#d7f3ea
+}
+.campaign-result-good{color:var(--accent)}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.14 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.15 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -810,7 +883,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.14 • ECONOMY & FINANCE</h2>
+          <h2>Clinic Life v0.15 • CAREER CAMPAIGN</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -822,6 +895,31 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
 
 
+
+
+        <section class="campaign-dashboard">
+          <div class="campaign-head">
+            <div>
+              <h3>🎯 Karriere-Kampagne</h3>
+              <p>Vom kleinen Behandlungszentrum bis zum voll ausgebauten Medical Center.</p>
+            </div>
+            <div id="campaignChapterBadge" class="campaign-chapter-badge">KAPITEL 1</div>
+          </div>
+
+          <div class="campaign-meta">
+            <div><b id="campaignCompleted">0/6</b><small>Kapitel</small></div>
+            <div><b id="campaignPrestige">0</b><small>Prestige</small></div>
+            <div><b id="campaignPercent">0 %</b><small>Gesamtfortschritt</small></div>
+          </div>
+
+          <div class="campaign-progress">
+            <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
+            <div class="campaign-bar"><i id="campaignProgressBar" style="width:0%"></i></div>
+          </div>
+
+          <div id="campaignRoadmap" class="campaign-roadmap"></div>
+          <div id="campaignContent"></div>
+        </section>
 
         <section class="finance-dashboard">
           <div class="finance-head">
@@ -1887,6 +1985,172 @@ const departments = [
 
 
 
+
+
+const campaignChapters=[
+  {
+    id:'firstSteps',title:'Die ersten Patienten',short:'Start',icon:'🩺',
+    story:'Deine Klinik ist eröffnet. Beweise, dass du die ersten Patienten sicher durch Diagnose und Behandlung bringen kannst.',
+    objectives:[
+      {id:'patients3',icon:'👤',text:'Behandle 3 Patienten',value:()=>state.patientsTreated||0,target:3},
+      {id:'rep35',icon:'⭐',text:'Erreiche 35 Ruf',value:()=>state.rep||0,target:35}
+    ],
+    reward:{money:500,xp:180,rp:2,prestige:1}
+  },
+  {
+    id:'reliableClinic',title:'Eine verlässliche Klinik',short:'Klinik',icon:'🏥',
+    story:'Mehr Patienten vertrauen dir. Jetzt brauchst du Personal, bessere Abläufe und einen stabilen Klinikbetrieb.',
+    objectives:[
+      {id:'patients12',icon:'👥',text:'Behandle insgesamt 12 Patienten',value:()=>state.patientsTreated||0,target:12},
+      {id:'staff1',icon:'🧑‍⚕️',text:'Stelle mindestens 1 Mitarbeiter ein',value:()=>hiredStaffCount(),target:1},
+      {id:'flow75',icon:'🧭',text:'Erreiche mindestens 75 Klinik-Flow',value:()=>state.lastFlow?state.lastFlow.score||0:0,target:75}
+    ],
+    reward:{money:800,xp:260,rp:3,prestige:1}
+  },
+  {
+    id:'diagnosticCenter',title:'Diagnostisches Zentrum',short:'Diagnostik',icon:'🧠',
+    story:'Gute Medizin beginnt mit guter Diagnostik. Entwickle Anamnese, Forschung und spezialisierte Untersuchungen weiter.',
+    objectives:[
+      {id:'strong5',icon:'🎯',text:'Erreiche 5 starke Diagnosen',value:()=>state.strongHistoryCases||0,target:5},
+      {id:'research4',icon:'🔬',text:'Erreiche insgesamt 4 Forschungslevel',value:()=>Object.values(state.research||{}).reduce((a,b)=>a+(Number(b)||0),0),target:4},
+      {id:'casebook8',icon:'📖',text:'Entdecke 8 Diagnosen im Fallbuch',value:()=>casebookCount(),target:8}
+    ],
+    reward:{money:1100,xp:340,rp:4,prestige:2}
+  },
+  {
+    id:'emergencyReady',title:'Bereit für Notfälle',short:'Notfall',icon:'🚨',
+    story:'Deine Klinik muss auch dann funktionieren, wenn jede Minute zählt. Baue echte Notfallkompetenz auf.',
+    objectives:[
+      {id:'urgent5',icon:'🛟',text:'Behandle 5 dringende Patienten erfolgreich',value:()=>state.urgentSaved||0,target:5},
+      {id:'protocol5',icon:'🚑',text:'Schließe 5 Notfall-Protokolle korrekt ab',value:()=>state.emergencyProtocolCorrect||0,target:5},
+      {id:'stable10',icon:'❤️‍🩹',text:'Beende 10 Patienten stabil',value:()=>state.stableCasesTotal||0,target:10}
+    ],
+    reward:{money:1500,xp:450,rp:5,prestige:2}
+  },
+  {
+    id:'regionalHospital',title:'Das Regionalkrankenhaus',short:'Ausbau',icon:'🏢',
+    story:'Aus der Klinik wird ein Krankenhaus. Investitionen, Personal und wirtschaftliche Stabilität werden jetzt genauso wichtig wie Medizin.',
+    objectives:[
+      {id:'expansion2',icon:'🏗️',text:'Schließe 2 Krankenhaus-Großprojekte ab',value:()=>expansionCount(),target:2},
+      {id:'staff3',icon:'👥',text:'Beschäftige 3 Mitarbeiter',value:()=>hiredStaffCount(),target:3},
+      {id:'reserve1000',icon:'🏦',text:'Baue 1.000 € Rücklage auf',value:()=>state.financialReserve||0,target:1000}
+    ],
+    reward:{money:2200,xp:600,rp:6,prestige:3}
+  },
+  {
+    id:'medicalCenter',title:'Medical Center',short:'Finale',icon:'🏆',
+    story:'Dein Ziel ist erreicht, wenn Medizin, Personal, Ausbau und Wirtschaft als ein System funktionieren.',
+    objectives:[
+      {id:'allExpansion',icon:'🏥',text:'Schließe alle 4 Großprojekte ab',value:()=>expansionCount(),target:4},
+      {id:'contracts3',icon:'📑',text:'Aktiviere alle 3 Klinikverträge',value:()=>activeContractCount(),target:3},
+      {id:'patients50',icon:'👨‍👩‍👧‍👦',text:'Behandle insgesamt 50 Patienten',value:()=>state.patientsTreated||0,target:50},
+      {id:'rep90',icon:'🌟',text:'Erreiche 90 Ruf',value:()=>state.rep||0,target:90}
+    ],
+    reward:{money:4000,xp:1000,rp:10,prestige:5}
+  }
+];
+
+function ensureCampaignState(){
+  if(!Array.isArray(state.campaignClaimed))state.campaignClaimed=[];
+  state.campaignClaimed=[...new Set(state.campaignClaimed.filter(id=>campaignChapters.some(c=>c.id===id)))];
+  state.campaignPrestige=Number.isFinite(Number(state.campaignPrestige))&&Number(state.campaignPrestige)>=0?Math.floor(Number(state.campaignPrestige)):0;
+}
+function campaignClaimed(id){
+  ensureCampaignState();
+  return state.campaignClaimed.includes(id);
+}
+function campaignCompletedCount(){
+  return campaignChapters.filter(c=>campaignClaimed(c.id)).length;
+}
+function currentCampaignIndex(){
+  ensureCampaignState();
+  const idx=campaignChapters.findIndex(c=>!campaignClaimed(c.id));
+  return idx<0?campaignChapters.length:idx;
+}
+function currentCampaignChapter(){
+  const i=currentCampaignIndex();
+  return i<campaignChapters.length?campaignChapters[i]:null;
+}
+function campaignObjectiveProgress(obj){
+  const current=Math.max(0,Number(obj.value())||0);
+  const target=Math.max(1,Number(obj.target)||1);
+  return {current,target,pct:Math.max(0,Math.min(100,Math.round(current/target*100))),done:current>=target};
+}
+function campaignChapterProgress(chapter){
+  if(!chapter)return 100;
+  const parts=chapter.objectives.map(campaignObjectiveProgress);
+  return Math.round(parts.reduce((s,p)=>s+p.pct,0)/Math.max(1,parts.length));
+}
+function campaignChapterReady(chapter){
+  return !!chapter&&chapter.objectives.every(o=>campaignObjectiveProgress(o).done);
+}
+function totalCampaignProgress(){
+  const done=campaignCompletedCount();
+  const current=currentCampaignChapter();
+  const fractional=current?campaignChapterProgress(current)/100:0;
+  return Math.min(100,Math.round(((done+fractional)/campaignChapters.length)*100));
+}
+function claimCampaignChapter(){
+  const chapter=currentCampaignChapter();
+  if(!chapter||!campaignChapterReady(chapter)||campaignClaimed(chapter.id))return;
+  state.campaignClaimed.push(chapter.id);
+  state.campaignPrestige=(state.campaignPrestige||0)+chapter.reward.prestige;
+  state.money+=chapter.reward.money;
+  state.xp+=chapter.reward.xp;
+  state.researchPoints=(state.researchPoints||0)+chapter.reward.rp;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+chapter.reward.money;
+  beep(1040,.16);
+  save();
+  toast(`Kapitel abgeschlossen: ${chapter.title}!`);
+}
+function renderCampaign(){
+  ensureCampaignState();
+  const current=currentCampaignChapter();
+  const completed=campaignCompletedCount();
+  const totalPct=totalCampaignProgress();
+  if($('campaignCompleted'))$('campaignCompleted').textContent=`${completed}/${campaignChapters.length}`;
+  if($('campaignPrestige'))$('campaignPrestige').textContent=state.campaignPrestige||0;
+  if($('campaignPercent'))$('campaignPercent').textContent=`${totalPct} %`;
+  if($('campaignChapterBadge'))$('campaignChapterBadge').textContent=current?`KAPITEL ${currentCampaignIndex()+1}`:'KAMPAGNE FERTIG';
+  const chapterPct=current?campaignChapterProgress(current):100;
+  if($('campaignProgressText'))$('campaignProgressText').textContent=`${chapterPct} %`;
+  if($('campaignProgressBar'))$('campaignProgressBar').style.width=`${chapterPct}%`;
+
+  const roadmap=$('campaignRoadmap');
+  if(roadmap){
+    roadmap.innerHTML=campaignChapters.map((c,i)=>{
+      const done=campaignClaimed(c.id),active=current&&current.id===c.id;
+      return `<div class="campaign-road-step ${done?'done':''} ${active?'active':''}"><b>${done?'✅':c.icon} ${c.short}</b><small>Kapitel ${i+1}</small></div>`;
+    }).join('');
+  }
+
+  const content=$('campaignContent');
+  if(!content)return;
+  if(!current){
+    content.innerHTML=`<div class="campaign-finished">🏆 <b>Karriere-Kampagne abgeschlossen!</b><br>Deine Einrichtung hat sich vom kleinen Klinikstart bis zum vollständigen Medical Center entwickelt. Weitere Endgame-Systeme können jetzt auf diesem Fortschritt aufbauen.</div>`;
+    return;
+  }
+
+  const ready=campaignChapterReady(current);
+  const objectiveHtml=current.objectives.map(o=>{
+    const p=campaignObjectiveProgress(o);
+    return `<div class="campaign-objective ${p.done?'done':''}">
+      <div class="campaign-objective-icon">${p.done?'✅':o.icon}</div>
+      <div class="campaign-objective-text">${o.text}<small>${p.done?'Ziel erreicht':'Noch offen'}</small></div>
+      <div class="campaign-objective-value">${Math.min(p.current,p.target)}/${p.target}</div>
+    </div>`;
+  }).join('');
+
+  content.innerHTML=`<div class="campaign-card ${ready?'complete':''}">
+    <h4>${current.icon} ${current.title}</h4>
+    <div class="campaign-story">${current.story}</div>
+    <div class="campaign-objectives">${objectiveHtml}</div>
+    <div class="campaign-reward">Belohnung: <b>+${current.reward.money} € • +${current.reward.xp} XP • +${current.reward.rp} RP • +${current.reward.prestige} Prestige</b></div>
+    <button id="campaignClaimBtn" type="button" class="campaign-claim ${ready?'ready':''}" ${ready?'':'disabled'}>${ready?'🎁 Kapitel abschließen & Belohnung holen':'Ziele noch nicht erfüllt'}</button>
+  </div>`;
+  const btn=$('campaignClaimBtn');
+  if(btn&&!btn.disabled)btn.onclick=claimCampaignChapter;
+}
 
 const clinicContracts=[
   {id:'careContract',icon:'🤝',name:'Versorgungsvertrag',cost:1600,desc:'Ein stabiler Vertrag verbessert die Vergütung behandelter Patienten.',effect:'+6 % Einnahmen aus Patientenfällen',requirement:()=>({ok:(state.rep||0)>=65,text:`65 Ruf erreichen (${state.rep||0}/65)`})},
@@ -3490,7 +3754,9 @@ const achievements = [
   {id:'payroll5000', name:'Arbeitgeber', desc:'Zahle insgesamt 5.000 € Personalgehälter.'},
   {id:'reserve2000', name:'Sicherheitsnetz', desc:'Baue eine Klinik-Rücklage von 2.000 € auf.'},
   {id:'profit10', name:'Schwarze Zahlen', desc:'Beende insgesamt 10 Schichten profitabel.'},
-  {id:'contracts3', name:'Gut vernetzt', desc:'Schließe alle drei Klinikverträge ab.'}
+  {id:'contracts3', name:'Gut vernetzt', desc:'Schließe alle drei Klinikverträge ab.'},
+  {id:'campaign3', name:'Auf Kurs', desc:'Schließe 3 Kampagnenkapitel ab.'},
+  {id:'campaignAll', name:'Klinik-Legende', desc:'Schließe die gesamte Karriere-Kampagne ab.'}
 ];
 
 const missions = [
@@ -3528,7 +3794,11 @@ const missions = [
   {id:'profit', text:'Erwirtschafte in einer Schicht mindestens 150 € operativen Gewinn.', rewardMoney:300, rewardXp:125,
    progress:r=>Math.max(0,Math.min(1,(((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))/150))),
    done:r=>((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))>=150,
-   meta:r=>`Aktuell ca. ${Math.round((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))} €`}
+   meta:r=>`Aktuell ca. ${Math.round((r.earned||0)-(r.examSpend||0)-(r.payroll||0)-(r.operatingCost||0))} €`},
+  {id:'campaignPush', text:'Steigere den Fortschritt deines aktuellen Kampagnenkapitels während der Schicht.', rewardMoney:250, rewardXp:110,
+   progress:r=>Math.min(1,Math.max(0,((campaignChapterProgress(currentCampaignChapter())-(r.campaignStartProgress||0))/15))),
+   done:r=>campaignChapterProgress(currentCampaignChapter())>=(r.campaignStartProgress||0)+15,
+   meta:r=>`${r.campaignStartProgress||0}% → ${campaignChapterProgress(currentCampaignChapter())}%`}
 ];
 
 const defaultState = {
@@ -3565,7 +3835,10 @@ const defaultState = {
   contractInvestment:0,
   totalNetProfit:0,
   profitableShifts:0,
-  lastFinance:{revenue:0,costs:0,profit:0,variable:0,payroll:0,operations:0,reserveUsed:0,equipmentWear:0}
+  lastFinance:{revenue:0,costs:0,profit:0,variable:0,payroll:0,operations:0,reserveUsed:0,equipmentWear:0},
+  campaignClaimed:[],
+  campaignPrestige:0,
+  totalCampaignRewards:0
 };
 
 let state;
@@ -3616,6 +3889,8 @@ state.contractInvestment=Number.isFinite(Number(state.contractInvestment))&&Numb
 state.totalNetProfit=Number.isFinite(Number(state.totalNetProfit))?Math.round(Number(state.totalNetProfit)):0;
 state.profitableShifts=Number.isFinite(Number(state.profitableShifts))&&Number(state.profitableShifts)>=0?Math.floor(Number(state.profitableShifts)):0;
 if(!state.lastFinance||typeof state.lastFinance!=='object')state.lastFinance=JSON.parse(JSON.stringify(defaultState.lastFinance));
+ensureCampaignState();
+state.totalCampaignRewards=Number.isFinite(Number(state.totalCampaignRewards))&&Number(state.totalCampaignRewards)>=0?Math.floor(Number(state.totalCampaignRewards)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -3663,7 +3938,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderFinance();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderCampaign();renderFinance();renderStaff2();renderHospitalExpansion();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -3689,7 +3964,7 @@ function renderAchievements(){
 function startShift(){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0};
+  run={active:true,queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -3871,6 +4146,8 @@ function finishCase(){
     const contractBonus=Math.max(0,Math.round(reward*(caseRevenueMultiplier()-1)));
     reward+=contractBonus;
     if(state.upgrades.reception)reward+=10;
+    const prestigeBonus=Math.min(20,(state.campaignPrestige||0)*2);
+    reward+=prestigeBonus;
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
@@ -3919,6 +4196,7 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
+      ${prestigeBonus>0?`<div class='result-line'><span>Kampagnen-Prestige</span><b>+${prestigeBonus} €</b></div>`:''}
       ${contractBonus>0?`<div class='result-line'><span>Versorgungsvertrag</span><b>+${contractBonus} €</b></div>`:''}
       ${conditionResult.bonus>0?`<div class='result-line'><span>Stabilitätsbonus</span><b>+${conditionResult.bonus} €</b></div>`:''}
       ${historyBonus.money>0?`<div class='result-line'><span>Anamnese-Bonus</span><b>+${historyBonus.money} €</b></div>`:''}
@@ -3977,7 +4255,7 @@ function endShift(reason=''){
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
   const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
-  $('missionResult').innerHTML=missionHtml+`<br><br>💶 Schichtergebnis: <b class="${state.lastFinance.profit>=0?'finance-result-good':'finance-result-bad'}">${state.lastFinance.profit>=0?'+':''}${state.lastFinance.profit} €</b>`+`<br>📈 Einnahmen: <b>${state.lastFinance.revenue} €</b>`+`<br>📉 Gesamtkosten: <b>${state.lastFinance.costs} €</b>`+`${run.reserveUsed?`<br>🏦 Rücklage verwendet: <b>${run.reserveUsed} €</b>`:''}`+`<br>🔧 Technikverschleiß: <b>-${run.equipmentWear||0} %</b>`+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>🎯 Kampagne: <b>${campaignCompletedCount()}/${campaignChapters.length} Kapitel • ${totalCampaignProgress()} %</b>`+`<br><br>💶 Schichtergebnis: <b class="${state.lastFinance.profit>=0?'finance-result-good':'finance-result-bad'}">${state.lastFinance.profit>=0?'+':''}${state.lastFinance.profit} €</b>`+`<br>📈 Einnahmen: <b>${state.lastFinance.revenue} €</b>`+`<br>📉 Gesamtkosten: <b>${state.lastFinance.costs} €</b>`+`${run.reserveUsed?`<br>🏦 Rücklage verwendet: <b>${run.reserveUsed} €</b>`:''}`+`<br>🔧 Technikverschleiß: <b>-${run.equipmentWear||0} %</b>`+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -4005,6 +4283,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('reserve2000',(state.financialReserve||0)>=2000);
   check('profit10',(state.profitableShifts||0)>=10);
   check('contracts3',activeContractCount()===clinicContracts.length);
+  check('campaign3',campaignCompletedCount()>=3);
+  check('campaignAll',campaignCompletedCount()===campaignChapters.length);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

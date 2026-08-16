@@ -1,143 +1,210 @@
-# Doctor Rush v0.14 – ECONOMY & FINANCE
+# Doctor Rush v0.15 – CAREER CAMPAIGN
 
 ## Dateien
+
+Wie vereinbart:
 
 - `index.html`
 - `README.md`
 
-Die `README.md` liegt zusätzlich als ZIP bei, damit der Download auf dem iPhone zuverlässig funktioniert.
+Zusätzlich liegt die `README.md` wieder als ZIP bei, damit der Download auf dem iPhone zuverlässig funktioniert.
 
 ## GitHub-Update
 
 1. Ersetze im Doctor-Rush-Repository nur die bisherige `index.html`.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.14` öffnen.
+3. Doctor Rush danach einmal mit `?v=0.15` öffnen.
 
 ---
 
-# Neu in v0.14
+# Neu in v0.15
 
-## 💶 Echte Schicht-Finanzen
+## 🎯 Echte Karriere-Kampagne
 
-Nach jeder Schicht werden jetzt getrennt berechnet:
+Doctor Rush bekommt erstmals eine übergeordnete Kampagne.
 
-- Einnahmen
-- Untersuchungs- und Materialkosten
-- Personalkosten
-- Betriebs- und Energiekosten
-- Gewinn oder Verlust
+Das Ziel ist nicht mehr nur, einzelne Schichten zu spielen.
 
-## 🏥 Laufende Betriebskosten
+Du entwickelst deine Einrichtung Schritt für Schritt:
 
-Mit wachsender Klinik steigen auch die Fixkosten.
+**kleine Klinik → verlässliche Klinik → Diagnostikzentrum → Notfallzentrum → Regionalkrankenhaus → Medical Center**
 
-Berücksichtigt werden unter anderem:
+---
 
-- aktive Klinikräume
-- Krankenhaus-Erweiterungen
-- zusätzliche Patientenkapazität
-- Grundbetrieb
+## 📚 6 Kampagnenkapitel
 
-## 🏦 Klinik-Rücklage
+### Kapitel 1 – Die ersten Patienten
 
-Du kannst Geld in 250-€-Schritten zurücklegen oder wieder entnehmen.
+Ziele:
 
-Wenn das normale Budget am Schichtende für Personal- oder Betriebskosten nicht reicht, wird automatisch zuerst die Rücklage genutzt.
+- 3 Patienten behandeln
+- 35 Ruf erreichen
 
-Erst wenn Budget und Rücklage nicht reichen, verliert die Klinik Ruf.
+Belohnung:
 
-## 🔧 Geräteverschleiß
+- 500 €
+- 180 XP
+- 2 RP
+- 1 Prestige
 
-Die technische Ausstattung besitzt jetzt einen Zustand von 10 bis 100 %.
+### Kapitel 2 – Eine verlässliche Klinik
 
-Nach jeder Schicht entsteht abhängig von der Nutzung Verschleiß.
+Ziele:
 
-- ab 55 %: keine direkte Strafe
-- unter 55 %: Untersuchungen können länger dauern und teurer werden
-- unter 30 %: stärkere Zeit- und Kostenaufschläge
+- 12 Patienten behandeln
+- mindestens 1 Mitarbeiter einstellen
+- mindestens 75 Klinik-Flow erreichen
 
-## 🔧 Wartung
+### Kapitel 3 – Diagnostisches Zentrum
 
-Wartung verbessert den Technikzustand um 30 Prozentpunkte.
+Ziele:
 
-Die Kosten steigen mit Klinikgröße und Krankenhaus-Ausbau.
+- 5 starke Diagnosen
+- insgesamt 4 Forschungslevel
+- 8 Diagnosen im Fallbuch entdecken
 
-## 📑 Drei Klinikverträge
+### Kapitel 4 – Bereit für Notfälle
 
-### 🤝 Versorgungsvertrag
-- Kosten: 1.600 €
-- Voraussetzung: 65 Ruf
-- Bonus: +6 % Einnahmen aus Patientenfällen
+Ziele:
 
-### 📦 Einkaufspartnerschaft
-- Kosten: 1.200 €
-- Voraussetzung: 20 behandelte Patienten
-- Bonus: zusätzlicher 8-%-Rabatt beim Medikamenteneinkauf
+- 5 dringende Patienten erfolgreich behandeln
+- 5 Notfall-Protokolle korrekt abschließen
+- 10 Patienten stabil beenden
 
-### 🔬 Forschungsförderung
-- Kosten: 1.800 €
-- Voraussetzung: 5 starke Diagnosen
-- Bonus: +1 Forschungspunkt pro abgeschlossener Schicht
+### Kapitel 5 – Das Regionalkrankenhaus
 
-## 📊 Finanz-Dashboard
+Ziele:
 
-Neu auf der Startseite:
+- 2 Krankenhaus-Großprojekte
+- 3 Mitarbeiter
+- 1.000 € Klinik-Rücklage
 
-- letzte Einnahmen
-- letzte Kosten
-- letzter Gewinn/Verlust
-- einzelne Kostenblöcke
-- Rücklage
-- Technikzustand
-- Wartungskosten
-- aktive Verträge
-- geschätzte fixe Kosten der nächsten Schicht
+### Kapitel 6 – Medical Center
+
+Finale Ziele:
+
+- alle 4 Krankenhaus-Großprojekte
+- alle 3 Klinikverträge
+- insgesamt 50 Patienten
+- 90 Ruf
+
+---
+
+## 🎁 Kapitelbelohnungen
+
+Jedes Kapitel gibt einmalig:
+
+- Klinikbudget
+- XP
+- Forschungspunkte
+- Prestige
+
+Spätere Kapitel haben deutlich größere Belohnungen.
+
+---
+
+## 🌟 Prestige
+
+Abgeschlossene Kampagnenkapitel geben Prestige.
+
+Prestige zeigt deinen langfristigen Karrierefortschritt.
+
+Zusätzlich bringt es einen kleinen Bonus auf erfolgreiche Patientenfälle.
+
+Der Bonus ist bewusst begrenzt, damit die Wirtschaft nicht aus dem Gleichgewicht gerät.
+
+---
+
+## 🗺️ Kampagnen-Roadmap
+
+Auf der Startseite gibt es jetzt eine sichtbare Roadmap.
+
+Du siehst:
+
+- abgeschlossene Kapitel
+- aktuelles Kapitel
+- kommende Kapitel
+- Gesamtfortschritt in Prozent
+- aktuelles Prestige
+
+---
+
+## ✅ Live-Zielfortschritt
+
+Jedes Kampagnenziel zeigt direkt:
+
+- aktuellen Wert
+- Zielwert
+- erledigt / offen
+
+Beispiele:
+
+- 8/12 Patienten
+- 2/3 Mitarbeiter
+- 72/75 Flow
+- 3/5 starke Diagnosen
+
+---
 
 ## 🎯 Neue Tagesmission
 
-**Profitabel arbeiten**
+**Kampagnen-Schub**
 
-Mindestens 150 € operativen Gewinn in einer Schicht erreichen.
+Steigere den Fortschritt des aktuellen Kampagnenkapitels während einer Schicht deutlich.
+
+---
 
 ## 🏆 Neue Erfolge
 
-### Sicherheitsnetz
-2.000 € Rücklage aufbauen.
+### Auf Kurs
+3 Kampagnenkapitel abschließen.
 
-### Schwarze Zahlen
-10 profitable Schichten abschließen.
+### Klinik-Legende
+Die komplette Karriere-Kampagne abschließen.
 
-### Gut vernetzt
-Alle drei Klinikverträge abschließen.
+---
 
-## Technische Verbesserung
+## 📋 Schichtauswertung erweitert
 
-Eine alte interne Spielstand-Migrationsstelle aus früheren Versionen wurde bereinigt und an die richtige Stelle verschoben.
+Nach einer Schicht siehst du jetzt zusätzlich:
+
+- abgeschlossene Kampagnenkapitel
+- gesamten Kampagnenfortschritt
+
+---
 
 ## Bestehende Systeme bleiben erhalten
 
+- Finanzen & Betrieb
+- Rücklagen
+- Wartung und Technikverschleiß
+- Klinikverträge
 - Personal 2.0
 - Krankenhaus-Ausbau
 - Patientenstabilität
-- Diagnose 2.0 und Anamnese
+- Diagnose 2.0
+- Anamnese
 - Klinik-Flow
 - Klinikräume
 - Medikamente
 - Karriere
 - Forschung
 - Fallbuch
-- Notfälle
+- Notfall-Protokolle
 - Eingriffe
-- Missionen und Erfolge
+- Missionen
+- Erfolge
 
 ## Technisch
 
-- weiterhin nur **eine `index.html`**
+- weiterhin **eine einzige `index.html`**
 - kein Service Worker
-- keine externen JS-/CSS-Dateien
-- Spielstand bleibt `doctorRushSaveV3`
-- v0.13-Spielstand kompatibel
+- keine externen JavaScript- oder CSS-Dateien
+- Save-Key bleibt `doctorRushSaveV3`
+- v0.14-Spielstand kompatibel
+- Kampagnenfortschritt wird aus bestehenden Spielständen automatisch erkannt
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
+- Kernsysteme von v0.14 geprüft: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
