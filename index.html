@@ -121,13 +121,156 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
   box-shadow:0 0 0 2px rgba(40,215,161,.25),0 10px 26px rgba(40,215,161,.28);
 }
 
+
+/* ===== v0.4 CLINIC EXPANSION ===== */
+.clinic-overview{
+  margin-top:14px;
+  background:
+    linear-gradient(180deg,rgba(21,43,74,.94),rgba(10,24,44,.96));
+  border:1px solid #2a4167;
+  border-radius:24px;
+  padding:14px;
+  box-shadow:var(--shadow);
+}
+.clinic-overview-head{
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  align-items:flex-start;
+  margin-bottom:12px;
+}
+.clinic-overview-head h3{margin:0;font-size:18px}
+.clinic-overview-head p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.clinic-value{
+  white-space:nowrap;
+  background:rgba(40,215,161,.1);
+  border:1px solid rgba(40,215,161,.24);
+  color:var(--accent);
+  padding:7px 9px;
+  border-radius:999px;
+  font-size:11px;
+  font-weight:900;
+}
+.clinic-floor{
+  position:relative;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:9px;
+}
+.clinic-floor:before{
+  content:"";
+  position:absolute;
+  left:50%;
+  top:12px;
+  bottom:12px;
+  width:3px;
+  transform:translateX(-50%);
+  border-radius:10px;
+  background:linear-gradient(180deg,transparent,#294569 10%,#294569 90%,transparent);
+  opacity:.65;
+  pointer-events:none;
+}
+.room-card{
+  position:relative;
+  z-index:1;
+  min-height:142px;
+  background:linear-gradient(155deg,#132945,#0d2038);
+  border:1px solid #2b466d;
+  border-radius:18px;
+  padding:12px;
+  display:flex;
+  flex-direction:column;
+  overflow:hidden;
+}
+.room-card.locked{
+  filter:saturate(.55);
+  opacity:.78;
+  background:linear-gradient(155deg,#152237,#0d1828);
+}
+.room-card.featured{
+  border-color:rgba(40,215,161,.48);
+  box-shadow:0 0 0 1px rgba(40,215,161,.08) inset;
+}
+.room-top{display:flex;justify-content:space-between;gap:8px;align-items:center}
+.room-icon{
+  width:42px;height:42px;border-radius:13px;
+  display:grid;place-items:center;font-size:25px;
+  background:#203c62;border:1px solid rgba(255,255,255,.07)
+}
+.room-level{
+  font-size:9px;font-weight:900;letter-spacing:.08em;
+  border-radius:999px;padding:5px 7px;
+  color:var(--accent);background:rgba(40,215,161,.1)
+}
+.room-card.locked .room-level{color:var(--muted);background:rgba(255,255,255,.06)}
+.room-card h4{margin:9px 0 3px;font-size:14px}
+.room-card p{margin:0;color:var(--muted);font-size:10.5px;line-height:1.35}
+.room-effect{
+  margin-top:8px;
+  color:#cfe2f7;
+  font-size:10px;
+  font-weight:750;
+  line-height:1.35;
+}
+.room-action{
+  margin-top:auto;
+  padding-top:9px;
+}
+.room-action button{
+  width:100%;
+  border:none;
+  border-radius:11px;
+  padding:9px 8px;
+  font-weight:900;
+  font-size:11px;
+  background:#1d416c;
+  color:#fff;
+}
+.room-action button:disabled{opacity:.45}
+.room-action button.unlock{
+  background:linear-gradient(135deg,#2368aa,#2f8ad6);
+}
+.room-action button.upgrade{
+  background:linear-gradient(135deg,#1c8069,#1eb38d);
+}
+.clinic-bonus-strip{
+  margin-top:10px;
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:7px;
+}
+.clinic-bonus{
+  background:#0d1d33;
+  border:1px solid #233b5d;
+  border-radius:12px;
+  padding:8px 6px;
+  text-align:center;
+}
+.clinic-bonus b{display:block;font-size:12px}
+.clinic-bonus small{color:var(--muted);font-size:9px}
+.room-route{
+  display:flex;align-items:center;gap:7px;
+  margin:10px 0 12px;
+  padding:9px 10px;
+  border-radius:13px;
+  background:rgba(70,166,255,.08);
+  border:1px solid rgba(70,166,255,.2);
+  color:#dcecff;
+  font-size:11px;
+}
+.room-route b{color:var(--accent2)}
+@media(max-width:380px){
+  .room-card{min-height:150px;padding:10px}
+  .room-card h4{font-size:13px}
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • ONE-FILE BUILD</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -137,7 +280,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.3.3 STABLE</h2>
+          <h2>Clinic Life v0.4 • CLINIC EXPANSION</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -156,10 +299,21 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           <div class="panel-footer"><span id="missionMeta">Belohnung</span><b id="missionReward">+0 € / +0 XP</b></div>
         </div>
 
-        <div class="panel compact">
-          <div class="panel-head"><div class="panel-title">Freigeschaltete Abteilungen</div><div class="pill blue">Progress</div></div>
-          <div id="departmentList" class="dept-list"></div>
-        </div>
+        <section class="clinic-overview">
+          <div class="clinic-overview-head">
+            <div>
+              <h3>🏥 Deine Klinik</h3>
+              <p>Räume freischalten, ausbauen und echte Boni erhalten.</p>
+            </div>
+            <div id="clinicValue" class="clinic-value">Stufe 1</div>
+          </div>
+          <div id="clinicFloor" class="clinic-floor"></div>
+          <div class="clinic-bonus-strip">
+            <div class="clinic-bonus"><b id="clinicTimeBonus">+0 min</b><small>Schichtzeit</small></div>
+            <div class="clinic-bonus"><b id="clinicCashBonus">+0 %</b><small>Fallbonus</small></div>
+            <div class="clinic-bonus"><b id="clinicRoomCount">2/7</b><small>Räume aktiv</small></div>
+          </div>
+        </section>
 
         <div class="panel compact">
           <div class="panel-head"><div class="panel-title">Klinikapotheke</div><div class="pill blue">Vorräte</div></div>
@@ -167,7 +321,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         </div>
 
         <div class="panel">
-          <div class="panel-title">Klinik verbessern</div>
+          <div class="panel-title">Management & Fortbildung</div>
           <div id="upgradeList" class="upgrade-list"></div>
         </div>
 
@@ -209,6 +363,8 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
           <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/6</span></div>
           <div class="progress"><div id="shiftProgress"></div></div>
         </div>
+
+        <div id="roomRoute" class="room-route">🏥 <b>Behandlungsraum</b> • Patient wird untersucht</div>
 
         <article class="patient-card">
           <div class="patient-head">
@@ -515,6 +671,160 @@ const departments = [
   {id:"emergency", icon:"🚑", name:"Notfallraum", desc:"Bessere Versorgung kritischer Fälle."}
 ];
 
+
+const clinicRooms = [
+  {
+    id:'waiting', icon:'🪑', name:'Wartezimmer', always:true, maxLevel:3, baseUpgrade:450,
+    desc:'Mehr Sitzplätze und bessere Patientensteuerung.'
+  },
+  {
+    id:'exam', icon:'🩺', name:'Behandlungsraum', always:true, maxLevel:3, baseUpgrade:600,
+    desc:'Modernere Ausstattung steigert deinen Verdienst.'
+  },
+  {
+    id:'lab', icon:'🧪', name:'Labor', unlockId:'lab', unlockCost:850, maxLevel:3, baseUpgrade:700,
+    desc:'Schnelltests, Blutbild und bessere Labordiagnostik.'
+  },
+  {
+    id:'imaging', icon:'🩻', name:'Bildgebung', unlockId:'imaging', unlockCost:1300, maxLevel:3, baseUpgrade:900,
+    desc:'Röntgen, Ultraschall und CT für komplexe Fälle.'
+  },
+  {
+    id:'pharmacy', icon:'💊', name:'Apotheke', always:true, enhancementId:'pharmacy', enhancementCost:1200,
+    maxLevel:3, baseUpgrade:650, desc:'Medikamente lagern und günstiger nachbestellen.'
+  },
+  {
+    id:'emergency', icon:'🚑', name:'Notaufnahme', unlockId:'emergency', unlockCost:1500,
+    maxLevel:3, baseUpgrade:1000, desc:'Mehr Sicherheit für kritische und dringende Patienten.'
+  },
+  {
+    id:'cardio', icon:'❤️', name:'Kardiologie', unlockId:'cardio', unlockCost:1100,
+    maxLevel:3, baseUpgrade:850, desc:'EKG und spezialisierte Herzdiagnostik.'
+  }
+];
+
+function roomLevel(id){
+  const n=Number(state.roomLevels && state.roomLevels[id]);
+  return Number.isFinite(n) && n>=1 ? Math.min(3,Math.floor(n)) : 1;
+}
+function roomUnlocked(room){
+  return !!room.always || !room.unlockId || !!state.upgrades[room.unlockId];
+}
+function roomUpgradeCost(room, level){
+  return Math.round((room.baseUpgrade * (1 + (level-1)*0.65))/50)*50;
+}
+function clinicActiveRooms(){
+  return clinicRooms.filter(room=>roomUnlocked(room)).length;
+}
+function clinicPower(){
+  let total=0;
+  for(const room of clinicRooms){
+    if(roomUnlocked(room)) total+=roomLevel(room.id);
+  }
+  return total;
+}
+function clinicTimeBonus(){
+  return (roomLevel('waiting')-1)*10;
+}
+function clinicCashMultiplier(){
+  return 1 + (roomLevel('exam')-1)*0.05;
+}
+function pharmacyDiscount(){
+  let d=state.upgrades.pharmacy ? 0.20 : 0;
+  d += (roomLevel('pharmacy')-1)*0.05;
+  return Math.min(0.35,d);
+}
+function roomEffect(room){
+  const level=roomLevel(room.id);
+  if(room.id==='waiting') return `Effekt: +${(level-1)*10} min Schichtzeit • bis zu ${2+level} Patienten sichtbar`;
+  if(room.id==='exam') return `Effekt: +${(level-1)*5} % Geld pro erfolgreichem Fall`;
+  if(room.id==='lab') return `Effekt: Laborpreise bis zu ${20+(level-1)*5} % günstiger`;
+  if(room.id==='imaging') return `Effekt: Bildgebung bis zu ${level-1} min schneller`;
+  if(room.id==='pharmacy') return `Effekt: ${Math.round(pharmacyDiscount()*100)} % Rabatt beim Medikamentenkauf`;
+  if(room.id==='emergency') return `Effekt: kritische Patienten halten ${state.upgrades.emergency ? level : 0} zusätzliche Wartezüge aus`;
+  if(room.id==='cardio') return `Effekt: Herzdiagnostik bis zu ${level-1} min schneller`;
+  return '';
+}
+function renderClinicMap(){
+  const floor=$('clinicFloor');
+  if(!floor) return;
+  floor.innerHTML='';
+
+  clinicRooms.forEach(room=>{
+    const unlocked=roomUnlocked(room);
+    const level=roomLevel(room.id);
+    const card=document.createElement('div');
+    card.className='room-card'+(!unlocked?' locked':'')+(room.id==='exam'?' featured':'');
+    const needsEnhancement=room.enhancementId && !state.upgrades[room.enhancementId];
+
+    let action='';
+    if(!unlocked){
+      const canBuy=state.money>=room.unlockCost;
+      action=`<button type="button" class="unlock" ${canBuy?'':'disabled'}>${room.unlockCost} € freischalten</button>`;
+    }else if(needsEnhancement){
+      const canBuy=state.money>=room.enhancementCost;
+      action=`<button type="button" class="unlock" ${canBuy?'':'disabled'}>Profi-Ausbau ${room.enhancementCost} €</button>`;
+    }else if(level<room.maxLevel){
+      const cost=roomUpgradeCost(room,level);
+      action=`<button type="button" class="upgrade" ${state.money>=cost?'':'disabled'}>Auf Level ${level+1} • ${cost} €</button>`;
+    }else{
+      action=`<button type="button" disabled>MAXIMAL AUSGEBAUT</button>`;
+    }
+
+    card.innerHTML=`
+      <div class="room-top">
+        <div class="room-icon">${room.icon}</div>
+        <div class="room-level">${unlocked?'LEVEL '+level:'GESPERRT'}</div>
+      </div>
+      <h4>${room.name}</h4>
+      <p>${room.desc}</p>
+      <div class="room-effect">${unlocked?roomEffect(room):'🔒 Erst freischalten, um den Raum zu nutzen.'}</div>
+      <div class="room-action">${action}</div>`;
+
+    const button=card.querySelector('button');
+    if(button && !button.disabled){
+      button.onclick=()=>{
+        if(!unlocked){
+          if(state.money<room.unlockCost) return;
+          state.money-=room.unlockCost;
+          state.upgrades[room.unlockId]=true;
+          state.roomLevels[room.id]=1;
+          beep(880,.1);
+          save();
+          toast(`${room.name} freigeschaltet!`);
+          return;
+        }
+
+        if(needsEnhancement){
+          if(state.money<room.enhancementCost) return;
+          state.money-=room.enhancementCost;
+          state.upgrades[room.enhancementId]=true;
+          beep(880,.1);
+          save();
+          toast(`${room.name}: Profi-Ausbau aktiv`);
+          return;
+        }
+
+        const cost=roomUpgradeCost(room,level);
+        if(level>=room.maxLevel || state.money<cost) return;
+        state.money-=cost;
+        state.roomLevels[room.id]=level+1;
+        beep(940,.1);
+        save();
+        toast(`${room.name} ist jetzt Level ${level+1}`);
+      };
+    }
+    floor.appendChild(card);
+  });
+
+  const cv=$('clinicValue'), tb=$('clinicTimeBonus'), cb=$('clinicCashBonus'), rc=$('clinicRoomCount');
+  if(cv) cv.textContent=`Klinikstufe ${clinicPower()}`;
+  if(tb) tb.textContent=`+${clinicTimeBonus()} min`;
+  if(cb) cb.textContent=`+${Math.round((clinicCashMultiplier()-1)*100)} %`;
+  if(rc) rc.textContent=`${clinicActiveRooms()}/${clinicRooms.length}`;
+}
+
+
 const medicines = [
   {id:'pain', icon:'💊', name:'Schmerzmittel', price:55, pack:5},
   {id:'antibiotic', icon:'🧫', name:'Antibiotika', price:90, pack:4},
@@ -548,7 +858,9 @@ const achievements = [
   {id:'rich', name:'Budgetmeister', desc:'Spare 2.000 € an.'},
   {id:'level5', name:'Karrieresprung', desc:'Erreiche Klinik-Level 5.'},
   {id:'triage', name:'Triage-Profi', desc:'Behandle 5 dringende Patienten rechtzeitig.'},
-  {id:'combo4', name:'Diagnose-Serie', desc:'Erreiche eine 4er-Combo perfekter Fälle.'}
+  {id:'combo4', name:'Diagnose-Serie', desc:'Erreiche eine 4er-Combo perfekter Fälle.'},
+  {id:'clinic10', name:'Klinikbauer', desc:'Erreiche Klinikstufe 10.'},
+  {id:'allrooms', name:'Vollversorgung', desc:'Schalte alle Klinikräume frei.'}
 ];
 
 const missions = [
@@ -565,7 +877,8 @@ const missions = [
 const defaultState = {
   money:500, rep:50, xp:0, day:1, upgrades:{}, patientsTreated:0, perfectCases:0, urgentSaved:0,
   bestCombo:0, bestShift:0, achievements:{},
-  inventory:{pain:5,antibiotic:4,glucose:5,inhaler:4,fluids:5,emergencyDrug:3}
+  inventory:{pain:5,antibiotic:4,glucose:5,inhaler:4,fluids:5,emergencyDrug:3},
+  roomLevels:{waiting:1,exam:1,lab:1,imaging:1,pharmacy:1,emergency:1,cardio:1}
 };
 
 let state;
@@ -584,6 +897,11 @@ for(const [k,v] of Object.entries(defaultState)){
 if(!state.upgrades || typeof state.upgrades!=='object') state.upgrades={};
 if(!state.achievements || typeof state.achievements!=='object') state.achievements={};
 if(!state.inventory || typeof state.inventory!=='object') state.inventory={};
+if(!state.roomLevels || typeof state.roomLevels!=='object') state.roomLevels={};
+for(const [k,v] of Object.entries(defaultState.roomLevels)){
+  const n=Number(state.roomLevels[k]);
+  state.roomLevels[k]=Number.isFinite(n) && n>=1 ? Math.min(3,Math.floor(n)) : v;
+}
 
 for(const [k,v] of Object.entries(defaultState.inventory)){
   const n=Number(state.inventory[k]);
@@ -616,7 +934,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderDepartments();renderInventory();renderUpgrades();renderAchievements();
+  renderMissionCard();renderClinicMap();renderInventory();renderUpgrades();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -629,10 +947,11 @@ function renderDepartments(){
 }
 function renderInventory(){
   const list=$('inventoryList');list.innerHTML='';
-  medicines.forEach(m=>{const qty=state.inventory[m.id]||0;let price=m.price;if(state.upgrades.pharmacy)price=Math.ceil(price*.8);const el=document.createElement('div');el.className='medicine';el.innerHTML=`<div class='med-icon'>${m.icon}</div><div><b>${m.name}</b><small>Bestand: ${qty} • +${m.pack} für ${price} €</small></div><button ${state.money<price?'disabled':''}>Nachkaufen</button>`;el.querySelector('button').onclick=()=>{if(state.money<price)return;state.money-=price;state.inventory[m.id]+=m.pack;beep(820);save();toast(`${m.name}: +${m.pack}`)};list.appendChild(el)})
+  medicines.forEach(m=>{const qty=state.inventory[m.id]||0;let price=Math.ceil(m.price*(1-pharmacyDiscount()));const el=document.createElement('div');el.className='medicine';el.innerHTML=`<div class='med-icon'>${m.icon}</div><div><b>${m.name}</b><small>Bestand: ${qty} • +${m.pack} für ${price} €</small></div><button ${state.money<price?'disabled':''}>Nachkaufen</button>`;el.querySelector('button').onclick=()=>{if(state.money<price)return;state.money-=price;state.inventory[m.id]+=m.pack;beep(820);save();toast(`${m.name}: +${m.pack}`)};list.appendChild(el)})
 }
 function renderUpgrades(){
-  const list=$('upgradeList');list.innerHTML='';upgrades.forEach(u=>{const owned=!!state.upgrades[u.id],el=document.createElement('div');el.className='upgrade';el.innerHTML=`<div class='ico'>${u.icon}</div><div><h3>${u.name}</h3><p>${u.desc}</p></div><button ${owned||state.money<u.cost?'disabled':''}>${owned?'Gekauft':u.cost+' €'}</button>`;el.querySelector('button').onclick=()=>{if(owned||state.money<u.cost)return;state.money-=u.cost;state.upgrades[u.id]=true;beep(820);save();toast(u.name+' freigeschaltet')};list.appendChild(el)})
+  const list=$('upgradeList');list.innerHTML='';
+  upgrades.filter(u=>['reception','training'].includes(u.id)).forEach(u=>{const owned=!!state.upgrades[u.id],el=document.createElement('div');el.className='upgrade';el.innerHTML=`<div class='ico'>${u.icon}</div><div><h3>${u.name}</h3><p>${u.desc}</p></div><button ${owned||state.money<u.cost?'disabled':''}>${owned?'Gekauft':u.cost+' €'}</button>`;el.querySelector('button').onclick=()=>{if(owned||state.money<u.cost)return;state.money-=u.cost;state.upgrades[u.id]=true;beep(820);save();toast(u.name+' freigeschaltet')};list.appendChild(el)})
 }
 function renderAchievements(){
   const list=$('achievementList');list.innerHTML='';achievements.forEach(a=>{const on=!!state.achievements[a.id],el=document.createElement('div');el.className='ach';el.innerHTML=`<div><div class='ach-name'>${on?'🏆':'🔒'} ${a.name}</div><small>${a.desc}</small></div><div class='status ${on?'on':'off'}'>${on?'ERHALTEN':'OFFEN'}</div>`;list.appendChild(el)})
@@ -640,7 +959,7 @@ function renderAchievements(){
 
 function startShift(){
   const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105,combo:0,maxCombo:0,newAchievements:[],collapsed:0};
+  run={queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0};
   fillWaitingRoom();renderMissionCard();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -653,7 +972,7 @@ function showWaitingRoom(){
 function renderWaitingRoom(){
   $('waitingShiftText').textContent=`${run.treated}/${run.total} behandelt`;$('waitingTime').textContent=run.timeLeft+' min';$('waitingRep').textContent=state.rep;
   const box=$('waitingPatients');box.innerHTML='';
-  const visible=run.queue.slice(0,Math.min(3,run.queue.length)).sort((a,b)=>urgencyRank(b.urgency)-urgencyRank(a.urgency));
+  const visible=run.queue.slice(0,Math.min(2+roomLevel('waiting'),run.queue.length)).sort((a,b)=>urgencyRank(b.urgency)-urgencyRank(a.urgency));
   visible.forEach(p=>{const el=document.createElement('button');el.className=`waiting-card ${p.urgency}`;const label=p.urgency==='high'?'DRINGEND':p.urgency==='medium'?'ERHÖHT':'NORMAL';el.innerHTML=`<div class='wait-avatar'>${p.avatar}</div><div class='wait-body'><div class='wait-top'><b>${p.name}</b><span>${label}</span></div><small>${p.age} Jahre • ${p.job}</small><p>${p.complaint}</p><div class='wait-meta'>Wartet: ${p.wait} Runde${p.wait===1?'':'n'}</div></div>`;el.onclick=()=>selectPatient(p.queueId);box.appendChild(el)});
   $('triageHint').textContent=visible.some(p=>p.urgency==='high')?'⚠️ Dringende Fälle sollten zuerst behandelt werden.':'Wähle den nächsten Patienten.';
 }
@@ -664,13 +983,19 @@ function selectPatient(id){
   loadPatient();showScreen('gameScreen');
 }
 function ageWaitingPatients(){
-  const extra=state.upgrades.emergency?1:0;const collapsed=[];
+  const extra=state.upgrades.emergency?roomLevel('emergency'):0;const collapsed=[];
   for(const p of run.queue){p.wait++;const limit=(p.urgency==='high'?1:p.urgency==='medium'?3:99)+extra;if(p.wait>limit){collapsed.push(p.queueId);run.collapsed++;state.rep=Math.max(0,state.rep-(p.urgency==='high'?10:5));run.rep-=(p.urgency==='high'?10:5);if(p.urgency==='high')toast(`${p.name}: Zustand kritisch verschlechtert!`)}}
   run.queue=run.queue.filter(p=>!collapsed.includes(p.queueId));
 }
 
 function loadPatient(){
   selectedDiagnosis=null;selectedTreatment=null;examined=new Set();
+  const route=$('roomRoute');
+  if(route){
+    route.innerHTML=current.urgency==='high' && state.upgrades.emergency
+      ?`🚑 <b>Notaufnahme Level ${roomLevel('emergency')}</b> • kritischer Patient`
+      :`🏥 <b>Behandlungsraum Level ${roomLevel('exam')}</b> • Patient wird untersucht`;
+  }
   $('patientName').textContent=current.name;$('patientMeta').textContent=`${current.age} Jahre • ${current.job}`;$('avatar').textContent=current.avatar;$('complaint').textContent='„'+current.complaint+'“';
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
@@ -679,10 +1004,24 @@ function loadPatient(){
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
-function adjustedCost(cost){return state.upgrades.lab&&cost>0?Math.ceil(cost*.8):cost}
+function adjustedCost(exam){
+  let cost=Number(exam.cost)||0;
+  if(cost<=0) return 0;
+  let discount=0;
+  if(exam.req==='lab' && state.upgrades.lab){
+    discount=0.20+(roomLevel('lab')-1)*0.05;
+  }
+  return Math.max(0,Math.ceil(cost*(1-discount)));
+}
+function adjustedExamTime(exam){
+  let t=Number(exam.time)||0;
+  if(exam.req==='imaging' && state.upgrades.imaging) t-=(roomLevel('imaging')-1);
+  if(exam.req==='cardio' && state.upgrades.cardio) t-=(roomLevel('cardio')-1);
+  return Math.max(1,t);
+}
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
 function renderExamButtons(){
-  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e.cost),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&e.time?' • ':''}${e.time||0} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-e.time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=e.time;examined.add(i);beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
+  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
 }
 function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis')selectedDiagnosis=item;else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})}
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
@@ -767,6 +1106,8 @@ function finishCase(){
     run.timeLeft=Math.max(0,run.timeLeft-5);
 
     let reward=perfect?current.reward:diagOK?Math.round(current.reward*.45):0;
+    const treatmentRoomBonus=Math.max(0,Math.round(reward*(clinicCashMultiplier()-1)));
+    reward+=treatmentRoomBonus;
     if(state.upgrades.reception)reward+=10;
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
@@ -806,6 +1147,7 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
+      ${treatmentRoomBonus>0?`<div class='result-line'><span>Raumbonus</span><b>+${treatmentRoomBonus} €</b></div>`:''}
       <div class='result-line'><span>Erfahrung</span><b>+${xpGain} XP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
@@ -834,7 +1176,9 @@ function endShift(reason=''){
   $('missionResult').innerHTML=missionHtml+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
-function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);if(got.length)toast('🏆 Neuer Erfolg!');return got}
+function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
+  check('clinic10',clinicPower()>=10);
+  check('allrooms',clinicActiveRooms()===clinicRooms.length);if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
 renderHome();
