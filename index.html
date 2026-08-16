@@ -383,13 +383,74 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .emergency-badge{display:inline-block;margin-left:5px;padding:3px 6px;border-radius:999px;background:rgba(255,102,122,.14);color:#ff9bab;font-size:8px;font-weight:900;vertical-align:middle}
 .protocol-result-good{color:var(--accent)}.protocol-result-bad{color:var(--danger)}
 
+
+/* ===== v0.8 PROCEDURES & OPERATIONS ===== */
+.procedure-skill-card{
+  margin-top:14px;padding:15px;border-radius:22px;
+  background:linear-gradient(155deg,rgba(33,71,94,.78),rgba(15,32,56,.96));
+  border:1px solid rgba(70,166,255,.34)
+}
+.procedure-skill-head{display:flex;align-items:center;justify-content:space-between;gap:12px}
+.procedure-skill-title{font-size:17px;font-weight:900}
+.procedure-skill-sub{margin-top:3px;color:var(--muted);font-size:10.5px}
+.procedure-skill-rank{
+  padding:7px 10px;border-radius:999px;background:rgba(70,166,255,.12);
+  color:#a9d4ff;font-size:10px;font-weight:900;white-space:nowrap
+}
+.procedure-skill-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.procedure-skill-stat{
+  background:rgba(8,22,39,.72);border:1px solid rgba(255,255,255,.07);
+  border-radius:12px;padding:8px 6px;text-align:center
+}
+.procedure-skill-stat b{display:block;font-size:12px}
+.procedure-skill-stat small{font-size:8.5px;color:var(--muted)}
+
+.procedure-panel{
+  margin-top:14px;padding:15px;border-radius:22px;
+  background:linear-gradient(155deg,rgba(24,61,91,.92),rgba(16,31,54,.98));
+  border:1px solid rgba(70,166,255,.40);box-shadow:0 14px 34px rgba(0,0,0,.20)
+}
+.procedure-panel.hidden{display:none}
+.procedure-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start;margin-bottom:10px}
+.procedure-title{font-weight:900;font-size:16px}
+.procedure-desc{font-size:10px;color:#abcce9;margin-top:3px;line-height:1.4}
+.procedure-tag{
+  border-radius:999px;padding:6px 8px;background:rgba(70,166,255,.12);
+  color:#a9d4ff;font-size:9px;font-weight:900;white-space:nowrap
+}
+.procedure-steps{display:grid;gap:8px}
+.procedure-choice{
+  width:100%;border:1px solid rgba(255,255,255,.12);background:rgba(9,25,44,.80);
+  color:#f7fbff;border-radius:14px;padding:11px;text-align:left;font-weight:800;font-size:11px
+}
+.procedure-choice small{display:block;margin-top:3px;color:var(--muted);font-size:9px;font-weight:500}
+.procedure-choice.correct{border-color:rgba(40,215,161,.65);background:rgba(40,215,161,.11)}
+.procedure-choice.wrong{border-color:rgba(255,102,122,.65);background:rgba(255,102,122,.10)}
+.procedure-choice:disabled{opacity:.75}
+.procedure-status{
+  margin-top:9px;padding:9px 10px;border-radius:12px;
+  background:rgba(8,21,38,.72);font-size:10px;line-height:1.4;color:#d7e6f5
+}
+.procedure-status:empty{display:none}
+.procedure-status.good{border-left:3px solid var(--accent)}
+.procedure-status.bad{border-left:3px solid var(--danger)}
+.procedure-badge{
+  display:inline-block;margin-left:5px;padding:3px 6px;border-radius:999px;
+  background:rgba(70,166,255,.13);color:#90c9ff;font-size:8px;font-weight:900;vertical-align:middle
+}
+.operation-room-card{
+  border-color:rgba(70,166,255,.50)!important;
+}
+.procedure-result-good{color:var(--accent)}
+.procedure-result-bad{color:var(--danger)}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.7 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.8 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -399,11 +460,27 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.7 • EMERGENCY PROTOCOLS</h2>
+          <h2>Clinic Life v0.8 • PROCEDURES & OPERATIONS</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
 
+
+
+        <section class="procedure-skill-card">
+          <div class="procedure-skill-head">
+            <div>
+              <div class="procedure-skill-title">🛠️ Eingriffs-Skill</div>
+              <div id="procedureSkillSub" class="procedure-skill-sub">Meistere kleine Eingriffe und Operationen.</div>
+            </div>
+            <div id="procedureSkillRank" class="procedure-skill-rank">BASIS</div>
+          </div>
+          <div class="procedure-skill-stats">
+            <div class="procedure-skill-stat"><b id="procedureCorrect">0</b><small>Eingriffe korrekt</small></div>
+            <div class="procedure-skill-stat"><b id="procedureRate">0 %</b><small>Trefferquote</small></div>
+            <div class="procedure-skill-stat"><b id="procedurePerfect">0</b><small>Perfekte Eingriffe</small></div>
+          </div>
+        </section>
 
         <section class="emergency-skill-card">
           <div class="emergency-skill-head">
@@ -597,6 +674,19 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
         <section class="panel">
           <div class="panel-title">2. Diagnose</div>
           <div id="diagnosisButtons" class="choice-list two-col"></div>
+        </section>
+
+
+        <section id="procedurePanel" class="procedure-panel hidden">
+          <div class="procedure-head">
+            <div>
+              <div class="procedure-title">🛠️ Eingriff</div>
+              <div class="procedure-desc">Wähle die richtige Reihenfolge für einen vereinfachten Eingriff. Das Minigame ist optional und blockiert den Fallabschluss nicht.</div>
+            </div>
+            <div id="procedureTag" class="procedure-tag">EINGRIFF</div>
+          </div>
+          <div id="procedureSteps" class="procedure-steps"></div>
+          <div id="procedureStatus" class="procedure-status"></div>
         </section>
 
         <section class="panel">
@@ -1016,6 +1106,81 @@ const patients = [
     treatments:["Überwachte Notfallabklärung + Schutz vor erneutem Anfall","Sofort nach Hause schicken","Antibiotikum","Gipsverband"],
     correctTreatment:"Überwachte Notfallabklärung + Schutz vor erneutem Anfall",
     reward:305, xp:148
+  },
+  {
+    name:"Lena A.", age:26, job:"Barista", avatar:"👩🏻", urgency:"low", procedure:"wound",
+    complaint:"Ich habe mich beim Kochen tief am Unterarm geschnitten. Die Blutung ist inzwischen deutlich weniger.",
+    vitals:{pulse:"88",temp:"36,7°",spo2:"99%",bp:"119/73"},
+    exams:[
+      {name:"Wunde ansehen", result:"Saubere Schnittverletzung ohne sichtbaren Fremdkörper.", cost:0, time:3},
+      {name:"Durchblutung prüfen", result:"Durchblutung und Sensibilität distal unauffällig.", cost:0, time:3},
+      {name:"Beweglichkeit prüfen", result:"Beweglichkeit weitgehend erhalten.", cost:0, time:3}
+    ],
+    diagnoses:["Schnittverletzung","Bänderdistorsion","Thrombose","Migräne"],
+    correctDiagnosis:"Schnittverletzung",
+    treatments:["Wundversorgung + ärztliche Entscheidung über Wundverschluss","Nur Bettruhe","Antibiotikum ohne Untersuchung","Gipsverband"],
+    correctTreatment:"Wundversorgung + ärztliche Entscheidung über Wundverschluss",
+    reward:145, xp:68
+  },
+  {
+    name:"Simon O.", age:33, job:"Tischler", avatar:"👨🏼", urgency:"medium", procedure:"abscess",
+    complaint:"Ich habe seit Tagen eine sehr schmerzhafte, gerötete Schwellung am Oberarm. Heute ist sie deutlich größer.",
+    vitals:{pulse:"96",temp:"38,0°",spo2:"99%",bp:"127/78"},
+    exams:[
+      {name:"Haut untersuchen", result:"Lokale gerötete, druckschmerzhafte Schwellung mit Flüssigkeitsverdacht.", cost:0, time:4},
+      {name:"Temperaturkontrolle", result:"Leichtes Fieber.", cost:0, time:2},
+      {name:"Ultraschall", result:"Abgekapselte Flüssigkeitsansammlung.", cost:45, time:10, req:"imaging"}
+    ],
+    diagnoses:["Hautabszess","Allergische Reaktion","Bänderdistorsion","Harnwegsinfekt"],
+    correctDiagnosis:"Hautabszess",
+    treatments:["Chirurgische Abklärung + geeignete lokale Behandlung","Nur Eis auflegen","Glukose oral","Inhalation"],
+    correctTreatment:"Chirurgische Abklärung + geeignete lokale Behandlung",
+    reward:185, xp:88
+  },
+  {
+    name:"Ben W.", age:29, job:"Klettertrainer", avatar:"🧔🏻", urgency:"medium", procedure:"joint",
+    complaint:"Ich bin beim Klettern gestürzt und meine Schulter sieht komisch aus. Ich kann den Arm kaum bewegen.",
+    vitals:{pulse:"102",temp:"36,6°",spo2:"99%",bp:"132/81"},
+    exams:[
+      {name:"Schulter ansehen", result:"Deutliche Fehlstellung und eingeschränkte Bewegung.", cost:0, time:3},
+      {name:"Durchblutung prüfen", result:"Puls und Sensibilität der Hand erhalten.", cost:0, time:3},
+      {name:"Röntgen", result:"Luxation ohne sichtbare Fraktur.", cost:48, time:12, req:"imaging"}
+    ],
+    diagnoses:["Schulterluxation","Bänderdistorsion","Thrombose","Gehirnerschütterung"],
+    correctDiagnosis:"Schulterluxation",
+    treatments:["Überwachte orthopädische Reposition + Kontrolle","Nur Schmerzgel","Antibiotikum","Nach Hause schicken"],
+    correctTreatment:"Überwachte orthopädische Reposition + Kontrolle",
+    reward:205, xp:96
+  },
+  {
+    name:"Clara F.", age:42, job:"Lehrerin", avatar:"👩🏼", urgency:"medium", procedure:"foreign",
+    complaint:"Beim Heimwerken ist mir ein kleiner Splitter tief in die Hand geraten. Ich bekomme ihn selbst nicht heraus.",
+    vitals:{pulse:"84",temp:"36,6°",spo2:"99%",bp:"121/75"},
+    exams:[
+      {name:"Hand untersuchen", result:"Kleiner tiefer Fremdkörper, keine starke Blutung.", cost:0, time:3},
+      {name:"Sensibilität prüfen", result:"Sensibilität und Durchblutung erhalten.", cost:0, time:3},
+      {name:"Röntgen", result:"Kleiner röntgendichter Fremdkörper sichtbar.", cost:42, time:10, req:"imaging"}
+    ],
+    diagnoses:["Fremdkörper in der Hand","Bänderdistorsion","Hautabszess","Harnwegsinfekt"],
+    correctDiagnosis:"Fremdkörper in der Hand",
+    treatments:["Sterile Entfernung/Abklärung + Wundkontrolle","Nur Bettruhe","Glukose oral","Inhalation"],
+    correctTreatment:"Sterile Entfernung/Abklärung + Wundkontrolle",
+    reward:165, xp:78
+  },
+  {
+    name:"Gregor M.", age:50, job:"Landwirt", avatar:"👨🏽", urgency:"medium", rare:true, procedure:"surgery",
+    complaint:"Seit zwei Tagen starke Schmerzen rechts oben im Bauch. Heute sind Fieber und Übelkeit dazugekommen.",
+    vitals:{pulse:"112",temp:"39,1°",spo2:"97%",bp:"129/80"},
+    exams:[
+      {name:"Bauch untersuchen", result:"Deutlicher Druckschmerz im rechten Oberbauch.", cost:0, time:5},
+      {name:"Labor", result:"Entzündungswerte erhöht.", cost:24, time:8, req:"lab"},
+      {name:"Ultraschall", result:"Gallenblase verdickt, Steine und Entzündungszeichen sichtbar.", cost:58, time:12, req:"imaging"}
+    ],
+    diagnoses:["Akute Cholezystitis","Gallenkolik","Appendizitis","Gastroenteritis"],
+    correctDiagnosis:"Akute Cholezystitis",
+    treatments:["Chirurgische Aufnahme + operative Abklärung","Nur Flüssigkeit zuhause","Gipsverband","Glukose oral"],
+    correctTreatment:"Chirurgische Aufnahme + operative Abklärung",
+    reward:270, xp:126
   }
 ];
 
@@ -1041,6 +1206,152 @@ const departments = [
 
 
 
+
+
+const procedureSkillRanks=[
+  {min:0,name:'BASIS'},{min:3,name:'ROUTINIERT'},{min:8,name:'EINGRIFFS-PROFI'},
+  {min:15,name:'OP-TEAM'},{min:25,name:'SPEZIALIST'}
+];
+
+function procedureSkillRank(){
+  let rank=procedureSkillRanks[0];
+  for(const r of procedureSkillRanks)if((state.procedureCorrect||0)>=r.min)rank=r;
+  return rank.name;
+}
+function procedureRate(){
+  const a=state.procedureAttempts||0;
+  return a?Math.round((state.procedureCorrect||0)/a*100):0;
+}
+function renderProcedureSkill(){
+  if($('procedureSkillRank'))$('procedureSkillRank').textContent=procedureSkillRank();
+  if($('procedureCorrect'))$('procedureCorrect').textContent=state.procedureCorrect||0;
+  if($('procedureRate'))$('procedureRate').textContent=`${procedureRate()} %`;
+  if($('procedurePerfect'))$('procedurePerfect').textContent=state.procedurePerfect||0;
+  if($('procedureSkillSub'))$('procedureSkillSub').textContent=`${state.procedureAttempts||0} Eingriffe gespielt • Level ${roomLevel('surgery')} im Eingriffsraum`;
+}
+function procedureRoomBonus(){
+  return 1+Math.max(0,roomLevel('surgery')-1)*.05;
+}
+function procedureTimeReduction(){
+  return Math.max(0,roomLevel('surgery')-1);
+}
+function procedureSet(patient){
+  const sets={
+    wound:{
+      tag:'WUNDVERSORGUNG',
+      steps:['Steriles Feld vorbereiten','Wunde kontrolliert versorgen','Abschlusskontrolle durchführen']
+    },
+    abscess:{
+      tag:'KLEINER EINGRIFF',
+      steps:['Steriles Feld vorbereiten','Lokalen Eingriff durchführen','Wundkontrolle & Nachsorge planen']
+    },
+    joint:{
+      tag:'ORTHOPÄDIE',
+      steps:['Durchblutung/Sensibilität prüfen','Überwachten Eingriff durchführen','Position und Funktion kontrollieren']
+    },
+    foreign:{
+      tag:'FREMDKÖRPER',
+      steps:['Lage und Funktion kontrollieren','Sterile Entfernung durchführen','Wunde abschließend kontrollieren']
+    },
+    surgery:{
+      tag:'OP-VORBEREITUNG',
+      steps:['Patient für OP vorbereiten','Operative Versorgung im Team durchführen','Überwachung nach dem Eingriff']
+    }
+  };
+  return sets[patient.procedure]||null;
+}
+function resetProcedureState(){
+  procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
+}
+function renderProcedurePanel(){
+  const panel=$('procedurePanel'),box=$('procedureSteps'),status=$('procedureStatus'),tag=$('procedureTag');
+  if(!panel||!box||!status)return;
+  resetProcedureState();box.innerHTML='';status.textContent='';status.className='procedure-status';
+  const set=current?procedureSet(current):null;
+  if(!set){
+    panel.classList.add('hidden');
+    return;
+  }
+  panel.classList.remove('hidden');
+  if(!state.upgrades.surgery){
+    box.innerHTML='';
+    if(tag)tag.textContent='EINGRIFFSRAUM';
+    status.className='procedure-status bad';
+    status.textContent='🔒 Eingriffsraum noch nicht freigeschaltet. Der normale Patientenfall bleibt trotzdem vollständig spielbar.';
+    return;
+  }
+  if(tag)tag.textContent=set.tag;
+  procedureOutcome.sequence=set.steps;
+  renderProcedureStepChoices();
+}
+function renderProcedureStepChoices(){
+  const box=$('procedureSteps'),status=$('procedureStatus');
+  if(!box||!current)return;
+  const set=procedureSet(current);
+  if(!set)return;
+  const step=procedureOutcome.step||0;
+  if(step>=set.steps.length)return;
+  box.innerHTML='';
+  const correct=set.steps[step];
+  const distractors=[
+    'Patient unbeaufsichtigt warten lassen',
+    'Ohne Kontrolle direkt beenden',
+    'Belastungstest durchführen'
+  ];
+  const options=[correct,...distractors.slice(0,2)].sort(()=>Math.random()-.5);
+  options.forEach(option=>{
+    const btn=document.createElement('button');
+    btn.type='button';btn.className='procedure-choice';
+    btn.innerHTML=`${option}<small>Schritt ${step+1} von ${set.steps.length}</small>`;
+    btn.onclick=()=>resolveProcedureStep(option,correct,btn);
+    box.appendChild(btn);
+  });
+  if(status)status.textContent=`Schritt ${step+1}: Wähle den passenden nächsten Ablauf.`;
+}
+function resolveProcedureStep(option,correct,clicked){
+  if(procedureOutcome.attempted)return;
+  const buttons=[...$('procedureSteps').querySelectorAll('button')];
+  buttons.forEach(btn=>btn.disabled=true);
+  if(option!==correct){
+    clicked.classList.add('wrong');
+    procedureOutcome.attempted=true;
+    procedureOutcome.correct=false;
+    state.procedureAttempts=(state.procedureAttempts||0)+1;
+    run.procedureAttempts=(run.procedureAttempts||0)+1;
+    state.rep=Math.max(0,state.rep-1);run.rep-=1;
+    run.timeLeft=Math.max(0,run.timeLeft-4);
+    $('procedureStatus').className='procedure-status bad';
+    $('procedureStatus').textContent=`⚠️ Eingriff nicht optimal. Besser wäre: ${correct}. -1 Ruf, -4 Minuten.`;
+    beep(330,.12);updateHud();save();return;
+  }
+
+  clicked.classList.add('correct');
+  procedureOutcome.step=(procedureOutcome.step||0)+1;
+  if(procedureOutcome.step>=procedureOutcome.sequence.length){
+    procedureOutcome.attempted=true;procedureOutcome.correct=true;
+    state.procedureAttempts=(state.procedureAttempts||0)+1;
+    state.procedureCorrect=(state.procedureCorrect||0)+1;
+    state.procedurePerfect=(state.procedurePerfect||0)+1;
+    run.procedureAttempts=(run.procedureAttempts||0)+1;
+    run.procedureCorrect=(run.procedureCorrect||0)+1;
+    const money=Math.round(35*procedureRoomBonus());
+    const xp=20;
+    const rp=1;
+    procedureOutcome.money=money;procedureOutcome.xp=xp;procedureOutcome.rp=rp;
+    state.money+=money;state.xp+=xp;state.researchPoints=(state.researchPoints||0)+rp;
+    run.earned+=money;run.xp+=xp;run.researchEarned=(run.researchEarned||0)+rp;
+    run.timeLeft=Math.max(0,run.timeLeft-(3-procedureTimeReduction()));
+    $('procedureSteps').innerHTML='';
+    $('procedureStatus').className='procedure-status good';
+    $('procedureStatus').textContent=`✅ Eingriff gelungen. +${money} €, +${xp} XP, +${rp} RP.`;
+    beep(980,.12);updateHud();save();return;
+  }
+
+  $('procedureStatus').className='procedure-status good';
+  $('procedureStatus').textContent='✅ Schritt korrekt. Weiter zum nächsten.';
+  beep(760,.06);
+  setTimeout(()=>renderProcedureStepChoices(),250);
+}
 
 const emergencySkillRanks=[
   {min:0,name:'ANFÄNGER'},{min:3,name:'ERSTHELFER'},{min:8,name:'NOTFALL-ROUTINE'},
@@ -1256,7 +1567,7 @@ function renderCasebook(){
     item.className=`casebook-item${mastery===0?' locked':''}${rare?' rare':''}`;
     const visible=mastery>0;
     item.innerHTML=`
-      <div class="casebook-name">${visible?diagnosis:'???'}${rare&&visible?'<span class="rare-badge">SELTEN</span>':''}${visible&&patients.some(p=>p.correctDiagnosis===diagnosis&&p.urgency==='high')?'<span class="emergency-badge">NOTFALL</span>':''}</div>
+      <div class="casebook-name">${visible?diagnosis:'???'}${rare&&visible?'<span class="rare-badge">SELTEN</span>':''}${visible&&patients.some(p=>p.correctDiagnosis===diagnosis&&p.urgency==='high')?'<span class="emergency-badge">NOTFALL</span>':''}${visible&&patients.some(p=>p.correctDiagnosis===diagnosis&&p.procedure)?'<span class="procedure-badge">EINGRIFF</span>':''}</div>
       <div class="casebook-stars">${'★'.repeat(mastery)}${'☆'.repeat(3-mastery)}</div>
       <div class="casebook-meta">${visible?`${entry.seen}× gesehen • ${entry.correct}× Diagnose richtig`:'Noch nicht entdeckt'}</div>`;
     box.appendChild(item);
@@ -1358,6 +1669,10 @@ const clinicRooms = [
   {
     id:'cardio', icon:'❤️', name:'Kardiologie', unlockId:'cardio', unlockCost:1100,
     maxLevel:3, baseUpgrade:850, desc:'EKG und spezialisierte Herzdiagnostik.'
+  },
+  {
+    id:'surgery', icon:'🛠️', name:'Eingriffsraum', unlockId:'surgery', unlockCost:2200,
+    maxLevel:3, baseUpgrade:1200, desc:'Kleine Eingriffe und vereinfachte Operationen.'
   }
 ];
 
@@ -1402,6 +1717,7 @@ function roomEffect(room){
   if(room.id==='pharmacy') return `Effekt: ${Math.round(pharmacyDiscount()*100)} % Rabatt beim Medikamentenkauf`;
   if(room.id==='emergency') return `Effekt: kritische Patienten halten ${state.upgrades.emergency ? level : 0} zusätzliche Wartezüge aus`;
   if(room.id==='cardio') return `Effekt: Herzdiagnostik bis zu ${level-1} min schneller`;
+  if(room.id==='surgery') return `Effekt: +${(level-1)*5} % Eingriffsbonus • ${Math.max(0,level-1)} min Zeitersparnis`;
   return '';
 }
 function renderClinicMap(){
@@ -1518,7 +1834,12 @@ const treatmentStock = {
   'Kreislaufstabilisierung + sofortige gastroenterologische Notfallabklärung': ['fluids','emergencyDrug'],
   'Sofortige bronchienerweiternde Notfalltherapie + engmaschige Überwachung': ['inhaler','emergencyDrug'],
   'Sofortige Kühlung + überwachte Notfallversorgung': ['fluids'],
-  'Überwachte Notfallabklärung + Schutz vor erneutem Anfall': ['emergencyDrug']
+  'Überwachte Notfallabklärung + Schutz vor erneutem Anfall': ['emergencyDrug'],
+  'Wundversorgung + ärztliche Entscheidung über Wundverschluss': ['pain'],
+  'Chirurgische Abklärung + geeignete lokale Behandlung': ['pain','antibiotic'],
+  'Überwachte orthopädische Reposition + Kontrolle': ['pain'],
+  'Sterile Entfernung/Abklärung + Wundkontrolle': ['pain'],
+  'Chirurgische Aufnahme + operative Abklärung': ['fluids','pain','antibiotic']
 };
 
 const achievements = [
@@ -1537,7 +1858,9 @@ const achievements = [
   {id:'casebook10', name:'Fallbuch-Profi', desc:'Entdecke mindestens 10 verschiedene Diagnosen.'},
   {id:'master5', name:'Diagnosemeister', desc:'Meistere 5 Diagnosen mit 3 Sternen.'},
   {id:'protocol10', name:'Notfall-Profi', desc:'Schließe 10 Notfall-Protokolle korrekt ab.'},
-  {id:'critical5', name:'Lebensretter', desc:'Behandle 5 dringende Fälle perfekt.'}
+  {id:'critical5', name:'Lebensretter', desc:'Behandle 5 dringende Fälle perfekt.'},
+  {id:'procedure10', name:'Ruhige Hand', desc:'Schließe 10 Eingriffe erfolgreich ab.'},
+  {id:'surgeryMax', name:'OP-Zentrum', desc:'Baue den Eingriffsraum auf Level 3 aus.'}
 ];
 
 const missions = [
@@ -1552,14 +1875,16 @@ const missions = [
   {id:'research', text:'Verdiene in dieser Schicht mindestens 5 Forschungspunkte.', rewardMoney:210, rewardXp:90,
    progress:r=>Math.min(r.researchEarned||0,5)/5, done:r=>(r.researchEarned||0)>=5, meta:r=>`${Math.min(r.researchEarned||0,5)}/5 RP verdient`},
   {id:'protocols', text:'Schließe in einer Schicht 2 Notfall-Protokolle korrekt ab.', rewardMoney:260, rewardXp:105,
-   progress:r=>Math.min(r.protocolCorrect||0,2)/2, done:r=>(r.protocolCorrect||0)>=2, meta:r=>`${Math.min(r.protocolCorrect||0,2)}/2 Protokolle richtig`}
+   progress:r=>Math.min(r.protocolCorrect||0,2)/2, done:r=>(r.protocolCorrect||0)>=2, meta:r=>`${Math.min(r.protocolCorrect||0,2)}/2 Protokolle richtig`},
+  {id:'procedures', text:'Schließe in einer Schicht 2 Eingriffe erfolgreich ab.', rewardMoney:280, rewardXp:115,
+   progress:r=>Math.min(r.procedureCorrect||0,2)/2, done:r=>(r.procedureCorrect||0)>=2, meta:r=>`${Math.min(r.procedureCorrect||0,2)}/2 Eingriffe erfolgreich`}
 ];
 
 const defaultState = {
   money:500, rep:50, xp:0, day:1, upgrades:{}, patientsTreated:0, perfectCases:0, urgentSaved:0,
   bestCombo:0, bestShift:0, achievements:{},
   inventory:{pain:5,antibiotic:4,glucose:5,inhaler:4,fluids:5,emergencyDrug:3},
-  roomLevels:{waiting:1,exam:1,lab:1,imaging:1,pharmacy:1,emergency:1,cardio:1},
+  roomLevels:{waiting:1,exam:1,lab:1,imaging:1,pharmacy:1,emergency:1,cardio:1,surgery:1},
   staff:{nurse:0,assistant:0,labtech:0,radiology:0,paramedic:0},
   specialty:'general',
   researchPoints:0,
@@ -1567,7 +1892,10 @@ const defaultState = {
   casebook:{},
   emergencyProtocolAttempts:0,
   emergencyProtocolCorrect:0,
-  criticalPerfect:0
+  criticalPerfect:0,
+  procedureAttempts:0,
+  procedureCorrect:0,
+  procedurePerfect:0
 };
 
 let state;
@@ -1594,6 +1922,9 @@ state.researchPoints=Number.isFinite(Number(state.researchPoints))&&Number(state
 state.emergencyProtocolAttempts=Number.isFinite(Number(state.emergencyProtocolAttempts))&&Number(state.emergencyProtocolAttempts)>=0?Math.floor(Number(state.emergencyProtocolAttempts)):0;
 state.emergencyProtocolCorrect=Number.isFinite(Number(state.emergencyProtocolCorrect))&&Number(state.emergencyProtocolCorrect)>=0?Math.floor(Number(state.emergencyProtocolCorrect)):0;
 state.criticalPerfect=Number.isFinite(Number(state.criticalPerfect))&&Number(state.criticalPerfect)>=0?Math.floor(Number(state.criticalPerfect)):0;
+state.procedureAttempts=Number.isFinite(Number(state.procedureAttempts))&&Number(state.procedureAttempts)>=0?Math.floor(Number(state.procedureAttempts)):0;
+state.procedureCorrect=Number.isFinite(Number(state.procedureCorrect))&&Number(state.procedureCorrect)>=0?Math.floor(Number(state.procedureCorrect)):0;
+state.procedurePerfect=Number.isFinite(Number(state.procedurePerfect))&&Number(state.procedurePerfect)>=0?Math.floor(Number(state.procedurePerfect)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -1617,6 +1948,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
 }
 let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, examined=new Set(), soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
+let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
 
@@ -1637,7 +1969,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -1662,7 +1994,7 @@ function renderAchievements(){
 
 function startShift(){
   const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0};
+  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -1703,7 +2035,7 @@ function loadPatient(){
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderEmergencyProtocol();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderTreatmentButtons();updateSubmit();
+  renderEmergencyProtocol();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -1874,6 +2206,7 @@ function finishCase(){
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
       <div class='result-line'><span>Restzeit</span><b>${run.timeLeft} min</b></div>
       ${current.urgency==='high'?`<div class='result-line'><span>Notfall-Protokoll</span><b class='${protocolOutcome.attempted?(protocolOutcome.correct?'protocol-result-good':'protocol-result-bad'):''}'>${protocolOutcome.attempted?(protocolOutcome.correct?'✅ Richtig':'⚠️ Fehler'):'Nicht gespielt'}</b></div>`:''}
+      ${current.procedure?`<div class='result-line'><span>Eingriff</span><b class='${procedureOutcome.attempted?(procedureOutcome.correct?'procedure-result-good':'procedure-result-bad'):''}'>${procedureOutcome.attempted?(procedureOutcome.correct?'✅ Erfolgreich':'⚠️ Fehler'):(state.upgrades.surgery?'Nicht gespielt':'Raum gesperrt')}</b></div>`:''}
       ${supplyCost>0?`<div class='result-line'><span>Notfallmaterial</span><b>-${supplyCost} €</b></div>`:''}`;
     $('nextBtn').textContent=run.treated>=run.total||run.timeLeft<=0?'Schicht auswerten':'Zurück ins Wartezimmer';
     showScreen('resultScreen');
@@ -1896,7 +2229,7 @@ function endShift(reason=''){
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
-  $('missionResult').innerHTML=missionHtml+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -1909,6 +2242,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('master5',masteredDiagnoses()>=5);
   check('protocol10',(state.emergencyProtocolCorrect||0)>=10);
   check('critical5',(state.criticalPerfect||0)>=5);
+  check('procedure10',(state.procedureCorrect||0)>=10);
+  check('surgeryMax',!!state.upgrades.surgery&&roomLevel('surgery')>=3);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
