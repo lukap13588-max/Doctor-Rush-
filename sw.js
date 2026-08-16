@@ -1,4 +1,30 @@
-const CACHE='doctor-rush-v3';
-const ASSETS=['./','./index.html','./style.css','./game.js','./manifest.webmanifest'];
-self.addEventListener('install',e=>e.waitUntil(caches.open(CACHE).then(c=>c.addAll(ASSETS))));
-self.addEventListener('fetch',e=>e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request))));
+// Doctor Rush v0.3.1 – Cache-Migration
+// Dieser Worker speichert absichtlich nichts mehr offline.
+// Falls noch ein alter Doctor-Rush-Service-Worker registriert ist,
+// ersetzt diese Datei ihn und räumt die alten Caches auf.
+
+self.addEventListener("install", event => {
+  self.skipWaiting();
+});
+
+self.addEventListener("activate", event => {
+  event.waitUntil((async () => {
+    const keys = await caches.keys();
+    await Promise.all(
+      keys
+        .filter(key => key.startsWith("doctor-rush"))
+        .map(key => caches.delete(key))
+    );
+
+    await self.registration.unregister();
+
+    const clientsList = await self.clients.matchAll({ type: "window" });
+    for (const client of clientsList) {
+      client.postMessage({ type: "DOCTOR_RUSH_CACHE_CLEARED" });
+    }
+  })());
+});
+
+self.addEventListener("fetch", event => {
+  event.respondWith(fetch(event.request));
+});

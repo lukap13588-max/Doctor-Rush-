@@ -7,8 +7,71 @@
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
   <title>Doctor Rush: Clinic Life</title>
-  <link rel="manifest" href="manifest.webmanifest"/>
-  <link rel="stylesheet" href="style.css"/>
+
+  <!-- Doctor Rush Update Bootstrap v0.3.1
+       Entfernt den alten Offline-Cache einmalig und prüft bei jedem Start,
+       ob GitHub bereits eine neuere Spielversion bereitstellt. -->
+  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
+  <meta http-equiv="Pragma" content="no-cache"/>
+  <meta http-equiv="Expires" content="0"/>
+  <script>
+  (() => {
+    const CURRENT_VERSION = "0.3.1";
+    const RESET_KEY = "doctorRushCacheReset";
+    const RESET_VALUE = "0.3.1";
+
+    async function removeOldOfflineCacheOnce() {
+      try {
+        if (localStorage.getItem(RESET_KEY) === RESET_VALUE) return;
+
+        if ("serviceWorker" in navigator) {
+          const registrations = await navigator.serviceWorker.getRegistrations();
+          await Promise.all(registrations.map(reg => reg.unregister()));
+        }
+
+        if ("caches" in window) {
+          const keys = await caches.keys();
+          await Promise.all(
+            keys
+              .filter(key => key.startsWith("doctor-rush"))
+              .map(key => caches.delete(key))
+          );
+        }
+
+        localStorage.setItem(RESET_KEY, RESET_VALUE);
+      } catch (_) {
+        // Das Spiel soll auch starten, wenn ein Browser diese APIs nicht unterstützt.
+      }
+    }
+
+    async function checkForNewVersion() {
+      try {
+        const response = await fetch("version.json?t=" + Date.now(), {
+          cache: "no-store"
+        });
+        if (!response.ok) return;
+
+        const data = await response.json();
+        const latest = String(data.version || "");
+        if (!latest || latest === CURRENT_VERSION) return;
+
+        const params = new URLSearchParams(location.search);
+        if (params.get("v") === latest) return;
+
+        const next = new URL(location.href);
+        next.searchParams.set("v", latest);
+        location.replace(next.toString());
+      } catch (_) {
+        // Offline oder vorübergehend nicht erreichbar: normale App weiterladen.
+      }
+    }
+
+    removeOldOfflineCacheOnce().finally(checkForNewVersion);
+  })();
+  </script>
+
+  <link rel="manifest" href="manifest.webmanifest?v=0.3.1"/>
+  <link rel="stylesheet" href="style.css?v=0.3.1"/>
 </head>
 <body>
   <div id="app">
@@ -24,7 +87,7 @@
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.3</h2>
+          <h2>Clinic Life v0.3.1</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -167,6 +230,6 @@
 
     <div id="toast" class="toast"></div>
   </div>
-  <script src="game.js"></script>
+  <script src="game.js?v=0.3.1"></script>
 </body>
 </html>
