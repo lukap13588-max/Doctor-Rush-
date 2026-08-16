@@ -1293,13 +1293,80 @@ body.home-nav-active #app{padding-bottom:102px}
   border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#daf2e9
 }
 
+
+/* ===== v0.22 PROMOTION REVIEW ===== */
+.promotion-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(89,66,35,.78),rgba(12,28,49,.98));
+  border:1px solid rgba(255,199,99,.29)
+}
+.promotion-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.promotion-head h4{margin:0;font-size:13px}
+.promotion-head p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.promotion-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(255,199,99,.11);
+  color:#ffe0a1;font-size:8px;font-weight:900;white-space:nowrap
+}
+.promotion-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:9px}
+.promotion-stat{
+  padding:8px 5px;border-radius:10px;background:#0c1f35;border:1px solid #263f5d;text-align:center
+}
+.promotion-stat b{display:block;font-size:10px}
+.promotion-stat small{display:block;color:var(--muted);font-size:7.2px;margin-top:2px}
+.promotion-score{
+  margin-top:9px;padding:10px;border-radius:12px;background:rgba(255,199,99,.06);
+  border:1px solid rgba(255,199,99,.17)
+}
+.promotion-score-row{display:flex;justify-content:space-between;gap:8px;font-size:8.5px}
+.promotion-score-row span{color:var(--muted)}.promotion-score-row b{color:#ffe0a1}
+.promotion-score-bar{height:7px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:6px}
+.promotion-score-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#b4772f,#ffd16e)}
+.promotion-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#ad722e,#e0a344);color:#fff;font-size:9.5px;font-weight:900
+}
+.promotion-start:disabled{opacity:.45}
+.promotion-history{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(112,160,255,.06);
+  border:1px solid rgba(112,160,255,.16);font-size:8.5px;line-height:1.45;color:#dbe9f7
+}
+.review-panel{
+  margin-top:10px;padding:11px;border-radius:14px;background:#0c1f35;border:1px solid #29435f
+}
+.review-panel h4{margin:0;font-size:11px}
+.review-panel p{margin:5px 0 0;color:var(--muted);font-size:8.7px;line-height:1.45}
+.review-row{
+  margin-top:7px;padding:8px 9px;border-radius:10px;background:#091a2e;border:1px solid #223a56;
+  display:flex;justify-content:space-between;gap:8px;font-size:8.5px
+}
+.review-row span{color:var(--muted)}.review-row b{color:#dceafa}
+.promotion-result{
+  margin-top:10px;padding:11px;border-radius:13px;background:rgba(40,215,161,.07);
+  border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#d9f2e9
+}
+.rank-up-card{
+  margin-top:10px;padding:13px;border-radius:16px;
+  background:linear-gradient(145deg,rgba(255,199,99,.10),#0c1f35);
+  border:1px solid rgba(255,199,99,.25);text-align:center
+}
+.rank-up-icon{font-size:34px}.rank-up-card h3{margin:5px 0 3px;font-size:17px}
+.rank-up-card p{margin:0;color:var(--muted);font-size:8.8px;line-height:1.4}
+.leadership-card{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(181,130,255,.06);
+  border:1px solid rgba(181,130,255,.17)
+}
+.leadership-row{display:flex;justify-content:space-between;gap:8px;font-size:8.5px}
+.leadership-row span{color:var(--muted)}.leadership-row b{color:#dec7ff}
+.leadership-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
+.leadership-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#7651b7,#c68ef0)}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.21 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.22 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1309,7 +1376,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.21 • WARD RESPONSIBILITY</h2>
+          <h2>Clinic Life v0.22 • PROMOTION REVIEW</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1382,6 +1449,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="careerPathHub" class="relationship-hub" style="display:none"></div>
           <div id="rotationHub" class="rotation-hub" style="display:none"></div>
           <div id="wardHub" class="ward-hub" style="display:none"></div>
+          <div id="promotionHub" class="promotion-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -3268,22 +3336,22 @@ function historyExtraAnswer(patient,kind){
 function historyQuestionsFor(patient){
   return [
     {
-      id:'course',value:28,time:2,
+      id:'course',value:30,time:2,
       q:'Wie genau haben die Beschwerden begonnen und wie haben sie sich entwickelt?',
       a:patient.complaint
     },
     {
-      id:'associated',value:22,time:2,
+      id:'associated',value:25,time:2,
       q:'Welche Begleitsymptome oder Auslöser sind Ihnen aufgefallen?',
       a:historyExtraAnswer(patient,'associated')
     },
     {
-      id:'risk',value:18,time:2,
+      id:'risk',value:20,time:2,
       q:'Gibt es wichtige Vorerkrankungen oder Risikofaktoren?',
       a:historyExtraAnswer(patient,'risk')
     },
     {
-      id:'general',value:7,time:3,
+      id:'general',value:10,time:3,
       q:'Gab es in letzter Zeit ganz andere allgemeine Beschwerden?',
       a:'Keine zusätzlichen Beschwerden, die den aktuellen Fall wesentlich besser erklären.'
     }
@@ -4266,7 +4334,9 @@ const achievements = [
   {id:'firstRotation', name:'Erste Rotation', desc:'Schließe deine erste persönliche Fachrotation ab.'},
   {id:'rotationExcellent', name:'Starker Eindruck', desc:'Schließe deine erste Rotation mit dem Ergebnis Ausgezeichnet ab.'},
   {id:'firstWard', name:'Eigene Verantwortung', desc:'Führe erstmals einen eigenen kleinen Stationsbereich durch einen Dienst.'},
-  {id:'autonomy75', name:'Vertrauensvorschuss', desc:'Erreiche mindestens 75 Autonomie in der Kampagne.'}
+  {id:'autonomy75', name:'Vertrauensvorschuss', desc:'Erreiche mindestens 75 Autonomie in der Kampagne.'},
+  {id:'stationsarzt', name:'Nächste Stufe', desc:'Steige in der persönlichen Kampagne zum Stationsarzt auf.'},
+  {id:'promotionDistinction', name:'Mit Auszeichnung', desc:'Schließe die erste Beförderungsbeurteilung mit Auszeichnung ab.'}
 ];
 
 const missions = [
@@ -4384,7 +4454,14 @@ const defaultState = {
   wardChoices:{},
   autonomy:20,
   wardOutcome:'',
-  wardCasesCompleted:0
+  wardCasesCompleted:0,
+  promotionReviewCompleted:false,
+  promotionStep:0,
+  promotionPoints:0,
+  promotionChoices:{},
+  promotionOutcome:'',
+  storyCareerTitle:'Assistenzarzt',
+  leadership:10
 };
 
 let state;
@@ -4483,6 +4560,13 @@ if(!state.wardChoices||typeof state.wardChoices!=='object')state.wardChoices={};
 state.autonomy=Number.isFinite(Number(state.autonomy))?Math.max(0,Math.min(100,Math.floor(Number(state.autonomy)))):20;
 if(!['excellent','solid','learning',''].includes(state.wardOutcome))state.wardOutcome='';
 state.wardCasesCompleted=Number.isFinite(Number(state.wardCasesCompleted))&&Number(state.wardCasesCompleted)>=0?Math.floor(Number(state.wardCasesCompleted)):0;
+state.promotionReviewCompleted=!!state.promotionReviewCompleted;
+state.promotionStep=Number.isFinite(Number(state.promotionStep))?Math.max(0,Math.min(3,Math.floor(Number(state.promotionStep)))):0;
+state.promotionPoints=Number.isFinite(Number(state.promotionPoints))?Math.max(0,Math.min(60,Math.floor(Number(state.promotionPoints)))):0;
+if(!state.promotionChoices||typeof state.promotionChoices!=='object')state.promotionChoices={};
+if(!['distinction','regular','development',''].includes(state.promotionOutcome))state.promotionOutcome='';
+if(!['Assistenzarzt','Stationsarzt'].includes(state.storyCareerTitle))state.storyCareerTitle=state.promotionReviewCompleted?'Stationsarzt':'Assistenzarzt';
+state.leadership=Number.isFinite(Number(state.leadership))?Math.max(0,Math.min(100,Math.floor(Number(state.leadership)))):10;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4546,12 +4630,200 @@ function setDoctorAvatar(avatar){
 
 
 
+
+function personalCareerTitle(){
+  return state.storyCareerTitle||'Assistenzarzt';
+}
+function addLeadership(amount){
+  state.leadership=Math.max(0,Math.min(100,(Number(state.leadership)||10)+(Number(amount)||0)));
+}
+function promotionBaseScore(){
+  let score=20;
+  score+=Math.round(effectiveAutonomy()*.22);
+  score+=Math.round((state.mentorTrust||50)*.16);
+  if(state.rotationOutcome==='excellent')score+=10;
+  else if(state.rotationOutcome==='solid')score+=6;
+  else if(state.rotationOutcome==='learning')score+=2;
+  if(state.wardOutcome==='excellent')score+=10;
+  else if(state.wardOutcome==='solid')score+=6;
+  else if(state.wardOutcome==='learning')score+=2;
+  if(relationshipValue('mia')>=65)score+=3;
+  if(relationshipValue('leon')>=65)score+=3;
+  return Math.max(25,Math.min(70,score));
+}
+function promotionTotalScore(){
+  return Math.max(0,Math.min(100,promotionBaseScore()+(state.promotionPoints||0)));
+}
+function promotionRating(score=promotionTotalScore()){
+  if(score>=85)return {id:'distinction',label:'MIT AUSZEICHNUNG',text:'Dr. Hartmann sieht dich bereits als besonders verlässliche Führungskraft im Stationsalltag.'};
+  if(score>=65)return {id:'regular',label:'BESTANDEN',text:'Du erfüllst die Erwartungen und bist bereit für den nächsten Verantwortungsbereich.'};
+  return {id:'development',label:'MIT ENTWICKLUNGSPLAN',text:'Du steigst auf, bekommst aber klare Entwicklungsziele für Führung und Priorisierung.'};
+}
+function promotionHistoryText(){
+  const parts=[];
+  parts.push(`Autonomie ${effectiveAutonomy()}/100.`);
+  parts.push(`Mentor-Vertrauen ${state.mentorTrust||50}/100.`);
+  if(state.rotationOutcome)parts.push(`Rotation: ${state.rotationOutcome==='excellent'?'ausgezeichnet':state.rotationOutcome==='solid'?'solide':'Lernphase'}.`);
+  if(state.wardOutcome)parts.push(`Stationsabschnitt: ${state.wardOutcome==='excellent'?'sehr souverän':state.wardOutcome==='solid'?'solide':'mit Lernbedarf'}.`);
+  if(relationshipValue('mia')>=70&&relationshipValue('leon')>=70)parts.push('Mia und Leon bewerten deine Zusammenarbeit positiv.');
+  return parts.join(' ');
+}
+function renderPromotionHub(){
+  const hub=$('promotionHub');if(!hub)return;
+  if(!state.wardResponsibilityCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const done=!!state.promotionReviewCompleted,score=promotionTotalScore(),rating=promotionRating(score);
+  hub.innerHTML=`
+    <div class="promotion-head">
+      <div><h4>🎓 Beförderungsbeurteilung</h4><p>${done?'Die erste große Karrierebeurteilung ist abgeschlossen.':'Nach deinem ersten eigenen Stationsbereich lädt Dr. Hartmann dich zur offiziellen Entwicklungsbeurteilung ein.'}</p></div>
+      <div class="promotion-badge">${done?'STATIONSARZT':'KARRIERE-REVIEW'}</div>
+    </div>
+    <div class="promotion-stats">
+      <div class="promotion-stat"><b>${effectiveAutonomy()}</b><small>Autonomie</small></div>
+      <div class="promotion-stat"><b>${state.mentorTrust||50}</b><small>Mentor</small></div>
+      <div class="promotion-stat"><b>${state.leadership||10}</b><small>Leadership</small></div>
+    </div>
+    <div class="promotion-score">
+      <div class="promotion-score-row"><span>${done?'Abschlusswertung':'Aktuelle Ausgangslage'}</span><b>${score}/100</b></div>
+      <div class="promotion-score-bar"><i style="width:${score}%"></i></div>
+    </div>
+    <div class="promotion-history">📋 ${promotionHistoryText()}</div>
+    ${done
+      ?`<div class="promotion-result">🎓 <b>${personalCareerTitle()}</b> • ${rating.label}<br>${rating.text}</div>`
+      :'<button type="button" class="promotion-start" onclick="startPromotionReview()">🎓 Beurteilungsgespräch beginnen</button>'}
+  `;
+}
+function startPromotionReview(){
+  if(!state.wardResponsibilityCompleted){startWardStory();return}
+  if(state.promotionReviewCompleted){toast('Die Beförderungsbeurteilung ist bereits abgeschlossen.');return}
+  showScreen('campaignStoryScreen');
+  renderPromotionStory();
+}
+function promotionChoose(key,value,points,leadershipGain,trustGain=0,mia=0,leon=0){
+  if(state.promotionChoices[key])return;
+  state.promotionChoices[key]=value;
+  state.promotionPoints=Math.min(60,(state.promotionPoints||0)+(Number(points)||0));
+  addLeadership(leadershipGain||0);
+  addMentorTrust(trustGain||0);
+  if(mia)changeRelationship('mia',mia);
+  if(leon)changeRelationship('leon',leon);
+  state.promotionStep=Math.min(3,(state.promotionStep||0)+1);
+  beep(points>=15?930:points>=7?700:480,.08);
+  save();
+  renderPromotionStory();
+}
+function campaignRankTimeBonus(){
+  return run&&run.mode==='campaign'&&state.promotionReviewCompleted?2:0;
+}
+function completePromotionReview(){
+  if(state.promotionReviewCompleted){leaveCampaignStory();return}
+  const score=promotionTotalScore(),rating=promotionRating(score);
+  state.promotionReviewCompleted=true;
+  state.promotionOutcome=rating.id;
+  state.storyCareerTitle='Stationsarzt';
+  addLeadership(rating.id==='distinction'?12:rating.id==='regular'?8:5);
+  state.autonomy=Math.min(100,Math.max(state.autonomy||20,effectiveAutonomy())+(rating.id==='distinction'?10:6));
+  state.money+=rating.id==='distinction'?2200:1800;
+  state.xp+=rating.id==='distinction'?700:550;
+  state.rep=Math.min(100,(state.rep||0)+(rating.id==='distinction'?8:6));
+  state.researchPoints=(state.researchPoints||0)+6;
+  state.campaignPrestige=(state.campaignPrestige||0)+3;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+(rating.id==='distinction'?2200:1800);
+  state.consequenceFlags.promotion=rating.id;
+  state.consequenceFlags.storyCareerTitle='Stationsarzt';
+  if(!state.achievements)state.achievements={};
+  state.achievements.stationsarzt=true;
+  beep(1120,.18);
+  save();
+  toast('🎓 Beförderung: Du bist jetzt Stationsarzt!');
+  leaveCampaignStory();
+}
+function renderPromotionStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.promotionStep||0,base=promotionBaseScore(),total=promotionTotalScore();
+  if($('storyProgressText'))$('storyProgressText').textContent=`${step+1}/4`;
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/4*100)}%`;
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Karrieregespräch • 08:00 Uhr</div>
+      <h2>Deine erste große Beurteilung</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. EMILIA HARTMANN</div><p>„Du hast inzwischen Patienten priorisiert, eine Rotation absolviert und einen kleinen Stationsbereich geführt. Heute geht es darum, ob du bereit bist, dauerhaft mehr Verantwortung zu tragen.“</p></div>
+      <div class="review-panel"><h4>Deine Ausgangslage</h4>
+        <div class="review-row"><span>Basis aus bisheriger Karriere</span><b>${base}/70</b></div>
+        <div class="review-row"><span>Autonomie</span><b>${effectiveAutonomy()}/100</b></div>
+        <div class="review-row"><span>Mentor-Vertrauen</span><b>${state.mentorTrust}/100</b></div>
+        <div class="review-row"><span>Leadership</span><b>${state.leadership}/100</b></div>
+      </div>
+      <button class="story-primary" onclick="promotionChoose('opening','ready',8,3,2)">Beurteilung beginnen</button>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Beurteilung • Selbstreflexion</div>
+      <h2>Was macht dich besser?</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Nenne mir nicht deinen besten Fall. Sag mir, was du aus einem schwierigen Dienst gelernt hast.“</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="promotionChoose('reflection','ownership',18,8,6,2,2)">🪞 Eigene Fehler benennen und erklären, was du konkret verändert hast<small>Zeigt Selbstreflexion und Verantwortungsbewusstsein.</small></button>
+        <button class="story-choice" onclick="promotionChoose('reflection','results',9,4,1,0,1)">📈 Vor allem auf gute Ergebnisse und Zahlen verweisen<small>Leistung zählt, aber Entwicklung wird weniger sichtbar.</small></button>
+        <button class="story-choice" onclick="promotionChoose('reflection','blame',2,0,-5,-2,-2)">👉 Schwierige Situationen hauptsächlich mit Fehlern anderer erklären<small>Schwächt Vertrauen und Führungswirkung.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Beurteilung • Führung</div>
+      <h2>Mia und Leon geraten aneinander</h2>
+      <p>Im Gespräch wird ein früherer Teamkonflikt aufgegriffen. Beide arbeiten gut – aber sehr unterschiedlich.</p>
+      <div class="colleague-card"><div class="colleague-avatar">👩🏼‍⚕️</div><div><b>Mia Berger</b><small>${relationshipLabel(relationshipValue('mia'))} • gründlich und teamorientiert</small></div><div class="colleague-score">${relationshipValue('mia')}/100</div></div>
+      <div class="colleague-card"><div class="colleague-avatar">👨🏻‍⚕️</div><div><b>Leon Wagner</b><small>${relationshipLabel(relationshipValue('leon'))} • schnell und leistungsorientiert</small></div><div class="colleague-score">${relationshipValue('leon')}/100</div></div>
+      <div class="story-dialogue"><div class="story-speaker">FRAGE DES REVIEW-PANELS</div><p>Wie würdest du als zukünftiger Stationsarzt mit zwei starken, aber unterschiedlichen Kollegen führen?</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="promotionChoose('leadership','combine',18,10,5,3,3)">🤝 Klare gemeinsame Ziele setzen und beide Stärken bewusst einsetzen<small>Führung statt Partei ergreifen.</small></button>
+        <button class="story-choice" onclick="promotionChoose('leadership','mia',10,5,1,5,-3)">👩🏼‍⚕️ Mias Arbeitsstil grundsätzlich bevorzugen<small>Stärkt Mia, kann Leon entfremden.</small></button>
+        <button class="story-choice" onclick="promotionChoose('leadership','leon',10,5,1,-3,5)">👨🏻‍⚕️ Leons Arbeitsstil grundsätzlich bevorzugen<small>Stärkt Leon, kann Mia entfremden.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const rating=promotionRating(total);
+  const money=rating.id==='distinction'?2200:1800;
+  const xp=rating.id==='distinction'?700:550;
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">Beurteilung • Entscheidung</div>
+    <h2>Das Ergebnis steht fest</h2>
+    <div class="rank-up-card">
+      <div class="rank-up-icon">🎓</div>
+      <h3>Assistenzarzt → Stationsarzt</h3>
+      <p>${rating.text}</p>
+    </div>
+    <div class="story-score">
+      <div><b>${total}/100</b><small>Review-Score</small></div>
+      <div><b>${state.leadership}/100</b><small>Leadership</small></div>
+      <div><b>${rating.label}</b><small>Bewertung</small></div>
+    </div>
+    <div class="leadership-card">
+      <div class="leadership-row"><span>Neue Karrierestufe</span><b>STATIONSARZT</b></div>
+      <div class="leadership-bar"><i style="width:${Math.min(100,state.leadership+10)}%"></i></div>
+    </div>
+    <div class="promotion-result">✅ Als Stationsarzt erhältst du in Kampagnen-Schichten dauerhaft <b>+2 Minuten</b>. Spätere Story-Phasen können außerdem deine Review-Wertung und dein Leadership wieder aufgreifen.</div>
+    <div class="campaign-reward">Beförderungsbonus: <b>+${money} € • +${xp} XP • +${rating.id==='distinction'?8:6} Ruf • +6 RP • +3 Prestige</b></div>
+    <button class="story-primary" onclick="completePromotionReview()">🎓 Beförderung annehmen</button>
+  </div>`;
+}
+
 const personalStoryMilestones=[
   {id:'prologue',icon:'🩺',name:'Erster Dienst',done:()=>!!state.prologueCompleted},
   {id:'week1',icon:'📅',name:'Woche 1',done:()=>!!state.firstWeekCompleted},
   {id:'team',icon:'🤝',name:'Team',done:()=>!!state.careerPathCompleted},
   {id:'rotation',icon:'🏥',name:'Rotation',done:()=>!!state.rotationCompleted},
-  {id:'ward',icon:'🛏️',name:'Station',done:()=>!!state.wardResponsibilityCompleted}
+  {id:'ward',icon:'🛏️',name:'Station',done:()=>!!state.wardResponsibilityCompleted},
+  {id:'promotion',icon:'🎓',name:'Beförderung',done:()=>!!state.promotionReviewCompleted}
 ];
 
 function currentPersonalStoryMilestone(){
@@ -4597,9 +4869,9 @@ function wardHistoryText(){
 }
 function renderWardHub(){
   const hub=$('wardHub');if(!hub)return;
-  if(!state.rotationCompleted){hub.style.display='none';return}
+  if(!state.rotationCompleted||state.wardResponsibilityCompleted){hub.style.display='none';return}
   hub.style.display='block';
-  const done=!!state.wardResponsibilityCompleted,aut=effectiveAutonomy();
+  const done=false,aut=effectiveAutonomy();
   hub.innerHTML=`
     <div class="ward-head">
       <div><h4>🛏️ Eigener Stationsbereich</h4><p>${done?'Du hast erstmals einen kleinen Stationsbereich eigenverantwortlich durch einen Dienst geführt.':'Nach deiner Rotation überträgt Dr. Hartmann dir erstmals begrenzte Verantwortung für mehrere Patienten gleichzeitig.'}</p></div>
@@ -5390,6 +5662,7 @@ function startCampaignExperience(){
   if(!state.careerPathCompleted){startCareerPathStory();return}
   if(!state.rotationCompleted){startRotationStory();return}
   if(!state.wardResponsibilityCompleted){startWardStory();return}
+  if(!state.promotionReviewCompleted){startPromotionReview();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -5593,6 +5866,7 @@ function renderModeUI(){
   const pathOpen=state.firstWeekCompleted&&!state.careerPathCompleted;
   const rotationOpen=state.careerPathCompleted&&!state.rotationCompleted;
   const wardOpen=state.rotationCompleted&&!state.wardResponsibilityCompleted;
+  const promotionOpen=state.wardResponsibilityCompleted&&!state.promotionReviewCompleted;
   const focus=focusDef();
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
@@ -5601,7 +5875,8 @@ function renderModeUI(){
       :pathOpen?`Woche 2 • Team & Fachrichtung`
       :rotationOpen?`Woche 3 • ${focus?focus.name:'Rotation'}`
       :wardOpen?'Woche 4 • Eigener Stationsbereich'
-      :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
+      :promotionOpen?'Karriere-Review • Beförderung'
+      :`${personalCareerTitle()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
   if($('doctorProfileName'))$('doctorProfileName').textContent=doctorDisplayName();
@@ -5612,7 +5887,8 @@ function renderModeUI(){
       :pathOpen?'Assistenzarzt • Woche 2 • Rotation und Team'
       :rotationOpen?`Assistenzarzt • Woche 3 • ${focus?focus.icon+' '+focus.name:'erste Rotation'}`
       :wardOpen?`Assistenzarzt • Woche 4 • Autonomie ${effectiveAutonomy()}/100`
-      :`${focus?`${focus.icon} ${focus.name} • Mastery ${state.focusMastery||0} • `:''}Autonomie ${effectiveAutonomy()} • Mentor ${state.mentorTrust||50}`;
+      :promotionOpen?`Assistenzarzt • Beförderungsreview • Leadership ${state.leadership||10}`
+      :`${personalCareerTitle()} • ${focus?focus.icon+' '+focus.name+' • ':''}Autonomie ${effectiveAutonomy()} • Leadership ${state.leadership||10}`;
   }
   if($('prologueStatus')){
     $('prologueStatus').style.display=state.prologueCompleted?'none':'block';
@@ -5624,8 +5900,9 @@ function renderModeUI(){
   renderCareerPathHub();
   renderRotationHub();
   renderWardHub();
+  renderPromotionHub();
   if($('campaignPlayBtn')){
-    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||wardOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||pathOpen||rotationOpen||wardOpen||promotionOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
     $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
@@ -5633,7 +5910,8 @@ function renderModeUI(){
       :pathOpen?'🤝 Team & Fachrichtung weiterspielen'
       :rotationOpen?`🏥 ${focus?focus.name:'Erste Rotation'} starten`
       :wardOpen?'🛏️ Eigenen Stationsbereich übernehmen'
-      :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
+      :promotionOpen?'🎓 Beförderungsbeurteilung beginnen'
+      :chapter?`👨‍⚕️ Als ${personalCareerTitle()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
 function renderHomeQuickSummary(){
@@ -5729,7 +6007,7 @@ function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
   run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
-  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus();
+  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus()+campaignRankTimeBonus();
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -5764,6 +6042,9 @@ function loadPatient(){
   historyState=newHistoryState(current);
   conditionState=newConditionState(current);
   if(run){
+    if(!run.stationUsage||typeof run.stationUsage!=='object')run.stationUsage=blankStationUsage();
+    run.caseFinalized=false;
+    run.finalizing=false;
     run.stationUsage.triage=(run.stationUsage.triage||0)+1;
     run.stationUsage.exam=(run.stationUsage.exam||0)+1;
   }
@@ -5877,6 +6158,8 @@ function finishCase(){
       toast(!selectedDiagnosis ? 'Bitte zuerst eine Diagnose auswählen.' : 'Bitte zuerst eine Behandlung auswählen.');
       return;
     }
+    if(run.finalizing||run.caseFinalized)return;
+    run.finalizing=true;
 
     // Fehlender Bestand darf den Spielfluss nicht mehr blockieren.
     // Notfallmaterial wird automatisch beschafft; Budget fällt höchstens auf 0 €.
@@ -5988,11 +6271,14 @@ function finishCase(){
       ${current.urgency==='high'?`<div class='result-line'><span>Notfall-Protokoll</span><b class='${protocolOutcome.attempted?(protocolOutcome.correct?'protocol-result-good':'protocol-result-bad'):''}'>${protocolOutcome.attempted?(protocolOutcome.correct?'✅ Richtig':'⚠️ Fehler'):'Nicht gespielt'}</b></div>`:''}
       ${current.procedure?`<div class='result-line'><span>Eingriff</span><b class='${procedureOutcome.attempted?(procedureOutcome.correct?'procedure-result-good':'procedure-result-bad'):''}'>${procedureOutcome.attempted?(procedureOutcome.correct?'✅ Erfolgreich':'⚠️ Fehler'):(state.upgrades.surgery?'Nicht gespielt':'Raum gesperrt')}</b></div>`:''}
       ${supplyCost>0?`<div class='result-line'><span>Notfallmaterial</span><b>-${supplyCost} €</b></div>`:''}`;
+    run.caseFinalized=true;
+    run.finalizing=false;
     $('nextBtn').textContent=run.treated>=run.total||run.timeLeft<=0?'Schicht auswerten':'Zurück ins Wartezimmer';
     showScreen('resultScreen');
     beep(perfect?900:360,.12);
     save();
   }catch(err){
+    if(run)run.finalizing=false;
     console.error('Fallabschluss fehlgeschlagen:',err);
     const msg=(err&&err.message)?err.message:String(err);
     toast('Technischer Fehler: '+msg);
@@ -6063,6 +6349,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('rotationExcellent',state.rotationOutcome==='excellent');
   check('firstWard',!!state.wardResponsibilityCompleted);
   check('autonomy75',effectiveAutonomy()>=75);
+  check('stationsarzt',!!state.promotionReviewCompleted&&personalCareerTitle()==='Stationsarzt');
+  check('promotionDistinction',state.promotionOutcome==='distinction');
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

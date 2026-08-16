@@ -1,4 +1,4 @@
-# Doctor Rush v0.21 – WARD RESPONSIBILITY
+# Doctor Rush v0.22 – PROMOTION REVIEW
 
 ## Dateien
 
@@ -11,254 +11,237 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.21` öffnen.
+3. Doctor Rush einmal mit `?v=0.22` öffnen.
 
 ---
 
-# Neu in v0.21
+# Neu in v0.22
 
-## 🧭 Kampagnenbereich wieder kompakter
+## 🎓 Erste echte Beförderung
 
-Mit Prolog, erster Woche, Teamphase und Rotation wäre die Kampagnenseite sonst wieder immer länger geworden.
+Nach deinem ersten eigenen Stationsbereich folgt jetzt eine offizielle Karrierebeurteilung.
 
-Deshalb gibt es jetzt eine kompakte **persönliche Karriere-Timeline**.
-
-Sie zeigt:
-
-- Erster Dienst
-- Woche 1
-- Team
-- Rotation
-- Station
-
-Abgeschlossene große Story-Karten werden nicht mehr dauerhaft vollständig angezeigt.
-
-Es bleibt nur die aktuell relevante Story-Phase groß sichtbar.
-
-Damit wird die Kampagne trotz wachsendem Inhalt nicht wieder zu einem endlosen Dashboard.
-
----
-
-# 🛏️ Eigener Stationsbereich
-
-Nach deiner ersten Rotation bekommst du erstmals begrenzte Verantwortung für mehrere Patienten gleichzeitig.
-
-Dr. Hartmann ist weiterhin deine Oberärztin und erreichbar.
-
-Aber:
-
-**Du strukturierst den Dienst selbst.**
-
----
-
-# 🧠 Neue Herausforderung: mehrere Patienten gleichzeitig
-
-Im neuen Story-Abschnitt bekommst du drei unterschiedliche Situationen gleichzeitig.
-
-Du musst entscheiden:
-
-- welcher Patient zuerst Aufmerksamkeit braucht
-- was warten kann
-- welche Aufgaben delegiert werden können
-- welche Verantwortung du selbst behalten musst
-
-Der Fokus liegt auf Priorisierung und Organisation – nicht auf detaillierten medizinischen Handlungsanweisungen.
-
----
-
-# 🌿 Frühere Entscheidungen wirken weiter
-
-Deine Ausgangslage hängt von deiner bisherigen Kampagne ab.
+Deine bisherige persönliche Kampagne fließt direkt in die Bewertung ein.
 
 Berücksichtigt werden:
 
-- Rotationswertung
-- Mentor-Vertrauen
+- Autonomie
+- Mentor-Vertrauen bei Dr. Hartmann
+- erste Rotationswertung
+- Stationswertung
 - Beziehung zu Mia
 - Beziehung zu Leon
-- wichtigste Unterstützung aus der Rotation
 
-Beispiel:
-
-Eine ausgezeichnete Rotation und hohes Mentor-Vertrauen geben dir von Anfang an mehr Selbstständigkeit.
+Damit beginnt die Beförderung nicht bei 0 – deine bisherige Story hat echte Auswirkungen.
 
 ---
 
-# 📊 Neues Autonomie-System
+# 📋 Beförderungsreview
 
-Dein Arzt besitzt jetzt zusätzlich einen dauerhaften Wert:
+Das Review besteht aus vier Abschnitten.
 
-## Autonomie
+## 1. Ausgangslage
 
-0 bis 100.
+Dr. Hartmann fasst deine bisherige Entwicklung zusammen.
 
-Autonomie beschreibt im Spiel, wie viel selbstständige Verantwortung Dr. Hartmann dir zutraut.
+Du siehst deinen Basiswert aus:
 
-Der Startwert wird aus deiner bisherigen Karriere berechnet.
-
-Einfluss haben:
-
+- Rotation
+- Station
+- Autonomie
 - Mentor-Vertrauen
-- Rotationsleistung
-- Mia-Beziehung
-- Leon-Beziehung
+- Teambeziehungen
 
----
+## 2. Selbstreflexion
 
-# ⬆️ Autonomie steigt durch gute Entscheidungen
-
-Während des Stationsabschnitts kannst du Autonomie gewinnen.
-
-Gute Entscheidungen sind zum Beispiel:
-
-- neue Veränderungen sinnvoll priorisieren
-- Aufgaben bewusst delegieren
-- den wichtigsten klinischen Punkt selbst im Blick behalten
-- Teamressourcen sinnvoll einsetzen
-
----
-
-# 🤝 Delegation
-
-Zum ersten Mal ist Delegation ein echtes Story-System.
+Du wirst gefragt, was du aus schwierigen Diensten gelernt hast.
 
 Du kannst:
 
-- Aufgaben passend verteilen
-- alles selbst machen
-- zu viel Verantwortung abgeben
+- eigene Fehler reflektieren
+- hauptsächlich auf Ergebnisse verweisen
+- Verantwortung bei anderen suchen
 
-Die Entscheidung beeinflusst:
+Die Wahl beeinflusst:
 
-- Stationswertung
-- Effizienz
-- Autonomie
+- Review-Score
+- Leadership
 - Mentor-Vertrauen
-- Beziehungen
+- teilweise Beziehungen
+
+## 3. Führungssituation
+
+Mia und Leon stehen wieder für zwei unterschiedliche Arbeitsstile.
+
+Du entscheidest, wie du sie als zukünftige Führungskraft einsetzen würdest.
+
+Die stärkste Antwort versucht nicht einfach, einen Kollegen zu bevorzugen, sondern beide Stärken sinnvoll einzusetzen.
+
+## 4. Entscheidung
+
+Am Ende erhältst du deine Bewertung.
 
 ---
 
-# 📋 Stationswertung
+# 🏅 Drei mögliche Review-Ergebnisse
 
-Am Ende bekommst du eine Bewertung:
+## Mit Auszeichnung
 
-- **Sehr souverän**
-- **Solide**
-- **Mit Lernbedarf**
+Sehr starke bisherige Karriere + gute Review-Entscheidungen.
 
-Diese Bewertung wird dauerhaft gespeichert.
+## Bestanden
 
----
+Du erfüllst die Erwartungen an den nächsten Karriereschritt.
 
-# 🎮 Autonomie beeinflusst spätere Kampagnen-Schichten
+## Mit Entwicklungsplan
 
-Nach Abschluss des Stationsabschnitts kann hohe Autonomie einen kleinen Zeitbonus geben.
+Du steigst ebenfalls auf, bekommst aber im Story-Kontext zusätzliche Entwicklungsziele.
 
-## Autonomie ab 50
-+2 Minuten
-
-## Autonomie ab 65
-+3 Minuten
-
-## Autonomie ab 80
-+5 Minuten
-
-Nur in **Kampagnen-Schichten**.
-
-Freie Schichten bleiben davon unberührt.
+Der Fortschritt wird also nicht dauerhaft blockiert.
 
 ---
 
-# 🎁 Belohnung
+# 👨‍⚕️ Assistenzarzt → Stationsarzt
 
-Nach Abschluss:
+Nach Abschluss des Reviews steigst du in der persönlichen Kampagne auf:
 
-- +1.600 €
-- +500 XP
-- +5 bis +7 Ruf
-- +5 Forschungspunkte
-- +2 Prestige
+**STATIONSARZT**
+
+Der neue Titel wird anschließend angezeigt:
+
+- im Arztprofil
+- im Karrierebereich
+- auf dem Kampagnenbutton
+
+---
+
+# 🧭 Neues Leadership-System
+
+Dein Arzt besitzt jetzt zusätzlich einen dauerhaften Leadership-Wert.
+
+Leadership wird beeinflusst durch:
+
+- Selbstreflexion
+- Teamführung
+- Beförderungswertung
+
+Spätere Story-Kapitel können Leadership wieder verwenden.
+
+---
+
+# ⏱️ Stationsarzt-Bonus
+
+Nach deiner Beförderung erhältst du in Kampagnen-Schichten:
+
+**+2 Minuten**
+
+Dieser Bonus gilt nur im Kampagnenmodus.
+
+Freie Schichten bleiben vollständig unabhängig.
+
+---
+
+# 🎁 Beförderungsbonus
+
+Bei normalem Bestehen:
+
+- +1.800 €
+- +550 XP
+- +6 Ruf
+- +6 Forschungspunkte
+- +3 Prestige
+
+Bei einer Beförderung mit Auszeichnung:
+
+- +2.200 €
+- +700 XP
+- +8 Ruf
+- +6 Forschungspunkte
+- +3 Prestige
 
 ---
 
 # 🏆 Neue Erfolge
 
-## Eigene Verantwortung
+## Nächste Stufe
 
-Führe erstmals einen eigenen kleinen Stationsbereich durch einen Dienst.
+Steige zum Stationsarzt auf.
 
-## Vertrauensvorschuss
+## Mit Auszeichnung
 
-Erreiche mindestens 75 Autonomie.
+Schließe das erste Beförderungsreview mit Auszeichnung ab.
 
 ---
 
-# Persönlicher Kampagnenweg
+# 🔧 Technische Verbesserungen
 
-Der Karriereweg ist jetzt:
+## Anamnese jetzt wirklich 100/100
 
-1. Erster Arbeitstag
-2. Erste Arbeitswoche
-3. Mia & Leon
-4. Fachrichtungspräferenz
-5. Erste Rotation
-6. Eigener Stationsbereich
-7. danach weitere Kampagnen-Schichten und Karriere-Kapitel
+Seit Diagnose 2.0 war der maximal erreichbare Anamnese-Hinweiswert intern nur 90/100.
+
+Das ist jetzt korrigiert.
+
+Neue Verteilung:
+
+- Startwert: 15
+- Frage 1: +30
+- Frage 2: +25
+- Frage 3: +20
+- Frage 4: +10
+
+Maximal:
+
+**100/100**
+
+## Robuster Klinik-Flow
+
+Beim Laden eines Patienten wird die Stationsnutzung jetzt zur Sicherheit initialisiert, falls ein älterer oder ungewöhnlicher Spielstand den Flow-Zustand nicht vollständig enthält.
+
+## Schutz gegen doppelten Fallabschluss
+
+Mehrfaches schnelles Tippen auf „Fall abschließen“ kann denselben Patienten nicht mehr gleichzeitig mehrfach abrechnen.
+
+---
+
+# Persönlicher Karriereweg
+
+Die Timeline enthält jetzt:
+
+1. Erster Dienst
+2. Woche 1
+3. Team
+4. Rotation
+5. Station
+6. Beförderung
+
+Danach bist du **Stationsarzt**.
 
 ---
 
 # ⚡ Freie Schicht bleibt getrennt
 
-Autonomie-Boni greifen nur im Kampagnenmodus.
+Die persönliche Beförderung und der Stationsarzt-Zeitbonus gelten nur im Kampagnenmodus.
 
 Freie Schichten bleiben:
 
-- ohne Story
-- ohne Autonomiebonus
+- ohne Story-Pflicht
+- ohne persönlichen Rangbonus
 - sofort spielbar
 - klassisches Klinikmanagement
 
 ---
 
-# Bestehende Systeme bleiben erhalten
-
-- 5-Bereich-Navigation
-- Freie Schicht / Kampagne
-- eigener Arzt
-- Prolog
-- erste Arbeitswoche
-- Arztwerte
-- Mentor-Vertrauen
-- Mia & Leon
-- Beziehungen
-- Fachrichtungspräferenz
-- Rotations-Mastery
-- 6 Kampagnenkapitel
-- Prestige
-- Finanzen
-- Personal 2.0
-- Krankenhaus-Ausbau
-- Diagnose 2.0
-- Patientenstabilität
-- Klinik-Flow
-- Forschung
-- Fallbuch
-- Notfälle
-- Eingriffe
-- Missionen
-- Erfolge
-
-## Technisch
+# Technisch
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.20-Spielstand kompatibel
-- neue Autonomie und Stationsentscheidungen werden gespeichert
-- abgeschlossene Story-Hubs werden kompakt ausgeblendet
-- Autonomiebonus gilt nur für Kampagnen-Schichten
-- keine externen JS-/CSS-Dateien
+- v0.21-Spielstand kompatibel
+- Beförderung, Leadership und Review-Ergebnis werden gespeichert
+- keine externen JavaScript- oder CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
+- Anamnese-Maximum: **100/100**
+- Doppeltipp-Schutz: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
