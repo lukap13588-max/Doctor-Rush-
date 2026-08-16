@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover"/>
+  <meta name="theme-color" content="#0f172a"/>
+  <meta name="apple-mobile-web-app-capable" content="yes"/>
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
+  <title>Doctor Rush: Clinic Life</title>
+  <link rel="manifest" href="manifest.webmanifest"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+  <div id="app">
+    <header class="topbar">
+      <div>
+        <div class="eyebrow">MOBILE MEDICAL GAME</div>
+        <h1>Doctor Rush</h1>
+      </div>
+      <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
+    </header>
+
+    <main>
+      <section id="homeScreen" class="screen active">
+        <div class="hero-card">
+          <div class="hero-icon">🩺</div>
+          <h2>Clinic Life</h2>
+          <p>Behandle Patienten, triff medizinische Entscheidungen und baue deine eigene Klinik aus.</p>
+          <button class="primary big" id="startBtn">Schicht starten</button>
+        </div>
+
+        <div class="stats-grid">
+          <div class="stat"><span>💰</span><b id="homeMoney">500 €</b><small>Budget</small></div>
+          <div class="stat"><span>⭐</span><b id="homeRep">50</b><small>Ruf</small></div>
+          <div class="stat"><span>🧠</span><b id="homeXp">0 XP</b><small>Erfahrung</small></div>
+          <div class="stat"><span>🏥</span><b id="homeLevel">1</b><small>Klinik-Level</small></div>
+        </div>
+
+        <div class="panel">
+          <div class="panel-title">Klinik verbessern</div>
+          <div id="upgradeList" class="upgrade-list"></div>
+        </div>
+      </section>
+
+      <section id="gameScreen" class="screen">
+        <div class="hud">
+          <span>💰 <b id="money">500</b> €</span>
+          <span>⭐ <b id="rep">50</b></span>
+          <span>🧠 <b id="xp">0</b> XP</span>
+          <span>📅 Tag <b id="day">1</b></span>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/5</span></div>
+          <div class="progress"><div id="shiftProgress"></div></div>
+        </div>
+
+        <article class="patient-card">
+          <div class="patient-head">
+            <div id="avatar" class="avatar">👩</div>
+            <div>
+              <h2 id="patientName">Patient</h2>
+              <p id="patientMeta">Alter • Beruf</p>
+            </div>
+            <div id="urgency" class="urgency low">NORMAL</div>
+          </div>
+
+          <div class="complaint" id="complaint">„Ich habe Beschwerden.“</div>
+
+          <div class="vitals">
+            <div><small>Puls</small><b id="vPulse">—</b></div>
+            <div><small>Temp.</small><b id="vTemp">—</b></div>
+            <div><small>SpO₂</small><b id="vSpo2">—</b></div>
+            <div><small>RR</small><b id="vBp">—</b></div>
+          </div>
+        </article>
+
+        <section class="panel">
+          <div class="panel-title">1. Anamnese & Untersuchung</div>
+          <div id="examButtons" class="choice-list"></div>
+          <div id="findings" class="findings"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">2. Diagnose</div>
+          <div id="diagnosisButtons" class="choice-list two-col"></div>
+        </section>
+
+        <section class="panel">
+          <div class="panel-title">3. Behandlung</div>
+          <div id="treatmentButtons" class="choice-list two-col"></div>
+        </section>
+
+        <button id="submitBtn" class="primary big" disabled>Fall abschließen</button>
+        <button id="quitBtn" class="secondary">Schicht beenden</button>
+      </section>
+
+      <section id="resultScreen" class="screen">
+        <div class="result-card">
+          <div id="resultEmoji" class="result-emoji">✅</div>
+          <h2 id="resultTitle">Gut gemacht!</h2>
+          <p id="resultText"></p>
+          <div class="result-breakdown" id="resultBreakdown"></div>
+          <button id="nextBtn" class="primary big">Nächster Patient</button>
+        </div>
+      </section>
+
+      <section id="shiftScreen" class="screen">
+        <div class="hero-card">
+          <div class="hero-icon">🏥</div>
+          <h2>Schicht beendet</h2>
+          <p id="shiftSummary"></p>
+          <div class="stats-grid">
+            <div class="stat"><span>💰</span><b id="sumMoney">0 €</b><small>Verdient</small></div>
+            <div class="stat"><span>🧠</span><b id="sumXp">0 XP</b><small>Erfahrung</small></div>
+            <div class="stat"><span>⭐</span><b id="sumRep">0</b><small>Ruf</small></div>
+            <div class="stat"><span>✅</span><b id="sumCorrect">0/5</b><small>Richtig</small></div>
+          </div>
+          <button id="backHomeBtn" class="primary big">Zur Klinik</button>
+        </div>
+      </section>
+    </main>
+
+    <div id="toast" class="toast"></div>
+  </div>
+  <script src="game.js"></script>
+</body>
+</html>
