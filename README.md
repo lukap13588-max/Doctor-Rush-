@@ -1,180 +1,154 @@
-# Doctor Rush v0.17 – CAMPAIGN PROLOGUE
+# Doctor Rush v0.18 – FIRST WEEK
 
 ## Dateien
 
 - `index.html`
 - `README.md`
 
-Die `README.md` liegt zusätzlich wieder als ZIP bei, damit sie sich auf dem iPhone zuverlässig speichern lässt.
+Die `README.md` liegt zusätzlich als ZIP bei.
 
 ## GitHub-Update
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush danach einmal mit `?v=0.17` öffnen.
+3. Doctor Rush einmal mit `?v=0.18` öffnen.
 
 ---
 
-# Neu in v0.17
+# Neu in v0.18
 
-## 👨‍⚕️ Du spielst jetzt deinen eigenen Arzt
+## 📅 Deine erste richtige Arbeitswoche
 
-Der Kampagnenmodus bekommt erstmals einen echten persönlichen Story-Einstieg.
+Nach dem Kampagnen-Prolog geht die persönliche Story jetzt weiter.
 
-Du bist nicht mehr nur der Klinikmanager.
+Du bist weiterhin **Assistenzarzt** und arbeitest unter Oberärztin Dr. Emilia Hartmann.
 
-Du startest selbst als:
+Die erste Woche besteht aus drei neuen Story-Diensten.
 
-**Assistenzarzt**
+### Tag 2 – Die erste Morgenvisite
 
-Dein bereits vorhandener Arztname wird direkt in der Story verwendet.
+Du bekommst mehrere Patienten gleichzeitig.
 
-Neu kannst du außerdem einen Arzt-Avatar auswählen.
+Deine Aufgabe:
 
----
+- Dringlichkeit erkennen
+- Patienten priorisieren
+- zeigen, dass du strukturiert arbeitest
 
-# 📖 Kampagnen-Prolog
+### Tag 3 – Die Diagnose-Challenge
 
-Vor der ersten normalen Kampagnen-Schicht spielst du jetzt:
+Ein stabiler Patient hat wiederkehrendes Herzklopfen.
 
-## Prolog – Dein erster Arbeitstag
+Du entscheidest:
 
-Der Prolog besteht aus sechs Story-Abschnitten.
+- welche Untersuchung zur Fragestellung passt
+- wie du den Befund im vereinfachten Trainingsfall einordnest
 
-### 1. Arztprofil
+### Tag 5 – Der späte Dienst
 
-Du siehst:
+Ein Patient verschlechtert sich spät am Abend.
 
-- deinen Namen
-- deinen Avatar
-- Karrierestufe Assistenzarzt
+Du entscheidest als Assistenzarzt, wie du unter Zeitdruck reagierst.
 
-Du kannst den Namen weiterhin ändern und aus mehreren Avataren wählen.
-
-### 2. Treffen mit deiner Oberärztin
-
-Neue Story-Figur:
-
-**Oberärztin Dr. Emilia Hartmann**
-
-Sie begleitet dich als Mentor durch deinen ersten Dienst.
-
-### 3. Dein erster eigener Patient
-
-Du übernimmst einen persönlichen Story-Patienten.
-
-Dieser Patient gehört nicht zur normalen zufälligen Schicht.
-
-Es ist ein speziell gebauter Kampagnenfall.
-
-### 4. Erste klinische Entscheidung
-
-Du entscheidest selbst, wie du den Fall beginnst.
-
-Deine Wahl beeinflusst deine Mentor-Wertung.
-
-### 5. Diagnose und Versorgung
-
-Du musst im vereinfachten Spiel:
-
-- Hinweise einordnen
-- eine Diagnose auswählen
-- eine passende Spielstrategie für die Versorgung wählen
-
-Die medizinischen Abläufe bleiben bewusst abstrahiert.
-
-### 6. Fallbesprechung
-
-Dr. Hartmann bewertet deinen ersten Dienst.
-
-Du erhältst abhängig von deinen Entscheidungen eine Mentor-Wertung:
-
-- A
-- B
-- C
+Die Story bewertet dabei bewusst Teamarbeit und sichere Eskalation statt detaillierter medizinischer Handlungsanweisungen.
 
 ---
 
-# 🎁 Prolog-Belohnung
+# 👨‍⚕️ Persönliche Arztwerte
 
-Nach dem ersten Arbeitstag bekommst du einmalig:
+Dein eigener Arzt besitzt jetzt vier dauerhafte Werte:
 
-- +350 €
-- +150 XP
-- +3 Ruf
-- +2 Forschungspunkte
-- +1 Prestige
+- Klinisches Denken
+- Kommunikation
+- Stresssicherheit
+- Effizienz
 
-Der Story-Patient zählt außerdem als behandelter Patient für deinen Kampagnenfortschritt.
+Story-Entscheidungen können diese Werte steigern.
+
+Die Werte werden im Kampagnenbereich angezeigt und gespeichert.
+
+---
+
+# 👩‍⚕️ Mentor-Vertrauen
+
+Dr. Emilia Hartmann hat jetzt einen eigenen Vertrauenswert von 0 bis 100.
+
+Gute Entscheidungen erhöhen das Vertrauen.
+
+Unsichere oder schlecht priorisierte Entscheidungen können es senken.
+
+Damit bekommen deine Story-Entscheidungen erstmals längerfristige Auswirkungen.
+
+---
+
+# 🗓️ Story-Tage
+
+Das Spiel zählt jetzt mit, wie viele persönliche Kampagnen-Tage du erlebt hast.
+
+Nach Prolog + erster Woche entsteht dadurch ein echter persönlicher Karriereverlauf.
+
+---
+
+# 🎁 Wochenabschluss
+
+Nach Abschluss aller drei Story-Dienste erhältst du:
+
+- +1.000 €
+- +350 XP
+- +5 Ruf
+- +5 Forschungspunkte
+- +2 Prestige
 
 ---
 
 # 🏆 Neuer Erfolg
 
-## Erster Dienst
+## Die erste Woche
 
-Schließe den persönlichen Kampagnen-Prolog ab.
-
----
-
-# 💾 Prolog wird gespeichert
-
-Du musst den Prolog nicht zwingend in einem Stück spielen.
-
-Nach jeder Story-Entscheidung wird gespeichert.
-
-Wenn du zurück zur Karriere gehst, kannst du später an der gleichen Stelle fortfahren.
+Schließe deine erste Arbeitswoche als Assistenzarzt ab.
 
 ---
 
-# 🎯 Danach geht die normale Kampagne weiter
+# 🎮 Kampagnenfluss
 
-Nach Abschluss des Prologs ändert sich der Kampagnen-Button automatisch.
+Die Kampagne läuft jetzt so:
 
-Danach startest du wieder normale Kampagnen-Schichten – aber jetzt als dein eigener Arzt.
+1. Persönlicher Prolog
+2. Erster Arbeitstag
+3. Erste Arbeitswoche
+4. Danach normale Kampagnen-Schichten und Kampagnenkapitel
 
-Oben in einer Kampagnen-Schicht stehen:
-
-- dein Avatar
-- dein Name
-- aktuelles Kampagnenkapitel
+Der Kampagnenbutton erkennt automatisch, an welcher Stelle du bist.
 
 ---
 
-# ⚡ Freie Schicht bleibt komplett getrennt
+# ⚡ Freie Schicht bleibt getrennt
 
-Der normale Schichtmodus wurde nicht verändert.
+Die freie Schicht bleibt unverändert:
 
-**Freie Schicht** bedeutet weiterhin:
-
+- keine Story
 - sofort spielen
-- keine Story-Pflicht
-- zufällige Patienten
 - Klinikmanagement
-- Geld und XP
-- Personal
-- Forschung
-- Krankenhaus-Ausbau
+- zufällige Patienten
+- Geld, XP und Ausbau
 
 ---
 
 # Bestehende Systeme bleiben erhalten
 
-- neue 5-Bereich-Navigation
-- Kampagne und freie Schicht
+- 5-Bereich-Navigation
+- Kampagne / freie Schicht
+- eigener Arztname und Avatar
+- Kampagnen-Prolog
 - 6 Kampagnenkapitel
 - Prestige
 - Finanzen
-- Rücklage
-- Klinikverträge
 - Personal 2.0
 - Krankenhaus-Ausbau
 - Patientenstabilität
 - Diagnose 2.0
 - Anamnese
 - Klinik-Flow
-- Klinikräume
-- Apotheke
 - Forschung
 - Fallbuch
 - Notfälle
@@ -184,15 +158,13 @@ Der normale Schichtmodus wurde nicht verändert.
 
 ## Technisch
 
-- weiterhin nur **eine einzige `index.html`**
+- weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.16-Spielstand kompatibel
-- Prologstatus wird in demselben Spielstand gespeichert
-- freie Schicht unverändert verfügbar
-- keine externen JavaScript- oder CSS-Dateien
+- v0.17-Spielstand kompatibel
+- Story-Fortschritt wird gespeichert
+- keine externen JS-/CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
-- Kernsysteme geprüft: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.

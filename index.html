@@ -1036,13 +1036,78 @@ body.home-nav-active #app{padding-bottom:102px}
   .story-avatar-grid{grid-template-columns:repeat(3,1fr)}
 }
 
+
+/* ===== v0.18 FIRST WEEK ===== */
+.week-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(48,63,96,.72),rgba(12,28,49,.98));
+  border:1px solid rgba(112,160,255,.28)
+}
+.week-hub-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.week-hub h4{margin:0;font-size:13px}
+.week-hub p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.week-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(112,160,255,.11);
+  color:#b9d5ff;font-size:8px;font-weight:900;white-space:nowrap
+}
+.doctor-skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:6px;margin-top:9px}
+.doctor-skill{
+  background:#0b1d32;border:1px solid #233c58;border-radius:10px;padding:7px 4px;text-align:center
+}
+.doctor-skill b{display:block;font-size:10px}
+.doctor-skill small{display:block;color:var(--muted);font-size:7.2px;margin-top:2px}
+.week-days{display:grid;gap:7px;margin-top:10px}
+.week-day{
+  display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center;
+  padding:9px 10px;border-radius:12px;background:#0d2037;border:1px solid #29435f
+}
+.week-day.done{border-color:rgba(40,215,161,.30)}
+.week-day.active{border-color:rgba(255,190,92,.38);background:rgba(255,190,92,.06)}
+.week-day.locked{opacity:.46}
+.week-day-icon{font-size:19px}
+.week-day b{font-size:9.5px}
+.week-day small{display:block;color:var(--muted);font-size:7.8px;margin-top:2px}
+.week-day-status{font-size:7.5px;font-weight:900;color:#ffd494}
+.week-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#486db6,#5b88e0);color:white;font-size:9.5px;font-weight:900
+}
+.week-start:disabled{opacity:.45}
+.mentor-trust{
+  margin-top:9px;padding:8px 9px;border-radius:11px;background:rgba(255,190,92,.06);
+  border:1px solid rgba(255,190,92,.16)
+}
+.mentor-trust-row{display:flex;justify-content:space-between;gap:8px;font-size:8px}
+.mentor-trust-row span{color:var(--muted)}.mentor-trust-row b{color:#ffd494}
+.mentor-trust-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
+.mentor-trust-bar i{display:block;height:100%;background:linear-gradient(90deg,#cc7a31,#ffd36b);border-radius:999px}
+.story-case-list{display:grid;gap:7px;margin-top:10px}
+.story-case-row{
+  padding:9px;border-radius:11px;background:#0a1c31;border:1px solid #253d59;
+  display:grid;grid-template-columns:auto 1fr auto;gap:8px;align-items:center
+}
+.story-case-row .case-icon{font-size:17px}
+.story-case-row b{font-size:9px}.story-case-row small{display:block;color:var(--muted);font-size:7.8px;margin-top:2px}
+.story-case-row .priority{font-size:8px;font-weight:900}
+.story-summary{
+  margin-top:10px;padding:10px;border-radius:12px;background:rgba(112,160,255,.07);
+  border:1px solid rgba(112,160,255,.18);font-size:9px;line-height:1.45;color:#d9e7f7
+}
+.story-stat-change{
+  display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:9px
+}
+.story-stat-change div{
+  padding:8px;border-radius:10px;background:#0a1d32;border:1px solid #243d5b;text-align:center
+}
+.story-stat-change b{display:block;font-size:10px}.story-stat-change small{display:block;color:var(--muted);font-size:7.6px;margin-top:2px}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.17 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.18 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1052,7 +1117,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.17 • CAMPAIGN PROLOGUE</h2>
+          <h2>Clinic Life v0.18 • FIRST WEEK</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1120,6 +1185,7 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
           <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignExperience()">Kampagne starten</button>
           <div id="prologueStatus" class="prologue-status">📖 Prolog noch offen • Dein erster Arbeitstag wartet.</div>
+          <div id="firstWeekHub" class="week-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -3997,7 +4063,8 @@ const achievements = [
   {id:'contracts3', name:'Gut vernetzt', desc:'Schließe alle drei Klinikverträge ab.'},
   {id:'campaign3', name:'Auf Kurs', desc:'Schließe 3 Kampagnenkapitel ab.'},
   {id:'campaignAll', name:'Klinik-Legende', desc:'Schließe die gesamte Karriere-Kampagne ab.'},
-  {id:'firstDay', name:'Erster Dienst', desc:'Schließe den persönlichen Kampagnen-Prolog ab.'}
+  {id:'firstDay', name:'Erster Dienst', desc:'Schließe den persönlichen Kampagnen-Prolog ab.'},
+  {id:'firstWeek', name:'Die erste Woche', desc:'Schließe deine erste Arbeitswoche als Assistenzarzt ab.'}
 ];
 
 const missions = [
@@ -4088,7 +4155,13 @@ const defaultState = {
   prologueStep:0,
   prologueScore:0,
   prologueChoices:{},
-  storyCasesCompleted:0
+  storyCasesCompleted:0,
+  firstWeekCompleted:false,
+  firstWeekStep:0,
+  mentorTrust:50,
+  doctorSkills:{clinical:10,communication:10,stress:10,efficiency:10},
+  firstWeekChoices:{},
+  campaignDaysCompleted:1
 };
 
 let state;
@@ -4154,6 +4227,15 @@ state.prologueStep=Number.isFinite(Number(state.prologueStep))?Math.max(0,Math.m
 state.prologueScore=Number.isFinite(Number(state.prologueScore))?Math.max(0,Math.min(100,Math.floor(Number(state.prologueScore)))):0;
 if(!state.prologueChoices||typeof state.prologueChoices!=='object')state.prologueChoices={};
 state.storyCasesCompleted=Number.isFinite(Number(state.storyCasesCompleted))&&Number(state.storyCasesCompleted)>=0?Math.floor(Number(state.storyCasesCompleted)):0;
+state.firstWeekCompleted=!!state.firstWeekCompleted;
+state.firstWeekStep=Number.isFinite(Number(state.firstWeekStep))?Math.max(0,Math.min(3,Math.floor(Number(state.firstWeekStep)))):0;
+state.mentorTrust=Number.isFinite(Number(state.mentorTrust))?Math.max(0,Math.min(100,Math.floor(Number(state.mentorTrust)))):50;
+if(!state.doctorSkills||typeof state.doctorSkills!=='object')state.doctorSkills={};
+for(const k of ['clinical','communication','stress','efficiency']){
+  state.doctorSkills[k]=Number.isFinite(Number(state.doctorSkills[k]))?Math.max(0,Math.min(100,Math.floor(Number(state.doctorSkills[k])))):10;
+}
+if(!state.firstWeekChoices||typeof state.firstWeekChoices!=='object')state.firstWeekChoices={};
+state.campaignDaysCompleted=Number.isFinite(Number(state.campaignDaysCompleted))&&Number(state.campaignDaysCompleted)>=1?Math.floor(Number(state.campaignDaysCompleted)):1;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4213,6 +4295,173 @@ function setDoctorAvatar(avatar){
   save();
   if($('campaignStoryScreen')&&$('campaignStoryScreen').classList.contains('active'))renderCampaignStory();
 }
+
+const firstWeekEpisodes=[
+  {id:'rounds',day:'Tag 2',icon:'🩺',title:'Die erste Morgenvisite',desc:'Priorisiere mehrere Patienten und zeige, dass du Dringlichkeit erkennst.'},
+  {id:'diagnostic',day:'Tag 3',icon:'🧠',title:'Die Diagnose-Challenge',desc:'Ein unklarer Fall fordert dein klinisches Denken.'},
+  {id:'lateShift',day:'Tag 5',icon:'🌙',title:'Der späte Dienst',desc:'Unter Zeitdruck musst du ruhig und sicher entscheiden.'}
+];
+
+function doctorSkill(key){return Math.max(0,Math.min(100,Number(state.doctorSkills&&state.doctorSkills[key])||0))}
+function addDoctorSkill(key,amount){
+  if(!state.doctorSkills)state.doctorSkills={clinical:10,communication:10,stress:10,efficiency:10};
+  state.doctorSkills[key]=Math.max(0,Math.min(100,doctorSkill(key)+(Number(amount)||0)));
+}
+function addMentorTrust(amount){state.mentorTrust=Math.max(0,Math.min(100,(state.mentorTrust||50)+(Number(amount)||0)))}
+function firstWeekEpisode(){
+  return firstWeekEpisodes[Math.min(state.firstWeekStep||0,firstWeekEpisodes.length-1)]||null;
+}
+function renderFirstWeekHub(){
+  const hub=$('firstWeekHub');if(!hub)return;
+  if(!state.prologueCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const done=!!state.firstWeekCompleted;
+  const step=state.firstWeekStep||0;
+  const ep=done?null:firstWeekEpisode();
+  hub.innerHTML=`
+    <div class="week-hub-head">
+      <div><h4>📅 Erste Arbeitswoche</h4><p>${done?'Deine erste Woche als Assistenzarzt ist abgeschlossen.':`Story-Fortschritt ${step}/${firstWeekEpisodes.length} Dienste abgeschlossen.`}</p></div>
+      <div class="week-badge">${done?'WOCHE 1 FERTIG':'ASSISTENZARZT'}</div>
+    </div>
+    <div class="doctor-skill-grid">
+      <div class="doctor-skill"><b>${doctorSkill('clinical')}</b><small>Klinik</small></div>
+      <div class="doctor-skill"><b>${doctorSkill('communication')}</b><small>Kommunikation</small></div>
+      <div class="doctor-skill"><b>${doctorSkill('stress')}</b><small>Stress</small></div>
+      <div class="doctor-skill"><b>${doctorSkill('efficiency')}</b><small>Effizienz</small></div>
+    </div>
+    <div class="mentor-trust">
+      <div class="mentor-trust-row"><span>Vertrauen Dr. Hartmann</span><b>${state.mentorTrust||50}/100</b></div>
+      <div class="mentor-trust-bar"><i style="width:${state.mentorTrust||50}%"></i></div>
+    </div>
+    <div class="week-days">
+      ${firstWeekEpisodes.map((x,i)=>`<div class="week-day ${i<step||done?'done':i===step?'active':'locked'}">
+        <div class="week-day-icon">${i<step||done?'✅':x.icon}</div>
+        <div><b>${x.day} • ${x.title}</b><small>${x.desc}</small></div>
+        <div class="week-day-status">${i<step||done?'ERLEDIGT':i===step?'AKTUELL':'GESPERRT'}</div>
+      </div>`).join('')}
+    </div>
+    ${done
+      ?'<div class="story-summary">🎓 Woche 1 abgeschlossen. Du hast dich als Assistenzarzt im Team etabliert. Die nächste Kampagnenphase kann nun schwierigere Dienste, echte Fachrichtungsentscheidungen und langfristige Beziehungen aufbauen.</div>'
+      :`<button type="button" class="week-start" onclick="startFirstWeekEpisode()">${ep.icon} ${ep.day}: ${ep.title} starten</button>`}
+  `;
+}
+function startFirstWeekEpisode(){
+  if(!state.prologueCompleted){startCampaignStory();return}
+  if(state.firstWeekCompleted){toast('Die erste Arbeitswoche ist bereits abgeschlossen.');return}
+  showScreen('campaignStoryScreen');renderFirstWeekStory();
+}
+function firstWeekChoose(key,value,skill,skillGain,trustGain){
+  if(state.firstWeekChoices[key])return;
+  state.firstWeekChoices[key]=value;
+  addDoctorSkill(skill,skillGain);
+  addMentorTrust(trustGain);
+  save();
+  renderFirstWeekStory();
+}
+function completeFirstWeekEpisode(){
+  state.firstWeekStep=Math.min(3,(state.firstWeekStep||0)+1);
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+1;
+  state.campaignDaysCompleted=(state.campaignDaysCompleted||1)+1;
+  if(state.firstWeekStep>=3){
+    state.firstWeekCompleted=true;
+    state.money+=1000;
+    state.xp+=350;
+    state.rep=Math.min(100,(state.rep||0)+5);
+    state.researchPoints=(state.researchPoints||0)+5;
+    state.campaignPrestige=(state.campaignPrestige||0)+2;
+    state.totalCampaignRewards=(state.totalCampaignRewards||0)+1000;
+    if(!state.achievements)state.achievements={};
+    state.achievements.firstWeek=true;
+    beep(1080,.16);
+    save();
+    toast('🎓 Erste Arbeitswoche abgeschlossen!');
+    leaveCampaignStory();
+    return;
+  }
+  beep(900,.10);save();toast('Story-Dienst abgeschlossen.');
+  leaveCampaignStory();
+}
+function firstWeekProgressText(){
+  return `${Math.min((state.firstWeekStep||0)+1,3)}/3`;
+}
+function renderFirstWeekStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.firstWeekStep||0;
+  if($('storyProgressText'))$('storyProgressText').textContent=firstWeekProgressText();
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/3*100)}%`;
+  const name=doctorDisplayName(),avatar=doctorAvatar();
+
+  if(step===0){
+    const choice=state.firstWeekChoices.rounds;
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Tag 2 • 07:20 Uhr</div>
+      <h2>Die erste Morgenvisite</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Heute priorisierst du. Drei Patienten warten. Wer braucht zuerst deine Aufmerksamkeit?“</p></div>
+      <div class="story-case-list">
+        <div class="story-case-row"><div class="case-icon">👨🏻</div><div><b>Patient A</b><small>leichte Halsschmerzen • stabile Vitalwerte</small></div><div class="priority">STABIL</div></div>
+        <div class="story-case-row"><div class="case-icon">👩🏽</div><div><b>Patientin B</b><small>plötzlich starke Atemnot • deutlich reduzierte Sauerstoffsättigung im Spiel</small></div><div class="priority" style="color:#ff9bab">DRINGEND</div></div>
+        <div class="story-case-row"><div class="case-icon">👴🏻</div><div><b>Patient C</b><small>seit Tagen Rückenschmerz • kreislaufstabil</small></div><div class="priority">STABIL</div></div>
+      </div>
+      ${!choice?`<div class="story-choices">
+        <button class="story-choice" onclick="firstWeekChoose('rounds','B','clinical',8,7)">🚨 Patientin B zuerst<small>Akute Atemnot hat in diesem Trainingsfall höchste Priorität.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('rounds','A','efficiency',1,-5)">🗣️ Patient A zuerst<small>Einfacher Fall, aber nicht der dringendste.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('rounds','C','communication',1,-4)">🛏️ Patient C zuerst<small>Beschwerden bestehen länger und wirken im Spiel stabil.</small></button>
+      </div>`:`<div class="story-evaluation">${choice==='B'?'✅ Dr. Hartmann: „Richtig priorisiert. Dringlichkeit vor Bequemlichkeit.“':'⚠️ Dr. Hartmann korrigiert die Reihenfolge und erklärt die Dringlichkeit.'}</div>
+      <div class="story-stat-change"><div><b>Klinik ${doctorSkill('clinical')}</b><small>klinisches Denken</small></div><div><b>Vertrauen ${state.mentorTrust}</b><small>Dr. Hartmann</small></div></div>
+      <button class="story-primary" onclick="completeFirstWeekEpisode()">Visite abschließen</button>`}
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    const q=state.firstWeekChoices.diagnosticExam;
+    const d=state.firstWeekChoices.diagnosticDx;
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Tag 3 • Diagnostik</div>
+      <h2>Ein Fall ohne klare Antwort</h2>
+      <div class="story-patient">
+        <div class="story-patient-top"><div class="story-patient-avatar">🧑🏼</div><div><b>Daniel R.</b><small>34 Jahre • wiederkehrendes Herzklopfen</small></div><div class="story-patient-tag">STABIL</div></div>
+        <div class="story-findings"><div class="story-finding">Kurze Episoden von schnellem Herzschlag, dazwischen beschwerdefrei.</div><div class="story-finding">Aktuell stabile Vitalwerte und kein akuter Brustschmerz im Trainingsfall.</div></div>
+      </div>
+      ${!q?`<div class="story-dialogue"><div class="story-speaker">DEINE WAHL</div><p>Welche Untersuchung liefert im Spiel den direktesten Hinweis auf den Herzrhythmus?</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticExam','ecg','clinical',7,5)">❤️ EKG<small>Direkte Rhythmusbeurteilung im vereinfachten Spiel.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticExam','xray','efficiency',1,-2)">🩻 Röntgen Hand<small>Passt nicht zur Fragestellung.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticExam','skin','communication',1,-1)">🩹 Hautstatus<small>Hilft bei dieser Fragestellung kaum.</small></button>
+      </div>`:!d?`<div class="story-findings"><div class="story-finding">EKG im Trainingsfall: kurze regelmäßige schnelle supraventrikuläre Rhythmusphase dokumentiert.</div></div>
+      <div class="story-dialogue"><div class="story-speaker">DEINE EINORDNUNG</div><p>Welche Diagnose passt in diesem vereinfachten Story-Fall am besten?</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticDx','svt','clinical',9,6)">⚡ Supraventrikuläre Tachykardie<small>Passt zum dokumentierten Rhythmus im Spiel.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticDx','pneumonia','stress',1,-2)">🫁 Pneumonie<small>Erklärt den dokumentierten Rhythmus nicht.</small></button>
+        <button class="story-choice" onclick="firstWeekChoose('diagnosticDx','fracture','efficiency',0,-3)">🦴 Fraktur<small>Passt nicht zum Fall.</small></button>
+      </div>`:`<div class="story-evaluation">${q==='ecg'&&d==='svt'?'✅ „Sehr sauber“, sagt Dr. Hartmann. „Du hast zuerst die richtige klinische Frage gestellt und dann den Befund eingeordnet.“':'📋 Dr. Hartmann bespricht mit dir, wie Untersuchung und Fragestellung zusammenpassen.'}</div>
+      <div class="story-stat-change"><div><b>Klinik ${doctorSkill('clinical')}</b><small>klinisches Denken</small></div><div><b>Vertrauen ${state.mentorTrust}</b><small>Dr. Hartmann</small></div></div>
+      <button class="story-primary" onclick="completeFirstWeekEpisode()">Diagnostik-Dienst abschließen</button>`}
+    </div>`;
+    return;
+  }
+
+  const s=state.firstWeekChoices.lateShift;
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">Tag 5 • 21:46 Uhr</div>
+    <h2>Der späte Dienst</h2>
+    <p>Die Station ist ruhig – bis ein bereits aufgenommener Patient plötzlich deutlich schlechter wirkt. Du bist als Assistenzarzt vor Ort, Dr. Hartmann ist im Hintergrund erreichbar.</p>
+    <div class="story-dialogue"><div class="story-speaker">DEINE ENTSCHEIDUNG</div><p>Wie reagierst du in diesem abstrahierten Trainingsszenario?</p></div>
+    ${!s?`<div class="story-choices">
+      <button class="story-choice" onclick="firstWeekChoose('lateShift','escalate','stress',10,9)">📞 Zustand erfassen, Team alarmieren und frühzeitig Unterstützung holen<small>Sichere Eskalation und Zusammenarbeit unter Supervision.</small></button>
+      <button class="story-choice" onclick="firstWeekChoose('lateShift','alone','clinical',2,-6)">🧍 Alles alleine lösen und niemanden informieren<small>Als Assistenzarzt unnötig riskant.</small></button>
+      <button class="story-choice" onclick="firstWeekChoose('lateShift','wait','efficiency',0,-8)">⏳ Erst einmal lange abwarten<small>Bei deutlicher Verschlechterung keine gute Strategie.</small></button>
+    </div>`:`<div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>${s==='escalate'?'„Genau. Gute Ärzte wissen nicht nur, was sie können – sondern auch, wann sie Hilfe holen.“':'„Medizin ist Teamarbeit. Bei einer deutlichen Verschlechterung musst du früh reagieren und Unterstützung organisieren.“'}</p></div>
+    <div class="story-score">
+      <div><b>${doctorSkill('clinical')}</b><small>Klinik</small></div>
+      <div><b>${doctorSkill('stress')}</b><small>Stress</small></div>
+      <div><b>${state.mentorTrust}</b><small>Mentor-Vertrauen</small></div>
+    </div>
+    <div class="campaign-reward">Wochenabschluss: <b>+1.000 € • +350 XP • +5 Ruf • +5 RP • +2 Prestige</b></div>
+    <button class="story-primary" onclick="completeFirstWeekEpisode()">🎓 Erste Arbeitswoche abschließen</button>`}
+  </div>`;
+}
+
 function prologueEvaluation(){
   const s=state.prologueScore||0;
   if(s>=80)return {rank:'A',text:'Sehr starker erster Dienst. Du arbeitest strukturiert, ruhig und patientenorientiert.'};
@@ -4244,10 +4493,8 @@ function leaveCampaignStory(){
   showScreen('homeScreen');
 }
 function startCampaignExperience(){
-  if(!state.prologueCompleted){
-    startCampaignStory();
-    return;
-  }
+  if(!state.prologueCompleted){startCampaignStory();return}
+  if(!state.firstWeekCompleted){startFirstWeekEpisode();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -4446,17 +4693,20 @@ function editDoctorProfile(){
 }
 function renderModeUI(){
   const chapter=currentCampaignChapter();
-  const storyOpen=!state.prologueCompleted;
+  const prologueOpen=!state.prologueCompleted;
+  const weekOpen=state.prologueCompleted&&!state.firstWeekCompleted;
   if($('homeCampaignMeta')){
-    $('homeCampaignMeta').textContent=storyOpen
+    $('homeCampaignMeta').textContent=prologueOpen
       ?`Prolog • ${doctorDisplayName()}`
+      :weekOpen?`Woche 1 • ${doctorDisplayName()}`
       :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
   if($('doctorProfileName'))$('doctorProfileName').textContent=doctorDisplayName();
   if($('doctorProfileMeta')){
-    $('doctorProfileMeta').textContent=storyOpen
+    $('doctorProfileMeta').textContent=prologueOpen
       ?'Assistenzarzt • Erster Arbeitstag'
+      :weekOpen?`Assistenzarzt • Woche 1 • ${state.campaignDaysCompleted||1} Tage erlebt`
       :chapter?`Assistenzarzt • Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Medical Center • Kampagne abgeschlossen';
   }
   if($('prologueStatus')){
@@ -4465,11 +4715,13 @@ function renderModeUI(){
       ?`✅ Prolog abgeschlossen • Mentor-Wertung ${prologueEvaluation().rank} • Erster Story-Patient behandelt`
       :`📖 Prolog ${state.prologueStep>0?'begonnen':'noch offen'} • Erster Arbeitstag als Assistenzarzt`;
   }
+  renderFirstWeekHub();
   if($('campaignPlayBtn')){
-    const canPlay=storyOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
-    $('campaignPlayBtn').textContent=storyOpen
+    $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
+      :weekOpen?`📅 Erste Arbeitswoche fortsetzen`
       :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
@@ -4887,6 +5139,7 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('campaign3',campaignCompletedCount()>=3);
   check('campaignAll',campaignCompletedCount()===campaignChapters.length);
   check('firstDay',!!state.prologueCompleted);
+  check('firstWeek',!!state.firstWeekCompleted);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
