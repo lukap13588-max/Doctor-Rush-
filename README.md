@@ -1,4 +1,4 @@
-# Doctor Rush v0.18 – FIRST WEEK
+# Doctor Rush v0.19 – SPECIALIZATION & RELATIONSHIPS
 
 ## Dateien
 
@@ -11,143 +11,214 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.18` öffnen.
+3. Doctor Rush einmal mit `?v=0.19` öffnen.
 
 ---
 
-# Neu in v0.18
+# Neu in v0.19
 
-## 📅 Deine erste richtige Arbeitswoche
+## 🧭 Erste Fachrichtungspräferenz
 
-Nach dem Kampagnen-Prolog geht die persönliche Story jetzt weiter.
+Nach deiner ersten Arbeitswoche beginnt eine neue persönliche Kampagnenphase.
 
-Du bist weiterhin **Assistenzarzt** und arbeitest unter Oberärztin Dr. Emilia Hartmann.
+Dr. Hartmann fragt dich erstmals, welche Rotation dich besonders interessiert.
 
-Die erste Woche besteht aus drei neuen Story-Diensten.
+Du kannst wählen:
 
-### Tag 2 – Die erste Morgenvisite
+### 🩺 Allgemeinmedizin
+- Story: +6 Kommunikation
+- Kampagnenbonus: +5 % XP in Kampagnen-Schichten
 
-Du bekommst mehrere Patienten gleichzeitig.
+### 🚑 Notfallmedizin
+- Story: +7 Stresssicherheit
+- Kampagnenbonus: +8 % Geld bei dringenden Fällen in Kampagnen-Schichten
 
-Deine Aufgabe:
+### ❤️ Kardiologie
+- Story: +7 klinisches Denken
+- Kampagnenbonus: +8 % Geld bei passenden Herzfällen in Kampagnen-Schichten
 
-- Dringlichkeit erkennen
-- Patienten priorisieren
-- zeigen, dass du strukturiert arbeitest
+### 🔬 Diagnostik
+- Story: +5 klinisches Denken und +3 Effizienz
+- Kampagnenbonus: Untersuchungen in Kampagnen-Schichten 5 % günstiger
 
-### Tag 3 – Die Diagnose-Challenge
+Diese Entscheidung ist zunächst deine persönliche **Kampagnen-Rotationspräferenz** als Assistenzarzt.
 
-Ein stabiler Patient hat wiederkehrendes Herzklopfen.
-
-Du entscheidest:
-
-- welche Untersuchung zur Fragestellung passt
-- wie du den Befund im vereinfachten Trainingsfall einordnest
-
-### Tag 5 – Der späte Dienst
-
-Ein Patient verschlechtert sich spät am Abend.
-
-Du entscheidest als Assistenzarzt, wie du unter Zeitdruck reagierst.
-
-Die Story bewertet dabei bewusst Teamarbeit und sichere Eskalation statt detaillierter medizinischer Handlungsanweisungen.
+Das bestehende allgemeine Spezialisierungs-/Karrieresystem bleibt erhalten.
 
 ---
 
-# 👨‍⚕️ Persönliche Arztwerte
+# 🤝 Zwei neue wiederkehrende Kollegen
 
-Dein eigener Arzt besitzt jetzt vier dauerhafte Werte:
+## 👩🏼‍⚕️ Mia Berger
 
-- Klinisches Denken
-- Kommunikation
-- Stresssicherheit
-- Effizienz
+Assistenzärztin.
 
-Story-Entscheidungen können diese Werte steigern.
+Charakter:
+- ruhig
+- gründlich
+- teamorientiert
 
-Die Werte werden im Kampagnenbereich angezeigt und gespeichert.
+## 👨🏻‍⚕️ Leon Wagner
 
----
+Assistenzarzt.
 
-# 👩‍⚕️ Mentor-Vertrauen
+Charakter:
+- ehrgeizig
+- schnell
+- direkt
 
-Dr. Emilia Hartmann hat jetzt einen eigenen Vertrauenswert von 0 bis 100.
-
-Gute Entscheidungen erhöhen das Vertrauen.
-
-Unsichere oder schlecht priorisierte Entscheidungen können es senken.
-
-Damit bekommen deine Story-Entscheidungen erstmals längerfristige Auswirkungen.
+Beide besitzen einen dauerhaften Beziehungswert von 0 bis 100.
 
 ---
 
-# 🗓️ Story-Tage
+# 🌿 Beziehungen verändern sich
 
-Das Spiel zählt jetzt mit, wie viele persönliche Kampagnen-Tage du erlebt hast.
+Deine Story-Entscheidungen können:
 
-Nach Prolog + erster Woche entsteht dadurch ein echter persönlicher Karriereverlauf.
+- Mia näher an dich binden
+- Leon näher an dich binden
+- einen Kollegen verärgern
+- beide Beziehungen gleichzeitig verbessern
+
+Die Beziehungen bleiben gespeichert und können in späteren Story-Kapiteln verwendet werden.
 
 ---
 
-# 🎁 Wochenabschluss
+# 🎬 Neue Story-Phase
 
-Nach Abschluss aller drei Story-Dienste erhältst du:
+Die neue Kampagnenphase besteht aus vier Abschnitten.
 
-- +1.000 €
-- +350 XP
-- +5 Ruf
-- +5 Forschungspunkte
+## 1. Das neue Team
+
+Du lernst Mia und Leon kennen.
+
+Du entscheidest, ob du:
+
+- teamorientiert auftrittst
+- Konkurrenz suchst
+- zunächst neutral bleibst
+
+## 2. Rotationsgespräch
+
+Dr. Hartmann fragt nach deiner Fachrichtungspräferenz.
+
+Deine Wahl beeinflusst deine persönlichen Arztwerte und spätere Kampagnenboni.
+
+## 3. Gemeinsamer Fall
+
+Mia und Leon wollen denselben stabilen Trainingsfall unterschiedlich angehen.
+
+Du kannst:
+
+- beide Ansätze verbinden
+- Mia unterstützen
+- Leon unterstützen
+
+Das verändert die Beziehungen sichtbar.
+
+## 4. Feedback
+
+Dr. Hartmann fasst zusammen, wie sich dein Arbeitsstil entwickelt.
+
+Du siehst:
+
+- deine gewählte Fachrichtungspräferenz
+- Beziehung zu Mia
+- Beziehung zu Leon
+- mögliche spätere Story-Konsequenzen
+
+---
+
+# 🎁 Belohnung
+
+Nach Abschluss der Story-Phase erhältst du:
+
+- +900 €
+- +300 XP
+- +4 Ruf
+- +3 Forschungspunkte
 - +2 Prestige
 
 ---
 
-# 🏆 Neuer Erfolg
+# 🎮 Beziehungen beeinflussen Kampagnen-Schichten
 
-## Die erste Woche
+Hohe Beziehungen geben erstmals kleine echte Gameplay-Vorteile.
 
-Schließe deine erste Arbeitswoche als Assistenzarzt ab.
+## Mia ab 70 Beziehung
+
+- +3 Minuten in Kampagnen-Schichten
+
+Begründung im Spiel:
+bessere Teamabstimmung.
+
+## Leon ab 70 Beziehung
+
+- +3 % XP in Kampagnen-Schichten
+
+Begründung im Spiel:
+gegenseitiger Leistungsantrieb.
+
+Diese Boni gelten **nicht** für Freie Schichten.
 
 ---
 
-# 🎮 Kampagnenfluss
+# 🏆 Neue Erfolge
 
-Die Kampagne läuft jetzt so:
+## Mein Weg
 
-1. Persönlicher Prolog
+Schließe die neue Story-Phase ab und wähle eine Fachrichtungspräferenz.
+
+## Starkes Team
+
+Erreiche sowohl bei Mia als auch bei Leon mindestens 65 Beziehungspunkte.
+
+---
+
+# 🎯 Neuer Kampagnenablauf
+
+Der persönliche Kampagnenweg ist jetzt:
+
+1. Prolog
 2. Erster Arbeitstag
 3. Erste Arbeitswoche
-4. Danach normale Kampagnen-Schichten und Kampagnenkapitel
+4. Team & Fachrichtungspräferenz
+5. Normale Kampagnen-Schichten
+6. langfristige Kampagnenkapitel
 
-Der Kampagnenbutton erkennt automatisch, an welcher Stelle du bist.
+Der Kampagnenbutton erkennt automatisch, wo du weiterspielen musst.
 
 ---
 
 # ⚡ Freie Schicht bleibt getrennt
 
-Die freie Schicht bleibt unverändert:
+Alle neuen Fachrichtungs- und Beziehungsboni aus v0.19 werden nur aktiv, wenn `run.mode === campaign`.
 
-- keine Story
-- sofort spielen
-- Klinikmanagement
-- zufällige Patienten
-- Geld, XP und Ausbau
+Freie Schichten bleiben:
+
+- ohne Story-Zwang
+- ohne Mia-/Leon-Boni
+- ohne Kampagnen-Fokusbonus
+- weiterhin sofort spielbar
 
 ---
 
 # Bestehende Systeme bleiben erhalten
 
 - 5-Bereich-Navigation
-- Kampagne / freie Schicht
-- eigener Arztname und Avatar
+- Freie Schicht / Kampagne
+- eigener Arzt
 - Kampagnen-Prolog
+- erste Arbeitswoche
+- Arztwerte
+- Mentor-Vertrauen
 - 6 Kampagnenkapitel
 - Prestige
 - Finanzen
 - Personal 2.0
 - Krankenhaus-Ausbau
-- Patientenstabilität
 - Diagnose 2.0
-- Anamnese
+- Patientenstabilität
 - Klinik-Flow
 - Forschung
 - Fallbuch
@@ -160,9 +231,10 @@ Die freie Schicht bleibt unverändert:
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.17-Spielstand kompatibel
-- Story-Fortschritt wird gespeichert
-- keine externen JS-/CSS-Dateien
+- v0.18-Spielstand kompatibel
+- Beziehungen und Fachrichtungspräferenz werden gespeichert
+- Kampagnenboni sind gegen Freie Schichten abgegrenzt
+- keine externen JavaScript- oder CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**

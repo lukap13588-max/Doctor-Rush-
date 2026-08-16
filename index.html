@@ -1101,13 +1101,77 @@ body.home-nav-active #app{padding-bottom:102px}
 }
 .story-stat-change b{display:block;font-size:10px}.story-stat-change small{display:block;color:var(--muted);font-size:7.6px;margin-top:2px}
 
+
+/* ===== v0.19 SPECIALIZATION & RELATIONSHIPS ===== */
+.relationship-hub{
+  margin-top:10px;padding:13px;border-radius:18px;
+  background:linear-gradient(155deg,rgba(72,48,91,.72),rgba(12,28,49,.98));
+  border:1px solid rgba(181,130,255,.27)
+}
+.relationship-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.relationship-head h4{margin:0;font-size:13px}
+.relationship-head p{margin:4px 0 0;color:var(--muted);font-size:9px;line-height:1.4}
+.relationship-badge{
+  padding:5px 8px;border-radius:999px;background:rgba(181,130,255,.11);
+  color:#d6baff;font-size:8px;font-weight:900;white-space:nowrap
+}
+.focus-card{
+  margin-top:9px;padding:10px;border-radius:13px;background:#0b1d32;border:1px solid #29415f
+}
+.focus-row{display:flex;justify-content:space-between;gap:9px;align-items:center}
+.focus-row b{font-size:10px}.focus-row span{font-size:8px;color:#d7c0ff;font-weight:900}
+.focus-card small{display:block;color:var(--muted);font-size:8px;line-height:1.4;margin-top:4px}
+.relationship-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.relationship-card{
+  padding:9px;border-radius:12px;background:#0d2037;border:1px solid #29435f
+}
+.relationship-card b{font-size:9.5px}
+.relationship-card small{display:block;color:var(--muted);font-size:7.6px;margin-top:2px;line-height:1.35}
+.relationship-value{margin-top:6px;display:flex;justify-content:space-between;gap:8px;font-size:8px}
+.relationship-value span{color:var(--muted)}.relationship-value b{color:#d9c2ff}
+.relationship-bar{height:6px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:5px}
+.relationship-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#8158c9,#d19cff)}
+.relationship-perks{
+  margin-top:9px;padding:9px;border-radius:11px;background:rgba(112,160,255,.06);
+  border:1px solid rgba(112,160,255,.16);font-size:8.5px;line-height:1.45;color:#d8e8f8
+}
+.relationship-start{
+  width:100%;margin-top:9px;border:none;border-radius:11px;padding:10px;
+  background:linear-gradient(135deg,#7351ae,#9a6ddd);color:white;font-size:9.5px;font-weight:900
+}
+.relationship-start:disabled{opacity:.45}
+.focus-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:11px}
+.focus-choice{
+  border:1px solid #314a6a;background:#10233d;color:#f5f8fb;border-radius:13px;padding:10px;text-align:left
+}
+.focus-choice b{display:block;font-size:10px}
+.focus-choice small{display:block;margin-top:3px;color:var(--muted);font-size:7.8px;line-height:1.35}
+.colleague-card{
+  margin-top:9px;padding:10px;border-radius:13px;background:#0c1f35;border:1px solid #29435f;
+  display:grid;grid-template-columns:auto 1fr auto;gap:9px;align-items:center
+}
+.colleague-avatar{
+  width:40px;height:40px;border-radius:12px;background:#1a3558;display:grid;place-items:center;font-size:22px
+}
+.colleague-card b{font-size:10px}.colleague-card small{display:block;color:var(--muted);font-size:7.7px;margin-top:2px}
+.colleague-score{font-size:8px;font-weight:900;color:#d9c2ff}
+.branch-note{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:rgba(181,130,255,.07);
+  border:1px solid rgba(181,130,255,.18);font-size:8.5px;line-height:1.45;color:#e5d9f8
+}
+.focus-tag{
+  display:inline-block;padding:4px 7px;border-radius:999px;background:rgba(181,130,255,.10);
+  color:#d9c2ff;font-size:7.8px;font-weight:900
+}
+@media(max-width:360px){.relationship-grid,.focus-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.18 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.19 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1117,7 +1181,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.18 • FIRST WEEK</h2>
+          <h2>Clinic Life v0.19 • SPECIALIZATION & RELATIONSHIPS</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1186,6 +1250,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <button id="campaignPlayBtn" type="button" class="campaign-play" onclick="startCampaignExperience()">Kampagne starten</button>
           <div id="prologueStatus" class="prologue-status">📖 Prolog noch offen • Dein erster Arbeitstag wartet.</div>
           <div id="firstWeekHub" class="week-hub" style="display:none"></div>
+          <div id="careerPathHub" class="relationship-hub" style="display:none"></div>
 
           <div class="campaign-progress">
             <div class="campaign-progress-top"><span>Aktuelles Kapitel</span><b id="campaignProgressText">0 %</b></div>
@@ -4064,7 +4129,9 @@ const achievements = [
   {id:'campaign3', name:'Auf Kurs', desc:'Schließe 3 Kampagnenkapitel ab.'},
   {id:'campaignAll', name:'Klinik-Legende', desc:'Schließe die gesamte Karriere-Kampagne ab.'},
   {id:'firstDay', name:'Erster Dienst', desc:'Schließe den persönlichen Kampagnen-Prolog ab.'},
-  {id:'firstWeek', name:'Die erste Woche', desc:'Schließe deine erste Arbeitswoche als Assistenzarzt ab.'}
+  {id:'firstWeek', name:'Die erste Woche', desc:'Schließe deine erste Arbeitswoche als Assistenzarzt ab.'},
+  {id:'pathChosen', name:'Mein Weg', desc:'Wähle deine erste Kampagnen-Fachrichtungspräferenz.'},
+  {id:'teamBond', name:'Starkes Team', desc:'Erreiche bei Mia und Leon jeweils mindestens 65 Beziehungspunkte.'}
 ];
 
 const missions = [
@@ -4161,7 +4228,13 @@ const defaultState = {
   mentorTrust:50,
   doctorSkills:{clinical:10,communication:10,stress:10,efficiency:10},
   firstWeekChoices:{},
-  campaignDaysCompleted:1
+  campaignDaysCompleted:1,
+  careerPathCompleted:false,
+  careerPathStep:0,
+  campaignFocus:'',
+  relationships:{mia:50,leon:50},
+  careerPathChoices:{},
+  colleagueCasesCompleted:0
 };
 
 let state;
@@ -4236,6 +4309,15 @@ for(const k of ['clinical','communication','stress','efficiency']){
 }
 if(!state.firstWeekChoices||typeof state.firstWeekChoices!=='object')state.firstWeekChoices={};
 state.campaignDaysCompleted=Number.isFinite(Number(state.campaignDaysCompleted))&&Number(state.campaignDaysCompleted)>=1?Math.floor(Number(state.campaignDaysCompleted)):1;
+state.careerPathCompleted=!!state.careerPathCompleted;
+state.careerPathStep=Number.isFinite(Number(state.careerPathStep))?Math.max(0,Math.min(3,Math.floor(Number(state.careerPathStep)))):0;
+if(!['general','emergency','cardio','diagnostics'].includes(state.campaignFocus))state.campaignFocus='';
+if(!state.relationships||typeof state.relationships!=='object')state.relationships={};
+for(const k of ['mia','leon']){
+  state.relationships[k]=Number.isFinite(Number(state.relationships[k]))?Math.max(0,Math.min(100,Math.floor(Number(state.relationships[k])))):50;
+}
+if(!state.careerPathChoices||typeof state.careerPathChoices!=='object')state.careerPathChoices={};
+state.colleagueCasesCompleted=Number.isFinite(Number(state.colleagueCasesCompleted))&&Number(state.colleagueCasesCompleted)>=0?Math.floor(Number(state.colleagueCasesCompleted)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4294,6 +4376,211 @@ function setDoctorAvatar(avatar){
   state.doctorProfile.avatar=avatar;
   save();
   if($('campaignStoryScreen')&&$('campaignStoryScreen').classList.contains('active'))renderCampaignStory();
+}
+
+
+const campaignFocusDefs=[
+  {id:'general',icon:'🩺',name:'Allgemeinmedizin',desc:'Breite Patientenversorgung und starke Kommunikation.',story:'+6 Kommunikation',perk:'+5 % XP in Kampagnen-Schichten'},
+  {id:'emergency',icon:'🚑',name:'Notfallmedizin',desc:'Schnelle Entscheidungen bei dringenden Patienten.',story:'+7 Stresssicherheit',perk:'+8 % Geld bei dringenden Kampagnenfällen'},
+  {id:'cardio',icon:'❤️',name:'Kardiologie',desc:'Fokus auf Herz-Kreislauf-Fälle und klinische Muster.',story:'+7 klinisches Denken',perk:'+8 % Geld bei Herzfällen in der Kampagne'},
+  {id:'diagnostics',icon:'🔬',name:'Diagnostik',desc:'Gezielte Untersuchungen und effiziente Differentialdiagnostik.',story:'+5 Klinik • +3 Effizienz',perk:'5 % günstigere Untersuchungen in Kampagnen-Schichten'}
+];
+
+const campaignColleagues={
+  mia:{name:'Mia Berger',role:'Assistenzärztin',avatar:'👩🏼‍⚕️',style:'ruhig, gründlich und teamorientiert'},
+  leon:{name:'Leon Wagner',role:'Assistenzarzt',avatar:'👨🏻‍⚕️',style:'ehrgeizig, schnell und sehr direkt'}
+};
+
+function focusDef(id=state.campaignFocus){return campaignFocusDefs.find(x=>x.id===id)||null}
+function relationshipValue(id){return Math.max(0,Math.min(100,Number(state.relationships&&state.relationships[id])||50))}
+function changeRelationship(id,amount){
+  if(!state.relationships)state.relationships={mia:50,leon:50};
+  state.relationships[id]=Math.max(0,Math.min(100,relationshipValue(id)+(Number(amount)||0)));
+}
+function relationshipLabel(value){
+  if(value>=80)return'ENG VERTRAUT';
+  if(value>=65)return'GUTES TEAM';
+  if(value>=45)return'KOLLEGIAL';
+  if(value>=30)return'ANGESpannt';
+  return'KONFLIKT';
+}
+function campaignFocusExamDiscount(){
+  return run&&run.mode==='campaign'&&state.campaignFocus==='diagnostics'?0.05:0;
+}
+function campaignFocusXpMultiplier(){
+  return run&&run.mode==='campaign'&&state.campaignFocus==='general'?1.05:1;
+}
+function campaignFocusRewardMultiplier(patient){
+  if(!run||run.mode!=='campaign')return 1;
+  if(state.campaignFocus==='emergency'&&patient&&patient.urgency==='high')return 1.08;
+  if(state.campaignFocus==='cardio'&&patient&&/Koronar|Herz|Kardio|Brust|EKG|Troponin|Vorhofflimmern|Tachykardie/i.test([patient.correctDiagnosis,patient.complaint,...(patient.exams||[]).map(e=>e.name)].join(' ')))return 1.08;
+  return 1;
+}
+function campaignRelationshipTimeBonus(){
+  return run&&run.mode==='campaign'&&relationshipValue('mia')>=70?3:0;
+}
+function campaignRelationshipXpMultiplier(){
+  return run&&run.mode==='campaign'&&relationshipValue('leon')>=70?1.03:1;
+}
+function renderCareerPathHub(){
+  const hub=$('careerPathHub');if(!hub)return;
+  if(!state.firstWeekCompleted){hub.style.display='none';return}
+  hub.style.display='block';
+  const done=!!state.careerPathCompleted;
+  const step=state.careerPathStep||0;
+  const focus=focusDef();
+  const mia=relationshipValue('mia'),leon=relationshipValue('leon');
+  hub.innerHTML=`
+    <div class="relationship-head">
+      <div><h4>🤝 Team & Fachrichtung</h4><p>${done?'Deine erste Rotation und deine wichtigsten Kollegenkontakte stehen fest.':`Neue Kampagnenphase • ${step}/3 Entscheidungen abgeschlossen.`}</p></div>
+      <div class="relationship-badge">${done?'PHASE FERTIG':'WOCHE 2'}</div>
+    </div>
+    <div class="focus-card">
+      <div class="focus-row"><b>${focus?`${focus.icon} ${focus.name}`:'🧭 Fachrichtungspräferenz offen'}</b><span>${focus?'GEWÄHLT':'NOCH OFFEN'}</span></div>
+      <small>${focus?focus.perk:'Nach deiner ersten Arbeitswoche entscheidest du, welche Rotation dich zunächst besonders interessiert.'}</small>
+    </div>
+    <div class="relationship-grid">
+      ${['mia','leon'].map(id=>{const c=campaignColleagues[id],v=relationshipValue(id);return `<div class="relationship-card">
+        <b>${c.avatar} ${c.name}</b><small>${c.role} • ${c.style}</small>
+        <div class="relationship-value"><span>${relationshipLabel(v)}</span><b>${v}/100</b></div>
+        <div class="relationship-bar"><i style="width:${v}%"></i></div>
+      </div>`}).join('')}
+    </div>
+    <div class="relationship-perks">
+      ${mia>=70?'✅ Mia ≥70: +3 Minuten in Kampagnen-Schichten durch gute Teamabstimmung.<br>':'🔒 Mia 70: schaltet +3 Kampagnen-Minuten frei.<br>'}
+      ${leon>=70?'✅ Leon ≥70: +3 % XP in Kampagnen-Schichten durch gegenseitigen Leistungsantrieb.':'🔒 Leon 70: schaltet +3 % Kampagnen-XP frei.'}
+    </div>
+    ${done
+      ?'<div class="branch-note">🌿 Deine Beziehungen und Fachrichtungspräferenz bleiben gespeichert. Spätere Story-Kapitel können darauf reagieren.</div>'
+      :'<button type="button" class="relationship-start" onclick="startCareerPathStory()">🤝 Nächste persönliche Story-Phase spielen</button>'}
+  `;
+}
+function startCareerPathStory(){
+  if(!state.firstWeekCompleted){startFirstWeekEpisode();return}
+  if(state.careerPathCompleted){toast('Diese Story-Phase ist bereits abgeschlossen.');return}
+  showScreen('campaignStoryScreen');
+  renderCareerPathStory();
+}
+function careerPathChoose(key,value,options={}){
+  if(state.careerPathChoices[key])return;
+  state.careerPathChoices[key]=value;
+  if(options.mia)changeRelationship('mia',options.mia);
+  if(options.leon)changeRelationship('leon',options.leon);
+  if(options.skill) addDoctorSkill(options.skill,options.skillGain||0);
+  if(options.skill2) addDoctorSkill(options.skill2,options.skillGain2||0);
+  if(options.trust) addMentorTrust(options.trust);
+  if(options.focus){
+    state.campaignFocus=options.focus;
+    if(options.focus==='general')addDoctorSkill('communication',6);
+    if(options.focus==='emergency')addDoctorSkill('stress',7);
+    if(options.focus==='cardio')addDoctorSkill('clinical',7);
+    if(options.focus==='diagnostics'){addDoctorSkill('clinical',5);addDoctorSkill('efficiency',3)}
+  }
+  state.careerPathStep=Math.min(3,(state.careerPathStep||0)+1);
+  beep((options.trust||0)>=5?900:650,.08);
+  save();
+  renderCareerPathStory();
+}
+function completeCareerPath(){
+  if(state.careerPathCompleted){leaveCampaignStory();return}
+  state.careerPathCompleted=true;
+  state.colleagueCasesCompleted=(state.colleagueCasesCompleted||0)+1;
+  state.storyCasesCompleted=(state.storyCasesCompleted||0)+1;
+  state.campaignDaysCompleted=(state.campaignDaysCompleted||1)+2;
+  state.money+=900;
+  state.xp+=300;
+  state.rep=Math.min(100,(state.rep||0)+4);
+  state.researchPoints=(state.researchPoints||0)+3;
+  state.campaignPrestige=(state.campaignPrestige||0)+2;
+  state.totalCampaignRewards=(state.totalCampaignRewards||0)+900;
+  if(!state.achievements)state.achievements={};
+  state.achievements.pathChosen=true;
+  beep(1060,.16);
+  save();
+  toast('🧭 Fachrichtungspräferenz und Teambeziehungen gespeichert!');
+  leaveCampaignStory();
+}
+function careerPathProgress(){
+  return `${Math.min((state.careerPathStep||0)+1,4)}/4`;
+}
+function renderCareerPathStory(){
+  const box=$('storyContent');if(!box)return;
+  const step=state.careerPathStep||0;
+  if($('storyProgressText'))$('storyProgressText').textContent=careerPathProgress();
+  if($('storyProgressBar'))$('storyProgressBar').style.width=`${Math.round((step+1)/4*100)}%`;
+  const mia=campaignColleagues.mia,leon=campaignColleagues.leon;
+
+  if(step===0){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Woche 2 • Teamraum</div>
+      <h2>Zwei Kollegen, zwei völlig verschiedene Typen</h2>
+      <p>Nach deiner ersten Woche wirst du fest einem kleinen Assistenzarzt-Team zugeordnet.</p>
+      <div class="colleague-card"><div class="colleague-avatar">${mia.avatar}</div><div><b>${mia.name}</b><small>${mia.role} • ${mia.style}</small></div><div class="colleague-score">${relationshipValue('mia')}/100</div></div>
+      <div class="colleague-card"><div class="colleague-avatar">${leon.avatar}</div><div><b>${leon.name}</b><small>${leon.role} • ${leon.style}</small></div><div class="colleague-score">${relationshipValue('leon')}/100</div></div>
+      <div class="story-dialogue"><div class="story-speaker">MIA</div><p>„Wenn du willst, gehen wir die schwierigen Fälle später zusammen durch.“</p></div>
+      <div class="story-dialogue"><div class="story-speaker">LEON</div><p>„Oder wir schauen einfach, wer am Ende der Woche die besseren Zahlen hat.“</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="careerPathChoose('teamIntro','team',{mia:7,leon:4,skill:'communication',skillGain:4,trust:3})">🤝 „Wir sollten als Team funktionieren.“<small>Stärkt beide Beziehungen, besonders Mia.</small></button>
+        <button class="story-choice" onclick="careerPathChoose('teamIntro','competition',{mia:-2,leon:8,skill:'efficiency',skillGain:4,trust:1})">🔥 „Ein bisschen Konkurrenz schadet nicht.“<small>Leon gefällt dein Ehrgeiz.</small></button>
+        <button class="story-choice" onclick="careerPathChoose('teamIntro','quiet',{mia:1,leon:1,skill:'stress',skillGain:2,trust:2})">🙂 „Ich schaue mir erst einmal alles an.“<small>Neutraler Einstieg ohne große Nähe.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===1){
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Woche 2 • Rotationsgespräch</div>
+      <h2>Was interessiert dich wirklich?</h2>
+      <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Du bist noch Assistenzarzt. Das ist keine endgültige Facharztentscheidung – aber ich möchte wissen, welche Rotation dich als Nächstes besonders reizt.“</p></div>
+      <div class="focus-grid">
+        ${campaignFocusDefs.map(f=>`<button class="focus-choice" onclick="careerPathChoose('focus','${f.id}',{focus:'${f.id}',trust:4})"><b>${f.icon} ${f.name}</b><small>${f.desc}<br><span class="focus-tag">${f.perk}</span></small></button>`).join('')}
+      </div>
+    </div>`;
+    return;
+  }
+
+  if(step===2){
+    const intro=state.careerPathChoices.teamIntro||'quiet';
+    const focus=focusDef();
+    box.innerHTML=`<div class="story-card">
+      <div class="story-kicker">Woche 2 • Gemeinsamer Fall</div>
+      <h2>Wer gibt jetzt den Ton an?</h2>
+      <p>Du, Mia und Leon betreut einen stabilen Trainingsfall mit mehreren möglichen Erklärungen. Die Stimmung im Team hängt bereits von deinem ersten Eindruck ab.</p>
+      <div class="story-patient">
+        <div class="story-patient-top"><div class="story-patient-avatar">👨🏽</div><div><b>Patrick F.</b><small>41 Jahre • Müdigkeit, Schwindel, unspezifische Beschwerden</small></div><div class="story-patient-tag">STABIL</div></div>
+        <div class="story-findings"><div class="story-finding">Mia möchte zuerst strukturiert nach Verlauf und Begleitsymptomen fragen.</div><div class="story-finding">Leon möchte schnell die wichtigsten Untersuchungen auswählen und den Fall zügig abschließen.</div></div>
+      </div>
+      <div class="story-dialogue"><div class="story-speaker">DEINE ROLLE</div><p>${focus?`Deine Präferenz ${focus.icon} ${focus.name} beeinflusst bereits, wie die anderen deine Entscheidung wahrnehmen.`:''} Wie führst du das Team?</p></div>
+      <div class="story-choices">
+        <button class="story-choice" onclick="careerPathChoose('jointCase','combine',{mia:7,leon:7,skill:'clinical',skillGain:4,skill2:'communication',skillGain2:4,trust:7})">🧩 Beide Ansätze verbinden<small>Kurze strukturierte Anamnese, dann gezielte Untersuchungen. Teamorientierter Mittelweg.</small></button>
+        <button class="story-choice" onclick="careerPathChoose('jointCase','mia',{mia:10,leon:-3,skill:'communication',skillGain:6,trust:4})">💬 Mias gründlichen Ansatz übernehmen<small>Stärkt die Beziehung zu Mia, Leon fühlt sich übergangen.</small></button>
+        <button class="story-choice" onclick="careerPathChoose('jointCase','leon',{mia:-3,leon:10,skill:'efficiency',skillGain:6,trust:3})">⚡ Leons schnellen Ansatz übernehmen<small>Leon respektiert die Entscheidung, Mia ist skeptischer.</small></button>
+      </div>
+    </div>`;
+    return;
+  }
+
+  const focus=focusDef()||campaignFocusDefs[0];
+  const joint=state.careerPathChoices.jointCase||'combine';
+  const miaValue=relationshipValue('mia'),leonValue=relationshipValue('leon');
+  let feedback='Du hast deinen eigenen Stil gefunden und gleichzeitig gelernt, dass Kollegen langfristig auf deine Entscheidungen reagieren.';
+  if(joint==='combine')feedback='Dr. Hartmann lobt, dass du zwei unterschiedliche Arbeitsstile zu einem klaren Plan verbunden hast.';
+  if(joint==='mia')feedback='Mia vertraut dir deutlich mehr. Leon wird in kommenden Situationen vermutlich stärker mit dir konkurrieren.';
+  if(joint==='leon')feedback='Leon sieht dich jetzt als ebenbürtigen Partner. Mia erwartet künftig mehr Einbindung und Kommunikation.';
+  box.innerHTML=`<div class="story-card">
+    <div class="story-kicker">Woche 2 • Feedback</div>
+    <h2>Dein Weg nimmt Form an</h2>
+    <div class="story-dialogue"><div class="story-speaker">DR. HARTMANN</div><p>„Eine Fachrichtung ist mehr als ein Bonus. Sie verändert, welche Fälle dich interessieren – und mit wem du gerne arbeitest.“</p></div>
+    <div class="focus-card"><div class="focus-row"><b>${focus.icon} ${focus.name}</b><span>DEINE PRÄFERENZ</span></div><small>${focus.perk}</small></div>
+    <div class="relationship-grid">
+      <div class="relationship-card"><b>${mia.avatar} ${mia.name}</b><small>${relationshipLabel(miaValue)}</small><div class="relationship-value"><span>Beziehung</span><b>${miaValue}/100</b></div></div>
+      <div class="relationship-card"><b>${leon.avatar} ${leon.name}</b><small>${relationshipLabel(leonValue)}</small><div class="relationship-value"><span>Beziehung</span><b>${leonValue}/100</b></div></div>
+    </div>
+    <div class="story-evaluation">🌿 ${feedback}</div>
+    <div class="campaign-reward">Belohnung: <b>+900 € • +300 XP • +4 Ruf • +3 RP • +2 Prestige</b></div>
+    <button class="story-primary" onclick="completeCareerPath()">🧭 Story-Phase abschließen</button>
+  </div>`;
 }
 
 const firstWeekEpisodes=[
@@ -4495,6 +4782,7 @@ function leaveCampaignStory(){
 function startCampaignExperience(){
   if(!state.prologueCompleted){startCampaignStory();return}
   if(!state.firstWeekCompleted){startFirstWeekEpisode();return}
+  if(!state.careerPathCompleted){startCareerPathStory();return}
   startCampaignShift();
 }
 function completeCampaignPrologue(){
@@ -4695,10 +4983,13 @@ function renderModeUI(){
   const chapter=currentCampaignChapter();
   const prologueOpen=!state.prologueCompleted;
   const weekOpen=state.prologueCompleted&&!state.firstWeekCompleted;
+  const pathOpen=state.firstWeekCompleted&&!state.careerPathCompleted;
+  const focus=focusDef();
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
       ?`Prolog • ${doctorDisplayName()}`
       :weekOpen?`Woche 1 • ${doctorDisplayName()}`
+      :pathOpen?`Woche 2 • Team & Fachrichtung`
       :`${chapter?`Kapitel ${currentCampaignIndex()+1}`:'Kampagne abgeschlossen'} • ${doctorDisplayName()}`;
   }
   if($('doctorProfileAvatar'))$('doctorProfileAvatar').textContent=doctorAvatar();
@@ -4707,7 +4998,8 @@ function renderModeUI(){
     $('doctorProfileMeta').textContent=prologueOpen
       ?'Assistenzarzt • Erster Arbeitstag'
       :weekOpen?`Assistenzarzt • Woche 1 • ${state.campaignDaysCompleted||1} Tage erlebt`
-      :chapter?`Assistenzarzt • Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Medical Center • Kampagne abgeschlossen';
+      :pathOpen?'Assistenzarzt • Woche 2 • Rotation und Team'
+      :`${focus?`${focus.icon} ${focus.name} • `:''}Assistenzarzt • Mentor ${state.mentorTrust||50}/100`;
   }
   if($('prologueStatus')){
     $('prologueStatus').className='prologue-status'+(state.prologueCompleted?' done':'');
@@ -4716,12 +5008,14 @@ function renderModeUI(){
       :`📖 Prolog ${state.prologueStep>0?'begonnen':'noch offen'} • Erster Arbeitstag als Assistenzarzt`;
   }
   renderFirstWeekHub();
+  renderCareerPathHub();
   if($('campaignPlayBtn')){
-    const canPlay=prologueOpen||weekOpen||!!chapter;
+    const canPlay=prologueOpen||weekOpen||pathOpen||!!chapter;
     $('campaignPlayBtn').disabled=!canPlay;
     $('campaignPlayBtn').textContent=prologueOpen
       ?`${state.prologueStep>0?'📖 Prolog fortsetzen':'👨‍⚕️ Ersten Arbeitstag beginnen'}`
-      :weekOpen?`📅 Erste Arbeitswoche fortsetzen`
+      :weekOpen?'📅 Erste Arbeitswoche fortsetzen'
+      :pathOpen?'🤝 Team & Fachrichtung weiterspielen'
       :chapter?`👨‍⚕️ Als ${doctorDisplayName()} Kampagnen-Schicht spielen`:'🏆 Kampagne abgeschlossen';
   }
 }
@@ -4818,6 +5112,7 @@ function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
   run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
+  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus();
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -4877,6 +5172,7 @@ function adjustedCost(exam){
     discount=0.20+(roomLevel('lab')-1)*0.05+staffLabDiscount();
   }
   discount+=specialtyExamDiscount();
+  discount+=campaignFocusExamDiscount();
   discount+=researchDiagnosticDiscount();
   discount+=hospitalExamDiscount();
   const discounted=cost*(1-Math.min(.75,discount));
@@ -4995,6 +5291,7 @@ function finishCase(){
     const careerBonus=Math.max(0,Math.round(reward*(careerMoneyMultiplier()-1)));reward+=careerBonus;
     const staffBonus=Math.max(0,Math.round(reward*(staffRewardMultiplier()-1)));reward+=staffBonus;
     const specialtyBonus=Math.max(0,Math.round(reward*(specialtyRewardMultiplier(current)-1)));reward+=specialtyBonus;
+    const campaignFocusBonus=Math.max(0,Math.round(reward*(campaignFocusRewardMultiplier(current)-1)));reward+=campaignFocusBonus;
     if(run&&run.eventMoneyMultiplier)reward=Math.round(reward*run.eventMoneyMultiplier);
     const contractBonus=Math.max(0,Math.round(reward*(caseRevenueMultiplier()-1)));
     reward+=contractBonus;
@@ -5004,7 +5301,7 @@ function finishCase(){
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
-    xpGain=Math.round(xpGain*specialtyXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
+    xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
     let repGain=perfect?4:diagOK?1:-5;
     if(repGain<0)repGain=Math.min(0,repGain+careerRepShield());
 
@@ -5059,6 +5356,7 @@ function finishCase(){
       ${careerBonus>0?`<div class='result-line'><span>Karrierebonus</span><b>+${careerBonus} €</b></div>`:''}
       ${staffBonus>0?`<div class='result-line'><span>Teambonus</span><b>+${staffBonus} €</b></div>`:''}
       ${specialtyBonus>0?`<div class='result-line'><span>Spezialisierung</span><b>+${specialtyBonus} €</b></div>`:''}
+      ${campaignFocusBonus>0?`<div class='result-line'><span>Kampagnen-Fokus</span><b>+${campaignFocusBonus} €</b></div>`:''}
       <div class='result-line'><span>Erfahrung</span><b>+${xpGain} XP</b></div>
       <div class='result-line'><span>Forschung</span><b class='result-rp'>+${researchGain} RP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
@@ -5140,6 +5438,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('campaignAll',campaignCompletedCount()===campaignChapters.length);
   check('firstDay',!!state.prologueCompleted);
   check('firstWeek',!!state.firstWeekCompleted);
+  check('pathChosen',!!state.careerPathCompleted&&!!state.campaignFocus);
+  check('teamBond',relationshipValue('mia')>=65&&relationshipValue('leon')>=65);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
