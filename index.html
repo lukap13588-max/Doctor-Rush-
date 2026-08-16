@@ -599,13 +599,78 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 .result-diagnostic-good{color:var(--accent)}
 .result-diagnostic-mid{color:#c9c0ff}
 
+
+/* ===== v0.11 PATIENT CONDITION ===== */
+.condition-dashboard{
+  margin-top:14px;padding:15px;border-radius:22px;
+  background:linear-gradient(155deg,rgba(78,37,54,.72),rgba(13,31,54,.98));
+  border:1px solid rgba(255,126,150,.32)
+}
+.condition-head{display:flex;justify-content:space-between;align-items:flex-start;gap:12px}
+.condition-head h3{margin:0;font-size:17px}
+.condition-head p{margin:4px 0 0;color:var(--muted);font-size:10.5px;line-height:1.4}
+.condition-rank{
+  padding:7px 10px;border-radius:999px;background:rgba(255,126,150,.13);
+  color:#ffc0cc;font-size:10px;font-weight:900;white-space:nowrap
+}
+.condition-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:11px}
+.condition-stat{
+  background:#0d1f37;border:1px solid #273f60;border-radius:12px;padding:8px 6px;text-align:center
+}
+.condition-stat b{display:block;font-size:12px}.condition-stat small{font-size:8.5px;color:var(--muted)}
+
+.patient-condition-panel{
+  margin:10px 0 12px;padding:12px;border-radius:16px;
+  background:linear-gradient(155deg,rgba(80,29,46,.80),rgba(13,29,50,.96));
+  border:1px solid rgba(255,102,122,.32)
+}
+.patient-condition-top{display:flex;justify-content:space-between;align-items:center;gap:10px}
+.patient-condition-title{font-size:11px;font-weight:900}
+.patient-condition-status{
+  padding:5px 8px;border-radius:999px;font-size:8.5px;font-weight:900;
+  background:rgba(40,215,161,.10);color:var(--accent)
+}
+.patient-condition-status.watch{background:rgba(255,200,87,.12);color:var(--warning)}
+.patient-condition-status.critical{background:rgba(255,102,122,.14);color:#ff9bab}
+.patient-condition-bar{
+  height:9px;border-radius:999px;background:#09182a;overflow:hidden;
+  border:1px solid rgba(255,255,255,.05);margin-top:9px
+}
+.patient-condition-bar > i{
+  display:block;height:100%;width:80%;border-radius:999px;
+  background:linear-gradient(90deg,#ff667a,#ffc857,#28d7a1);
+  transition:.25s width
+}
+.patient-condition-meta{
+  display:flex;justify-content:space-between;gap:8px;margin-top:6px;
+  color:var(--muted);font-size:8.5px
+}
+.condition-events{display:grid;gap:6px;margin-top:9px}
+.condition-event{
+  padding:7px 8px;border-radius:10px;background:#0b1b30;border:1px solid #233a57;
+  font-size:9px;line-height:1.35;color:#d7e6f5
+}
+.condition-event.good{border-left:3px solid var(--accent)}
+.condition-event.bad{border-left:3px solid var(--danger)}
+.condition-event.neutral{border-left:3px solid var(--warning)}
+
+.stabilize-btn{
+  width:100%;margin-top:9px;border:none;border-radius:12px;padding:10px;
+  background:linear-gradient(135deg,#8e3149,#b84a63);
+  color:#fff;font-weight:900;font-size:10px
+}
+.stabilize-btn:disabled{opacity:.45}
+.condition-result-good{color:var(--accent)}
+.condition-result-mid{color:var(--warning)}
+.condition-result-bad{color:var(--danger)}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.10 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.11 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -615,7 +680,7 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
       <section id="homeScreen" class="screen active">
         <div class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.10 • DIAGNOSIS 2.0</h2>
+          <h2>Clinic Life v0.11 • PATIENT CONDITION</h2>
           <p>Behandle Patienten, triff schnelle Entscheidungen und baue deine Klinik zu einem Top-Spital aus.</p>
           <button class="primary big" id="startBtn">Schicht starten</button>
         </div>
@@ -623,6 +688,22 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
 
 
 
+
+
+        <section class="condition-dashboard">
+          <div class="condition-head">
+            <div>
+              <h3>❤️‍🩹 Patientenstabilität</h3>
+              <p>Wie gut hältst du Patienten während Diagnose und Behandlung stabil?</p>
+            </div>
+            <div id="conditionRank" class="condition-rank">BASIS</div>
+          </div>
+          <div class="condition-stats">
+            <div class="condition-stat"><b id="stableCasesTotal">0</b><small>Stabil beendet</small></div>
+            <div class="condition-stat"><b id="rescuedCasesTotal">0</b><small>Gerettet</small></div>
+            <div class="condition-stat"><b id="bestConditionScore">0</b><small>Bestzustand</small></div>
+          </div>
+        </section>
 
         <section class="diagnostic-dashboard">
           <div class="diagnostic-head">
@@ -837,6 +918,21 @@ h1{font-size:26px;margin:2px 0 0}h2{margin:0 0 8px}
             <div><b id="currentFlowScore">100</b><small>Flow-Score</small></div>
             <div><b id="currentCaseMinutes">0 min</b><small>Fallzeit</small></div>
           </div>
+
+        </section>
+
+        <section class="patient-condition-panel">
+          <div class="patient-condition-top">
+            <div class="patient-condition-title">❤️‍🩹 Patientenzustand</div>
+            <div id="conditionStatus" class="patient-condition-status">STABIL</div>
+          </div>
+          <div class="patient-condition-bar"><i id="conditionBar"></i></div>
+          <div class="patient-condition-meta">
+            <span id="conditionValue">80/100</span>
+            <span id="conditionTrend">→ unverändert</span>
+          </div>
+          <div id="conditionEvents" class="condition-events"></div>
+          <button id="stabilizeBtn" type="button" class="stabilize-btn" onclick="manualStabilize()">🛡️ Monitoring & Stabilisierung • 4 min</button>
         </section>
 
         <article class="patient-card">
@@ -1466,6 +1562,51 @@ const patients = [
     treatments:["Frühe antivirale Behandlung + Schmerztherapie","Nur Eis auflegen","Gipsverband","Glukose oral"],
     correctTreatment:"Frühe antivirale Behandlung + Schmerztherapie",
     reward:175, xp:84
+  },
+  {
+    name:"Sophie R.", age:37, job:"Verkäuferin", avatar:"👩🏻", urgency:"medium",
+    complaint:"Seit heute Morgen fühle ich mich sehr schwach, mir ist übel und ich habe mehrfach erbrochen. Ich kann kaum etwas bei mir behalten.",
+    vitals:{pulse:"108",temp:"37,4°",spo2:"99%",bp:"102/66"},
+    exams:[
+      {name:"Kreislaufstatus", result:"Leicht trockene Schleimhäute und schneller Puls.", cost:0, time:3},
+      {name:"Elektrolyte", result:"Leichte Elektrolytverschiebung.", cost:24, time:7, req:"lab"},
+      {name:"Blutzucker", result:"Blutzucker im Normbereich.", cost:8, time:3}
+    ],
+    diagnoses:["Dehydratation","Gastroenteritis","Hypoglykämie","Panikattacke"],
+    correctDiagnosis:"Dehydratation",
+    treatments:["Flüssigkeitsausgleich + Verlaufskontrolle","Nur Bettruhe","Antibiotikum","Gipsverband"],
+    correctTreatment:"Flüssigkeitsausgleich + Verlaufskontrolle",
+    reward:165, xp:78
+  },
+  {
+    name:"Anton H.", age:71, job:"Pensionist", avatar:"👴🏻", urgency:"high",
+    complaint:"Seit heute bin ich sehr schwach, bekomme schlechter Luft und meine Familie sagt, ich wirke ungewöhnlich schläfrig.",
+    vitals:{pulse:"118",temp:"39,4°",spo2:"90%",bp:"94/60"},
+    exams:[
+      {name:"Lunge abhören", result:"Feuchte Nebengeräusche basal.", cost:0, time:4},
+      {name:"CRP", result:"Entzündungswert stark erhöht.", cost:20, time:7, req:"lab"},
+      {name:"Röntgen Thorax", result:"Infiltrat im rechten Unterlappen.", cost:50, time:12, req:"imaging"}
+    ],
+    diagnoses:["Schwere Pneumonie","COPD-Exazerbation","Lungenembolie","Panikattacke"],
+    correctDiagnosis:"Schwere Pneumonie",
+    treatments:["Überwachte Behandlung + ärztliche antiinfektive Therapie","Nur Ruhe zuhause","Gipsverband","Glukose oral"],
+    correctTreatment:"Überwachte Behandlung + ärztliche antiinfektive Therapie",
+    reward:285, xp:138
+  },
+  {
+    name:"Mira D.", age:34, job:"Grafikerin", avatar:"👩🏽", urgency:"medium",
+    complaint:"Seit zwei Tagen habe ich starke einseitige Kopfschmerzen, Licht stört mich sehr und mir ist übel.",
+    vitals:{pulse:"88",temp:"36,6°",spo2:"99%",bp:"125/78"},
+    exams:[
+      {name:"Neurologischer Status", result:"Keine fokalen Ausfälle.", cost:0, time:5},
+      {name:"Pupillenkontrolle", result:"Pupillen seitengleich und lichtreagibel.", cost:0, time:2},
+      {name:"Blutdruckkontrolle", result:"Blutdruck unauffällig.", cost:4, time:2}
+    ],
+    diagnoses:["Migräne mit Aura","Hirnblutung","Akuter Schlaganfall","Sinusitis"],
+    correctDiagnosis:"Migräne mit Aura",
+    treatments:["Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle","Antibiotikum","Gipsverband","Notoperation"],
+    correctTreatment:"Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle",
+    reward:160, xp:76
   }
 ];
 
@@ -1494,6 +1635,139 @@ const departments = [
 
 
 
+
+
+const conditionRanks=[
+  {min:0,name:'BASIS'},{min:5,name:'AUFMERKSAM'},{min:15,name:'STABILISIERER'},
+  {min:30,name:'KRISENFEST'},{min:60,name:'INTENSIV-PROFI'}
+];
+
+function conditionRank(){
+  let r=conditionRanks[0];
+  for(const x of conditionRanks)if((state.stableCasesTotal||0)>=x.min)r=x;
+  return r.name;
+}
+function renderConditionDashboard(){
+  if($('conditionRank'))$('conditionRank').textContent=conditionRank();
+  if($('stableCasesTotal'))$('stableCasesTotal').textContent=state.stableCasesTotal||0;
+  if($('rescuedCasesTotal'))$('rescuedCasesTotal').textContent=state.rescuedCasesTotal||0;
+  if($('bestConditionScore'))$('bestConditionScore').textContent=state.bestConditionScore||0;
+}
+function initialCondition(patient){
+  if(patient.urgency==='high')return 62;
+  if(patient.urgency==='medium')return 78;
+  return 90;
+}
+function newConditionState(patient){
+  return {
+    value:initialCondition(patient),
+    start:initialCondition(patient),
+    trend:0,
+    stabilized:false,
+    events:[],
+    lowest:initialCondition(patient)
+  };
+}
+function conditionLabel(value){
+  if(value>=75)return {text:'STABIL',cls:''};
+  if(value>=50)return {text:'BEOBACHTEN',cls:'watch'};
+  return {text:'KRITISCH',cls:'critical'};
+}
+function conditionTrendText(){
+  if(!conditionState||conditionState.trend===0)return'→ unverändert';
+  return conditionState.trend>0?'↗ verbessert':'↘ verschlechtert';
+}
+function pushConditionEvent(text,type='neutral'){
+  if(!conditionState)return;
+  conditionState.events.unshift({text,type});
+  conditionState.events=conditionState.events.slice(0,4);
+}
+function changeCondition(delta,reason='',type='neutral'){
+  if(!conditionState)return;
+  const before=conditionState.value;
+  conditionState.value=Math.max(10,Math.min(100,Math.round(conditionState.value+delta)));
+  conditionState.trend=conditionState.value-before;
+  conditionState.lowest=Math.min(conditionState.lowest,conditionState.value);
+  if(reason)pushConditionEvent(reason,type);
+  renderConditionPanel();
+}
+function conditionDecayForTime(minutes,source=''){
+  if(!conditionState||!current)return;
+  const m=Math.max(0,Number(minutes)||0);
+  if(m<=0)return;
+  let rate=current.urgency==='high'?0.65:current.urgency==='medium'?0.22:0.07;
+  if(conditionState.stabilized)rate*=0.55;
+  const loss=Math.max(0,Math.round(m*rate));
+  if(loss>0)changeCondition(-loss,`${source||'Zeit'}: Zustand -${loss}`,'bad');
+}
+function conditionActionBonus(kind,success=true){
+  if(!conditionState)return;
+  const key=String(kind||'');
+  if(key==='protocol'){
+    if(success)changeCondition(10,'Notfall-Protokoll: Zustand verbessert','good');
+    else changeCondition(-8,'Fehler im Notfall-Protokoll: Zustand verschlechtert','bad');
+  }else if(key==='procedure'){
+    if(success)changeCondition(6,'Eingriff erfolgreich: Zustand verbessert','good');
+    else changeCondition(-6,'Eingriffsfehler: Zustand verschlechtert','bad');
+  }else if(key==='treatment'){
+    if(success)changeCondition(current.urgency==='high'?14:9,'Passende Behandlung: Zustand verbessert','good');
+    else changeCondition(-10,'Unpassende Behandlung: Zustand verschlechtert','bad');
+  }
+}
+function renderConditionPanel(){
+  if(!conditionState)return;
+  const value=Math.round(conditionState.value);
+  const label=conditionLabel(value);
+  if($('conditionStatus')){
+    $('conditionStatus').textContent=label.text;
+    $('conditionStatus').className='patient-condition-status'+(label.cls?' '+label.cls:'');
+  }
+  if($('conditionBar'))$('conditionBar').style.width=`${value}%`;
+  if($('conditionValue'))$('conditionValue').textContent=`${value}/100`;
+  if($('conditionTrend'))$('conditionTrend').textContent=conditionTrendText();
+  const events=$('conditionEvents');
+  if(events){
+    events.innerHTML=conditionState.events.length
+      ?conditionState.events.map(e=>`<div class="condition-event ${e.type}">${e.text}</div>`).join('')
+      :'<div class="condition-event neutral">Noch keine Zustandsänderung.</div>';
+  }
+  const btn=$('stabilizeBtn');
+  if(btn){
+    btn.disabled=conditionState.stabilized||!run||run.timeLeft<4;
+    btn.textContent=conditionState.stabilized?'✅ Stabilisierung aktiv':'🛡️ Monitoring & Stabilisierung • 4 min';
+  }
+}
+function manualStabilize(){
+  if(!conditionState||!run||conditionState.stabilized)return;
+  if(run.timeLeft<4){toast('Zu wenig Schichtzeit.');return}
+  run.timeLeft-=4;
+  conditionState.stabilized=true;
+  changeCondition(current.urgency==='high'?9:6,'Monitoring & Stabilisierung aktiviert','good');
+  markFlowStation(current.urgency==='high'?'emergency':'exam',4);
+  updateHud();
+  save();
+}
+function finishCondition(treatOK){
+  if(!conditionState)return {score:0,bonus:0,rescued:false,stable:false};
+  conditionActionBonus('treatment',treatOK);
+  const score=Math.round(conditionState.value);
+  const stable=score>=70;
+  const rescued=conditionState.lowest<50&&score>=65;
+  let bonus=0;
+  if(score>=90)bonus=30;
+  else if(score>=80)bonus=20;
+  else if(score>=70)bonus=10;
+  if(stable)state.stableCasesTotal=(state.stableCasesTotal||0)+1;
+  if(rescued)state.rescuedCasesTotal=(state.rescuedCasesTotal||0)+1;
+  state.bestConditionScore=Math.max(state.bestConditionScore||0,score);
+  if(run){
+    if(!run.conditionScores)run.conditionScores=[];
+    run.conditionScores.push(score);
+    if(stable)run.stableCases=(run.stableCases||0)+1;
+    if(rescued)run.rescuedCases=(run.rescuedCases||0)+1;
+  }
+  return {score,bonus,rescued,stable};
+}
 
 const diagnosticRanks=[
   {min:0,name:'ANFÄNGER'},{min:5,name:'BEOBACHTER'},{min:15,name:'KLINISCH SICHER'},
@@ -1667,6 +1941,7 @@ function askHistoryQuestion(index){
   const q=historyState.questions[index];
   if(run.timeLeft<q.time){toast('Zu wenig Zeit für diese Frage.');return}
   run.timeLeft-=q.time;
+  conditionDecayForTime(q.time,'Anamnese');
   historyState.asked.add(index);
   historyState.score=Math.min(100,historyState.score+q.value);
   state.historyQuestionsTotal=(state.historyQuestionsTotal||0)+1;
@@ -1831,6 +2106,9 @@ function renderFlowDashboard(){
 state.historyQuestionsTotal=Number.isFinite(Number(state.historyQuestionsTotal))&&Number(state.historyQuestionsTotal)>=0?Math.floor(Number(state.historyQuestionsTotal)):0;
 state.strongHistoryCases=Number.isFinite(Number(state.strongHistoryCases))&&Number(state.strongHistoryCases)>=0?Math.floor(Number(state.strongHistoryCases)):0;
 state.bestClueScore=Number.isFinite(Number(state.bestClueScore))?Math.max(15,Math.min(100,Math.floor(Number(state.bestClueScore)))):15;
+state.stableCasesTotal=Number.isFinite(Number(state.stableCasesTotal))&&Number(state.stableCasesTotal)>=0?Math.floor(Number(state.stableCasesTotal)):0;
+state.rescuedCasesTotal=Number.isFinite(Number(state.rescuedCasesTotal))&&Number(state.rescuedCasesTotal)>=0?Math.floor(Number(state.rescuedCasesTotal)):0;
+state.bestConditionScore=Number.isFinite(Number(state.bestConditionScore))?Math.max(0,Math.min(100,Math.floor(Number(state.bestConditionScore)))):0;
   const f=state.lastFlow;
   if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
   if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
@@ -2008,6 +2286,8 @@ function resolveProcedureStep(option,correct,clicked){
     state.rep=Math.max(0,state.rep-1);run.rep-=1;
     run.timeLeft=Math.max(0,run.timeLeft-4);
     markFlowStation('surgery',4);
+    conditionDecayForTime(4,'Eingriff');
+    conditionActionBonus('procedure',false);
     $('procedureStatus').className='procedure-status bad';
     $('procedureStatus').textContent=`⚠️ Eingriff nicht optimal. Besser wäre: ${correct}. -1 Ruf, -4 Minuten.`;
     beep(330,.12);updateHud();save();return;
@@ -2031,6 +2311,8 @@ function resolveProcedureStep(option,correct,clicked){
     const procMinutes=Math.max(1,3-procedureTimeReduction());
     run.timeLeft=Math.max(0,run.timeLeft-procMinutes);
     markFlowStation('surgery',procMinutes);
+    conditionDecayForTime(procMinutes,'Eingriff');
+    conditionActionBonus('procedure',true);
     $('procedureSteps').innerHTML='';
     $('procedureStatus').className='procedure-status good';
     $('procedureStatus').textContent=`✅ Eingriff gelungen. +${money} €, +${xp} XP, +${rp} RP.`;
@@ -2125,6 +2407,8 @@ function resolveEmergencyProtocol(option,set,clicked){
     run.protocolCorrect=(run.protocolCorrect||0)+1;run.earned+=25;run.xp+=15;run.researchEarned=(run.researchEarned||0)+1;
     run.timeLeft=Math.max(0,run.timeLeft-2);
     markFlowStation('emergency',2);
+    conditionDecayForTime(2,'Notfallversorgung');
+    conditionActionBonus('protocol',true);
     $('protocolFeedback').className='protocol-feedback good';
     $('protocolFeedback').textContent=`✅ Stabilisierung gelungen. +25 €, +15 XP, +1 RP • ${set.feedback}`;
     beep(930,.12);
@@ -2133,6 +2417,8 @@ function resolveEmergencyProtocol(option,set,clicked){
     protocolOutcome={attempted:true,correct:false,money:0,xp:0,rp:0,rep:-2};
     state.rep=Math.max(0,state.rep-2);run.rep-=2;run.timeLeft=Math.max(0,run.timeLeft-5);
     markFlowStation('emergency',5);
+    conditionDecayForTime(5,'Notfallversorgung');
+    conditionActionBonus('protocol',false);
     $('protocolFeedback').className='protocol-feedback bad';
     $('protocolFeedback').textContent=`⚠️ Nicht optimal. -2 Ruf und 5 Minuten. Besser wäre: ${set.correct}.`;
     beep(330,.12);
@@ -2535,7 +2821,10 @@ const treatmentStock = {
   'Ursache abklären + gezielte Eisenbehandlung': [],
   'Chirurgische Notfallabklärung': ['fluids','pain'],
   'Lagerungsmanöver + Verlaufskontrolle': [],
-  'Frühe antivirale Behandlung + Schmerztherapie': ['pain']
+  'Frühe antivirale Behandlung + Schmerztherapie': ['pain'],
+  'Flüssigkeitsausgleich + Verlaufskontrolle': ['fluids'],
+  'Überwachte Behandlung + ärztliche antiinfektive Therapie': ['antibiotic','fluids'],
+  'Gezielte Migränebehandlung + Ruhe und Verlaufskontrolle': ['pain']
 };
 
 const achievements = [
@@ -2560,7 +2849,9 @@ const achievements = [
   {id:'flow90', name:'Perfekter Ablauf', desc:'Beende eine Schicht mit mindestens 90 Klinik-Flow.'},
   {id:'throughput6', name:'Volle Auslastung', desc:'Behandle 6 Patienten in einer Schicht.'},
   {id:'history50', name:'Guter Zuhörer', desc:'Stelle insgesamt 50 Anamnese-Fragen.'},
-  {id:'clinical10', name:'Klinischer Blick', desc:'Schaffe 10 starke Diagnosen mit guter Anamnese.'}
+  {id:'clinical10', name:'Klinischer Blick', desc:'Schaffe 10 starke Diagnosen mit guter Anamnese.'},
+  {id:'stable20', name:'Ruhige Station', desc:'Beende insgesamt 20 Patienten stabil.'},
+  {id:'rescue5', name:'Krisenmanager', desc:'Rette 5 Patienten nach kritischer Verschlechterung.'}
 ];
 
 const missions = [
@@ -2584,7 +2875,10 @@ const missions = [
    meta:r=>`Flow ${r.flowScores&&r.flowScores.length?Math.round(r.flowScores.reduce((a,b)=>a+b,0)/r.flowScores.length):0}/80`},
   {id:'history', text:'Schaffe in einer Schicht 3 starke Diagnosen mit guter Anamnese.', rewardMoney:290, rewardXp:125,
    progress:r=>Math.min(r.strongDiagnoses||0,3)/3, done:r=>(r.strongDiagnoses||0)>=3,
-   meta:r=>`${Math.min(r.strongDiagnoses||0,3)}/3 starke Diagnosen`}
+   meta:r=>`${Math.min(r.strongDiagnoses||0,3)}/3 starke Diagnosen`},
+  {id:'stability', text:'Beende in einer Schicht 4 Patienten stabil.', rewardMoney:320, rewardXp:130,
+   progress:r=>Math.min(r.stableCases||0,4)/4, done:r=>(r.stableCases||0)>=4,
+   meta:r=>`${Math.min(r.stableCases||0,4)}/4 Patienten stabil`}
 ];
 
 const defaultState = {
@@ -2606,7 +2900,10 @@ const defaultState = {
   lastFlow:{score:100,patients:0,avgTime:0,bottleneck:'–',usage:{triage:0,exam:0,lab:0,imaging:0,cardio:0,emergency:0,surgery:0,discharge:0}},
   historyQuestionsTotal:0,
   strongHistoryCases:0,
-  bestClueScore:15
+  bestClueScore:15,
+  stableCasesTotal:0,
+  rescuedCasesTotal:0,
+  bestConditionScore:0
 };
 
 let state;
@@ -2663,6 +2960,7 @@ let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
 let historyState=null;
+let conditionState=null;
 let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
 
@@ -2683,7 +2981,7 @@ function urgencyRank(u){return u==='high'?3:u==='medium'?2:1}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
-  renderMissionCard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
+  renderMissionCard();renderConditionDashboard();renderDiagnosticDashboard();renderFlowDashboard();renderProcedureSkill();renderEmergencySkill();renderCareer();renderResearch();renderClinicMap();renderStaff();renderSpecialties();renderInventory();renderUpgrades();renderCasebook();renderAchievements();
 }
 function renderMissionCard(){
   currentMission=getMissionForDay(state.day);$('missionText').textContent=currentMission.text;
@@ -2708,7 +3006,7 @@ function renderAchievements(){
 
 function startShift(){
   const pool=shuffle(patients).slice(0,8).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0};
+  run={active:true,queue:pool,treated:0,total:6,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
@@ -2741,6 +3039,7 @@ function loadPatient(){
   selectedDiagnosis=null;selectedTreatment=null;examined=new Set();
   patientFlow=newPatientFlow(current);
   historyState=newHistoryState(current);
+  conditionState=newConditionState(current);
   if(run){
     run.stationUsage.triage=(run.stationUsage.triage||0)+1;
     run.stationUsage.exam=(run.stationUsage.exam||0)+1;
@@ -2755,7 +3054,7 @@ function loadPatient(){
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderPatientFlow();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
+  renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -2781,6 +3080,7 @@ function adjustedExamTime(exam){
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
 function renderExamButtons(){
   const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);
+    conditionDecayForTime(time,'Untersuchung');
     const station=examStation(e);
     markFlowStation(station,time);
     if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
@@ -2864,6 +3164,7 @@ function finishCase(){
     const treatOK=selectedTreatment===current.correctTreatment;
     const perfect=diagOK&&treatOK;
     const historyBonus=historyBonusFor(diagOK);
+    const conditionResult=finishCondition(treatOK);
 
     consumeStock(selectedTreatment);
     run.timeLeft=Math.max(0,run.timeLeft-5);
@@ -2871,6 +3172,7 @@ function finishCase(){
     const flowScore=finishPatientFlow();
     let reward=perfect?current.reward:diagOK?Math.round(current.reward*.45):0;
     reward+=historyBonus.money;
+    reward+=conditionResult.bonus;
     const flowBonus=flowScore>=90?25:flowScore>=78?15:flowScore>=65?8:0;
     reward+=flowBonus;
     const researchTherapyBonus=perfect?Math.max(0,Math.round(reward*(researchPerfectMoneyMultiplier()-1))):0;
@@ -2929,6 +3231,7 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
+      ${conditionResult.bonus>0?`<div class='result-line'><span>Stabilitätsbonus</span><b>+${conditionResult.bonus} €</b></div>`:''}
       ${historyBonus.money>0?`<div class='result-line'><span>Anamnese-Bonus</span><b>+${historyBonus.money} €</b></div>`:''}
       ${flowBonus>0?`<div class='result-line'><span>Klinik-Flow</span><b>+${flowBonus} €</b></div>`:''}
       ${researchTherapyBonus>0?`<div class='result-line'><span>Forschungsbonus</span><b>+${researchTherapyBonus} €</b></div>`:''}
@@ -2940,6 +3243,7 @@ function finishCase(){
       <div class='result-line'><span>Forschung</span><b class='result-rp'>+${researchGain} RP</b></div>
       <div class='result-line'><span>Ruf</span><b>${repGain>=0?'+':''}${repGain}</b></div>
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
+      <div class='result-line'><span>Patientenzustand</span><b class='${conditionResult.score>=75?'condition-result-good':conditionResult.score>=50?'condition-result-mid':'condition-result-bad'}'>${conditionResult.score}/100 • ${conditionResult.rescued?'GERETTET':conditionResult.stable?'STABIL':'KRITISCH'}</b></div>
       <div class='result-line'><span>Anamnese</span><b class='${historyScore()>=60?'result-diagnostic-good':'result-diagnostic-mid'}'>${historyScore()}/100 • ${historyState?historyState.asked.size:0} Fragen</b></div>
       <div class='result-line'><span>Klinik-Flow</span><b class='${flowScore>=78?'result-flow-good':'result-flow-mid'}'>${flowScore} • ${flowRatingText(flowScore)}</b></div>
       <div class='result-line'><span>Fallzeit</span><b>${patientFlow?patientFlow.minutes:0} min</b></div>
@@ -2969,7 +3273,8 @@ function endShift(reason=''){
   run.newAchievements.push(...unlockAchievements());const unique=[...new Set(run.newAchievements)].filter(Boolean);state.day++;save();
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
-  $('missionResult').innerHTML=missionHtml+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
+  $('missionResult').innerHTML=missionHtml+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
@@ -2988,6 +3293,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('throughput6',run&&run.treated>=6);
   check('history50',(state.historyQuestionsTotal||0)>=50);
   check('clinical10',(state.strongHistoryCases||0)>=10);
+  check('stable20',(state.stableCasesTotal||0)>=20);
+  check('rescue5',(state.rescuedCasesTotal||0)>=5);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('startBtn').onclick=startShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=()=>showScreen('homeScreen');$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};

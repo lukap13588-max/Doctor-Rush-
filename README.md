@@ -1,4 +1,4 @@
-# Doctor Rush v0.10 – DIAGNOSIS 2.0
+# Doctor Rush v0.11 – PATIENT CONDITION
 
 ## Dateien
 
@@ -14,132 +14,151 @@ Zusätzlich gibt es die `README.md` wieder als ZIP für den sicheren Download au
 1. Öffne dein Doctor-Rush-Repository.
 2. Ersetze nur die vorhandene `index.html`.
 3. Commit speichern.
-4. Öffne die GitHub-Pages-Seite danach einmal mit `?v=0.10`.
+4. Öffne die GitHub-Pages-Seite danach einmal mit `?v=0.11`.
 
 ---
 
-## Neu in v0.10
+## Neu in v0.11
 
-### 💬 Anamnese-System
+### ❤️‍🩹 Dynamischer Patientenzustand
 
-Patienten verraten jetzt beim ersten Kontakt nicht mehr sofort ihre komplette Geschichte.
+Jeder Patient bekommt während der Behandlung einen sichtbaren Zustandswert von **0 bis 100**.
 
-Stattdessen siehst du zunächst nur eine kurze Hauptbeschwerde.
+Startwerte hängen von der Dringlichkeit ab:
 
-Danach kannst du gezielte Fragen stellen:
+- leichte Fälle starten stabil
+- mittlere Fälle starten niedriger
+- dringende Fälle starten deutlich gefährdeter
 
-- Verlauf und Beginn
-- Begleitsymptome
-- Risikofaktoren
-- allgemeine Zusatzfrage
+Der Zustand verändert sich während des Falls.
 
-Jede Frage kostet Schichtzeit.
+### ⏱️ Zeit hat jetzt Konsequenzen
 
-### 🧠 Hinweis-Score
+Zeitaufwendige Aktionen können den Zustand verschlechtern:
 
-Jede sinnvolle Anamnese-Frage erhöht deinen klinischen Hinweis-Score.
+- Anamnese
+- Untersuchungen
+- Notfallversorgung
+- Eingriffe
 
-Start:
-- 15/100
+Dringende Patienten verlieren schneller Stabilität als leichte Fälle.
 
-Je gezielter du fragst, desto höher steigt der Wert.
+### 🛡️ Monitoring & Stabilisierung
 
-Ab 60 Punkten erhältst du eine **klinische Einordnung**, zum Beispiel:
+Du kannst einmal pro Fall eine allgemeine **Monitoring-&-Stabilisierungsaktion** ausführen.
 
-- Atemwege/Lunge
-- Neurologie
-- Herz/Kreislauf
-- Bauch/innere Organe
-- Harnwege
-- Gefäße
-- systemische Erkrankung
-- Haut/Weichteile
-- Verletzung
+Sie:
 
-Die genaue Diagnose wird dabei nicht verraten.
+- kostet 4 Minuten
+- verbessert den Zustand
+- reduziert danach die weitere Verschlechterung
+- ist besonders wertvoll bei dringenden Patienten
 
-### 💰 Anamnese-Bonus
+Das ist bewusst abstrakt gehalten und keine reale medizinische Anleitung.
 
-Wenn deine Diagnose richtig ist, bekommst du abhängig vom Hinweis-Score zusätzliche Belohnungen.
+### 🚨 Notfall-Protokolle wirken auf den Zustand
 
-Hoher Hinweis-Score:
-- mehr Geld
-- zusätzliche XP
-- zählt als starke Diagnose
+Richtiges Notfall-Protokoll:
+- verbessert den Patientenzustand
 
-### 🧠 Diagnostik-Dashboard
+Fehler:
+- verschlechtert ihn zusätzlich
 
-Auf der Startseite gibt es jetzt **Diagnostik 2.0**.
+### 🛠️ Eingriffe wirken auf den Zustand
+
+Erfolgreiche Eingriffe:
+- verbessern den Zustand
+
+Fehler:
+- verschlechtern ihn
+
+### 💊 Behandlung entscheidet mit
+
+Die richtige Behandlung verbessert den Zustand am Ende deutlich.
+
+Eine falsche Behandlung verschlechtert ihn.
+
+### 💰 Stabilitätsbonus
+
+Gute Endzustände bringen zusätzlich Geld:
+
+- ab 70: Bonus
+- ab 80: höherer Bonus
+- ab 90: maximaler Bonus
+
+### 🛟 Rettungswertung
+
+Wenn ein Patient zwischenzeitlich unter 50 fällt und am Ende wieder mindestens 65 erreicht, zählt der Fall als **gerettet**.
+
+### 📊 Neues Dashboard
+
+Auf der Startseite gibt es jetzt **Patientenstabilität**.
 
 Angezeigt werden:
 
-- insgesamt gestellte Anamnese-Fragen
-- starke Diagnosen
-- bester Hinweis-Score
-- Diagnostik-Rang
+- stabil beendete Fälle
+- gerettete Patienten
+- bester Endzustand
+- Stabilitäts-Rang
 
 Ränge:
 
-- Anfänger
-- Beobachter
-- Klinisch sicher
-- Diagnose-Profi
-- Diagnostiker
+- Basis
+- Aufmerksam
+- Stabilisierer
+- Krisenfest
+- Intensiv-Profi
 
-### 🆕 4 neue Fälle
+### 🆕 3 neue Fälle
 
-- Eisenmangelanämie
-- Appendizitis
-- Benigner Lagerungsschwindel
-- Herpes Zoster
-
-Diese Fälle profitieren besonders von einer guten Anamnese.
+- Dehydratation
+- Schwere Pneumonie
+- Migräne mit Aura
 
 ### 📋 Fallauswertung erweitert
 
-Nach einem Fall siehst du zusätzlich:
+Nach jedem Patienten siehst du:
 
-- Anamnese-Score
-- Anzahl gestellter Fragen
-- möglichen Anamnese-Bonus
+- Endzustand
+- Stabil / Kritisch / Gerettet
+- Stabilitätsbonus
 
 ### 📈 Schichtauswertung erweitert
 
-Am Ende der Schicht erscheinen zusätzlich:
+Am Schichtende:
 
-- Anzahl gestellter Anamnese-Fragen
-- Anzahl starker Diagnosen
+- durchschnittlicher Patientenzustand
+- Anzahl stabil beendeter Fälle
+- Anzahl geretteter Patienten
 
 ### 🎯 Neue Tagesmission
 
-**Gute Anamnese**
-- 3 starke Diagnosen in einer Schicht erreichen
+**Stabile Station**
+- 4 Patienten in einer Schicht stabil beenden
 
 ### 🏆 Neue Erfolge
 
-**Guter Zuhörer**
-- insgesamt 50 Anamnese-Fragen stellen
+**Ruhige Station**
+- 20 Patienten insgesamt stabil beenden
 
-**Klinischer Blick**
-- 10 starke Diagnosen erreichen
+**Krisenmanager**
+- 5 Patienten nach kritischer Verschlechterung retten
 
 ## Bestehende Systeme bleiben erhalten
 
+- Diagnose 2.0
+- Anamnese
+- Klinik-Flow
 - Wartezimmer und Triage
-- stabiler Fallabschluss
-- Klinik-Flow und Stationsauslastung
 - Klinikräume
-- Medikamente und Apotheke
+- Medikamente
 - Arztkarriere
 - Personal
 - Spezialisierungen
 - Forschung
 - Fallbuch
 - Notfall-Protokolle
-- Notfall-Skill
-- Eingriffsraum
-- Eingriffs-Minigames
-- Schicht-Ereignisse
+- Eingriffe
 - Tagesmissionen
 - Erfolge
 - Geld, XP und Ruf
@@ -151,7 +170,8 @@ Am Ende der Schicht erscheinen zusätzlich:
 - keine externe JavaScript-Datei
 - keine externe CSS-Datei
 - Spielstand bleibt `doctorRushSaveV3`
-- v0.9-Spielstand kompatibel
+- v0.10-Spielstand kompatibel
 - JavaScript-Syntaxprüfung: **OK**
+- One-File-Prüfung: **OK**
 
 > Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
