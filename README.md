@@ -1,4 +1,4 @@
-# Doctor Rush v0.23 – TEAM LEADERSHIP
+# Doctor Rush v0.24 – CLINICAL REALISM
 
 ## Dateien
 
@@ -11,241 +11,234 @@ Die `README.md` liegt zusätzlich als ZIP bei.
 
 1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.23` öffnen.
+3. Doctor Rush einmal mit `?v=0.24` öffnen.
 
 ---
 
-# Neu in v0.23
+# Ziel von v0.24
 
-## 👨‍⚕️ Du führst jetzt andere Ärzte
+Diese Version baut bewusst keine neue Story-Stufe.
 
-Nach deiner Beförderung zum Stationsarzt beginnt die nächste persönliche Story-Phase.
+Stattdessen wird das eigentliche Patienten-Gameplay realistischer.
 
-Du bist erstmals nicht nur für deine eigenen Patienten verantwortlich.
+Der Realismus entsteht vor allem durch:
 
-Du bekommst eine junge Assistenzärztin zur direkten Supervision:
+- klinischen Ablauf
+- Patientenakte
+- zusätzliche Vitalparameter
+- plausiblere Differentialdiagnosen
+- gezieltere Diagnostik
+- Dokumentation
+- Qualitätsbewertung
 
-## 👩🏻‍⚕️ Sofia Keller
-
-- Assistenzärztin
-- neu im Team
-- motiviert
-- noch unerfahren
-
-Ihre Entwicklung hängt davon ab, wie du sie führst.
-
----
-
-# 🧠 Neues Teaching-System
-
-Dein persönlicher Arzt besitzt jetzt zusätzlich:
-
-## Teaching
-
-0 bis 100.
-
-Teaching beschreibt, wie gut du:
-
-- Verantwortung sinnvoll überträgst
-- Lernziele setzt
-- Feedback gibst
-- andere selbst denken lässt
-- Sicherheit und Lernfreiheit miteinander verbindest
-
-Teaching bleibt dauerhaft gespeichert.
+Es werden bewusst keine Medikamentendosierungen oder detaillierten medizinischen Handlungsanweisungen eingebaut.
 
 ---
 
-# 🤝 Sofia-Vertrauen
+# 🩺 Erweiterter Realismus
 
-Sofia besitzt einen eigenen Vertrauenswert von 0 bis 100.
+Auf der Startseite gibt es jetzt einen Schalter:
 
-Deine Entscheidungen beeinflussen diesen Wert.
+## Realismus: ERWEITERT
+
+Dieser Modus ist nach dem Update standardmäßig aktiviert.
+
+Du kannst ihn jederzeit deaktivieren.
+
+Bei deaktiviertem Realismus bleibt der klassische Doctor-Rush-Ablauf erhalten.
+
+---
+
+# 📋 Neue Patientenakte
+
+Jeder normale Patientenfall besitzt jetzt eine aufklappbare Patientenakte.
+
+Sie zeigt im Spiel:
+
+- Triage-Einstufung
+- Allergien
+- Dauermedikation
+- relevante Vorerkrankungen
+- Risikoprofil
+- zusätzliche Vitalwerte
+
+Die Akte ist einklappbar, damit das mobile Layout nicht wieder unnötig lang wird.
+
+---
+
+# ❤️ Mehr Vitalwerte
+
+Zusätzlich zu Puls, Temperatur, Sauerstoffsättigung und Blutdruck gibt es jetzt:
+
+- Atemfrequenz
+- vereinfachte Schmerzskala 0–10
+
+Die zusätzlichen Werte werden für jeden Fall passend zu Dringlichkeit und Falltyp erzeugt.
+
+---
+
+# 🟢🟡🔴 Vitalwerte werden bewertet
+
+Vitalwerte bekommen im erweiterten Realismus eine visuelle Spielbewertung:
+
+- normal
+- auffällig
+- deutlich auffällig
+
+Dadurch erkennst du schneller, ob ein Patient physiologisch stabil wirkt.
+
+Die Bewertung dient nur dem Spiel und ersetzt keine reale medizinische Beurteilung.
+
+---
+
+# 🧠 Plausiblere Differentialdiagnosen
+
+Bisher waren einige falsche Diagnosemöglichkeiten sehr offensichtlich.
+
+Im erweiterten Realismus verwendet das Spiel jetzt fallbezogene Differentialdiagnose-Pools.
 
 Beispiele:
 
-### Vertrauen steigt
+## Atemwege
+- Pneumonie
+- Asthma-Exazerbation
+- COPD-Exazerbation
+- Lungenembolie
+- Panikattacke
 
-- klare Aufgaben geben
-- erreichbar bleiben
-- Unsicherheit als Lernmoment nutzen
-- konstruktiv Feedback geben
+## Neurologie
+- Migräne
+- Schlaganfall
+- Hirnblutung
+- Lagerungsschwindel
+- Gehirnerschütterung
 
-### Vertrauen sinkt
+## Bauch
+- Appendizitis
+- Gastroenteritis
+- Gallenkolik
+- Cholezystitis
+- Pankreatitis
+- Nierenstein
 
-- bloßstellen
-- alles selbst übernehmen
-- sie ohne Supervision alleinlassen
-- keinen eigenen Denkraum zulassen
+Die richtige Diagnose bleibt immer enthalten.
 
----
-
-# 🎬 Neue Story-Phase
-
-Der erste Supervisionsabschnitt besteht aus vier Teilen.
-
-## 1. Neue Verantwortung
-
-Dr. Hartmann erklärt dir, dass Sofia unter deiner Supervision arbeitet.
-
-## 2. Aufgaben delegieren
-
-Sofia möchte einen stabilen Trainingsfall übernehmen.
-
-Du kannst:
-
-- den Fall mit klaren Grenzen übertragen
-- jeden Schritt kontrollieren
-- den Fall fast vollständig abgeben
-
-## 3. Sofia ist unsicher
-
-Sofia kommt mit zwei möglichen Erklärungen zurück.
-
-Du kannst:
-
-- sie mit Fragen durch ihre Überlegungen führen
-- den Fall sofort selbst übernehmen
-- ihre Unsicherheit vor dem Team kritisieren
-
-## 4. Feedback
-
-Dr. Hartmann bewertet erstmals deinen Führungs- und Teaching-Stil.
+Die Reihenfolge wird pro Patient deterministisch gemischt.
 
 ---
 
-# 📊 Drei mögliche Führungsbewertungen
+# 🔬 Untersuchungen wirken klinischer
 
-## MENTOR
+Untersuchungen sind jetzt sichtbar kategorisiert:
 
-Du gibst Verantwortung ab, setzt sichere Grenzen und nutzt Fehler als Lernchance.
+- KLINISCH
+- LABOR
+- BILDGEBUNG
+- KARDIO
 
-## SOLIDE FÜHRUNG
+Befunde erscheinen als Befundbericht.
 
-Du führst verlässlich, kannst Coaching aber noch bewusster einsetzen.
-
-## ZU KONTROLLIERT
-
-Du hältst die Versorgung sicher, gibst Sofia aber zu wenig Raum für eigene Entwicklung.
-
-Die Story wird dadurch nicht blockiert.
+Kosten und Zeit bleiben erhalten, weil Doctor Rush weiterhin auch ein Klinikmanagement-Spiel ist.
 
 ---
 
-# 🎮 Neue Kampagnenboni
+# 🎯 Gezielte Diagnostik statt Test-Spam
 
-## Sofia-Vertrauen ab 70
+Das Spiel merkt sich, ob du bei stabilen Patienten sehr früh Untersuchungen anordnest, bevor eine vernünftige klinische Grundlage vorhanden ist.
 
-**+1 Minute** in Kampagnen-Schichten.
-
-Begründung im Spiel:
-
-Sofia arbeitet inzwischen zuverlässig mit dir zusammen.
-
-## Teaching ab 50
-
-**+2 % XP** in Kampagnen-Schichten.
-
-Begründung im Spiel:
-
-Du entwickelst dein Team effektiver.
-
-Beide Boni gelten nur im Kampagnenmodus.
+Bei dringenden Patienten wird frühe Akutdiagnostik nicht auf dieselbe Weise bewertet.
 
 ---
 
-# 🎁 Belohnung
+# 📊 Klinische Arbeitsgrundlage
 
-Nach Abschluss:
+Vor der Diagnose gibt es einen neuen kompakten Bereich.
 
-- +1.700 €
-- +550 XP
-- +5 bis +7 Ruf
-- +5 Forschungspunkte
-- +2 Prestige
+Der Evidenz-Score 0–100 entsteht aus:
+
+- Anamnese
+- Anzahl erhobener Befunde
+- klinischer Dokumentation
+
+Er verrät nicht die richtige Diagnose.
+
+---
+
+# ✅ Klinische Qualitätswertung
+
+Am Ende jedes Falls erhältst du zusätzlich eine klinische Qualität von 0–100.
+
+Sie berücksichtigt:
+
+- richtige Diagnose
+- passende Behandlung
+- Qualität der klinischen Arbeitsgrundlage
+- gezielte statt wahlloser Diagnostik
+- bei dringenden Fällen teilweise auch korrektes Notfallprotokoll
+
+Bewertungen:
+
+- EXZELLENT
+- SEHR GUT
+- SOLIDE
+- AUSREICHEND
+- LÜCKENHAFT
+
+Sehr sauber gespielte Fälle geben einen kleinen zusätzlichen XP-Bonus.
+
+---
+
+# 📄 Klinischer Kurzbrief
+
+Nach jedem Fall kannst du einen kompakten fiktiven Kurzbrief aufklappen.
+
+Er enthält:
+
+- Patient
+- Triage
+- Leitsymptom
+- Vitalwerte
+- Anamnese
+- erhobene Befunde
+- Arbeitsdiagnose
+- Versorgungsentscheidung
+- klinische Qualitätswertung
 
 ---
 
 # 🏆 Neue Erfolge
 
-## Jetzt bist du der Mentor
+## Klinisch sauber
+Schließe 10 Fälle mit mindestens 80 klinischer Qualität ab.
 
-Schließe deinen ersten Supervisionsabschnitt als Stationsarzt ab.
-
-## Vertrauensperson
-
-Erreiche mindestens 75 Vertrauen bei Sofia.
+## Saubere Dokumentation
+Erreiche in einem Fall mindestens 95 klinische Qualität.
 
 ---
 
-# 🧭 Karriere-Timeline erweitert
+# Kampagne UND freie Schicht
 
-Der persönliche Weg lautet jetzt:
+Der erweiterte klinische Realismus gilt für beide Modi:
 
-1. Erster Dienst
-2. Woche 1
-3. Team
-4. Rotation
-5. Station
-6. Beförderung zum Stationsarzt
-7. Erste Supervision
+## Kampagne
+Persönliche Karriere + realistischer Patientenworkflow.
 
-Die abgeschlossene Beförderungs-Karte wird wieder ausgeblendet und bleibt nur kompakt in der Timeline sichtbar.
-
-Damit wächst die Kampagnenseite nicht wieder endlos nach unten.
+## Freie Schicht
+Schnelles Klinikmanagement + realistischer Patientenworkflow.
 
 ---
 
-# ⚡ Freie Schicht bleibt getrennt
-
-Teaching- und Sofia-Boni greifen nur im Kampagnenmodus.
-
-Freie Schichten bleiben:
-
-- ohne Story
-- ohne Sofia-Bonus
-- ohne Teaching-XP-Bonus
-- sofort spielbar
-- klassisches Klinikmanagement
-
----
-
-# Bestehende Systeme bleiben erhalten
-
-- Stationsarzt
-- Leadership
-- Autonomie
-- Rotations-Mastery
-- Fachrichtungspräferenz
-- Mia & Leon
-- Mentor-Vertrauen
-- persönlicher Arzt
-- Kampagnen-Timeline
-- Finanzen
-- Personal 2.0
-- Krankenhaus-Ausbau
-- Diagnose 2.0
-- Anamnese 100/100
-- Patientenstabilität
-- Klinik-Flow
-- Forschung
-- Fallbuch
-- Notfälle
-- Eingriffe
-- Missionen
-- Erfolge
-
-## Technisch
+# Technisch
 
 - weiterhin nur **eine `index.html`**
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.22-Spielstand kompatibel
-- Teaching, Sofia-Vertrauen und Supervisionsausgang werden gespeichert
-- abgeschlossene Beförderung wird kompakt in die Timeline verschoben
-- neue Boni sind auf Kampagnen-Schichten begrenzt
+- v0.23-Spielstand kompatibel
+- Realismus bei alten Spielständen automatisch aktiviert
 - keine externen JavaScript- oder CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: **OK**
 - One-File-Prüfung: **OK**
+- keine Medikamentendosierungen hinzugefügt
+- richtige Diagnose bleibt in jedem Realismus-Differential enthalten
 
-> Die medizinischen Inhalte sind vereinfachtes Gameplay und keine medizinische Beratung.
+> Sämtliche medizinischen Inhalte sind vereinfachtes, fiktives Gameplay und keine medizinische Beratung.

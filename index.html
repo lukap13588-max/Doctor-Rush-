@@ -1421,13 +1421,93 @@ body.home-nav-active #app{padding-bottom:102px}
   border:1px solid rgba(40,215,161,.20);font-size:9px;line-height:1.45;color:#daf2e9
 }
 
+
+/* ===== v0.24 CLINICAL REALISM ===== */
+.realism-toggle{
+  width:100%;margin-top:10px;border:1px solid rgba(72,210,143,.24);
+  background:rgba(72,210,143,.06);color:#d9f5e7;border-radius:13px;
+  padding:9px 10px;font-size:8.8px;font-weight:900
+}
+.realism-toggle.off{border-color:#29435f;background:#0e2139;color:var(--muted)}
+.realism-toggle small{display:block;font-size:7.5px;font-weight:500;margin-top:2px;color:var(--muted)}
+.vitals.realism-on{grid-template-columns:repeat(3,1fr)}
+.vital-item{position:relative;border-radius:10px;padding:3px}
+.vital-item.warning{background:rgba(255,196,76,.07)}
+.vital-item.critical{background:rgba(255,91,112,.08)}
+.vital-dot{display:inline-block;width:6px;height:6px;border-radius:999px;margin-left:4px;background:#5fd7ac}
+.vital-item.warning .vital-dot{background:#ffd36b}
+.vital-item.critical .vital-dot{background:#ff7488}
+.realism-extra.hidden{display:none!important}
+.patient-record{
+  margin-top:10px;border-radius:14px;background:#0b1e34;border:1px solid #29435f;overflow:hidden
+}
+.patient-record summary{
+  list-style:none;cursor:pointer;padding:10px 11px;display:flex;justify-content:space-between;
+  gap:8px;align-items:center;font-size:9.5px;font-weight:900;color:#dceafa
+}
+.patient-record summary::-webkit-details-marker{display:none}
+.patient-record summary span{color:#9fc7ef;font-size:7.8px}
+.record-body{padding:0 11px 11px}
+.record-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.record-item{padding:8px;border-radius:10px;background:#091a2e;border:1px solid #223a56}
+.record-item b{display:block;font-size:8.2px;color:#9fc7ef}
+.record-item span{display:block;font-size:8.5px;line-height:1.35;margin-top:3px;color:#e2edf6}
+.record-alerts{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}
+.record-alert{
+  padding:5px 7px;border-radius:999px;background:rgba(255,194,83,.08);
+  border:1px solid rgba(255,194,83,.16);font-size:7.5px;color:#ffe0a1;font-weight:900
+}
+.record-alert.ok{
+  background:rgba(40,215,161,.07);border-color:rgba(40,215,161,.16);color:#baf0db
+}
+.realism-workup{
+  margin:10px 0;padding:11px;border-radius:15px;
+  background:linear-gradient(145deg,rgba(35,79,72,.34),#0c1f35);
+  border:1px solid rgba(72,210,143,.22)
+}
+.realism-workup.hidden{display:none}
+.realism-workup-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.realism-workup h4{margin:0;font-size:10.5px}
+.realism-workup p{margin:3px 0 0;color:var(--muted);font-size:8px;line-height:1.35}
+.realism-score{font-size:9px;font-weight:900;color:#baf0db;white-space:nowrap}
+.realism-bar{height:7px;border-radius:999px;background:#07182a;overflow:hidden;margin-top:7px}
+.realism-bar i{display:block;height:100%;border-radius:999px;background:linear-gradient(90deg,#2b8b70,#65d8aa)}
+.realism-metrics{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}
+.realism-metric{padding:7px 4px;border-radius:9px;background:#091b2f;border:1px solid #233c58;text-align:center}
+.realism-metric b{display:block;font-size:9px}
+.realism-metric small{display:block;color:var(--muted);font-size:7px;margin-top:2px}
+.realism-advice{
+  margin-top:8px;padding:8px 9px;border-radius:10px;background:rgba(112,160,255,.06);
+  border:1px solid rgba(112,160,255,.15);font-size:8px;line-height:1.4;color:#dbe9f7
+}
+.exam-type{
+  display:inline-block;padding:3px 6px;border-radius:999px;margin-right:5px;
+  background:rgba(112,160,255,.08);color:#a9c9ef;font-size:7px;font-weight:900
+}
+.clinical-summary{
+  margin-top:10px;border:1px solid #29435f;border-radius:12px;background:#0b1e34;overflow:hidden
+}
+.clinical-summary summary{
+  cursor:pointer;padding:9px 10px;font-size:8.8px;font-weight:900;color:#dbe9f7;list-style:none
+}
+.clinical-summary summary::-webkit-details-marker{display:none}
+.clinical-summary-body{padding:0 10px 10px;font-size:8px;line-height:1.5;color:#cfddeb}
+.clinical-summary-body b{color:#9fc7ef}
+.quality-good{color:#69ddb0}
+.quality-mid{color:#ffd06b}
+.quality-low{color:#ff8798}
+@media(max-width:360px){
+  .record-grid{grid-template-columns:1fr}
+  .realism-metrics{grid-template-columns:1fr 1fr 1fr}
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.23 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.24 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1437,7 +1517,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.23 • TEAM LEADERSHIP</h2>
+          <h2>Clinic Life v0.24 • CLINICAL REALISM</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1455,6 +1535,10 @@ body.home-nav-active #app{padding-bottom:102px}
               <button id="freeShiftBtn" type="button">Freie Schicht starten</button>
             </div>
           </div>
+          <button id="realismToggle" type="button" class="realism-toggle" onclick="toggleRealismMode()">
+            🩺 Realismus: ERWEITERT
+            <small>Patientenakte • zusätzliche Vitalwerte • realistischere Differentialdiagnosen • Qualitätswertung</small>
+          </button>
         </div>
         <div id="homePageHeader" class="home-page-header">
           <div id="homeTabEyebrow" class="eyebrow">ÜBERSICHT</div>
@@ -1865,12 +1949,18 @@ body.home-nav-active #app{padding-bottom:102px}
 
           <div class="complaint" id="complaint">„Ich habe Beschwerden.“</div>
 
-          <div class="vitals">
-            <div><small>Puls</small><b id="vPulse">—</b></div>
-            <div><small>Temp.</small><b id="vTemp">—</b></div>
-            <div><small>SpO₂</small><b id="vSpo2">—</b></div>
-            <div><small>RR</small><b id="vBp">—</b></div>
+          <div id="vitalsGrid" class="vitals">
+            <div id="vPulseBox" class="vital-item"><small>Puls <i class="vital-dot"></i></small><b id="vPulse">—</b></div>
+            <div id="vTempBox" class="vital-item"><small>Temp. <i class="vital-dot"></i></small><b id="vTemp">—</b></div>
+            <div id="vSpo2Box" class="vital-item"><small>SpO₂ <i class="vital-dot"></i></small><b id="vSpo2">—</b></div>
+            <div id="vBpBox" class="vital-item"><small>RR <i class="vital-dot"></i></small><b id="vBp">—</b></div>
+            <div id="vRespBox" class="vital-item realism-extra"><small>AF <i class="vital-dot"></i></small><b id="vResp">—</b></div>
+            <div id="vPainBox" class="vital-item realism-extra"><small>Schmerz <i class="vital-dot"></i></small><b id="vPain">—</b></div>
           </div>
+          <details id="patientRecord" class="patient-record">
+            <summary>📋 Patientenakte <span id="recordSummary">Triage • Anamnese • Medikation</span></summary>
+            <div id="patientRecordBody" class="record-body"></div>
+          </details>
         </article>
 
 
@@ -1910,6 +2000,23 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="findings" class="findings"></div>
         </section>
 
+        <section id="realismWorkup" class="realism-workup">
+          <div class="realism-workup-head">
+            <div>
+              <h4>🩺 Klinische Arbeitsgrundlage</h4>
+              <p>Bewertet Dokumentation und gezielte Diagnostik – ohne die richtige Diagnose zu verraten.</p>
+            </div>
+            <div id="realismEvidenceText" class="realism-score">18/100</div>
+          </div>
+          <div class="realism-bar"><i id="realismEvidenceBar" style="width:18%"></i></div>
+          <div class="realism-metrics">
+            <div class="realism-metric"><b id="realismHistoryMetric">15</b><small>Anamnese</small></div>
+            <div class="realism-metric"><b id="realismExamMetric">0/0</b><small>Befunde</small></div>
+            <div class="realism-metric"><b id="realismTargetMetric">gezielt</b><small>Teststrategie</small></div>
+          </div>
+          <div id="realismAdvice" class="realism-advice">Beginne mit einer strukturierten klinischen Einschätzung.</div>
+        </section>
+
         <section class="panel">
           <div class="panel-title">3. Diagnose</div>
           <div id="diagnosisButtons" class="choice-list two-col"></div>
@@ -1944,6 +2051,10 @@ body.home-nav-active #app{padding-bottom:102px}
           <h2 id="resultTitle">Gut gemacht!</h2>
           <p id="resultText"></p>
           <div class="result-breakdown" id="resultBreakdown"></div>
+          <details id="clinicalSummary" class="clinical-summary">
+            <summary>📄 Klinischer Kurzbrief anzeigen</summary>
+            <div id="clinicalSummaryBody" class="clinical-summary-body"></div>
+          </details>
           <button id="nextBtn" class="primary big">Nächster Patient</button>
         </div>
       </section>
@@ -3313,6 +3424,273 @@ function renderDiagnosticDashboard(){
   if($('strongHistoryCases'))$('strongHistoryCases').textContent=state.strongHistoryCases||0;
   if($('bestClueScore'))$('bestClueScore').textContent=state.bestClueScore||15;
 }
+
+function toggleRealismMode(){
+  state.realismMode=!state.realismMode;
+  save();
+  toast(state.realismMode?'🩺 Erweiterter Realismus aktiviert.':'⚡ Erweiterter Realismus deaktiviert.');
+}
+function realismHash(text){
+  let h=0;
+  for(let i=0;i<String(text).length;i++)h=(h*31+String(text).charCodeAt(i))>>>0;
+  return h;
+}
+function parseClinicalNumber(value){
+  const m=String(value||'').replace(',','.').match(/-?\d+(?:\.\d+)?/);
+  return m?Number(m[0]):0;
+}
+function realismCategory(patient){
+  const d=(patient.correctDiagnosis||'').toLowerCase();
+  const c=(patient.complaint||'').toLowerCase();
+  if(/hypoglyk|diabetes|dehydrat/.test(d+' '+c))return'metabolic';
+  if(/vorhoff|tachykard|koronar|herz|kardio|brustschmerz/.test(d+' '+c))return'cardiac';
+  if(/pneum|asthma|copd|lungenembolie|atem|husten/.test(d+' '+c))return'respiratory';
+  if(/schlag|hirn|migräne|gehirn|lagerungsschwindel|epilept|schwindel|neurolog/.test(d+' '+c))return'neuro';
+  if(/append|gastro|chole|pankreat|bauch|magen|darm|galle/.test(d+' '+c))return'abdominal';
+  if(/harn|urin|pyelo|nierenstein|wasserlassen/.test(d+' '+c))return'urinary';
+  if(/thromb|bein|gefäß/.test(d+' '+c))return'vascular';
+  if(/anäm|sepsis|fieber|infekt/.test(d+' '+c))return'systemic';
+  if(/zoster|abszess|erysipel|haut|allerg|anaphyl/.test(d+' '+c))return'skin';
+  if(/schnitt|luxation|bänder|fremdkörper|schulter|verletz/.test(d+' '+c))return'injury';
+  if(/hitzschlag/.test(d+' '+c))return'heat';
+  return'general';
+}
+const realismDifferentialPools={
+  respiratory:['Pneumonie','Asthma-Exazerbation','COPD-Exazerbation','Lungenembolie','Panikattacke'],
+  neuro:['Migräne','Migräne mit Aura','Akuter Schlaganfall','Hirnblutung','Benigner Lagerungsschwindel','Gehirnerschütterung','Epileptischer Anfall'],
+  cardiac:['Akutes Koronarsyndrom','Vorhofflimmern','Lungenembolie','Panikattacke','Perikarditis'],
+  abdominal:['Appendizitis','Gastroenteritis','Gallenkolik','Akute Cholezystitis','Akute Pankreatitis','Nierenstein'],
+  urinary:['Harnwegsinfekt','Pyelonephritis','Nierenstein','Reizblase','Gastroenteritis'],
+  vascular:['Tiefe Venenthrombose','Erysipel','Bänderdistorsion','Oberflächliche Venenentzündung','Muskelverletzung'],
+  systemic:['Sepsis','Eisenmangelanämie','Dehydratation','Virusinfekt','Gastroenteritis'],
+  skin:['Hautabszess','Erysipel','Herpes Zoster','Anaphylaxie','Kontaktdermatitis'],
+  injury:['Bänderdistorsion','Schulterluxation','Schnittverletzung','Fremdkörper in der Hand','Fraktur'],
+  heat:['Hitzschlag','Dehydratation','Hypoglykämie','Sepsis','Hitzeerschöpfung'],
+  metabolic:['Hypoglykämie','Diabetes mellitus','Dehydratation','Eisenmangelanämie','Panikattacke'],
+  general:['Dehydratation','Virusinfekt','Eisenmangelanämie','Panikattacke','Migräne']
+};
+function deterministicShuffle(items,seed){
+  const a=[...items];
+  let s=(seed||1)>>>0;
+  for(let i=a.length-1;i>0;i--){
+    s=(s*1664525+1013904223)>>>0;
+    const j=s%(i+1);
+    [a[i],a[j]]=[a[j],a[i]];
+  }
+  return a;
+}
+function diagnosisOptionsFor(patient){
+  if(!state.realismMode)return patient.diagnoses;
+  const cat=realismCategory(patient);
+  const candidates=[patient.correctDiagnosis,...(realismDifferentialPools[cat]||realismDifferentialPools.general),...(patient.diagnoses||[])];
+  const unique=[];
+  for(const x of candidates){
+    if(x&&!unique.includes(x))unique.push(x);
+  }
+  const chosen=[patient.correctDiagnosis,...unique.filter(x=>x!==patient.correctDiagnosis).slice(0,3)];
+  return deterministicShuffle(chosen,realismHash(patient.name+'|'+patient.correctDiagnosis));
+}
+function derivedRealismVitals(patient){
+  const seed=realismHash(patient.name+'|'+patient.correctDiagnosis);
+  const cat=realismCategory(patient);
+  let resp=14+(seed%5);
+  if(patient.urgency==='medium')resp=18+(seed%5);
+  if(patient.urgency==='high')resp=22+(seed%7);
+  if(cat==='respiratory')resp+=patient.urgency==='high'?4:2;
+  let pain=2+(seed%4);
+  if(['abdominal','injury','cardiac'].includes(cat))pain+=2;
+  if(patient.urgency==='high')pain+=1;
+  pain=Math.min(10,pain);
+  return {resp,pain};
+}
+function triageLabel(patient){
+  return patient.urgency==='high'?'ROT • sofortige Priorität':patient.urgency==='medium'?'GELB • zeitnah':'GRÜN • stabil';
+}
+function realismRecordFor(patient){
+  const seed=realismHash(patient.name);
+  const cat=realismCategory(patient);
+  const meds={
+    respiratory:'Bedarfsmedikation laut Akte; genaue Präparate im Spiel nicht dargestellt.',
+    cardiac:'Keine vollständig dokumentierte Dauermedikation in der Erstaufnahme.',
+    metabolic:'Stoffwechselbezogene Dauermedikation laut Eigenangabe.',
+    neuro:'Keine relevante Dauermedikation sicher dokumentiert.',
+    abdominal:'Keine regelmäßige Medikation mit unmittelbarer Relevanz angegeben.',
+    urinary:'Keine regelmäßige Medikation mit unmittelbarer Relevanz angegeben.',
+    vascular:'Dauermedikation bei Aufnahme noch nicht vollständig erhoben.',
+    systemic:'Medikationsliste bei Aufnahme noch in Prüfung.',
+    skin:'Keine relevante Dauermedikation angegeben.',
+    injury:'Keine relevante Dauermedikation angegeben.',
+    heat:'Keine relevante Dauermedikation angegeben.',
+    general:'Keine relevante Dauermedikation angegeben.'
+  };
+  const history={
+    respiratory:'Frühere Atemwegsbeschwerden werden gezielt erfragt.',
+    cardiac:'Herz-Kreislauf-Risikoprofil wird im Verlauf ergänzt.',
+    metabolic:'Stoffwechselanamnese ist für den Fall relevant.',
+    neuro:'Neurologische Vorerkrankungen und frühere Episoden werden erhoben.',
+    abdominal:'Frühere Bauchbeschwerden und Operationen werden erfragt.',
+    urinary:'Frühere Harnwegsprobleme oder Steine werden erfragt.',
+    vascular:'Immobilität, frühere Thrombosen und Gefäßrisiken werden erfragt.',
+    systemic:'Chronische Erkrankungen und kürzliche Infekte werden erfasst.',
+    skin:'Hautvorgeschichte, Immunsituation und Auslöser werden erfragt.',
+    injury:'Unfallmechanismus und frühere Verletzungen werden dokumentiert.',
+    heat:'Hitzeexposition und Flüssigkeitsaufnahme werden dokumentiert.',
+    general:'Vorerkrankungen werden in der Anamnese ergänzt.'
+  };
+  const allergies=(/antibiot|antiinfekt/i.test(patient.correctTreatment||''))
+    ?(seed%3===0?'Pollenallergie • keine bekannte Medikamentenallergie':'Keine bekannte Medikamentenallergie')
+    :(seed%5===0?'Pollenallergie':seed%7===0?'Latexallergie anamnestisch':'Keine bekannten Allergien');
+  const risk={
+    respiratory:'Atemwegs- und Expositionsrisiken noch unvollständig.',
+    cardiac:'Kardiovaskuläre Risikofaktoren werden gezielt erhoben.',
+    metabolic:'Essverhalten, Flüssigkeit und bekannte Stoffwechselerkrankungen relevant.',
+    neuro:'Beginn, Gefäßrisiken und frühere neurologische Ereignisse relevant.',
+    abdominal:'Verlauf, Voroperationen und gastrointestinale Begleitsymptome relevant.',
+    urinary:'Fieber, Flankenschmerz und frühere Harnwegsprobleme relevant.',
+    vascular:'Immobilität und frühere Gefäßereignisse relevant.',
+    systemic:'Infektfokus, Blutverlust und chronische Erkrankungen relevant.',
+    skin:'Immunsituation und lokale Ausbreitung relevant.',
+    injury:'Mechanismus, Funktion und Durchblutung relevant.',
+    heat:'Expositionsdauer und Flüssigkeitsmangel relevant.',
+    general:'Risikoprofil noch nicht vollständig erhoben.'
+  };
+  return {allergies,meds:meds[cat]||meds.general,history:history[cat]||history.general,risk:risk[cat]||risk.general,triage:triageLabel(patient)};
+}
+function vitalSeverity(patient,key,value){
+  const n=parseClinicalNumber(value);
+  if(key==='pulse'){if(n>=125||n<=45)return'critical';if(n>=101||n<=55)return'warning';}
+  if(key==='temp'){if(n>=39.5||n<35.5)return'critical';if(n>=38||n<36)return'warning';}
+  if(key==='spo2'){if(n>0&&n<90)return'critical';if(n>0&&n<95)return'warning';}
+  if(key==='bp'){
+    const sys=parseClinicalNumber(String(value).split('/')[0]);
+    if(sys>0&&(sys<90||sys>=180))return'critical';
+    if(sys>0&&(sys<100||sys>=160))return'warning';
+  }
+  if(key==='resp'){if(n>=30||n<=8)return'critical';if(n>=22)return'warning';}
+  if(key==='pain'){if(n>=8)return'critical';if(n>=6)return'warning';}
+  return'normal';
+}
+function setVitalBox(id,severity){
+  const el=$(id);if(!el)return;
+  el.className='vital-item'+(severity==='warning'?' warning':severity==='critical'?' critical':'');
+}
+function renderRealismVitals(){
+  if(!current)return;
+  const extra=derivedRealismVitals(current);
+  if($('vitalsGrid'))$('vitalsGrid').classList.toggle('realism-on',state.realismMode);
+  document.querySelectorAll('.realism-extra').forEach(el=>el.classList.toggle('hidden',!state.realismMode));
+  if($('vResp'))$('vResp').textContent=state.realismMode?`${extra.resp}/min`:'—';
+  if($('vPain'))$('vPain').textContent=state.realismMode?`${extra.pain}/10`:'—';
+  setVitalBox('vPulseBox',state.realismMode?vitalSeverity(current,'pulse',current.vitals.pulse):'normal');
+  setVitalBox('vTempBox',state.realismMode?vitalSeverity(current,'temp',current.vitals.temp):'normal');
+  setVitalBox('vSpo2Box',state.realismMode?vitalSeverity(current,'spo2',current.vitals.spo2):'normal');
+  setVitalBox('vBpBox',state.realismMode?vitalSeverity(current,'bp',current.vitals.bp):'normal');
+  setVitalBox('vRespBox',state.realismMode?vitalSeverity(current,'resp',extra.resp):'normal');
+  setVitalBox('vPainBox',state.realismMode?vitalSeverity(current,'pain',extra.pain):'normal');
+}
+function renderPatientRecord(){
+  const details=$('patientRecord'),body=$('patientRecordBody'),summary=$('recordSummary');
+  if(!details||!body||!current)return;
+  details.style.display=state.realismMode?'block':'none';
+  if(!state.realismMode)return;
+  const r=realismRecordFor(current),extra=derivedRealismVitals(current);
+  if(summary)summary.textContent=`${r.triage.split(' • ')[0]} • AF ${extra.resp}/min • Schmerz ${extra.pain}/10`;
+  const alerts=[];
+  const checks=[
+    ['Puls',vitalSeverity(current,'pulse',current.vitals.pulse)],
+    ['Temperatur',vitalSeverity(current,'temp',current.vitals.temp)],
+    ['SpO₂',vitalSeverity(current,'spo2',current.vitals.spo2)],
+    ['Blutdruck',vitalSeverity(current,'bp',current.vitals.bp)],
+    ['Atemfrequenz',vitalSeverity(current,'resp',extra.resp)]
+  ];
+  checks.filter(x=>x[1]!=='normal').forEach(x=>alerts.push(`${x[1]==='critical'?'🔴':'🟡'} ${x[0]} auffällig`));
+  body.innerHTML=`
+    <div class="record-grid">
+      <div class="record-item"><b>TRIAGE</b><span>${r.triage}</span></div>
+      <div class="record-item"><b>ALLERGIEN</b><span>${r.allergies}</span></div>
+      <div class="record-item"><b>DAUERMEDIKATION</b><span>${r.meds}</span></div>
+      <div class="record-item"><b>VORERKRANKUNGEN</b><span>${r.history}</span></div>
+      <div class="record-item"><b>RISIKOPROFIL</b><span>${r.risk}</span></div>
+      <div class="record-item"><b>ZUSATZ-VITALWERTE</b><span>AF ${extra.resp}/min • Schmerz ${extra.pain}/10</span></div>
+    </div>
+    <div class="record-alerts">${alerts.length?alerts.map(a=>`<span class="record-alert">${a}</span>`).join(''):'<span class="record-alert ok">✅ Keine zusätzliche Vitalwarnung im Spiel</span>'}</div>`;
+}
+function examTypeLabel(exam){
+  if(exam.req==='lab')return'LABOR';
+  if(exam.req==='imaging')return'BILDGEBUNG';
+  if(exam.req==='cardio')return'KARDIO';
+  return'KLINISCH';
+}
+function newRealismCase(){return {testsOrdered:0,broadTests:0,historyAtFirstExam:null};}
+function clinicalEvidenceScore(){
+  if(!state.realismMode)return 100;
+  const history=Math.max(0,Math.min(100,historyScore()));
+  const total=Math.max(1,current&&current.exams?current.exams.length:1);
+  const examCoverage=Math.min(1,(examined?examined.size:0)/total);
+  return Math.max(0,Math.min(100,Math.round(10+history*.50+examCoverage*40)));
+}
+function realismWorkupLabel(){
+  const score=clinicalEvidenceScore();
+  if(score>=85)return'gut dokumentiert';
+  if(score>=65)return'arbeitsfähig';
+  if(score>=40)return'unvollständig';
+  return'frühe Einschätzung';
+}
+function renderRealismWorkup(){
+  const panel=$('realismWorkup');
+  if(!panel)return;
+  panel.classList.toggle('hidden',!state.realismMode);
+  if(!state.realismMode||!current)return;
+  const score=clinicalEvidenceScore();
+  const broad=realismCase?realismCase.broadTests:0;
+  if($('realismEvidenceText'))$('realismEvidenceText').textContent=`${score}/100`;
+  if($('realismEvidenceBar'))$('realismEvidenceBar').style.width=`${score}%`;
+  if($('realismHistoryMetric'))$('realismHistoryMetric').textContent=historyScore();
+  if($('realismExamMetric'))$('realismExamMetric').textContent=`${examined.size}/${current.exams.length}`;
+  if($('realismTargetMetric'))$('realismTargetMetric').textContent=broad?`${broad} früh`:'gezielt';
+  const advice=$('realismAdvice');
+  if(advice){
+    if(current.urgency==='high'&&score<50)advice.textContent='🚨 Dringlicher Fall: Stabilität und zielgerichtete Akutdiagnostik haben Vorrang.';
+    else if(historyScore()<45&&examined.size===0)advice.textContent='💬 Die klinische Grundlage ist noch dünn. Gezielte Anamnese kann unnötige Diagnostik vermeiden.';
+    else if(broad>0)advice.textContent='🧪 Einige Untersuchungen wurden sehr früh angeordnet. Eine klarere klinische Fragestellung verbessert die Qualitätswertung.';
+    else if(score>=85)advice.textContent='✅ Gute klinische Arbeitsgrundlage: Anamnese und Befunde sind ausreichend dokumentiert.';
+    else advice.textContent=`📋 Status: ${realismWorkupLabel()}. Weitere gezielte Informationen können die Entscheidung absichern.`;
+  }
+}
+function noteExamForRealism(){
+  if(!state.realismMode||!realismCase||!current)return;
+  realismCase.testsOrdered++;
+  if(realismCase.historyAtFirstExam===null)realismCase.historyAtFirstExam=historyScore();
+  if(current.urgency!=='high'&&historyScore()<45)realismCase.broadTests++;
+}
+function clinicalQualityFor(diagOK,treatOK){
+  if(!state.realismMode)return {score:100,xp:0,label:'Standard'};
+  const evidence=clinicalEvidenceScore();
+  const broad=realismCase?realismCase.broadTests:0;
+  let score=(diagOK?25:0)+(treatOK?15:0)+Math.round(evidence*.40)+Math.max(0,20-broad*7);
+  if(current&&current.urgency==='high'&&protocolOutcome&&protocolOutcome.attempted&&protocolOutcome.correct)score+=5;
+  score=Math.max(0,Math.min(100,Math.round(score)));
+  return {score,xp:score>=90?12:score>=80?8:score>=70?4:0,label:score>=90?'EXZELLENT':score>=80?'SEHR GUT':score>=70?'SOLIDE':score>=55?'AUSREICHEND':'LÜCKENHAFT'};
+}
+function clinicalQualityClass(score){return score>=80?'quality-good':score>=60?'quality-mid':'quality-low';}
+function buildClinicalSummary(diagOK,treatOK,quality){
+  const body=$('clinicalSummaryBody');
+  if(!body||!current)return;
+  const findings=[...$('findings').querySelectorAll('.finding')].map(x=>x.textContent).slice(0,4);
+  const r=realismRecordFor(current);
+  body.innerHTML=`
+    <b>Patient:</b> ${current.name}, ${current.age} Jahre<br>
+    <b>Aufnahme:</b> ${r.triage}<br>
+    <b>Leitsymptom:</b> ${current.complaint}<br>
+    <b>Vitalwerte:</b> Puls ${current.vitals.pulse}, Temp. ${current.vitals.temp}, SpO₂ ${current.vitals.spo2}, RR ${current.vitals.bp}<br>
+    <b>Anamnese:</b> ${historyScore()}/100 • ${historyState?historyState.asked.size:0}/${historyState?historyState.questions.length:0} Kernfragen<br>
+    <b>Erhobene Befunde:</b> ${findings.length?findings.join(' | '):'keine zusätzlichen Untersuchungsbefunde dokumentiert'}<br>
+    <b>Arbeitsdiagnose:</b> ${selectedDiagnosis} ${diagOK?'✓':'✗'}<br>
+    <b>Versorgungsentscheidung:</b> ${selectedTreatment} ${treatOK?'✓':'✗'}<br>
+    <b>Klinische Qualität:</b> ${quality.score}/100 • ${quality.label}<br>
+    <br><span style="color:var(--muted)">Fiktiver Spielbericht – keine medizinische Dokumentation oder Behandlungsanweisung.</span>`;
+}
+
 function diagnosticCategory(patient){
   const d=(patient.correctDiagnosis||'').toLowerCase();
   const c=(patient.complaint||'').toLowerCase();
@@ -3479,6 +3857,7 @@ function askHistoryQuestion(index){
   beep(720,.06);
   updateHud();
   renderHistoryPanel();
+  renderRealismWorkup();
   save();
 }
 function updateHistoryUI(){
@@ -4400,7 +4779,9 @@ const achievements = [
   {id:'stationsarzt', name:'Nächste Stufe', desc:'Steige in der persönlichen Kampagne zum Stationsarzt auf.'},
   {id:'promotionDistinction', name:'Mit Auszeichnung', desc:'Schließe die erste Beförderungsbeurteilung mit Auszeichnung ab.'},
   {id:'firstSupervision', name:'Jetzt bist du der Mentor', desc:'Schließe deinen ersten Supervisionsabschnitt als Stationsarzt ab.'},
-  {id:'trustedSupervisor', name:'Vertrauensperson', desc:'Erreiche mindestens 75 Vertrauen bei Sofia.'}
+  {id:'trustedSupervisor', name:'Vertrauensperson', desc:'Erreiche mindestens 75 Vertrauen bei Sofia.'},
+  {id:'clinicalQuality10', name:'Klinisch sauber', desc:'Schließe 10 Fälle mit mindestens 80 klinischer Qualität ab.'},
+  {id:'quality95', name:'Saubere Dokumentation', desc:'Erreiche in einem Fall mindestens 95 klinische Qualität.'}
 ];
 
 const missions = [
@@ -4534,7 +4915,14 @@ const defaultState = {
   juniorTrust:50,
   juniorOutcome:'',
   juniorDoctor:{name:'Sofia Keller',avatar:'👩🏻‍⚕️'},
-  supervisedCases:0
+  supervisedCases:0,
+  realismMode:true,
+  clinicalQualityCases:0,
+  clinicalQualityTotal:0,
+  bestClinicalQuality:0,
+  targetedWorkups:0,
+  broadTestingCases:0,
+  highQualityCases:0
 };
 
 let state;
@@ -4651,6 +5039,13 @@ if(!state.juniorDoctor||typeof state.juniorDoctor!=='object')state.juniorDoctor=
 if(typeof state.juniorDoctor.name!=='string'||!state.juniorDoctor.name.trim())state.juniorDoctor.name='Sofia Keller';
 if(typeof state.juniorDoctor.avatar!=='string'||!state.juniorDoctor.avatar)state.juniorDoctor.avatar='👩🏻‍⚕️';
 state.supervisedCases=Number.isFinite(Number(state.supervisedCases))&&Number(state.supervisedCases)>=0?Math.floor(Number(state.supervisedCases)):0;
+if(typeof state.realismMode!=='boolean')state.realismMode=true;
+state.clinicalQualityCases=Number.isFinite(Number(state.clinicalQualityCases))&&Number(state.clinicalQualityCases)>=0?Math.floor(Number(state.clinicalQualityCases)):0;
+state.clinicalQualityTotal=Number.isFinite(Number(state.clinicalQualityTotal))&&Number(state.clinicalQualityTotal)>=0?Math.floor(Number(state.clinicalQualityTotal)):0;
+state.bestClinicalQuality=Number.isFinite(Number(state.bestClinicalQuality))?Math.max(0,Math.min(100,Math.floor(Number(state.bestClinicalQuality)))):0;
+state.targetedWorkups=Number.isFinite(Number(state.targetedWorkups))&&Number(state.targetedWorkups)>=0?Math.floor(Number(state.targetedWorkups)):0;
+state.broadTestingCases=Number.isFinite(Number(state.broadTestingCases))&&Number(state.broadTestingCases)>=0?Math.floor(Number(state.broadTestingCases)):0;
+state.highQualityCases=Number.isFinite(Number(state.highQualityCases))&&Number(state.highQualityCases)>=0?Math.floor(Number(state.highQualityCases)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -4678,6 +5073,7 @@ let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,seq
 let patientFlow=null;
 let historyState=null;
 let conditionState=null;
+let realismCase=null;
 let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
 
@@ -6160,6 +6556,12 @@ function renderModeUI(){
   const promotionOpen=state.wardResponsibilityCompleted&&!state.promotionReviewCompleted;
   const teamLeadOpen=state.promotionReviewCompleted&&!state.teamLeadCompleted;
   const focus=focusDef();
+  if($('realismToggle')){
+    $('realismToggle').className='realism-toggle'+(state.realismMode?'':' off');
+    $('realismToggle').innerHTML=state.realismMode
+      ?'🩺 Realismus: ERWEITERT<small>Patientenakte • zusätzliche Vitalwerte • plausiblere Differentialdiagnosen • Qualitätswertung</small>'
+      :'⚡ Realismus: STANDARD<small>Klassische Doctor-Rush-Diagnoseauswahl ohne erweiterten Klinik-Workflow</small>';
+  }
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
       ?`Prolog • ${doctorDisplayName()}`
@@ -6337,6 +6739,7 @@ function loadPatient(){
   patientFlow=newPatientFlow(current);
   historyState=newHistoryState(current);
   conditionState=newConditionState(current);
+  realismCase=newRealismCase();
   if(run){
     if(!run.stationUsage||typeof run.stationUsage!=='object')run.stationUsage=blankStationUsage();
     run.caseFinalized=false;
@@ -6352,9 +6755,11 @@ function loadPatient(){
   }
   $('patientName').textContent=current.name;$('patientMeta').innerHTML=`${current.age} Jahre • ${current.job}${current.rare?` <span class='rare-patient-tag'>SELTENER FALL</span>`:''} <span class='intake-badge'>ERSTGESPRÄCH</span>${expansionCount()>=3?` <span class='hospital-badge'>KRANKENHAUS</span>`:''}`;$('avatar').textContent=current.avatar;$('complaint').textContent=intakeComplaint(current);
   $('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp;
+  renderRealismVitals();
+  renderPatientRecord();
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderChoiceButtons('diagnosisButtons',current.diagnoses,'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderExamButtons();renderRealismWorkup();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -6383,11 +6788,11 @@ function adjustedExamTime(exam){
 }
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
 function renderExamButtons(){
-  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);
+  const box=$('examButtons');box.innerHTML='';current.exams.forEach((e,i)=>{const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),btn=document.createElement('button');btn.className='choice'+(examined.has(i)?' done':'')+(!available?' locked':'');btn.innerHTML=`${state.realismMode?`<span class="exam-type">${examTypeLabel(e)}</span>`:''}${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;btn.disabled=examined.has(i)||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}noteExamForRealism();state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);
     conditionDecayForTime(time,'Untersuchung');
     const station=examStation(e);
     markFlowStation(station,time);
-    if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};box.appendChild(btn)})
+    if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${state.realismMode?'Befund • ':''}${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();renderRealismWorkup();updateHud();save()};box.appendChild(btn)})
 }
 function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis')selectedDiagnosis=item;else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})}
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
@@ -6471,6 +6876,7 @@ function finishCase(){
     const perfect=diagOK&&treatOK;
     const historyBonus=historyBonusFor(diagOK);
     const conditionResult=finishCondition(treatOK);
+    const clinicalQuality=clinicalQualityFor(diagOK,treatOK);
 
     consumeStock(selectedTreatment);
     run.timeLeft=Math.max(0,run.timeLeft-5);
@@ -6497,6 +6903,7 @@ function finishCase(){
     reward+=prestigeBonus;
     let xpGain=perfect?current.xp:diagOK?Math.round(current.xp*.45):10;
     xpGain+=historyBonus.xp;
+    xpGain+=clinicalQuality.xp;
     if(state.upgrades.training)xpGain=Math.round(xpGain*1.15);
     xpGain=Math.round(xpGain*specialtyXpMultiplier()*campaignFocusXpMultiplier()*campaignRelationshipXpMultiplier()*rotationMasteryMultiplier()*teamLeadXpMultiplier()*researchXpMultiplier()*hospitalXpMultiplier()*(run&&run.eventXpMultiplier?run.eventXpMultiplier:1));
     let repGain=perfect?4:diagOK?1:-5;
@@ -6511,6 +6918,14 @@ function finishCase(){
       run.strongDiagnoses=(run.strongDiagnoses||0)+1;
     }
     state.bestClueScore=Math.max(state.bestClueScore||15,historyScore());
+    if(state.realismMode){
+      state.clinicalQualityCases=(state.clinicalQualityCases||0)+1;
+      state.clinicalQualityTotal=(state.clinicalQualityTotal||0)+clinicalQuality.score;
+      state.bestClinicalQuality=Math.max(state.bestClinicalQuality||0,clinicalQuality.score);
+      if(!realismCase||realismCase.broadTests===0)state.targetedWorkups=(state.targetedWorkups||0)+1;
+      else state.broadTestingCases=(state.broadTestingCases||0)+1;
+      if(clinicalQuality.score>=80)state.highQualityCases=(state.highQualityCases||0)+1;
+    }
     recordCasebook(current,diagOK,perfect);
     const researchGain=awardResearch(diagOK,perfect,current);
     run.treated++;
@@ -6561,12 +6976,17 @@ function finishCase(){
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
       <div class='result-line'><span>Patientenzustand</span><b class='${conditionResult.score>=75?'condition-result-good':conditionResult.score>=50?'condition-result-mid':'condition-result-bad'}'>${conditionResult.score}/100 • ${conditionResult.rescued?'GERETTET':conditionResult.stable?'STABIL':'KRITISCH'}</b></div>
       <div class='result-line'><span>Anamnese</span><b class='${historyScore()>=60?'result-diagnostic-good':'result-diagnostic-mid'}'>${historyScore()}/100 • ${historyState?historyState.asked.size:0} Fragen</b></div>
+      ${state.realismMode?`<div class='result-line'><span>Klinische Qualität</span><b class='${clinicalQualityClass(clinicalQuality.score)}'>${clinicalQuality.score}/100 • ${clinicalQuality.label}</b></div>
+      <div class='result-line'><span>Diagnostikstrategie</span><b>${realismCase&&realismCase.broadTests?`⚠️ ${realismCase.broadTests} sehr frühe Tests`:'✅ gezielt'}</b></div>
+      ${clinicalQuality.xp>0?`<div class='result-line'><span>Realismus-Bonus</span><b>+${clinicalQuality.xp} XP</b></div>`:''}`:''}
       <div class='result-line'><span>Klinik-Flow</span><b class='${flowScore>=78?'result-flow-good':'result-flow-mid'}'>${flowScore} • ${flowRatingText(flowScore)}</b></div>
       <div class='result-line'><span>Fallzeit</span><b>${patientFlow?patientFlow.minutes:0} min</b></div>
       <div class='result-line'><span>Restzeit</span><b>${run.timeLeft} min</b></div>
       ${current.urgency==='high'?`<div class='result-line'><span>Notfall-Protokoll</span><b class='${protocolOutcome.attempted?(protocolOutcome.correct?'protocol-result-good':'protocol-result-bad'):''}'>${protocolOutcome.attempted?(protocolOutcome.correct?'✅ Richtig':'⚠️ Fehler'):'Nicht gespielt'}</b></div>`:''}
       ${current.procedure?`<div class='result-line'><span>Eingriff</span><b class='${procedureOutcome.attempted?(procedureOutcome.correct?'procedure-result-good':'procedure-result-bad'):''}'>${procedureOutcome.attempted?(procedureOutcome.correct?'✅ Erfolgreich':'⚠️ Fehler'):(state.upgrades.surgery?'Nicht gespielt':'Raum gesperrt')}</b></div>`:''}
       ${supplyCost>0?`<div class='result-line'><span>Notfallmaterial</span><b>-${supplyCost} €</b></div>`:''}`;
+    buildClinicalSummary(diagOK,treatOK,clinicalQuality);
+    if($('clinicalSummary'))$('clinicalSummary').style.display=state.realismMode?'block':'none';
     run.caseFinalized=true;
     run.finalizing=false;
     $('nextBtn').textContent=run.treated>=run.total||run.timeLeft<=0?'Schicht auswerten':'Zurück ins Wartezimmer';
@@ -6649,6 +7069,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('promotionDistinction',state.promotionOutcome==='distinction');
   check('firstSupervision',!!state.teamLeadCompleted);
   check('trustedSupervisor',(state.juniorTrust||0)>=75);
+  check('clinicalQuality10',(state.highQualityCases||0)>=10);
+  check('quality95',(state.bestClinicalQuality||0)>=95);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
