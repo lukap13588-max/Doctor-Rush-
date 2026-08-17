@@ -1,100 +1,111 @@
-# Doctor Rush v0.28 – DYNAMIC PATIENTS & RESULTS
+# Doctor Rush v0.29 – THREE DIFFICULTIES
 
 ## Dateien
 - `index.html`
 - `README.md`
 
-## GitHub
+## GitHub-Update
 1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Einmal mit `?v=0.28` öffnen.
+3. Einmal mit `?v=0.29` öffnen.
 
-# Neu in v0.28
+# Kein Schicht-Countdown mehr
+Ab v0.29 endet eine Schicht nicht mehr, weil eine Uhr auf 0 läuft. Du kannst lesen und überlegen, solange du möchtest. Simulierte Klinikzeit bleibt nur für Krankheitsverlauf und Befundlaufzeiten bestehen.
 
-## 🫀 Dynamische Patienten
-Puls, Sauerstoffsättigung, Blutdruck, Atemfrequenz und Schmerzscore reagieren jetzt auf den dynamischen Patientenzustand.
+# Drei Schwierigkeitsstufen
 
-Verschlechtert sich der Zustand, verändern sich auch die angezeigten Vitalwerte. Stabilisierung und passende Versorgung können den Verlauf wieder verbessern.
+## 🌱 Einsteiger
+Für Spieler ohne medizinisches Vorwissen.
 
-## 🧪 Diagnostik ist nicht mehr sofort fertig
-Im Realismusmodus wird eine technische Untersuchung zuerst angeordnet.
+Sichtbar sind vor allem:
+- Beschwerden
+- grundlegende Vitalwerte
+- vereinfachte Diagnoseauswahl
+- vereinfachte Behandlungsauswahl
 
-Die Anordnung benötigt ungefähr eine Minute. Anschließend läuft eine simulierte Befundzeit.
+Zusätzlich:
+- maximal drei Diagnoseoptionen
+- maximal drei Behandlungsoptionen
+- keine automatische Patientenverschlechterung
+- keine Kollaps-Mechanik im Wartezimmer
+- keine Anamnese-, Diagnostik-, Differentialdiagnose-, Konsil-, Dispositions- oder Reevaluationspflicht
+- eigener kurzer Einsteiger-Leitfaden
 
-Labor, Bildgebung und andere technische Untersuchungen erscheinen dadurch nicht mehr sofort.
+## 🩺 Klinisch
+Die Mittelstufe.
 
-## ⏳ Befund-Warteschlange
-Die neue Diagnostikübersicht zeigt:
-- angeordnete Untersuchung
-- Fachbereich
-- simulierte Laufzeit
-- verbleibende Zeit
-- fertige Befunde
-
-## Parallel arbeiten
-Während ein Befund läuft, kannst du weiter:
-- Anamnese führen
-- körperlich untersuchen
-- andere Diagnostik anordnen
-- Differentialdiagnosen bilden
-- stabilisieren
-
-Wenn dabei genügend Zeit vergeht, treffen Befunde automatisch ein.
-
-## Auf Befunde warten
-Mit „Bis zum nächsten Befund warten“ springt die Spielzeit genau bis zum nächstfertigen Ergebnis.
-
-Währenddessen kann sich der Patient weiter verschlechtern.
-
-## 🚨 Dringliche Befundmeldungen
-Bestimmte Befunde können als dringlich markiert werden. Sie lösen eine sichtbare Warnung aus und erscheinen im klinischen Verlauf.
-
-## 📊 Befundmanagement
-Die Qualitätswertung berücksichtigt nun, ob selbst angeordnete Untersuchungen auch wirklich abgeschlossen und berücksichtigt wurden.
-
-Ein Fall kann Diagnose, Behandlung und Disposition korrekt haben und trotzdem nicht perfekt sein, wenn noch selbst angeordnete Befunde ausstehen.
-
-## Perfekter Fall
-Im Realismusmodus gilt ein Fall nun nur als vollständig perfekt, wenn:
-- Diagnose korrekt
-- Behandlung korrekt
-- Disposition korrekt
-- alle angeordneten Befunde eingetroffen
-
-## 📄 Kurzbrief
-Der klinische Kurzbrief zeigt jetzt zusätzlich:
-- aktuelle dynamische Vitalwerte
-- Anzahl angeordneter Befunde
-- Anzahl bereits eingetroffener Ergebnisse
-
-## 🏆 Neue Erfolge
-### Befunde im Blick
-30 zeitverzögerte Befunde vollständig einlaufen lassen.
-
-### Alarm erkannt
-10 dringliche Befundmeldungen erhalten.
-
-## Weiterhin enthalten
+Enthalten:
 - Patientenakte
+- dynamische Vitalwerte
+- Anamnese
 - körperliche Untersuchung
-- strukturierte Labor- und Bildgebungsbefunde
+- technische Diagnostik
+- realistischere Diagnosealternativen
+- Behandlung
+- Reevaluation
+- Disposition
+- Sicherheitschecks / Übergabe
+- klinische Qualitätswertung
+
+Vereinfacht gegenüber Profi:
+- keine verpflichtenden Differentialdiagnosen
+- keine Diagnosesicherheit
+- keine Konsile
+- keine verzögerten Befunde
+- technische Befunde erscheinen direkt
+- Patienten verschlechtern sich deutlich langsamer
+- mehr Toleranz im Wartezimmer
+
+## 🧠 Profi
+Das komplette Doctor-Rush-System.
+
+Enthalten:
+- Patientenakte
+- dynamische Vitalwerte
+- Patientenzustand
+- Anamnese
+- körperliche Untersuchung
+- technische Diagnostik
+- verzögerte Befunde
+- paralleles Arbeiten während Befundlaufzeiten
+- dringliche Befundmeldungen
 - Differentialdiagnosen
 - Diagnosesicherheit
 - Konsile
+- strukturierte Befundberichte
+- Behandlung
+- Therapieansprechen
 - Reevaluation
 - Disposition
-- Übergabe / Follow-up
-- klinische Qualitätswertung
-- Kampagne
-- freie Schicht
+- Allergie-/Risiko-/Follow-up-Checks
+- vollständige klinische Qualitätswertung
+- Notfall- und Eingriffsworkflow
 
-## Technisch
-- nur eine `index.html`
+# Schwierigkeit jederzeit ändern
+Die Stufe kann auf der Startseite jederzeit geändert werden. Der Spielstand bleibt derselbe.
+
+Neue Spieler starten auf **Einsteiger**. Alte v0.28-Spielstände mit aktiviertem Realismus werden automatisch auf **Profi** migriert.
+
+# Zeit ist kein Spielgegner mehr
+Klinische Abläufe können weiterhin eine simulierte Dauer haben. Das ist für Befundlaufzeiten und Krankheitsverlauf notwendig. Es gibt aber keinen Schicht-Countdown und kein Game Over wegen Zeitablauf.
+
+# Weitere Anpassungen
+- Zeitmission durch Patientenanzahl-Mission ersetzt.
+- Wartezimmer-Upgrade zeigt nun Patientenkapazität statt Schichtzeit.
+- Forschung Effizienz zeigt ihren XP-Effekt.
+- Pflegepersonal reduziert den Zustandsverlust.
+- Schichtereignisse verkürzen keine Schicht mehr.
+- Flow zeigt klinischen Aufwand (AP) statt Restzeitdruck.
+
+# Technisch
+- eine `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.27-Spielstand kompatibel
+- v0.28-Spielstand kompatibel
+- drei persistente Schwierigkeitsstufen
+- kein Schichtende durch `timeLeft <= 0`
 - kein Service Worker
 - keine externen JS-/CSS-Dateien
 - JavaScript-Syntaxprüfung: **OK**
-- keine Medikamentendosierungen hinzugefügt
+- One-File-Prüfung: **OK**
 
-> Sämtliche medizinischen Inhalte sind vereinfachtes, fiktives Gameplay und keine medizinische Beratung.
+> Medizinische Inhalte bleiben vereinfachtes, fiktives Gameplay und ersetzen keine Ausbildung oder medizinische Beratung.

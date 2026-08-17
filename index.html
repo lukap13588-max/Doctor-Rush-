@@ -1650,13 +1650,23 @@ body.home-nav-active #app{padding-bottom:102px}
 .order-tag{display:inline-block;margin-left:5px;padding:2px 5px;border-radius:999px;background:rgba(255,198,85,.08);color:#ffdca0;font-size:6.6px;font-weight:900}
 .choice.ordered{opacity:.62;border-color:#45627e}.choice.result-ready{border-color:rgba(72,210,143,.35)}
 
+
+/* ===== v0.29 THREE DIFFICULTIES & NO COUNTDOWN ===== */
+.difficulty-selector{margin-top:11px;padding:11px;border-radius:16px;background:#0b1d32;border:1px solid #29435f}
+.difficulty-head{display:flex;justify-content:space-between;gap:8px;align-items:flex-start}.difficulty-head b{font-size:10px}.difficulty-head span{font-size:7.3px;color:#9fc7ef;font-weight:900}.difficulty-head small{display:block;margin-top:3px;color:var(--muted);font-size:7.4px;line-height:1.35}
+.difficulty-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:7px;margin-top:9px}.difficulty-card{border:1px solid #29435f;background:#10223b;color:#edf6fc;border-radius:12px;padding:9px 7px;text-align:left;min-height:105px}.difficulty-card.active{border-color:#6fa7e7;background:rgba(87,141,205,.13);box-shadow:0 0 0 1px rgba(87,141,205,.10) inset}.difficulty-card .d-icon{font-size:20px}.difficulty-card b{display:block;font-size:8.8px;margin-top:4px}.difficulty-card small{display:block;color:var(--muted);font-size:6.9px;line-height:1.35;margin-top:3px}.difficulty-card .d-tag{display:inline-block;margin-top:6px;padding:3px 5px;border-radius:999px;background:rgba(255,255,255,.06);font-size:6.4px;font-weight:900;color:#b9d5ff}
+.no-timer-note{margin-top:8px;padding:8px 9px;border-radius:10px;background:rgba(72,210,143,.06);border:1px solid rgba(72,210,143,.15);font-size:7.6px;line-height:1.4;color:#d9f2e7}
+.beginner-guide{margin:10px 0;padding:10px;border-radius:13px;background:rgba(72,210,143,.06);border:1px solid rgba(72,210,143,.18)}.beginner-guide h4{margin:0;font-size:10px}.beginner-guide p{margin:4px 0 0;color:var(--muted);font-size:7.7px;line-height:1.45}.beginner-steps{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-top:8px}.beginner-step{padding:7px 5px;border-radius:9px;background:#091a2e;border:1px solid #223a56;text-align:center}.beginner-step b{display:block;font-size:8px}.beginner-step small{display:block;color:var(--muted);font-size:6.6px;margin-top:2px}
+.difficulty-chip{display:inline-flex;align-items:center;gap:4px;padding:4px 6px;border-radius:999px;background:rgba(112,160,255,.08);border:1px solid rgba(112,160,255,.14);font-size:7px;font-weight:900;color:#c5ddf5}
+@media(max-width:430px){.difficulty-grid{grid-template-columns:1fr}.difficulty-card{min-height:auto}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.28 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.29 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1666,7 +1676,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.28 • DYNAMIC PATIENTS & RESULTS</h2>
+          <h2>Clinic Life v0.29 • THREE DIFFICULTIES</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1679,15 +1689,22 @@ body.home-nav-active #app{padding-bottom:102px}
             <div class="mode-card free">
               <div class="mode-icon">⚡</div>
               <h3>Freie Schicht</h3>
-              <p>Die klassische schnelle Klinikschicht ohne Story-Zwang. Behandeln, verdienen, ausbauen.</p>
+              <p>Klinikbetrieb ohne Story-Zwang. Behandeln, verdienen und ausbauen – ohne Countdown.</p>
               <div class="mode-meta">Sofort spielen • voller Klinikbetrieb</div>
               <button id="freeShiftBtn" type="button">Freie Schicht starten</button>
             </div>
           </div>
-          <button id="realismToggle" type="button" class="realism-toggle" onclick="toggleRealismMode()">
-            🩺 Realismus: ERWEITERT
-            <small>Patientenakte • zusätzliche Vitalwerte • realistischere Differentialdiagnosen • Qualitätswertung</small>
-          </button>
+          <div class="difficulty-selector">
+            <div class="difficulty-head">
+              <div><b>🎚️ Schwierigkeitsgrad</b><small>Kann jederzeit auf der Startseite geändert werden.</small></div><span>OHNE COUNTDOWN</span>
+            </div>
+            <div class="difficulty-grid">
+              <button id="difficultyBeginner" type="button" class="difficulty-card" onclick="setDifficulty('beginner')"><div class="d-icon">🌱</div><b>Einsteiger</b><small>Vitalwerte • Diagnose • Behandlung. Weniger Auswahl, keine Patientenverschlechterung.</small><span class="d-tag">FÜR ANFÄNGER</span></button>
+              <button id="difficultyClinical" type="button" class="difficulty-card" onclick="setDifficulty('clinical')"><div class="d-icon">🩺</div><b>Klinisch</b><small>Anamnese • Untersuchung • Diagnostik • Reevaluation • Disposition. Verständlich, aber deutlich tiefer.</small><span class="d-tag">MITTEL</span></button>
+              <button id="difficultyExpert" type="button" class="difficulty-card" onclick="setDifficulty('expert')"><div class="d-icon">🧠</div><b>Profi</b><small>Kompletter Realismus: Differentialdiagnosen, Konsile, Befundlaufzeiten, dynamische Patienten & Übergabe.</small><span class="d-tag">VOLLES PROGRAMM</span></button>
+            </div>
+            <div class="no-timer-note">♾️ <b>Kein Schicht-Countdown mehr.</b> Du spielst in deinem Tempo. Simulierte Klinikzeit bleibt nur für Krankheitsverlauf und Befundlaufzeiten relevant.</div>
+          </div>
         </div>
         <div id="homePageHeader" class="home-page-header">
           <div id="homeTabEyebrow" class="eyebrow">ÜBERSICHT</div>
@@ -1855,7 +1872,7 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
           <div class="flow-stats">
             <div class="flow-stat"><b id="flowPatients">0</b><small>Letzte Schicht</small></div>
-            <div class="flow-stat"><b id="flowAvgTime">0 min</b><small>Ø Fallzeit</small></div>
+            <div class="flow-stat"><b id="flowAvgTime">0 AP</b><small>Ø Aufwand</small></div>
             <div class="flow-stat"><b id="flowBottleneck">–</b><small>Engpass</small></div>
           </div>
           <div id="stationGrid" class="station-grid"></div>
@@ -1930,7 +1947,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="researchGrid" class="research-grid"></div>
           <div class="research-bonus-row">
             <div class="research-bonus"><b id="researchDiscount">0 %</b><small>Diagnostik-Rabatt</small></div>
-            <div class="research-bonus"><b id="researchTime">+0 min</b><small>Schichtzeit</small></div>
+            <div class="research-bonus"><b id="researchTime">+0 %</b><small>XP-Effizienz</small></div>
           </div>
         </section>
 
@@ -1944,7 +1961,7 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
           <div id="clinicFloor" class="clinic-floor"></div>
           <div class="clinic-bonus-strip">
-            <div class="clinic-bonus"><b id="clinicTimeBonus">+0 min</b><small>Schichtzeit</small></div>
+            <div class="clinic-bonus"><b id="clinicTimeBonus">3</b><small>sichtbare Warteplätze</small></div>
             <div class="clinic-bonus"><b id="clinicCashBonus">+0 %</b><small>Fallbonus</small></div>
             <div class="clinic-bonus"><b id="clinicRoomCount">2/7</b><small>Räume aktiv</small></div>
           </div>
@@ -2015,7 +2032,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="waitingScreen" class="screen">
         <div class="hud waiting-hud">
           <span>👥 <b id="waitingShiftText">0/6 behandelt</b></span>
-          <span>⏱️ <b id="waitingTime">105 min</b></span>
+          <span>♾️ <b id="waitingTime">Kein Zeitdruck</b></span>
           <span>⭐ <b id="waitingRep">50</b></span>
         </div>
         <div class="waiting-hero">
@@ -2045,7 +2062,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <span>💰 <b id="money">500</b> €</span>
           <span>⭐ <b id="rep">50</b></span>
           <span>🧠 <b id="xp">0</b> XP</span>
-          <span>⏱️ <b id="timeLeft">100</b> min</span>
+          <span>🎚️ <b id="timeLeft">Einsteiger</b></span>
           <span>📅 Tag <b id="day">1</b></span>
         </div>
 
@@ -2059,7 +2076,7 @@ body.home-nav-active #app{padding-bottom:102px}
         <div id="activeTeam" class="shift-team-strip"></div>
 
         <div id="roomRoute" class="room-route">🏥 <b>Behandlungsraum</b> • Patient wird untersucht</div>
-        <section class="patient-flow">
+        <section id="patientFlowPanel" class="patient-flow">
           <div class="patient-flow-head">
             <b>🧭 Patientenweg</b>
             <span id="patientFlowLabel">Triage → Behandlung</span>
@@ -2067,12 +2084,12 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="patientFlowTrack" class="patient-flow-track"></div>
           <div class="flow-case-score">
             <div><b id="currentFlowScore">100</b><small>Flow-Score</small></div>
-            <div><b id="currentCaseMinutes">0 min</b><small>Fallzeit</small></div>
+            <div><b id="currentCaseMinutes">0 AP</b><small>klinischer Aufwand</small></div>
           </div>
 
         </section>
 
-        <section class="patient-condition-panel">
+        <section id="patientConditionPanel" class="patient-condition-panel">
           <div class="patient-condition-top">
             <div class="patient-condition-title">❤️‍🩹 Patientenzustand</div>
             <div id="conditionStatus" class="patient-condition-status">STABIL</div>
@@ -2113,6 +2130,8 @@ body.home-nav-active #app{padding-bottom:102px}
         </article>
 
 
+        <div id="beginnerGuide" class="beginner-guide" style="display:none"><h4>🌱 Einfacher Ablauf</h4><p>Du brauchst kein medizinisches Vorwissen. Lies Beschwerden und Vitalwerte und entscheide Schritt für Schritt.</p><div class="beginner-steps"><div class="beginner-step"><b>1. ❤️</b><small>Vitalwerte ansehen</small></div><div class="beginner-step"><b>2. 🧠</b><small>Diagnose wählen</small></div><div class="beginner-step"><b>3. 💊</b><small>Behandlung wählen</small></div></div></div>
+
         <section id="protocolPanel" class="protocol-panel hidden">
           <div class="protocol-head">
             <div>
@@ -2130,7 +2149,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <b>Realistischer Ablauf:</b> Anamnese → Untersuchung → Diagnostik → Differentialdiagnosen → Arbeitsdiagnose → Behandlung → Reevaluation → Disposition
         </div>
 
-        <section class="history-panel">
+        <section id="historyPanel" class="history-panel">
           <div class="history-head">
             <div>
               <div class="history-title">💬 1. Anamnese</div>
@@ -2159,8 +2178,8 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="physicalExamFindings"></div>
         </section>
 
-        <section class="panel">
-          <div class="panel-head"><div class="panel-title">3. Diagnostik</div><div class="pill">Kosten & Zeit</div></div>
+        <section id="diagnosticsPanel" class="panel">
+          <div class="panel-head"><div class="panel-title">3. Diagnostik</div><div class="pill">Befunde & Ablauf</div></div>
           <div id="examButtons" class="choice-list"></div>
           <div id="pendingResultsPanel" class="pending-results hidden">
             <div class="pending-head">
@@ -2212,7 +2231,7 @@ body.home-nav-active #app{padding-bottom:102px}
         <section class="panel">
           <div class="panel-title">5. Arbeitsdiagnose</div>
           <div id="diagnosisButtons" class="choice-list two-col"></div>
-          <div class="reasoning-summary" style="margin-top:8px">
+          <div id="diagnosisConfidenceBox" class="reasoning-summary" style="margin-top:8px">
             <b>Diagnosesicherheit</b>
             <div id="confidenceButtons" class="confidence-row">
               <button type="button" class="confidence-btn" onclick="setDiagnosisConfidence('low')">NIEDRIG<small>unsicher</small></button>
@@ -3252,7 +3271,7 @@ const staffNamePools={
   paramedic:['Lisa','Katrin','Max','Andreas','Nico']
 };
 const staffRoleData={
-  nurse:{salary:85,perk:'Spart Schichtzeit und unterstützt die Patientenversorgung.'},
+  nurse:{salary:85,perk:'Unterstützt die Patientenversorgung und reduziert Zustandsverlust.'},
   assistant:{salary:105,perk:'Erhöht die Einnahmen pro erfolgreichem Fall.'},
   labtech:{salary:115,perk:'Reduziert Laborzeit und Laborkosten.'},
   radiology:{salary:125,perk:'Beschleunigt Bildgebung und reduziert Engpässe.'},
@@ -3379,7 +3398,7 @@ const hospitalProjects=[
   {
     id:'floor2',icon:'🏢',name:'2. Klinik-Etage',cost:3000,
     desc:'Mehr Behandlungsfläche und zusätzliche Patientenkapazität.',
-    effect:'+12 min Schichtzeit • +1 Patient pro Schicht',
+    effect:'+1 Patient pro Schicht • zusätzlicher Klinikbereich',
     requirement:()=>({ok:(state.patientsTreated||0)>=15,text:`15 Patienten behandeln (${Math.min(state.patientsTreated||0,15)}/15)`})
   },
   {
@@ -3562,7 +3581,9 @@ function conditionDecayForTime(minutes,source=''){
   let rate=current.urgency==='high'?0.65:current.urgency==='medium'?0.22:0.07;
   if(current.urgency==='high')rate*=hospitalCriticalDecayMultiplier();
   if(conditionState.stabilized)rate*=0.55;
-  const loss=Math.max(0,Math.round(m*rate));
+  const nurseSafety=Math.max(.80,1-effectiveStaffLevel('nurse')*.04);
+  const eventLoad=run&&run.eventConditionMultiplier?run.eventConditionMultiplier:1;
+  const loss=Math.max(0,Math.round(m*rate*difficultyConditionMultiplier()*nurseSafety*eventLoad));
   if(loss>0)changeCondition(-loss,`${source||'Zeit'}: Zustand -${loss}`,'bad');
 }
 function conditionActionBonus(kind,success=true){
@@ -3741,8 +3762,8 @@ function physicalExamCoverage(){
 function renderPhysicalExam(){
   const panel=$('physicalExamPanel'),box=$('physicalExamButtons'),findings=$('physicalExamFindings');
   if(!panel||!box||!findings||!current)return;
-  panel.style.display=state.realismMode?'block':'none';
-  if(!state.realismMode)return;
+  panel.style.display=usesClinicalWorkflow()?'block':'none';
+  if(!usesClinicalWorkflow())return;
   const defs=physicalExamDefinitions(current);
   box.innerHTML='';findings.innerHTML='';
   defs.forEach((item,i)=>{
@@ -3790,8 +3811,8 @@ function correctDispositionFor(patient){
 function renderDisposition(){
   const panel=$('dispositionPanel'),box=$('dispositionButtons'),status=$('dispositionStatus');
   if(!panel||!box)return;
-  panel.style.display=state.realismMode?'block':'none';
-  if(!state.realismMode)return;
+  panel.style.display=usesClinicalWorkflow()?'block':'none';
+  if(!usesClinicalWorkflow())return;
   box.innerHTML='';
   dispositionOptions.forEach(item=>{
     const btn=document.createElement('button');
@@ -3890,7 +3911,7 @@ function setDiagnosisConfidence(level){
 }
 function confidenceLabel(level){return level==='high'?'HOCH':level==='medium'?'MITTEL':level==='low'?'NIEDRIG':'—'}
 function diagnosticCalibration(diagOK){
-  if(!state.realismMode)return 1;
+  if(!usesExpertWorkflow())return 1;
   if(!diagnosisConfidence)return 0;
   if(diagOK)return diagnosisConfidence==='high'?1:diagnosisConfidence==='medium'?.85:.65;
   return diagnosisConfidence==='low'?.55:diagnosisConfidence==='medium'?.25:0;
@@ -3904,7 +3925,7 @@ function isCalibratedDiagnosis(diagOK){
   return false;
 }
 function differentialReasoningScore(){
-  if(!state.realismMode||!current)return 1;
+  if(!usesExpertWorkflow()||!current)return 1;
   if(!selectedDifferentials.length)return 0;
   let score=selectedDifferentials.includes(current.correctDiagnosis)?.65:.15;
   if(selectedDifferentials[0]===current.correctDiagnosis)score+=.35;
@@ -3913,7 +3934,8 @@ function differentialReasoningScore(){
   return Math.max(0,Math.min(1,score));
 }
 function consultationJudgementScore(){
-  if(!state.realismMode||!consultState)return .5;
+  if(!usesExpertWorkflow())return 1;
+  if(!consultState)return .5;
   if(!consultState.done)return .5;
   const appropriate=current.urgency==='high'||clinicalEvidenceScore()<65||diagnosisConfidence==='low';
   return appropriate?1:.65;
@@ -3921,7 +3943,7 @@ function consultationJudgementScore(){
 function renderDiagnosticReasoning(){
   const panel=$('reasoningPanel'),box=$('differentialButtons'),summary=$('reasoningSummary');
   if(!panel||!box||!summary||!current)return;
-  panel.style.display=state.realismMode?'block':'none';if(!state.realismMode)return;
+  panel.style.display=usesExpertWorkflow()?'block':'none';if(!usesExpertWorkflow())return;
   const options=diagnosisOptionsFor(current);box.innerHTML='';
   options.forEach(item=>{const rank=selectedDifferentials.indexOf(item),btn=document.createElement('button');btn.type='button';btn.className='diff-choice'+(rank>=0?' selected':'');btn.innerHTML=`<div class="diff-rank">${rank>=0?rank+1:'+'}</div><div><b>${item}</b><small>${rank>=0?'priorisierte Differentialdiagnose':'zur Differentialliste hinzufügen'}</small></div><div class="diff-action">${rank>=0?'ENTFERNEN':'WÄHLEN'}</div>`;btn.onclick=()=>toggleDifferential(item);box.appendChild(btn)});
   summary.innerHTML=selectedDifferentials.length?`Priorisierung: ${selectedDifferentials.map((x,i)=>`<b>${i+1}. ${x}</b>`).join(' • ')}`:'Noch keine Differentialdiagnosen priorisiert.';
@@ -4021,8 +4043,8 @@ function performReassessment(kind){
 function renderReassessment(){
   const panel=$('reassessmentPanel'),buttons=$('reassessmentButtons'),status=$('reassessmentStatus'),notes=$('reassessmentNotes');
   if(!panel||!buttons||!status||!notes)return;
-  panel.style.display=state.realismMode?'block':'none';
-  if(!state.realismMode)return;
+  panel.style.display=usesClinicalWorkflow()?'block':'none';
+  if(!usesClinicalWorkflow())return;
   const total=reassessmentTotal();
   if($('reassessmentCount'))$('reassessmentCount').textContent=`${total} Checks`;
   buttons.innerHTML='';
@@ -4044,11 +4066,37 @@ function renderReassessment(){
     :'<div class="reassess-note neutral">Noch keine Verlaufsnotiz vorhanden.</div>';
 }
 
-function toggleRealismMode(){
-  state.realismMode=!state.realismMode;
-  save();
-  toast(state.realismMode?'🫀 Dynamic Patients & Results aktiviert.':'⚡ Erweiterter Realismus deaktiviert.');
+
+const difficultyProfiles={
+  beginner:{id:'beginner',name:'Einsteiger',icon:'🌱',description:'Vitalwerte, Diagnose und Behandlung.'},
+  clinical:{id:'clinical',name:'Klinisch',icon:'🩺',description:'Anamnese, Untersuchung, Diagnostik, Reevaluation und Disposition.'},
+  expert:{id:'expert',name:'Profi',icon:'🧠',description:'Kompletter Realismus mit Differentialdiagnosen, Konsilen und verzögerten Befunden.'}
+};
+function difficultyId(){return ['beginner','clinical','expert'].includes(state.difficulty)?state.difficulty:'beginner'}
+function difficultyProfile(){return difficultyProfiles[difficultyId()]}
+function isBeginner(){return difficultyId()==='beginner'}
+function isClinical(){return difficultyId()==='clinical'}
+function isExpert(){return difficultyId()==='expert'}
+function usesClinicalWorkflow(){return !isBeginner()}
+function usesExpertWorkflow(){return isExpert()}
+function difficultyConditionMultiplier(){return isBeginner()?0:isClinical()?.45:1}
+function difficultyWaitingTolerance(){return isBeginner()?999:isClinical()?2:0}
+function difficultyHudLabel(){const d=difficultyProfile();return `${d.icon} ${d.name}`}
+function setDifficulty(id){if(!difficultyProfiles[id])return;state.difficulty=id;state.realismMode=id!=='beginner';save();toast(`${difficultyProfiles[id].icon} Schwierigkeit: ${difficultyProfiles[id].name}`)}
+function applyDifficultyVisibility(){
+  const beginner=isBeginner(),expert=isExpert(),clinical=usesClinicalWorkflow();
+  const show=(id,on,display='block')=>{const el=$(id);if(el)el.style.display=on?display:'none'};
+  show('beginnerGuide',beginner);show('patientFlowPanel',clinical);show('patientConditionPanel',clinical);show('historyPanel',clinical);show('physicalExamPanel',clinical);show('diagnosticsPanel',clinical);show('realismWorkup',clinical);show('reasoningPanel',expert);show('diagnosisConfidenceBox',expert);show('reassessmentPanel',clinical);show('dispositionPanel',clinical);
+  if($('realismSequence'))$('realismSequence').style.display=clinical?'block':'none';
+  if($('patientRecord'))$('patientRecord').style.display=clinical?'block':'none';
+  if($('procedurePanel')&&!expert)$('procedurePanel').style.display='none';
+  if($('pendingResultsPanel')&&!expert)$('pendingResultsPanel').classList.add('hidden');
+  if($('protocolPanel')&&beginner)$('protocolPanel').classList.add('hidden');
 }
+function beginnerDiagnosisOptions(patient){const unique=[patient.correctDiagnosis,...(patient.diagnoses||[]).filter(x=>x!==patient.correctDiagnosis)];return deterministicShuffle(unique.slice(0,3),realismHash(patient.name+'beginnerDiagnosis'))}
+function treatmentOptionsFor(patient){if(!isBeginner())return patient.treatments;const unique=[patient.correctTreatment,...(patient.treatments||[]).filter(x=>x!==patient.correctTreatment)];return deterministicShuffle(unique.slice(0,3),realismHash(patient.name+'beginnerTreatment'))}
+
+function toggleRealismMode(){const next=isBeginner()?'clinical':isClinical()?'expert':'beginner';setDifficulty(next)}
 function realismHash(text){
   let h=0;
   for(let i=0;i<String(text).length;i++)h=(h*31+String(text).charCodeAt(i))>>>0;
@@ -4099,7 +4147,7 @@ function deterministicShuffle(items,seed){
   return a;
 }
 function diagnosisOptionsFor(patient){
-  if(!state.realismMode)return patient.diagnoses;
+  if(isBeginner())return beginnerDiagnosisOptions(patient);
   const cat=realismCategory(patient);
   const candidates=[patient.correctDiagnosis,...(realismDifferentialPools[cat]||realismDifferentialPools.general),...(patient.diagnoses||[])];
   const unique=[];
@@ -4235,11 +4283,11 @@ function pendingTestFor(index){
 }
 function isExamOrdered(index){return !!pendingTestFor(index)}
 function pendingResultsCount(){
-  if(!state.realismMode||!realismCase||!realismCase.pendingTests)return 0;
+  if(!usesExpertWorkflow()||!realismCase||!realismCase.pendingTests)return 0;
   return realismCase.pendingTests.filter(x=>!x.resolved).length;
 }
 function resultManagementScore(){
-  if(!state.realismMode||!realismCase)return 1;
+  if(!usesExpertWorkflow()||!realismCase)return 1;
   const ordered=realismCase.pendingTests.length;
   if(!ordered)return .8;
   const resolved=realismCase.pendingTests.filter(x=>x.resolved).length;
@@ -4260,7 +4308,7 @@ function appendResolvedFinding(exam,index,critical=false){
   findings.appendChild(f);
 }
 function resolveReadyResults(){
-  if(!state.realismMode||!realismCase||!run||!current)return false;
+  if(!usesExpertWorkflow()||!realismCase||!run||!current)return false;
   let changed=false;
   realismCase.pendingTests.forEach(test=>{
     if(test.resolved)return;
@@ -4284,7 +4332,7 @@ function resolveReadyResults(){
 function renderPendingResults(skipResolve=false){
   const panel=$('pendingResultsPanel'),list=$('pendingResultsList'),count=$('pendingResultCount'),waitBtn=$('waitForResultBtn'),alert=$('criticalResultAlert');
   if(!panel||!list||!count||!waitBtn)return;
-  panel.classList.toggle('hidden',!state.realismMode);if(!state.realismMode)return;
+  panel.classList.toggle('hidden',!usesExpertWorkflow());if(!usesExpertWorkflow())return;
   if(!skipResolve)resolveReadyResults();
   const tests=realismCase&&realismCase.pendingTests?realismCase.pendingTests:[],unresolved=tests.filter(x=>!x.resolved);
   count.textContent=`${unresolved.length} ausstehend`;
@@ -4299,7 +4347,7 @@ function renderPendingResults(skipResolve=false){
   if(alert){alert.style.display=realismCase&&realismCase.resultAlert?'block':'none';alert.textContent=realismCase&&realismCase.resultAlert?realismCase.resultAlert:''}
 }
 function orderExamRealism(exam,index,cost){
-  if(!run||!current||!state.realismMode||isExamOrdered(index)||examined.has(index))return;
+  if(!run||!current||!usesExpertWorkflow()||isExamOrdered(index)||examined.has(index))return;
   const turnaround=examTurnaround(exam),orderTime=1;
   if(state.money<cost){toast('Nicht genug Budget');return}
   if(run.timeLeft<orderTime){toast('Zu wenig Zeit, um die Untersuchung anzuordnen.');return}
@@ -4313,7 +4361,7 @@ function orderExamRealism(exam,index,cost){
   beep(540,.05);resolveReadyResults();renderExamButtons();renderPendingResults(true);renderRealismWorkup();renderDiagnosticReasoning();updateHud();save();
 }
 function waitForNextResult(){
-  if(!state.realismMode||!run||!realismCase)return;
+  if(!usesExpertWorkflow()||!run||!realismCase)return;
   resolveReadyResults();
   const pending=realismCase.pendingTests.filter(x=>!x.resolved);
   if(!pending.length){renderPendingResults(true);return}
@@ -4329,24 +4377,22 @@ function renderRealismVitals(){
   if(!current)return;
   const dyn=dynamicVitalsFor(current);
   if($('vitalsGrid'))$('vitalsGrid').classList.toggle('realism-on',state.realismMode);
-  document.querySelectorAll('.realism-extra').forEach(el=>el.classList.toggle('hidden',!state.realismMode));
-  if(state.realismMode){
-    $('vPulse').textContent=dyn.pulse;$('vTemp').textContent=dyn.temp;$('vSpo2').textContent=dyn.spo2;$('vBp').textContent=dyn.bp;
-  }
-  if($('vResp'))$('vResp').textContent=state.realismMode?`${dyn.resp}/min`:'—';
-  if($('vPain'))$('vPain').textContent=state.realismMode?`${dyn.pain}/10`:'—';
-  setVitalBox('vPulseBox',state.realismMode?vitalSeverity(current,'pulse',dyn.pulse):'normal');
-  setVitalBox('vTempBox',state.realismMode?vitalSeverity(current,'temp',dyn.temp):'normal');
-  setVitalBox('vSpo2Box',state.realismMode?vitalSeverity(current,'spo2',dyn.spo2):'normal');
-  setVitalBox('vBpBox',state.realismMode?vitalSeverity(current,'bp',dyn.bp):'normal');
-  setVitalBox('vRespBox',state.realismMode?vitalSeverity(current,'resp',dyn.resp):'normal');
-  setVitalBox('vPainBox',state.realismMode?vitalSeverity(current,'pain',dyn.pain):'normal');
+  document.querySelectorAll('.realism-extra').forEach(el=>el.classList.toggle('hidden',!usesClinicalWorkflow()));
+  if(usesClinicalWorkflow()){$('vPulse').textContent=dyn.pulse;$('vTemp').textContent=dyn.temp;$('vSpo2').textContent=dyn.spo2;$('vBp').textContent=dyn.bp}else{$('vPulse').textContent=current.vitals.pulse;$('vTemp').textContent=current.vitals.temp;$('vSpo2').textContent=current.vitals.spo2;$('vBp').textContent=current.vitals.bp}
+  if($('vResp'))$('vResp').textContent=usesClinicalWorkflow()?`${dyn.resp}/min`:'—';
+  if($('vPain'))$('vPain').textContent=usesClinicalWorkflow()?`${dyn.pain}/10`:'—';
+  setVitalBox('vPulseBox',usesClinicalWorkflow()?vitalSeverity(current,'pulse',dyn.pulse):'normal');
+  setVitalBox('vTempBox',usesClinicalWorkflow()?vitalSeverity(current,'temp',dyn.temp):'normal');
+  setVitalBox('vSpo2Box',usesClinicalWorkflow()?vitalSeverity(current,'spo2',dyn.spo2):'normal');
+  setVitalBox('vBpBox',usesClinicalWorkflow()?vitalSeverity(current,'bp',dyn.bp):'normal');
+  setVitalBox('vRespBox',usesClinicalWorkflow()?vitalSeverity(current,'resp',dyn.resp):'normal');
+  setVitalBox('vPainBox',usesClinicalWorkflow()?vitalSeverity(current,'pain',dyn.pain):'normal');
 }
 function renderPatientRecord(){
   const details=$('patientRecord'),body=$('patientRecordBody'),summary=$('recordSummary');
   if(!details||!body||!current)return;
-  details.style.display=state.realismMode?'block':'none';
-  if(!state.realismMode)return;
+  details.style.display=usesClinicalWorkflow()?'block':'none';
+  if(!usesClinicalWorkflow())return;
   const r=realismRecordFor(current),extra=derivedRealismVitals(current),dyn=dynamicVitalsFor(current);
   if(summary)summary.textContent=`${r.triage.split(' • ')[0]} • Puls ${dyn.pulse} • SpO₂ ${dyn.spo2} • AF ${dyn.resp}/min`;
   const alerts=[];
@@ -4395,8 +4441,8 @@ function realismWorkupLabel(){
 function renderRealismWorkup(){
   const panel=$('realismWorkup');
   if(!panel)return;
-  panel.classList.toggle('hidden',!state.realismMode);
-  if(!state.realismMode||!current)return;
+  panel.classList.toggle('hidden',!usesClinicalWorkflow());
+  if(!usesClinicalWorkflow()||!current)return;
   const newlyResolved=resolveReadyResults();
   if(newlyResolved)renderExamButtons();
   renderPendingResults(true);
@@ -4597,8 +4643,9 @@ function historyScore(){
   return historyState?Math.max(0,Math.min(100,Math.round(historyState.score))):15;
 }
 function renderHistoryPanel(){
+  const panel=$('historyPanel');if(panel)panel.style.display=usesClinicalWorkflow()?'block':'none';
   const box=$('historyQuestions'),findings=$('historyFindings');
-  if(!box||!findings||!historyState)return;
+  if(!box||!findings||!historyState||isBeginner())return;
   box.innerHTML='';findings.innerHTML='';
   historyState.questions.forEach((q,i)=>{
     const asked=historyState.asked.has(i);
@@ -4770,7 +4817,7 @@ function renderPatientFlow(){
 
   const score=currentFlowScore();
   if($('currentFlowScore'))$('currentFlowScore').textContent=score;
-  if($('currentCaseMinutes'))$('currentCaseMinutes').textContent=`${patientFlow.minutes} min`;
+  if($('currentCaseMinutes'))$('currentCaseMinutes').textContent=`${patientFlow.minutes} AP`;
   if($('patientFlowLabel'))$('patientFlowLabel').textContent=visible.map(flowStationName).join(' → ');
 }
 function flowRatingText(score){
@@ -4789,7 +4836,7 @@ function renderFlowDashboard(){
   const f=state.lastFlow;
   if($('flowRating'))$('flowRating').textContent=`${flowRatingText(f.score)} • ${f.score}`;
   if($('flowPatients'))$('flowPatients').textContent=f.patients||0;
-  if($('flowAvgTime'))$('flowAvgTime').textContent=`${f.avgTime||0} min`;
+  if($('flowAvgTime'))$('flowAvgTime').textContent=`${f.avgTime||0} AP`;
   if($('flowBottleneck'))$('flowBottleneck').textContent=f.bottleneck||'–';
   const grid=$('stationGrid');
   if(!grid)return;
@@ -5176,7 +5223,7 @@ function renderResearch(){
   const points=$('researchPoints'),grid=$('researchGrid');
   if(points)points.textContent=`${state.researchPoints||0} RP`;
   if($('researchDiscount'))$('researchDiscount').textContent=`${Math.round(researchDiagnosticDiscount()*100)} %`;
-  if($('researchTime'))$('researchTime').textContent=`+${researchShiftTimeBonus()} min`;
+  if($('researchTime'))$('researchTime').textContent=`+${Math.round((researchXpMultiplier()-1)*100)} %`;
   if(!grid)return;
   grid.innerHTML='';
   researchTracks.forEach(track=>{
@@ -5266,8 +5313,8 @@ const specialties=[
   {id:'diagnostics',icon:'🔬',name:'Diagnostik',minRank:3,desc:'Untersuchungen zusätzlich 10 % günstiger.'}
 ];
 const shiftEvents=[
-  {id:'quiet',type:'good',text:'Ruhiger Vormittag: +10 Minuten Schichtzeit.',apply:r=>{r.timeLeft+=10}},
-  {id:'rush',type:'bad',text:'Patientenansturm: -10 Minuten, dafür +10 % Geld.',apply:r=>{r.timeLeft=Math.max(45,r.timeLeft-10);r.eventMoneyMultiplier=1.10}},
+  {id:'quiet',type:'good',text:'Ruhiger Vormittag: +100 € zusätzliches Klinikbudget.',apply:r=>{state.money+=100}},
+  {id:'rush',type:'bad',text:'Patientenansturm: +10 % Geld, aber höhere Patientenbelastung.',apply:r=>{r.eventMoneyMultiplier=1.10;r.eventConditionMultiplier=1.15}},
   {id:'donation',type:'good',text:'Spende erhalten: +150 € Klinikbudget.',apply:r=>{state.money+=150}},
   {id:'supplier',type:'good',text:'Lieferantenrabatt: Medikamente heute 15 % günstiger.',apply:r=>{r.eventPharmacyDiscount=.15}},
   {id:'staff_shortage',type:'bad',text:'Personalausfall: Untersuchungen dauern +1 Minute.',apply:r=>{r.eventExamTimePenalty=1}},
@@ -5367,7 +5414,7 @@ function pharmacyDiscount(){
 }
 function roomEffect(room){
   const level=roomLevel(room.id);
-  if(room.id==='waiting') return `Effekt: +${(level-1)*10} min Schichtzeit • bis zu ${2+level} Patienten sichtbar`;
+  if(room.id==='waiting') return `Effekt: bis zu ${2+level} Patienten gleichzeitig sichtbar`;
   if(room.id==='exam') return `Effekt: +${(level-1)*5} % Geld pro erfolgreichem Fall`;
   if(room.id==='lab') return `Effekt: Laborpreise bis zu ${20+(level-1)*5} % günstiger`;
   if(room.id==='imaging') return `Effekt: Bildgebung bis zu ${level-1} min schneller`;
@@ -5451,7 +5498,7 @@ function renderClinicMap(){
 
   const cv=$('clinicValue'), tb=$('clinicTimeBonus'), cb=$('clinicCashBonus'), rc=$('clinicRoomCount');
   if(cv) cv.textContent=`Klinikstufe ${clinicPower()}`;
-  if(tb) tb.textContent=`+${clinicTimeBonus()} min`;
+  if(tb) tb.textContent=`${2+roomLevel('waiting')} sichtbar`;
   if(cb) cb.textContent=`+${Math.round((clinicCashMultiplier()-1)*100)} %`;
   if(rc) rc.textContent=`${clinicActiveRooms()}/${clinicRooms.length}`;
 }
@@ -5572,8 +5619,8 @@ const missions = [
    progress:r=>Math.min(r.correctDiagnoses,3)/3, done:r=>r.correctDiagnoses>=3, meta:r=>`${Math.min(r.correctDiagnoses,3)}/3 richtige Diagnosen`},
   {id:'perfect2', text:'Schaffe 2 perfekte Fälle in einer Schicht.', rewardMoney:220, rewardXp:80,
    progress:r=>Math.min(r.correct,2)/2, done:r=>r.correct>=2, meta:r=>`${Math.min(r.correct,2)}/2 perfekte Fälle`},
-  {id:'saveTime', text:'Beende die Schicht mit mindestens 25 Minuten Restzeit.', rewardMoney:160, rewardXp:55,
-   progress:r=>Math.min(r.timeLeft,25)/25, done:r=>r.timeLeft>=25, meta:r=>`${Math.max(0,Math.min(r.timeLeft,25))}/25 Minuten`},
+  {id:'saveTime', text:'Behandle in einer Schicht mindestens 4 Patienten.', rewardMoney:160, rewardXp:55,
+   progress:r=>Math.min(r.treated||0,4)/4, done:r=>(r.treated||0)>=4, meta:r=>`${Math.min(r.treated||0,4)}/4 Patienten`},
   {id:'triage', text:'Lass in dieser Schicht keinen dringenden Patienten kollabieren.', rewardMoney:240, rewardXp:85,
    progress:r=>r.collapsed===0?1:0, done:r=>r.collapsed===0, meta:r=>r.collapsed===0?'Noch kein Kollaps':'Kollaps passiert'},
   {id:'research', text:'Verdiene in dieser Schicht mindestens 5 Forschungspunkte.', rewardMoney:210, rewardXp:90,
@@ -5699,7 +5746,8 @@ const defaultState = {
   juniorOutcome:'',
   juniorDoctor:{name:'Sofia Keller',avatar:'👩🏻‍⚕️'},
   supervisedCases:0,
-  realismMode:true,
+  difficulty:'beginner',
+  realismMode:false,
   clinicalQualityCases:0,
   clinicalQualityTotal:0,
   bestClinicalQuality:0,
@@ -5728,6 +5776,9 @@ try{
 }catch(_){
   state=null;
 }
+const hadExistingSave=!!(state&&typeof state==='object');
+const hadDifficultySetting=hadExistingSave&&typeof state.difficulty==='string';
+const legacyRealismMode=hadExistingSave&&state.realismMode===true;
 if(!state || typeof state!=='object') state=JSON.parse(JSON.stringify(defaultState));
 
 for(const [k,v] of Object.entries(defaultState)){
@@ -5740,6 +5791,9 @@ if(!state.achievements || typeof state.achievements!=='object') state.achievemen
 if(!state.inventory || typeof state.inventory!=='object') state.inventory={};
 if(!state.roomLevels || typeof state.roomLevels!=='object') state.roomLevels={};
 if(!state.staff || typeof state.staff!=='object') state.staff={};
+if(!hadDifficultySetting)state.difficulty=hadExistingSave?(legacyRealismMode?'expert':'beginner'):'beginner';
+if(!['beginner','clinical','expert'].includes(state.difficulty))state.difficulty='beginner';
+state.realismMode=state.difficulty!=='beginner';
 if(!state.research || typeof state.research!=='object') state.research={};
 if(!state.casebook || typeof state.casebook!=='object') state.casebook={};
 state.researchPoints=Number.isFinite(Number(state.researchPoints))&&Number(state.researchPoints)>=0?Math.floor(Number(state.researchPoints)):0;
@@ -7367,12 +7421,7 @@ function renderModeUI(){
   const promotionOpen=state.wardResponsibilityCompleted&&!state.promotionReviewCompleted;
   const teamLeadOpen=state.promotionReviewCompleted&&!state.teamLeadCompleted;
   const focus=focusDef();
-  if($('realismToggle')){
-    $('realismToggle').className='realism-toggle'+(state.realismMode?'':' off');
-    $('realismToggle').innerHTML=state.realismMode
-      ?'🩺 Realismus: DYNAMIC 5.0<small>dynamische Vitalwerte • verzögerte Befunde • Differentialdiagnosen • Reevaluation • Übergabe</small>'
-      :'⚡ Realismus: STANDARD<small>Klassische Doctor-Rush-Diagnoseauswahl ohne erweiterten Klinik-Workflow</small>';
-  }
+  ['beginner','clinical','expert'].forEach(id=>{const el=$('difficulty'+id.charAt(0).toUpperCase()+id.slice(1));if(el)el.classList.toggle('active',difficultyId()===id)});
   if($('homeCampaignMeta')){
     $('homeCampaignMeta').textContent=prologueOpen
       ?`Prolog • ${doctorDisplayName()}`
@@ -7480,7 +7529,8 @@ function startCampaignShift(){if(!currentCampaignChapter()){toast('Die Kampagne 
 function renderShiftModeBanners(){
   if(!run)return;
   const campaign=run.mode==='campaign',chapter=currentCampaignChapter();
-  const text=campaign?`🎯 KAMPAGNE • ${doctorAvatar()} ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:'⚡ FREIE SCHICHT • Klinikmanagement ohne Story-Zwang';
+  const diff=difficultyHudLabel();
+  const text=campaign?`🎯 KAMPAGNE • ${diff} • ${doctorAvatar()} ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:`⚡ FREIE SCHICHT • ${diff} • ohne Countdown`;
   ['waitingModeBanner','gameModeBanner'].forEach(id=>{const el=$(id);if(!el)return;el.textContent=text;el.className='shift-mode-banner'+(campaign?' campaign':'')});
 }
 function returnHomeAfterShift(){if(run&&run.mode==='campaign'){state.homeTab='career';state.careerSubtab='campaign'}else state.homeTab='home';showScreen('homeScreen')}
@@ -7515,19 +7565,18 @@ document.querySelectorAll('[data-career-sub]').forEach(btn=>btn.addEventListener
 function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
   const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:105+clinicTimeBonus()+staffTimeBonus()+researchShiftTimeBonus()+hospitalShiftTimeBonus(),combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter())};
-  if(run.mode==='campaign')run.timeLeft+=campaignRelationshipTimeBonus()+campaignAutonomyTimeBonus()+campaignRankTimeBonus()+teamLeadTimeBonus();
+  run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:10000,combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter()),noCountdown:true};
   applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
   // queue already holds all remaining patients; display first up to 3 by arrival order
 }
 function showWaitingRoom(){
-  if(run.treated>=run.total||run.queue.length===0||run.timeLeft<=0){endShift(run.timeLeft<=0?'Die Zeit ist abgelaufen.':'');return}
+  if(run.treated>=run.total||run.queue.length===0){endShift();return}
   renderWaitingRoom();renderShiftTeam();showScreen('waitingScreen')
 }
 function renderWaitingRoom(){
-  $('waitingShiftText').textContent=`${run.treated}/${run.total} behandelt`;$('waitingTime').textContent=run.timeLeft+' min';$('waitingRep').textContent=state.rep;
+  $('waitingShiftText').textContent=`${run.treated}/${run.total} behandelt`;$('waitingTime').textContent='Kein Zeitdruck';$('waitingRep').textContent=state.rep;
   const box=$('waitingPatients');box.innerHTML='';
   const visible=run.queue.slice(0,Math.min(2+roomLevel('waiting'),run.queue.length)).sort((a,b)=>urgencyRank(b.urgency)-urgencyRank(a.urgency));
   visible.forEach(p=>{const el=document.createElement('button');el.className=`waiting-card ${p.urgency}`;const label=p.urgency==='high'?'DRINGEND':p.urgency==='medium'?'ERHÖHT':'NORMAL';el.innerHTML=`<div class='wait-avatar'>${p.avatar}</div><div class='wait-body'><div class='wait-top'><b>${p.name}</b><span>${label}</span></div><small>${p.age} Jahre • ${p.job}${p.rare?` <span class='rare-patient-tag'>SELTEN</span>`:''}</small><p>${p.complaint}</p><div class='wait-meta'>Wartet: ${p.wait} Runde${p.wait===1?'':'n'}</div></div>`;el.onclick=()=>selectPatient(p.queueId);box.appendChild(el)});
@@ -7540,7 +7589,8 @@ function selectPatient(id){
   loadPatient();showScreen('gameScreen');
 }
 function ageWaitingPatients(){
-  const extra=(state.upgrades.emergency?roomLevel('emergency'):0)+staffEmergencyTolerance()+researchEmergencyTolerance();const collapsed=[];
+  if(isBeginner()){for(const p of run.queue)p.wait++;return}
+  const extra=(state.upgrades.emergency?roomLevel('emergency'):0)+staffEmergencyTolerance()+researchEmergencyTolerance()+difficultyWaitingTolerance(),collapsed=[];
   for(const p of run.queue){p.wait++;const limit=(p.urgency==='high'?1:p.urgency==='medium'?3:99)+extra;if(p.wait>limit){collapsed.push(p.queueId);run.collapsed++;state.rep=Math.max(0,state.rep-(p.urgency==='high'?10:5));run.rep-=(p.urgency==='high'?10:5);if(p.urgency==='high')toast(`${p.name}: Zustand kritisch verschlechtert!`)}}
   run.queue=run.queue.filter(p=>!collapsed.includes(p.queueId));
 }
@@ -7570,9 +7620,9 @@ function loadPatient(){
   renderPatientRecord();
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();applyDifficultyVisibility();updateSubmit();
 }
-function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
+function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=difficultyHudLabel();renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
 function adjustedCost(exam){
   let cost=Number(exam.cost)||0;
@@ -7599,35 +7649,33 @@ function adjustedExamTime(exam){
 }
 function deptName(id){const d=departments.find(x=>x.id===id);return d?d.name:id}
 function renderExamButtons(){
-  const box=$('examButtons');box.innerHTML='';
-  if(state.realismMode)resolveReadyResults();
+  const box=$('examButtons');if(!box)return;
+  const panel=$('diagnosticsPanel');if(panel)panel.style.display=usesClinicalWorkflow()?'block':'none';
+  box.innerHTML='';if(isBeginner()){renderPendingResults(true);return}
+  if(usesExpertWorkflow())resolveReadyResults();
   current.exams.forEach((e,i)=>{
-    const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),ordered=isExamOrdered(i),done=examined.has(i);
-    const btn=document.createElement('button');
+    const cost=adjustedCost(e),time=adjustedExamTime(e),available=examAvailable(e),ordered=isExamOrdered(i),done=examined.has(i),btn=document.createElement('button');
     btn.className='choice'+(done?' done result-ready':ordered?' ordered':'')+(!available?' locked':'');
-    if(state.realismMode){
+    if(usesExpertWorkflow()){
       const tat=examTurnaround(e),status=done?' • ✅ Befund verfügbar':ordered?' • ⏳ läuft noch':` • Befund ~${tat} min`;
-      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}${ordered&&!done?'<span class="order-tag">ANGEORDNET</span>':''}<small>${cost?cost+' € • ':''}1 min Anordnung${status}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
+      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}${ordered&&!done?'<span class="order-tag">ANGEORDNET</span>':''}<small>${cost?cost+' € • ':''}Anordnung${status}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
       btn.disabled=done||ordered||!available;btn.onclick=()=>orderExamRealism(e,i,cost);
     }else{
-      btn.innerHTML=`${e.name}<small>${cost?cost+' €':''}${cost&&time?' • ':''}${time} min${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
-      btn.disabled=done||!available;
-      btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}if(run.timeLeft-time<0){toast('Zu wenig Zeit in der Schicht');return}state.money-=cost;run.examSpend+=cost;run.timeLeft-=time;examined.add(i);conditionDecayForTime(time,'Untersuchung');const station=examStation(e);markFlowStation(station,time);if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);const f=document.createElement('div');f.className='finding';f.textContent=`${e.name}: ${e.result}`;$('findings').appendChild(f);renderExamButtons();updateHud();save()};
-    }
-    box.appendChild(btn);
-  });
-  renderPendingResults(true);
+      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}<small>${cost?cost+' € • ':''}Befund direkt verfügbar${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
+      btn.disabled=done||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}state.money-=cost;run.examSpend+=cost;examined.add(i);conditionDecayForTime(Math.max(1,time*.5),'Untersuchung');const station=examStation(e);markFlowStation(station,Math.max(1,time*.5));if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);appendResolvedFinding(e,i,false);renderExamButtons();renderRealismWorkup();updateHud();save()};
+    }box.appendChild(btn);
+  });renderPendingResults(true);
 }
 function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis'){selectedDiagnosis=item;renderDiagnosticReasoning()}else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})}
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
 function stockAvailable(treatment){return requiredStock(treatment).every(id=>(state.inventory[id]||0)>0)}
 function renderTreatmentButtons(){
   const box=$('treatmentButtons');box.innerHTML='';
-  current.treatments.forEach(item=>{
+  treatmentOptionsFor(current).forEach(item=>{
     const needs=requiredStock(item),ok=stockAvailable(item),btn=document.createElement('button');
     btn.type='button';
     btn.className='choice'+(!ok?' low-stock':'');
-    btn.innerHTML=`${item}${needs.length?`<small>${needs.map(id=>{const m=medicines.find(x=>x.id===id);return `${m.icon} ${m.name}: ${state.inventory[id]||0}`}).join(' • ')}</small>`:''}${!ok?'<small>⚠️ Fehlender Bestand wird als Notfallmaterial berechnet</small>':''}`;
+    btn.innerHTML=isBeginner()?`${item}<small>Einfache Behandlungsentscheidung</small>`:`${item}${needs.length?`<small>${needs.map(id=>{const m=medicines.find(x=>x.id===id);return `${m.icon} ${m.name}: ${state.inventory[id]||0}`}).join(' • ')}</small>`:''}${!ok?'<small>⚠️ Fehlender Bestand wird als Notfallmaterial berechnet</small>':''}`;
     btn.onclick=()=>{
       selectedTreatment=item;
       [...box.children].forEach(b=>b.classList.remove('selected'));
@@ -7640,29 +7688,10 @@ function renderTreatmentButtons(){
   });
 }
 function updateSubmit(){
-  const btn=$('submitBtn');
-  const status=$('caseSelectionStatus');
-  if(!btn)return;
-  const hasDiag=!!selectedDiagnosis;
-  const hasTreat=!!selectedTreatment;
-  const hasDisposition=!state.realismMode||!!selectedDisposition;
-  const hasReasoning=!state.realismMode||(selectedDifferentials.length>0&&!!diagnosisConfidence);
-  const ready=hasDiag&&hasTreat&&hasDisposition&&hasReasoning;
-  btn.disabled=false;
-  btn.classList.toggle('ready',ready);
-  btn.textContent=ready?'Fall abschließen ✓':state.realismMode?'Differentiale + Diagnose + Sicherheit + Disposition':'Diagnose + Behandlung wählen';
-  if(status){
-    if(ready){
-      const safety=state.realismMode&&realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0;
-      status.textContent=state.realismMode
-        ?`Diagnose + Behandlung + ${dispositionLabel(selectedDisposition)} • Übergabe ${safety}/3 • Reevaluation ${reassessmentTotal()}`
-        :`Diagnose: ${selectedDiagnosis} • Behandlung gewählt ✓`;
-    }else if(!hasDiag)status.textContent='Jetzt Diagnose wählen.';
-    else if(!hasTreat)status.textContent=`Diagnose: ${selectedDiagnosis} • Jetzt Behandlung wählen.`;
-    else if(state.realismMode&&selectedDifferentials.length===0)status.textContent='Bitte mindestens eine Differentialdiagnose priorisieren.';
-    else if(state.realismMode&&!diagnosisConfidence)status.textContent='Bitte Diagnosesicherheit angeben.';
-    else if(state.realismMode&&!selectedDisposition)status.textContent='Diagnose und Behandlung gewählt • Jetzt Disposition festlegen.';
-  }
+  const btn=$('submitBtn'),status=$('caseSelectionStatus');if(!btn)return;
+  const hasDiag=!!selectedDiagnosis,hasTreat=!!selectedTreatment,hasDisposition=!usesClinicalWorkflow()||!!selectedDisposition,hasReasoning=!usesExpertWorkflow()||(selectedDifferentials.length>0&&!!diagnosisConfidence),ready=hasDiag&&hasTreat&&hasDisposition&&hasReasoning;
+  btn.disabled=false;btn.classList.toggle('ready',ready);btn.textContent=ready?'Fall abschließen ✓':isBeginner()?'Diagnose + Behandlung wählen':isClinical()?'Diagnose + Behandlung + Disposition':'Differentiale + Diagnose + Disposition';
+  if(status){if(ready){if(isBeginner())status.textContent=`${difficultyHudLabel()} • Diagnose + Behandlung gewählt ✓`;else{const safety=realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0;status.textContent=`${difficultyHudLabel()} • ${dispositionLabel(selectedDisposition)} • Übergabe ${safety}/3 • Reevaluation ${reassessmentTotal()}`}}else if(!hasDiag)status.textContent='Jetzt Diagnose wählen.';else if(!hasTreat)status.textContent='Jetzt Behandlung wählen.';else if(usesExpertWorkflow()&&selectedDifferentials.length===0)status.textContent='Bitte mindestens eine Differentialdiagnose priorisieren.';else if(usesExpertWorkflow()&&!diagnosisConfidence)status.textContent='Bitte Diagnosesicherheit angeben.';else if(usesClinicalWorkflow()&&!selectedDisposition)status.textContent='Jetzt Disposition festlegen.'}
 }
 function emergencySupplyCost(treatment){
   let total=0;
@@ -7687,12 +7716,12 @@ function finishCase(){
       toast('Kein aktiver Patientenfall.');
       return;
     }
-    if(!selectedDiagnosis || !selectedTreatment || (state.realismMode&&(!selectedDisposition||selectedDifferentials.length===0||!diagnosisConfidence))){
+    if(!selectedDiagnosis || !selectedTreatment || (usesClinicalWorkflow()&&!selectedDisposition) || (usesExpertWorkflow()&&(selectedDifferentials.length===0||!diagnosisConfidence))){
       updateSubmit();
       if(!selectedDiagnosis)toast('Bitte zuerst eine Diagnose auswählen.');
       else if(!selectedTreatment)toast('Bitte zuerst eine Behandlung auswählen.');
-      else if(state.realismMode&&selectedDifferentials.length===0)toast('Bitte mindestens eine Differentialdiagnose priorisieren.');
-      else if(state.realismMode&&!diagnosisConfidence)toast('Bitte deine Diagnosesicherheit angeben.');
+      else if(usesExpertWorkflow()&&selectedDifferentials.length===0)toast('Bitte mindestens eine Differentialdiagnose priorisieren.');
+      else if(usesExpertWorkflow()&&!diagnosisConfidence)toast('Bitte deine Diagnosesicherheit angeben.');
       else toast('Bitte eine Disposition festlegen.');
       return;
     }
@@ -7710,8 +7739,8 @@ function finishCase(){
 
     const diagOK=selectedDiagnosis===current.correctDiagnosis;
     const treatOK=selectedTreatment===current.correctTreatment;
-    const dispositionOK=!state.realismMode||selectedDisposition===correctDispositionFor(current);
-    const resultsComplete=!state.realismMode||pendingResultsCount()===0;
+    const dispositionOK=!usesClinicalWorkflow()||selectedDisposition===correctDispositionFor(current);
+    const resultsComplete=!usesExpertWorkflow()||pendingResultsCount()===0;
     const perfect=diagOK&&treatOK&&dispositionOK&&resultsComplete;
     const historyBonus=historyBonusFor(diagOK);
     const conditionResult=finishCondition(treatOK);
@@ -7757,7 +7786,7 @@ function finishCase(){
       run.strongDiagnoses=(run.strongDiagnoses||0)+1;
     }
     state.bestClueScore=Math.max(state.bestClueScore||15,historyScore());
-    if(state.realismMode){
+    if(usesClinicalWorkflow()){
       state.clinicalQualityCases=(state.clinicalQualityCases||0)+1;
       state.clinicalQualityTotal=(state.clinicalQualityTotal||0)+clinicalQuality.score;
       state.bestClinicalQuality=Math.max(state.bestClinicalQuality||0,clinicalQuality.score);
@@ -7770,10 +7799,7 @@ function finishCase(){
         state.completeHandoverCases=(state.completeHandoverCases||0)+1;
       }
       if(reassessmentTotal()>0)state.reassessmentCases=(state.reassessmentCases||0)+1;
-      state.reasoningCases=(state.reasoningCases||0)+1;
-      if(realismCase&&realismCase.pendingTests&&realismCase.pendingTests.length&&pendingResultsCount()>0)state.casesWithPendingResults=(state.casesWithPendingResults||0)+1;
-      if(selectedDifferentials[0]===current.correctDiagnosis)state.correctTopDifferentials=(state.correctTopDifferentials||0)+1;
-      if(isCalibratedDiagnosis(diagOK))state.calibratedDiagnosisCases=(state.calibratedDiagnosisCases||0)+1;
+      if(usesExpertWorkflow()){state.reasoningCases=(state.reasoningCases||0)+1;if(realismCase&&realismCase.pendingTests&&realismCase.pendingTests.length&&pendingResultsCount()>0)state.casesWithPendingResults=(state.casesWithPendingResults||0)+1;if(selectedDifferentials[0]===current.correctDiagnosis)state.correctTopDifferentials=(state.correctTopDifferentials||0)+1;if(isCalibratedDiagnosis(diagOK))state.calibratedDiagnosisCases=(state.calibratedDiagnosisCases||0)+1}
       if(diagOK&&treatOK&&dispositionOK&&clinicalQuality.score>=82)state.realismPerfectCases=(state.realismPerfectCases||0)+1;
     }
     recordCasebook(current,diagOK,perfect);
@@ -7803,13 +7829,13 @@ function finishCase(){
     $('resultTitle').textContent=perfect?'Fall vollständig korrekt!':diagOK&&treatOK&&dispositionOK&&!resultsComplete?'Befunde noch ausstehend':diagOK&&treatOK&&!dispositionOK?'Disposition nicht passend':diagOK?'Diagnose richtig':'Klinische Entscheidung fehlerhaft';
     $('resultText').textContent=perfect
       ?`${current.name}: Diagnose, Behandlung und Disposition waren stimmig.`
-      :`Richtige Diagnose: ${current.correctDiagnosis}. Richtige Behandlung: ${current.correctTreatment}.${state.realismMode?` Passende Disposition: ${dispositionLabel(correctDispositionFor(current))}.`:''}`;
+      :`Richtige Diagnose: ${current.correctDiagnosis}. Richtige Behandlung: ${current.correctTreatment}.${usesClinicalWorkflow()?` Passende Disposition: ${dispositionLabel(correctDispositionFor(current))}.`:''}`;
     $('resultBreakdown').innerHTML=`
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
-      ${state.realismMode?`<div class='result-line'><span>Befundmanagement</span><b>${pendingResultsCount()===0?'✅ alle angeordneten Befunde verfügbar':`⚠️ ${pendingResultsCount()} Befund(e) ausstehend`}</b></div>
+      ${usesClinicalWorkflow()?`${usesExpertWorkflow()?`<div class='result-line'><span>Befundmanagement</span><b>${pendingResultsCount()===0?'✅ alle angeordneten Befunde verfügbar':`⚠️ ${pendingResultsCount()} Befund(e) ausstehend`}</b></div>
       <div class='result-line'><span>Differentiale</span><b>${selectedDifferentials[0]===current.correctDiagnosis?'✅ führend korrekt':selectedDifferentials.includes(current.correctDiagnosis)?'🟡 enthalten':'❌ nicht enthalten'}</b></div>
-      <div class='result-line'><span>Diagnosesicherheit</span><b>${confidenceLabel(diagnosisConfidence)} • ${Math.round(diagnosticCalibration(diagOK)*100)}% kalibriert</b></div>
+      <div class='result-line'><span>Diagnosesicherheit</span><b>${confidenceLabel(diagnosisConfidence)} • ${Math.round(diagnosticCalibration(diagOK)*100)}% kalibriert</b></div>`:''}
       <div class='result-line'><span>Disposition</span><b>${dispositionOK?'✅ '+dispositionLabel(selectedDisposition):'❌ '+dispositionLabel(selectedDisposition)}</b></div>
       <div class='result-line'><span>Übergabe / Follow-up</span><b>${realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0}/3</b></div>
       <div class='result-line'><span>Körperliche Untersuchung</span><b>${physicalExamState?physicalExamState.done.size:0}/4</b></div>
@@ -7833,21 +7859,21 @@ function finishCase(){
       <div class='result-line'><span>Combo</span><b>x${run.combo}</b></div>
       <div class='result-line'><span>Patientenzustand</span><b class='${conditionResult.score>=75?'condition-result-good':conditionResult.score>=50?'condition-result-mid':'condition-result-bad'}'>${conditionResult.score}/100 • ${conditionResult.rescued?'GERETTET':conditionResult.stable?'STABIL':'KRITISCH'}</b></div>
       <div class='result-line'><span>Anamnese</span><b class='${historyScore()>=60?'result-diagnostic-good':'result-diagnostic-mid'}'>${historyScore()}/100 • ${historyState?historyState.asked.size:0} Fragen</b></div>
-      ${state.realismMode?`<div class='result-line'><span>Klinische Qualität</span><b class='${clinicalQualityClass(clinicalQuality.score)}'>${clinicalQuality.score}/100 • ${clinicalQuality.label}</b></div>
+      ${usesClinicalWorkflow()?`<div class='result-line'><span>Klinische Qualität</span><b class='${clinicalQualityClass(clinicalQuality.score)}'>${clinicalQuality.score}/100 • ${clinicalQuality.label}</b></div>
       <div class='result-line'><span>Diagnostikstrategie</span><b>${realismCase&&realismCase.broadTests?`⚠️ ${realismCase.broadTests} sehr frühe Tests`:'✅ gezielt'}</b></div>
       <div class='result-line'><span>Therapieverlauf</span><b>${reassessmentTotal()>0?(reassessmentQuality()>=0.8?'✅ reevaluiert':'🟡 teilweise reevaluiert'):'⚠️ keine Reevaluation'}</b></div>
       ${clinicalQuality.xp>0?`<div class='result-line'><span>Realismus-Bonus</span><b>+${clinicalQuality.xp} XP</b></div>`:''}`:''}
       <div class='result-line'><span>Klinik-Flow</span><b class='${flowScore>=78?'result-flow-good':'result-flow-mid'}'>${flowScore} • ${flowRatingText(flowScore)}</b></div>
       <div class='result-line'><span>Fallzeit</span><b>${patientFlow?patientFlow.minutes:0} min</b></div>
-      <div class='result-line'><span>Restzeit</span><b>${run.timeLeft} min</b></div>
+      <div class='result-line'><span>Schwierigkeit</span><b>${difficultyHudLabel()} • ohne Countdown</b></div>
       ${current.urgency==='high'?`<div class='result-line'><span>Notfall-Protokoll</span><b class='${protocolOutcome.attempted?(protocolOutcome.correct?'protocol-result-good':'protocol-result-bad'):''}'>${protocolOutcome.attempted?(protocolOutcome.correct?'✅ Richtig':'⚠️ Fehler'):'Nicht gespielt'}</b></div>`:''}
       ${current.procedure?`<div class='result-line'><span>Eingriff</span><b class='${procedureOutcome.attempted?(procedureOutcome.correct?'procedure-result-good':'procedure-result-bad'):''}'>${procedureOutcome.attempted?(procedureOutcome.correct?'✅ Erfolgreich':'⚠️ Fehler'):(state.upgrades.surgery?'Nicht gespielt':'Raum gesperrt')}</b></div>`:''}
       ${supplyCost>0?`<div class='result-line'><span>Notfallmaterial</span><b>-${supplyCost} €</b></div>`:''}`;
     buildClinicalSummary(diagOK,treatOK,dispositionOK,clinicalQuality);
-    if($('clinicalSummary'))$('clinicalSummary').style.display=state.realismMode?'block':'none';
+    if($('clinicalSummary'))$('clinicalSummary').style.display=usesClinicalWorkflow()?'block':'none';
     run.caseFinalized=true;
     run.finalizing=false;
-    $('nextBtn').textContent=run.treated>=run.total||run.timeLeft<=0?'Schicht auswerten':'Zurück ins Wartezimmer';
+    $('nextBtn').textContent=run.treated>=run.total?'Schicht auswerten':'Zurück ins Wartezimmer';
     showScreen('resultScreen');
     beep(perfect?900:360,.12);
     save();
@@ -7860,7 +7886,7 @@ function finishCase(){
     if(status)status.textContent='Fehler beim Abschluss: '+msg;
   }
 }
-function nextPatient(){if(run.treated>=run.total||run.timeLeft<=0){endShift();return}showWaitingRoom()}
+function nextPatient(){if(run.treated>=run.total){endShift();return}showWaitingRoom()}
 
 function endShift(reason=''){
   if(run)run.active=false;
@@ -7885,7 +7911,7 @@ function endShift(reason=''){
   $('shiftSummary').textContent=reason||`Tag ${state.day-1} ist geschafft. Wartezimmer, Zeit und Vorräte entscheiden jetzt mit über deinen Erfolg.`;
   $('sumMoney').textContent=run.earned+(missionDone?currentMission.rewardMoney:0)+' €';$('sumXp').textContent=run.xp+(missionDone?currentMission.rewardXp:0)+' XP';$('sumRep').textContent=(run.rep>=0?'+':'')+run.rep;$('sumCorrect').textContent=`${run.correct}/${run.treated}`;
   const avgCondition=run.conditionScores&&run.conditionScores.length?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
-  $('missionResult').innerHTML=missionHtml+`<br><br>🎯 Kampagne: <b>${campaignCompletedCount()}/${campaignChapters.length} Kapitel • ${totalCampaignProgress()} %</b>`+`<br><br>💶 Schichtergebnis: <b class="${state.lastFinance.profit>=0?'finance-result-good':'finance-result-bad'}">${state.lastFinance.profit>=0?'+':''}${state.lastFinance.profit} €</b>`+`<br>📈 Einnahmen: <b>${state.lastFinance.revenue} €</b>`+`<br>📉 Gesamtkosten: <b>${state.lastFinance.costs} €</b>`+`${run.reserveUsed?`<br>🏦 Rücklage verwendet: <b>${run.reserveUsed} €</b>`:''}`+`<br>🔧 Technikverschleiß: <b>-${run.equipmentWear||0} %</b>`+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>⏱️ Ø Fallzeit: <b>${state.lastFlow.avgTime} min</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
+  $('missionResult').innerHTML=missionHtml+`<br><br>🎯 Kampagne: <b>${campaignCompletedCount()}/${campaignChapters.length} Kapitel • ${totalCampaignProgress()} %</b>`+`<br><br>💶 Schichtergebnis: <b class="${state.lastFinance.profit>=0?'finance-result-good':'finance-result-bad'}">${state.lastFinance.profit>=0?'+':''}${state.lastFinance.profit} €</b>`+`<br>📈 Einnahmen: <b>${state.lastFinance.revenue} €</b>`+`<br>📉 Gesamtkosten: <b>${state.lastFinance.costs} €</b>`+`${run.reserveUsed?`<br>🏦 Rücklage verwendet: <b>${run.reserveUsed} €</b>`:''}`+`<br>🔧 Technikverschleiß: <b>-${run.equipmentWear||0} %</b>`+`<br><br>👥 Personal: <b>${hiredStaffCount()} Mitarbeiter</b>`+`<br>💶 Gehälter: <b>-${run.payroll||0} €</b>`+`${run.staffPromotions?`<br>⬆️ Beförderungen: <b>${run.staffPromotions}</b>`:''}`+`${run.payrollShortfall?`<br>⚠️ Gehaltsengpass: <b>-2 Ruf</b>`:''}`+`<br><br>🏥 Krankenhaus: <b>${hospitalTier()} • ${expansionCount()}/4 Projekte</b>`+`<br>👥 Kapazität: <b>${hospitalPatientCapacity()} Patienten</b>`+`<br><br>❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b>`+`<br>✅ Stabil beendet: <b>${run.stableCases||0}</b>`+`<br>🛟 Gerettet: <b>${run.rescuedCases||0}</b>`+`<br><br>🧠 Anamnese-Fragen: <b>${run.historyQuestions||0}</b>`+`<br>🎯 Starke Diagnosen: <b>${run.strongDiagnoses||0}</b>`+`<br><br>🏥 Klinik-Flow: <b>${state.lastFlow.score} • ${flowRatingText(state.lastFlow.score)}</b>`+`<br>🧭 Ø klinischer Aufwand: <b>${state.lastFlow.avgTime} AP</b>`+`<br>🚧 Engpass: <b>${state.lastFlow.bottleneck}</b>`+`<br><br>🔬 Forschungspunkte verdient: <b>+${run.researchEarned||0} RP</b>`+`<br><br>🚨 Notfall-Protokolle: <b>${run.protocolCorrect||0}/${run.protocolAttempts||0} richtig</b>`+`<br><br>🛠️ Eingriffe: <b>${run.procedureCorrect||0}/${run.procedureAttempts||0} erfolgreich</b>`+(run.collapsed?`<br><br>🚨 Kritische Verschlechterungen: ${run.collapsed}`:'');
   $('newAchievements').innerHTML=unique.length?`<b>Neue Erfolge:</b><br>${unique.map(id=>'🏆 '+achievements.find(a=>a.id===id).name).join('<br>')}`:'';showScreen('shiftScreen')
 }
 function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.achievements[id]){state.achievements[id]=true;got.push(id)}};check('first_shift',state.patientsTreated>=1);check('ten_patients',state.patientsTreated>=10);check('five_perfect',state.perfectCases>=5);check('rich',state.money>=2000);check('level5',levelFromXp(state.xp)>=5);check('triage',state.urgentSaved>=5);check('combo4',state.bestCombo>=4);
