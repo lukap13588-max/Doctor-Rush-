@@ -1564,13 +1564,51 @@ body.home-nav-active #app{padding-bottom:102px}
   .realism-metrics{grid-template-columns:1fr 1fr}
 }
 
+
+/* ===== v0.26 REASSESSMENT & HANDOVER ===== */
+.reassess-panel{
+  margin:10px 0;padding:11px;border-radius:15px;
+  background:linear-gradient(145deg,rgba(79,112,64,.22),#0c1f35);
+  border:1px solid rgba(121,181,94,.22)
+}
+.reassess-head{display:flex;justify-content:space-between;gap:10px;align-items:flex-start}
+.reassess-head h4{margin:0;font-size:10.5px}
+.reassess-head p{margin:3px 0 0;color:var(--muted);font-size:8px;line-height:1.35}
+.reassess-count{font-size:8px;font-weight:900;color:#cce7b6;white-space:nowrap}
+.reassess-actions{display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px}
+.reassess-btn{
+  border:1px solid #365042;background:#10263d;color:#eef6fc;border-radius:12px;
+  padding:10px;text-align:left;font-size:8.6px;font-weight:900
+}
+.reassess-btn small{display:block;color:var(--muted);font-size:7.3px;line-height:1.35;margin-top:3px}
+.reassess-status{
+  margin-top:8px;padding:8px 9px;border-radius:10px;background:#091a2e;border:1px solid #223a56;
+  font-size:8px;line-height:1.4;color:#dce9f4
+}
+.reassess-log{display:grid;gap:6px;margin-top:8px}
+.reassess-note{
+  padding:7px 8px;border-radius:10px;background:#0b1e34;border:1px solid #29435f;
+  font-size:7.8px;line-height:1.4;color:#dce9f4
+}
+.reassess-note.good{border-color:rgba(72,210,143,.28);background:rgba(72,210,143,.07)}
+.reassess-note.bad{border-color:rgba(255,122,141,.24);background:rgba(255,91,112,.07)}
+.reassess-note.neutral{border-color:#29435f}
+.handover-note{
+  margin-top:8px;padding:8px 9px;border-radius:10px;
+  background:rgba(112,160,255,.06);border:1px solid rgba(112,160,255,.15);
+  font-size:7.8px;line-height:1.42;color:#dce9f4
+}
+@media(max-width:390px){
+  .reassess-actions{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.25 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.26 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1580,7 +1618,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.25 • CLINICAL REALISM 2.0</h2>
+          <h2>Clinic Life v0.26 • REASSESSMENT & HANDOVER</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -2041,7 +2079,7 @@ body.home-nav-active #app{padding-bottom:102px}
 
 
         <div id="realismSequence" class="realism-sequence">
-          <b>Realistischer Ablauf:</b> Anamnese → körperliche Untersuchung → Diagnostik → Diagnose → Behandlung → Disposition
+          <b>Realistischer Ablauf:</b> Anamnese → körperliche Untersuchung → Diagnostik → Diagnose → Behandlung → Reevaluation → Disposition
         </div>
 
         <section class="history-panel">
@@ -2120,10 +2158,23 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="treatmentButtons" class="choice-list two-col"></div>
         </section>
 
+        <section id="reassessmentPanel" class="reassess-panel">
+          <div class="reassess-head">
+            <div>
+              <h4>🔄 6. Reevaluation & Verlauf</h4>
+              <p>Beurteile nach Anamnese, Diagnostik und Versorgung den Verlauf erneut.</p>
+            </div>
+            <div id="reassessmentCount" class="reassess-count">0 Checks</div>
+          </div>
+          <div id="reassessmentButtons" class="reassess-actions"></div>
+          <div id="reassessmentStatus" class="reassess-status">Noch keine Reevaluation durchgeführt.</div>
+          <div id="reassessmentNotes" class="reassess-log"></div>
+        </section>
+
         <section id="dispositionPanel" class="disposition-panel">
           <div class="disposition-head">
             <div>
-              <h4>🏥 6. Disposition & Sicherheitscheck</h4>
+              <h4>🏥 7. Disposition & Übergabe</h4>
               <p>Entscheide, wo der Patient nach deiner Erstversorgung weiterbetreut wird.</p>
             </div>
             <div class="disposition-required">IM REALISMUS PFLICHT</div>
@@ -2132,8 +2183,10 @@ body.home-nav-active #app{padding-bottom:102px}
           <div class="safety-checks">
             <button id="safetyAllergyBtn" type="button" class="safety-check" onclick="toggleSafetyCheck('allergy')">☐ Allergien geprüft</button>
             <button id="safetyMedicationBtn" type="button" class="safety-check" onclick="toggleSafetyCheck('medication')">☐ Medikation / Risiken geprüft</button>
+            <button id="safetyFollowupBtn" type="button" class="safety-check" onclick="toggleSafetyCheck('followup')">☐ Warnzeichen / Follow-up erklärt</button>
           </div>
           <div id="dispositionStatus" class="disposition-status">Noch keine Disposition gewählt.</div>
+          <div class="handover-note">Eine saubere Übergabe bzw. Entlassungskommunikation verbessert im Realismusmodus die klinische Qualität.</div>
         </section>
 
         <div id="caseSelectionStatus" class="case-selection-status">Noch keine Diagnose und Behandlung gewählt.</div>
@@ -3679,9 +3732,13 @@ function renderDisposition(){
     $('safetyMedicationBtn').className='safety-check'+(checks.has('medication')?' checked':'');
     $('safetyMedicationBtn').textContent=(checks.has('medication')?'☑':'☐')+' Medikation / Risiken geprüft';
   }
+  if($('safetyFollowupBtn')){
+    $('safetyFollowupBtn').className='safety-check'+(checks.has('followup')?' checked':'');
+    $('safetyFollowupBtn').textContent=(checks.has('followup')?'☑':'☐')+' Warnzeichen / Follow-up erklärt';
+  }
   if(status){
     const chosen=dispositionOptions.find(x=>x.id===selectedDisposition);
-    status.textContent=chosen?`Disposition: ${chosen.icon} ${chosen.name} • Sicherheitschecks ${checks.size}/2`:'Noch keine Disposition gewählt.';
+    status.textContent=chosen?`Disposition: ${chosen.icon} ${chosen.name} • Übergabe ${checks.size}/3`:'Noch keine Disposition gewählt.';
   }
 }
 function toggleSafetyCheck(key){
@@ -3708,13 +3765,108 @@ function realismVitalTrend(){
 }
 function realismSafetyScore(){
   if(!state.realismMode||!realismCase||!realismCase.safetyChecks)return 0;
-  return realismCase.safetyChecks.size===2?1:realismCase.safetyChecks.size===1?.5:0;
+  return Math.max(0,Math.min(1,(realismCase.safetyChecks.size||0)/3));
+}
+function newReassessmentState(){
+  return {vitals:0,response:0,notes:[],lastNote:'Noch keine Reevaluation durchgeführt.'};
+}
+function reassessmentTotal(){
+  if(!reassessmentState)return 0;
+  return (reassessmentState.vitals||0)+(reassessmentState.response||0);
+}
+function reassessmentQuality(){
+  if(!state.realismMode||!reassessmentState)return 0;
+  let q=0;
+  if((reassessmentState.vitals||0)>0)q+=0.45;
+  if((reassessmentState.response||0)>0)q+=0.55;
+  if(selectedTreatment&&selectedTreatment===current.correctTreatment&&(reassessmentState.response||0)>0)q+=0.10;
+  return Math.max(0,Math.min(1,q));
+}
+function addReassessmentNote(text,type='neutral'){
+  if(!reassessmentState)return;
+  reassessmentState.lastNote=text;
+  reassessmentState.notes.unshift({text,type});
+  reassessmentState.notes=reassessmentState.notes.slice(0,4);
+}
+function performReassessment(kind){
+  if(!state.realismMode||!run||!current||!reassessmentState)return;
+  const cost=kind==='response'?2:1;
+  if(run.timeLeft<cost){toast('Zu wenig Zeit für Reevaluation.');return}
+  run.timeLeft-=cost;
+  markFlowStation(current.urgency==='high'?'emergency':'exam',cost);
+  conditionDecayForTime(cost,'Reevaluation');
+  let note='Reevaluation durchgeführt.';
+  let type='neutral';
+  let delta=0;
+  if(kind==='vitals'){
+    reassessmentState.vitals=(reassessmentState.vitals||0)+1;
+    const trend=realismVitalTrend().text;
+    note=trend.includes('↘')
+      ?'Erneuter Vitalcheck: Verlauf im Spiel weiter aufmerksam beobachten.'
+      :'Erneuter Vitalcheck: derzeit keine zusätzliche Verschlechterung erkennbar.';
+    if(current.urgency==='high'&&!conditionState.stabilized)delta-=1;
+  }else{
+    reassessmentState.response=(reassessmentState.response||0)+1;
+    if(selectedTreatment){
+      if(selectedTreatment===current.correctTreatment){
+        delta+=(current.urgency==='high'?4:3);
+        note='Therapieansprechen: Unter der gewählten Versorgung wirkt der Patient im Trainingsfall stabiler.';
+        type='good';
+      }else{
+        delta-=3;
+        note='Therapieansprechen: Unter der aktuellen Versorgung zeigt sich kein überzeugender klinischer Nutzen.';
+        type='bad';
+      }
+    }else{
+      delta-=1;
+      note='Therapieansprechen: Noch keine Behandlung gewählt – Verlauf nur eingeschränkt beurteilbar.';
+      type='bad';
+    }
+  }
+  if(delta!==0){
+    changeCondition(delta,note,delta>0?'good':'bad');
+    type=delta>0?'good':'bad';
+  }else{
+    pushConditionEvent(note,type);
+    renderConditionPanel();
+  }
+  addReassessmentNote(note,type);
+  renderReassessment();
+  renderRealismWorkup();
+  updateSubmit();
+  updateHud();
+  save();
+}
+function renderReassessment(){
+  const panel=$('reassessmentPanel'),buttons=$('reassessmentButtons'),status=$('reassessmentStatus'),notes=$('reassessmentNotes');
+  if(!panel||!buttons||!status||!notes)return;
+  panel.style.display=state.realismMode?'block':'none';
+  if(!state.realismMode)return;
+  const total=reassessmentTotal();
+  if($('reassessmentCount'))$('reassessmentCount').textContent=`${total} Checks`;
+  buttons.innerHTML='';
+  const items=[
+    {kind:'vitals',title:'❤️ Vitalwerte erneut prüfen',meta:'1 min • Verlauf & Monitoring'},
+    {kind:'response',title:'💊 Therapieansprechen beurteilen',meta:'2 min • ideal nach Behandlung'}
+  ];
+  items.forEach(item=>{
+    const btn=document.createElement('button');
+    btn.type='button';
+    btn.className='reassess-btn';
+    btn.innerHTML=`${item.title}<small>${item.meta}</small>`;
+    btn.onclick=()=>performReassessment(item.kind);
+    buttons.appendChild(btn);
+  });
+  status.textContent=reassessmentState&&reassessmentState.lastNote?reassessmentState.lastNote:'Noch keine Reevaluation durchgeführt.';
+  notes.innerHTML=(reassessmentState&&reassessmentState.notes&&reassessmentState.notes.length)
+    ?reassessmentState.notes.map(n=>`<div class="reassess-note ${n.type||'neutral'}">${n.text}</div>`).join('')
+    :'<div class="reassess-note neutral">Noch keine Verlaufsnotiz vorhanden.</div>';
 }
 
 function toggleRealismMode(){
   state.realismMode=!state.realismMode;
   save();
-  toast(state.realismMode?'🩺 Clinical Realism 2.0 aktiviert.':'⚡ Erweiterter Realismus deaktiviert.');
+  toast(state.realismMode?'🩺 Reevaluation & Handover aktiviert.':'⚡ Erweiterter Realismus deaktiviert.');
 }
 function realismHash(text){
   let h=0;
@@ -3945,6 +4097,7 @@ function renderRealismWorkup(){
     if(current.urgency==='high'&&score<50)advice.textContent='🚨 Dringlicher Fall: Stabilität und zielgerichtete Akutdiagnostik haben Vorrang.';
     else if(historyScore()<45&&examined.size===0)advice.textContent='💬 Die klinische Grundlage ist noch dünn. Gezielte Anamnese kann unnötige Diagnostik vermeiden.';
     else if(physicalExamCoverage()<0.35)advice.textContent='🩺 Die körperliche Untersuchung ist noch sehr knapp. Ein gezielter klinischer Befund kann die Diagnostik besser ausrichten.';
+    else if(selectedTreatment&&reassessmentTotal()===0)advice.textContent='🔄 Nach einer Behandlung ist eine kurze Reevaluation sinnvoll. Das verbessert Realismus und Qualitätswertung.';
     else if(broad>0)advice.textContent='🧪 Einige Untersuchungen wurden sehr früh angeordnet. Eine klarere klinische Fragestellung verbessert die Qualitätswertung.';
     else if(score>=85)advice.textContent='✅ Gute klinische Arbeitsgrundlage: Anamnese und Befunde sind ausreichend dokumentiert.';
     else advice.textContent=`📋 Status: ${realismWorkupLabel()}. Weitere gezielte Informationen können die Entscheidung absichern.`;
@@ -3961,16 +4114,19 @@ function clinicalQualityFor(diagOK,treatOK,dispositionOK){
   const evidence=clinicalEvidenceScore();
   const broad=realismCase?realismCase.broadTests:0;
   const safety=realismSafetyScore();
+  const reassessment=reassessmentQuality();
   let score=
-    (diagOK?20:0)+
-    (treatOK?15:0)+
-    (dispositionOK?15:0)+
-    Math.round(evidence*.35)+
-    Math.round(safety*10)+
-    Math.max(0,5-broad*3);
+    (diagOK?18:0)+
+    (treatOK?14:0)+
+    (dispositionOK?14:0)+
+    Math.round(evidence*.30)+
+    Math.round(safety*12)+
+    Math.round(reassessment*12)+
+    Math.max(0,6-broad*3);
   if(current&&current.urgency==='high'&&protocolOutcome&&protocolOutcome.attempted&&protocolOutcome.correct)score+=5;
+  if(current&&current.urgency!=='normal'&&reassessmentTotal()===0)score-=4;
   score=Math.max(0,Math.min(100,Math.round(score)));
-  return {score,xp:score>=92?15:score>=82?10:score>=72?5:0,label:score>=92?'EXZELLENT':score>=82?'SEHR GUT':score>=72?'SOLIDE':score>=58?'AUSREICHEND':'LÜCKENHAFT'};
+  return {score,xp:score>=93?16:score>=84?11:score>=74?6:0,label:score>=93?'EXZELLENT':score>=84?'SEHR GUT':score>=74?'SOLIDE':score>=60?'AUSREICHEND':'LÜCKENHAFT'};
 }
 function clinicalQualityClass(score){return score>=80?'quality-good':score>=60?'quality-mid':'quality-low';}
 function buildClinicalSummary(diagOK,treatOK,dispositionOK,quality){
@@ -3989,7 +4145,8 @@ function buildClinicalSummary(diagOK,treatOK,dispositionOK,quality){
     <b>Versorgungsentscheidung:</b> ${selectedTreatment} ${treatOK?'✓':'✗'}<br>
     <b>Disposition:</b> ${dispositionLabel(selectedDisposition)} ${dispositionOK?'✓':'✗'}<br>
     <b>Körperliche Untersuchung:</b> ${physicalExamState?physicalExamState.done.size:0}/4 Schritte<br>
-    <b>Sicherheitscheck:</b> ${realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0}/2<br>
+    <b>Reevaluation:</b> ${reassessmentTotal()} Checks • ${reassessmentState&&reassessmentState.lastNote?reassessmentState.lastNote:'keine'}<br>
+    <b>Übergabe / Follow-up:</b> ${realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0}/3<br>
     <b>Klinische Qualität:</b> ${quality.score}/100 • ${quality.label}<br>
     <br><span style="color:var(--muted)">Fiktiver Spielbericht – keine medizinische Dokumentation oder Behandlungsanweisung.</span>`;
 }
@@ -5086,7 +5243,8 @@ const achievements = [
   {id:'clinicalQuality10', name:'Klinisch sauber', desc:'Schließe 10 Fälle mit mindestens 80 klinischer Qualität ab.'},
   {id:'quality95', name:'Saubere Dokumentation', desc:'Erreiche in einem Fall mindestens 95 klinische Qualität.'},
   {id:'disposition20', name:'Richtiger nächster Schritt', desc:'Triff 20 korrekte Dispositionsentscheidungen im Realismusmodus.'},
-  {id:'safety10', name:'Sicherheitsroutine', desc:'Schließe bei 10 Fällen beide Sicherheitschecks ab.'}
+  {id:'safety10', name:'Sicherheitsroutine', desc:'Schließe bei 10 Fällen alle Übergabe-Checks ab.'},
+  {id:'reassess15', name:'Engmaschig betreut', desc:'Führe in 15 Fällen mindestens eine Reevaluation durch.'}
 ];
 
 const missions = [
@@ -5231,7 +5389,9 @@ const defaultState = {
   correctDispositions:0,
   physicalExamActions:0,
   fullSafetyChecks:0,
-  realismPerfectCases:0
+  realismPerfectCases:0,
+  reassessmentCases:0,
+  completeHandoverCases:0
 };
 
 let state;
@@ -5359,6 +5519,8 @@ state.correctDispositions=Number.isFinite(Number(state.correctDispositions))&&Nu
 state.physicalExamActions=Number.isFinite(Number(state.physicalExamActions))&&Number(state.physicalExamActions)>=0?Math.floor(Number(state.physicalExamActions)):0;
 state.fullSafetyChecks=Number.isFinite(Number(state.fullSafetyChecks))&&Number(state.fullSafetyChecks)>=0?Math.floor(Number(state.fullSafetyChecks)):0;
 state.realismPerfectCases=Number.isFinite(Number(state.realismPerfectCases))&&Number(state.realismPerfectCases)>=0?Math.floor(Number(state.realismPerfectCases)):0;
+state.reassessmentCases=Number.isFinite(Number(state.reassessmentCases))&&Number(state.reassessmentCases)>=0?Math.floor(Number(state.reassessmentCases)):0;
+state.completeHandoverCases=Number.isFinite(Number(state.completeHandoverCases))&&Number(state.completeHandoverCases)>=0?Math.floor(Number(state.completeHandoverCases)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -5380,7 +5542,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, examined=new Set(), physicalExamState=null, soundOn=true;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, examined=new Set(), physicalExamState=null, reassessmentState=null, soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -6872,7 +7034,7 @@ function renderModeUI(){
   if($('realismToggle')){
     $('realismToggle').className='realism-toggle'+(state.realismMode?'':' off');
     $('realismToggle').innerHTML=state.realismMode
-      ?'🩺 Realismus: CLINICAL 2.0<small>Patientenakte • körperliche Untersuchung • Diagnostik • Disposition • Sicherheitschecks</small>'
+      ?'🩺 Realismus: VOLLSTATION 3.0<small>körperliche Untersuchung • Verlauf/Reevaluation • Disposition • Übergabe • Follow-up</small>'
       :'⚡ Realismus: STANDARD<small>Klassische Doctor-Rush-Diagnoseauswahl ohne erweiterten Klinik-Workflow</small>';
   }
   if($('homeCampaignMeta')){
@@ -7048,7 +7210,7 @@ function ageWaitingPatients(){
 }
 
 function loadPatient(){
-  selectedDiagnosis=null;selectedTreatment=null;selectedDisposition=null;examined=new Set();physicalExamState=newPhysicalExamState();
+  selectedDiagnosis=null;selectedTreatment=null;selectedDisposition=null;examined=new Set();physicalExamState=newPhysicalExamState();reassessmentState=newReassessmentState();
   patientFlow=newPatientFlow(current);
   historyState=newHistoryState(current);
   conditionState=newConditionState(current);
@@ -7072,7 +7234,7 @@ function loadPatient(){
   renderPatientRecord();
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderDisposition();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=run.timeLeft;renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -7122,6 +7284,7 @@ function renderTreatmentButtons(){
       [...box.children].forEach(b=>b.classList.remove('selected'));
       btn.classList.add('selected');
       beep(700);
+      renderReassessment();
       updateSubmit();
     };
     box.appendChild(btn);
@@ -7142,7 +7305,7 @@ function updateSubmit(){
     if(ready){
       const safety=state.realismMode&&realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0;
       status.textContent=state.realismMode
-        ?`Diagnose + Behandlung + ${dispositionLabel(selectedDisposition)} • Sicherheitscheck ${safety}/2`
+        ?`Diagnose + Behandlung + ${dispositionLabel(selectedDisposition)} • Übergabe ${safety}/3 • Reevaluation ${reassessmentTotal()}`
         :`Diagnose: ${selectedDiagnosis} • Behandlung gewählt ✓`;
     }else if(!hasDiag)status.textContent='Jetzt Diagnose wählen.';
     else if(!hasTreat)status.textContent=`Diagnose: ${selectedDiagnosis} • Jetzt Behandlung wählen.`;
@@ -7247,7 +7410,11 @@ function finishCase(){
       else state.broadTestingCases=(state.broadTestingCases||0)+1;
       if(clinicalQuality.score>=80)state.highQualityCases=(state.highQualityCases||0)+1;
       if(dispositionOK)state.correctDispositions=(state.correctDispositions||0)+1;
-      if(realismCase&&realismCase.safetyChecks&&realismCase.safetyChecks.size===2)state.fullSafetyChecks=(state.fullSafetyChecks||0)+1;
+      if(realismCase&&realismCase.safetyChecks&&realismCase.safetyChecks.size===3){
+        state.fullSafetyChecks=(state.fullSafetyChecks||0)+1;
+        state.completeHandoverCases=(state.completeHandoverCases||0)+1;
+      }
+      if(reassessmentTotal()>0)state.reassessmentCases=(state.reassessmentCases||0)+1;
       if(diagOK&&treatOK&&dispositionOK&&clinicalQuality.score>=82)state.realismPerfectCases=(state.realismPerfectCases||0)+1;
     }
     recordCasebook(current,diagOK,perfect);
@@ -7282,8 +7449,9 @@ function finishCase(){
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
       ${state.realismMode?`<div class='result-line'><span>Disposition</span><b>${dispositionOK?'✅ '+dispositionLabel(selectedDisposition):'❌ '+dispositionLabel(selectedDisposition)}</b></div>
-      <div class='result-line'><span>Sicherheitschecks</span><b>${realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0}/2</b></div>
-      <div class='result-line'><span>Körperliche Untersuchung</span><b>${physicalExamState?physicalExamState.done.size:0}/4</b></div>`:''}
+      <div class='result-line'><span>Übergabe / Follow-up</span><b>${realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0}/3</b></div>
+      <div class='result-line'><span>Körperliche Untersuchung</span><b>${physicalExamState?physicalExamState.done.size:0}/4</b></div>
+      <div class='result-line'><span>Reevaluation</span><b>${reassessmentTotal()} Checks</b></div>`:''}
       <div class='result-line'><span>Belohnung</span><b>+${reward} €</b></div>
       ${prestigeBonus>0?`<div class='result-line'><span>Kampagnen-Prestige</span><b>+${prestigeBonus} €</b></div>`:''}
       ${contractBonus>0?`<div class='result-line'><span>Versorgungsvertrag</span><b>+${contractBonus} €</b></div>`:''}
@@ -7305,6 +7473,7 @@ function finishCase(){
       <div class='result-line'><span>Anamnese</span><b class='${historyScore()>=60?'result-diagnostic-good':'result-diagnostic-mid'}'>${historyScore()}/100 • ${historyState?historyState.asked.size:0} Fragen</b></div>
       ${state.realismMode?`<div class='result-line'><span>Klinische Qualität</span><b class='${clinicalQualityClass(clinicalQuality.score)}'>${clinicalQuality.score}/100 • ${clinicalQuality.label}</b></div>
       <div class='result-line'><span>Diagnostikstrategie</span><b>${realismCase&&realismCase.broadTests?`⚠️ ${realismCase.broadTests} sehr frühe Tests`:'✅ gezielt'}</b></div>
+      <div class='result-line'><span>Therapieverlauf</span><b>${reassessmentTotal()>0?(reassessmentQuality()>=0.8?'✅ reevaluiert':'🟡 teilweise reevaluiert'):'⚠️ keine Reevaluation'}</b></div>
       ${clinicalQuality.xp>0?`<div class='result-line'><span>Realismus-Bonus</span><b>+${clinicalQuality.xp} XP</b></div>`:''}`:''}
       <div class='result-line'><span>Klinik-Flow</span><b class='${flowScore>=78?'result-flow-good':'result-flow-mid'}'>${flowScore} • ${flowRatingText(flowScore)}</b></div>
       <div class='result-line'><span>Fallzeit</span><b>${patientFlow?patientFlow.minutes:0} min</b></div>
@@ -7400,6 +7569,7 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('quality95',(state.bestClinicalQuality||0)>=95);
   check('disposition20',(state.correctDispositions||0)>=20);
   check('safety10',(state.fullSafetyChecks||0)>=10);
+  check('reassess15',(state.reassessmentCases||0)>=15);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
