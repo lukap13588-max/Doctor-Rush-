@@ -1,4 +1,4 @@
-# Doctor Rush v0.26 – REASSESSMENT & HANDOVER
+# Doctor Rush v0.27 – DIAGNOSTIC REASONING
 
 ## Dateien
 
@@ -9,118 +9,121 @@ Die README liegt zusätzlich als ZIP bei.
 
 ## GitHub-Update
 
-1. Die bisherige `index.html` im Repository ersetzen.
+1. Die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Die Seite einmal mit `?v=0.26` öffnen.
+3. Doctor Rush einmal mit `?v=0.27` öffnen.
 
 ---
 
-# Was ist neu?
+# Hauptziel
 
-v0.26 macht den Ablauf nach der ersten Behandlung realistischer.
+v0.27 macht das diagnostische Denken realistischer. Der Spieler wählt nicht mehr nur eine Diagnose, sondern baut vorher eine priorisierte Differentialdiagnose auf und gibt anschließend seine Diagnosesicherheit an.
 
-Der neue klinische Weg lautet jetzt:
+# 🧠 Differentialdiagnosen
 
-1. Anamnese
-2. Körperliche Untersuchung
-3. Diagnostik
-4. Diagnose
-5. Behandlung
-6. Reevaluation / Verlauf
-7. Disposition / Übergabe
+Im Realismusmodus kannst du bis zu drei mögliche Diagnosen priorisieren.
 
----
+Die Reihenfolge zählt:
 
-# 🔄 Reevaluation & Verlauf
+1. führende Differentialdiagnose
+2. zweite Möglichkeit
+3. dritte Möglichkeit
 
-Neu gibt es eine eigene Sektion für die erneute klinische Beurteilung.
+Die klinische Qualitätswertung berücksichtigt jetzt, ob die korrekte Diagnose überhaupt in deiner Differentialliste vorkam und ob du sie an die Spitze gesetzt hast.
 
-Möglichkeiten:
+# 🎯 Diagnosesicherheit
 
-## Vitalwerte erneut prüfen
-- 1 Minute
-- sinnvoll für Monitoring und Verlauf
+Nach Auswahl deiner Arbeitsdiagnose gibst du an, wie sicher du bist:
 
-## Therapieansprechen beurteilen
-- 2 Minuten
-- ideal nach der Behandlungsentscheidung
+- NIEDRIG
+- MITTEL
+- HOCH
 
-Die Reevaluation erzeugt Verlaufsnotizen und wirkt sich auf den dynamischen Patientenzustand aus.
+Das Spiel bewertet die Kalibrierung. Hohe Sicherheit bei einer korrekten, gut belegten Diagnose wird belohnt. Hohe Sicherheit bei einer falschen Diagnose verschlechtert die Qualitätswertung stärker.
 
-Sie ist besonders bei dringenden oder erhöhten Fällen wertvoll.
+# 📞 Fachkonsil
 
----
+Optional kannst du eine zweite Einschätzung anfordern.
 
-# 🧠 Klinische Qualität jetzt noch realistischer
+- kostet 45 €
+- kostet 3 Minuten
+- nennt nicht direkt die richtige Diagnose
+- gibt eine fachbezogene Einschätzung zur Befundkonstellation
 
-Die Qualitätswertung berücksichtigt nun zusätzlich:
+Ein Konsil ist besonders sinnvoll bei dringenden, unklaren oder klinisch noch schwach belegten Fällen. Wahlloses Konsilieren bringt keinen maximalen Qualitätsbonus.
 
-- Reevaluation nach Versorgung
-- Verlaufskontrolle
-- saubere Übergabe / Follow-up
-- bisherige Sicherheitschecks
+# 📊 Strukturierte Befundberichte
+
+Labor, EKG und Bildgebung werden im Realismusmodus strukturierter dargestellt.
+
+Beispiele:
+
+- Blutbild mit getrennten Befundzeilen
+- Entzündungsmarker
+- Glukose
+- Urinbefunde
+- kardiale Marker
+- EKG-Rhythmus / Beurteilung
+- Bildgebung / Beurteilung
+
+Es werden bewusst keine verbindlichen Referenzbereiche oder Dosierungsanweisungen eingebaut.
+
+# 🕒 Zeitlicher Krankheitsverlauf
+
+Die Patientenakte enthält jetzt zusätzlich einen Verlaufseintrag, zum Beispiel:
+
+- akuter Beginn
+- subakuter Verlauf
+- zunehmende Beschwerden
+- stabiler kurzer Verlauf
+
+Damit kann die zeitliche Entwicklung stärker in die klinische Entscheidung einbezogen werden.
+
+# ✅ Klinische Qualität 4.0
+
+Die Qualitätswertung berücksichtigt jetzt zusätzlich:
+
+- Differentialdiagnosen
+- Rang der korrekten Differentialdiagnose
+- Diagnosesicherheit
+- Kalibrierung der Sicherheit
+- sinnvolle Nutzung eines Konsils
 - Anamnese
 - körperliche Untersuchung
-- Diagnostik
-- Diagnose
+- technische Diagnostik
 - Behandlung
+- Reevaluation
 - Disposition
-
-Wer den Patienten nur schnell diagnostiziert, aber den Verlauf nicht erneut beurteilt, bekommt jetzt eher eine schwächere Qualitätswertung.
-
----
-
-# 🏥 Übergabe / Follow-up
-
-Die Disposition enthält jetzt einen dritten realistischen Kommunikationspunkt:
-
-- Allergien geprüft
-- Medikation / Risiken geprüft
-- Warnzeichen / Follow-up erklärt
-
-Dadurch fühlt sich insbesondere der Abschluss ambulanter oder beobachteter Fälle realistischer an.
-
----
-
-# 📄 Klinischer Kurzbrief erweitert
-
-Der Kurzbrief enthält jetzt zusätzlich:
-
-- Anzahl der Reevaluations-Checks
-- letzte Verlaufsnotiz
 - Übergabe / Follow-up
-- Disposition
-- klinische Qualität
 
----
+Damit wird der Weg zur Diagnose deutlich wichtiger als nur die richtige Endantwort.
 
-# 🏆 Neuer Erfolg
+# 📄 Kurzbrief erweitert
 
-## Engmaschig betreut
-Führe in 15 Fällen mindestens eine Reevaluation durch.
+Der klinische Kurzbrief enthält jetzt zusätzlich:
 
-Der bestehende Sicherheits-Erfolg bezieht sich jetzt auf alle Übergabe-Checks.
+- priorisierte Differentialdiagnosen
+- Arbeitsdiagnose
+- Diagnosesicherheit
+- ggf. angefordertes Konsil
 
----
+# 🏆 Neue Erfolge
 
-# Neue Statistiken
+## Differentialdiagnostiker
+20-mal die richtige Diagnose als führende Differentialdiagnose priorisieren.
 
-Zusätzlich gespeichert werden jetzt:
-
-- Anzahl der Fälle mit Reevaluation
-- Anzahl vollständiger Übergaben / Follow-up-Fälle
-
----
+## Gut kalibriert
+15-mal die Diagnosesicherheit passend einschätzen.
 
 # Technisch
 
-- weiterhin nur eine einzige `index.html`
+- weiterhin nur eine `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.25-Spielstand kompatibel
+- v0.26-Spielstand kompatibel
 - keine externen JS-/CSS-Dateien
 - kein Service Worker
 - JavaScript-Syntaxprüfung: OK
 - One-File-Prüfung: OK
-- keine Medikamentendosierungen hinzugefügt
+- keine neuen Medikamentendosierungen
 
 > Die medizinischen Inhalte sind vereinfachtes, fiktives Gameplay und keine medizinische Beratung.
