@@ -1,92 +1,83 @@
-# Doctor Rush v0.31 – COMPACT CLINICAL UI
+# Doctor Rush v0.32 – VISUAL DIAGNOSTICS
 
 ## Dateien
 - `index.html`
 - `README.md`
 
 ## GitHub
-1. Alte `index.html` ersetzen.
+1. Die bisherige `index.html` ersetzen.
 2. Commit speichern.
-3. Einmal mit `?v=0.31` öffnen.
+3. Danach einmal mit `?v=0.32` öffnen.
 
-# Hauptänderung
+# Hauptneuerung
 
-Der Patientenbildschirm war wieder zu lang.
+Doctor Rush hat jetzt erstmals **visuelle Diagnostik**.
 
-Ab v0.31 wird der Patientenfall in feste Bereiche aufgeteilt:
+Bestimmte Untersuchungen erzeugen nicht nur Textbefunde, sondern zusätzlich ein kleines Bildfenster.
 
-- 👤 Übersicht
-- 💬 Anamnese
-- 🩺 Untersuchung
-- 🧪 Diagnostik
-- ✅ Entscheidung
+## Enthalten in v0.32
 
-**Immer nur ein Bereich ist gleichzeitig geöffnet.**
+### 📈 EKG-Fenster
+Je nach Fall erscheinen visuelle EKG-Befunde, zum Beispiel:
+- unauffälliges EKG
+- Sinustachykardie
+- Bradykardie
+- Vorhofflimmern
+- ST-Hebungs-Muster / STEMI
 
-Die Leiste bleibt beim Scrollen sichtbar.
+### 🩻 Röntgen-Fenster
+Je nach Fall erscheinen visuelle Röntgenbilder, zum Beispiel:
+- unauffälliger Thorax
+- Pneumonie / Infiltrat
+- Pneumothorax
+- Frakturhinweis
 
-## Einsteiger
-Einsteiger sehen nur:
-- Übersicht
-- Entscheidung
+## So funktioniert es
 
-## Klinisch / Profi
-Alle fünf Bereiche sind verfügbar.
+Wenn eine passende Untersuchung durchgeführt wurde, erscheint im Befundbereich ein Button:
 
-## Übersicht
-Enthält je nach Schwierigkeit:
-- Patientenakte
-- Patientenweg
-- Patientenzustand
-- Notfallbereich
-- Einsteiger-Hilfe
+**Bild ansehen**
 
-Der Live-Vitalmonitor bleibt direkt bei der Patientenkarte.
+Darüber öffnet sich ein eigenes Fenster.
 
-## Anamnese
-Nur die Anamnese ist offen.
-Danach führt ein Button direkt zur Untersuchung.
+## Schwierigkeit
 
-## Untersuchung
-Nur die körperliche Untersuchung ist offen.
-Danach direkt zur Diagnostik.
+### 🌱 Einsteiger
+- einfache Erklärung
+- Fokus: auffällig vs. unauffällig
 
-## Diagnostik
-Enthält:
-- Untersuchungen
-- Befunde
-- klinische Arbeitsgrundlage
-- Profi-Differentialdiagnosen
-- Konsile
-- verzögerte Befunde
+### 🩺 Klinisch
+- Bild + schriftlicher Befund
+- mehr Kontext zur Interpretation
 
-## Entscheidung
-Enthält:
-- Arbeitsdiagnose
-- Behandlung
-- Eingriff
-- Reevaluation
-- Disposition
-- Übergabe
-- Fallabschluss
+### 🧠 Profi
+- Bild bleibt wichtiges Interpretationselement
+- keine komplette Lösung wird direkt vorgegeben
+- gedacht als Teil des klinischen Reasonings
 
-## Patientenkarte
-Dauerhaft sichtbar bleiben nur die wichtigsten Dinge:
-- Patient
-- Beschwerden
-- Dringlichkeit
-- Vitalmonitor
+## UI
 
-Die ausführliche Patientenakte liegt im Tab Übersicht.
+Die Bilddiagnostik öffnet sich als eigenes Fenster über dem Spiel – ähnlich wie der Vitalmonitor.
+
+Schließen über:
+- X oben rechts
+- Tippen außerhalb
+- Escape auf Geräten mit Tastatur
+
+## Bestehende Systeme bleiben erhalten
+- kompakte klinische Tabs
+- drei Schwierigkeitsstufen
+- Live-Vitalmonitor
+- kein Schicht-Countdown
+- Kampagne und freie Schicht
 
 ## Technisch
-- eine `index.html`
-- Save-Key `doctorRushSaveV3`
-- v0.30-Spielstand kompatibel
-- Live-Vitalmonitor bleibt erhalten
-- drei Schwierigkeitsstufen bleiben erhalten
-- kein Schicht-Countdown
+- weiterhin nur eine `index.html`
+- Save-Key bleibt `doctorRushSaveV3`
+- v0.31-Spielstände kompatibel
+- keine externen Dateien
+- kein Service Worker
 - JavaScript-Syntaxprüfung: OK
 - One-File-Prüfung: OK
 
-> Medizinische Inhalte sind vereinfachtes, fiktives Gameplay.
+> Alle Bildbefunde sind stilisierte, fiktive Spielsimulationen und kein echtes medizinisches Referenzmaterial.
