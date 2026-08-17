@@ -1,244 +1,219 @@
-# Doctor Rush v0.24 – CLINICAL REALISM
+# Doctor Rush v0.25 – CLINICAL REALISM 2.0
 
 ## Dateien
 
 - `index.html`
 - `README.md`
 
-Die `README.md` liegt zusätzlich als ZIP bei.
+Die README liegt zusätzlich als ZIP bei.
 
 ## GitHub-Update
 
-1. Im Doctor-Rush-Repository nur die bisherige `index.html` ersetzen.
+1. Die bisherige `index.html` im Doctor-Rush-Repository ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.24` öffnen.
+3. Einmal mit `?v=0.25` öffnen.
 
 ---
 
-# Ziel von v0.24
+# Was ist neu?
 
-Diese Version baut bewusst keine neue Story-Stufe.
+v0.25 verändert nicht nur die Anzeige, sondern den gesamten Patientenablauf.
 
-Stattdessen wird das eigentliche Patienten-Gameplay realistischer.
+## Neuer realistischer Ablauf
 
-Der Realismus entsteht vor allem durch:
+1. Anamnese
+2. Körperliche Untersuchung
+3. Diagnostik
+4. Diagnose
+5. Behandlung
+6. Disposition & Sicherheitscheck
 
-- klinischen Ablauf
-- Patientenakte
-- zusätzliche Vitalparameter
-- plausiblere Differentialdiagnosen
-- gezieltere Diagnostik
-- Dokumentation
-- Qualitätsbewertung
-
-Es werden bewusst keine Medikamentendosierungen oder detaillierten medizinischen Handlungsanweisungen eingebaut.
+Damit endet ein Fall nicht mehr automatisch nach Diagnose und Behandlung.
 
 ---
 
-# 🩺 Erweiterter Realismus
+# 🩺 Körperliche Untersuchung
 
-Auf der Startseite gibt es jetzt einen Schalter:
+Zwischen Anamnese und technischer Diagnostik gibt es jetzt eine eigene klinische Untersuchung.
 
-## Realismus: ERWEITERT
-
-Dieser Modus ist nach dem Update standardmäßig aktiviert.
-
-Du kannst ihn jederzeit deaktivieren.
-
-Bei deaktiviertem Realismus bleibt der klassische Doctor-Rush-Ablauf erhalten.
-
----
-
-# 📋 Neue Patientenakte
-
-Jeder normale Patientenfall besitzt jetzt eine aufklappbare Patientenakte.
-
-Sie zeigt im Spiel:
-
-- Triage-Einstufung
-- Allergien
-- Dauermedikation
-- relevante Vorerkrankungen
-- Risikoprofil
-- zusätzliche Vitalwerte
-
-Die Akte ist einklappbar, damit das mobile Layout nicht wieder unnötig lang wird.
-
----
-
-# ❤️ Mehr Vitalwerte
-
-Zusätzlich zu Puls, Temperatur, Sauerstoffsättigung und Blutdruck gibt es jetzt:
-
-- Atemfrequenz
-- vereinfachte Schmerzskala 0–10
-
-Die zusätzlichen Werte werden für jeden Fall passend zu Dringlichkeit und Falltyp erzeugt.
-
----
-
-# 🟢🟡🔴 Vitalwerte werden bewertet
-
-Vitalwerte bekommen im erweiterten Realismus eine visuelle Spielbewertung:
-
-- normal
-- auffällig
-- deutlich auffällig
-
-Dadurch erkennst du schneller, ob ein Patient physiologisch stabil wirkt.
-
-Die Bewertung dient nur dem Spiel und ersetzt keine reale medizinische Beurteilung.
-
----
-
-# 🧠 Plausiblere Differentialdiagnosen
-
-Bisher waren einige falsche Diagnosemöglichkeiten sehr offensichtlich.
-
-Im erweiterten Realismus verwendet das Spiel jetzt fallbezogene Differentialdiagnose-Pools.
+Je nach Falltyp stehen passende Untersuchungen zur Verfügung.
 
 Beispiele:
 
-## Atemwege
-- Pneumonie
-- Asthma-Exazerbation
-- COPD-Exazerbation
-- Lungenembolie
-- Panikattacke
+- Allgemeinzustand
+- Kreislauf / Perfusion
+- Lunge
+- Herzrhythmus
+- neurologischer Kurzstatus
+- Abdomen
+- Nierenlager
+- Gefäßstatus
+- Hautbefund
+- Funktion / Beweglichkeit
 
-## Neurologie
-- Migräne
-- Schlaganfall
-- Hirnblutung
-- Lagerungsschwindel
-- Gehirnerschütterung
+Die Untersuchungen:
 
-## Bauch
-- Appendizitis
-- Gastroenteritis
-- Gallenkolik
-- Cholezystitis
-- Pankreatitis
-- Nierenstein
+- kosten kein Geld
+- benötigen aber Zeit
+- liefern eigene Befunde
+- verbessern die klinische Arbeitsgrundlage
 
-Die richtige Diagnose bleibt immer enthalten.
-
-Die Reihenfolge wird pro Patient deterministisch gemischt.
+Damit ist „sofort alle Tests anklicken“ deutlich weniger sinnvoll.
 
 ---
 
-# 🔬 Untersuchungen wirken klinischer
+# 🧠 Evidenz-Score neu berechnet
 
-Untersuchungen sind jetzt sichtbar kategorisiert:
-
-- KLINISCH
-- LABOR
-- BILDGEBUNG
-- KARDIO
-
-Befunde erscheinen als Befundbericht.
-
-Kosten und Zeit bleiben erhalten, weil Doctor Rush weiterhin auch ein Klinikmanagement-Spiel ist.
-
----
-
-# 🎯 Gezielte Diagnostik statt Test-Spam
-
-Das Spiel merkt sich, ob du bei stabilen Patienten sehr früh Untersuchungen anordnest, bevor eine vernünftige klinische Grundlage vorhanden ist.
-
-Bei dringenden Patienten wird frühe Akutdiagnostik nicht auf dieselbe Weise bewertet.
-
----
-
-# 📊 Klinische Arbeitsgrundlage
-
-Vor der Diagnose gibt es einen neuen kompakten Bereich.
-
-Der Evidenz-Score 0–100 entsteht aus:
+Der klinische Evidenz-Score berücksichtigt jetzt:
 
 - Anamnese
-- Anzahl erhobener Befunde
-- klinischer Dokumentation
+- körperliche Untersuchung
+- technische Diagnostik
 
-Er verrät nicht die richtige Diagnose.
+Ein vollständiger Fall erfordert damit nicht mehr nur Fragen + Labor/Bildgebung.
 
 ---
 
-# ✅ Klinische Qualitätswertung
+# ❤️ Dynamischer Vitaltrend
 
-Am Ende jedes Falls erhältst du zusätzlich eine klinische Qualität von 0–100.
+Der Realismusbereich zeigt jetzt zusätzlich einen Vital-/Zustandstrend.
 
-Sie berücksichtigt:
+Mögliche Anzeigen:
+
+- → stabil
+- ↘ verschlechtert
+- ↗ verbessert
+
+Der Trend basiert auf dem bereits vorhandenen dynamischen Patientenzustand.
+
+Zeitverlust, Stabilisierung, Notfallprotokolle und Behandlung können ihn beeinflussen.
+
+---
+
+# 🏥 Disposition
+
+Im Realismusmodus muss jetzt nach Diagnose und Behandlung entschieden werden, wie es mit dem Patienten weitergeht.
+
+Mögliche Entscheidungen:
+
+## 🏠 Ambulant
+Entlassung mit weiterer ambulanter Betreuung / Verlaufskontrolle.
+
+## 👀 Beobachtung
+Kurzüberwachung und erneute klinische Beurteilung.
+
+## 🛏️ Stationär
+Weiterbehandlung auf einer geeigneten Station.
+
+## 🚨 Akutbereich
+Unmittelbare Übergabe an einen höher überwachten Akutbereich.
+
+Die passende Disposition wird aus Dringlichkeit, Diagnose und dem vereinfachten Fallkontext bestimmt.
+
+Eine falsche Disposition verhindert im erweiterten Realismus jetzt einen perfekten Fall.
+
+---
+
+# ✅ Sicherheitschecks
+
+Vor dem Fallabschluss kannst du zwei Sicherheitschecks durchführen:
+
+- Allergien geprüft
+- Medikation / Risiken geprüft
+
+Sie sind nicht zwingend nötig, um den Fall technisch abzuschließen.
+
+Aber sie verbessern die klinische Qualitätswertung deutlich.
+
+Damit lohnt es sich erstmals wirklich, die Patientenakte zu beachten.
+
+---
+
+# 📊 Klinische Qualität 2.0
+
+Die Qualitätswertung ist jetzt strenger.
+
+Berücksichtigt werden:
 
 - richtige Diagnose
-- passende Behandlung
-- Qualität der klinischen Arbeitsgrundlage
-- gezielte statt wahlloser Diagnostik
-- bei dringenden Fällen teilweise auch korrektes Notfallprotokoll
+- richtige Behandlung
+- richtige Disposition
+- Anamnese
+- körperliche Untersuchung
+- technische Diagnostik
+- gezielte statt wahlloser Tests
+- Sicherheitschecks
+- bei dringenden Fällen optional das Notfallprotokoll
 
-Bewertungen:
-
-- EXZELLENT
-- SEHR GUT
-- SOLIDE
-- AUSREICHEND
-- LÜCKENHAFT
-
-Sehr sauber gespielte Fälle geben einen kleinen zusätzlichen XP-Bonus.
+Damit kann ein Fall medizinisch korrekt diagnostiziert sein und trotzdem nur eine mittelmäßige Qualitätswertung bekommen, wenn der Ablauf schlecht war.
 
 ---
 
-# 📄 Klinischer Kurzbrief
+# ✅ Perfekter Fall ist jetzt anspruchsvoller
 
-Nach jedem Fall kannst du einen kompakten fiktiven Kurzbrief aufklappen.
+Im Realismusmodus bedeutet „perfekt“ jetzt:
 
-Er enthält:
+- Diagnose richtig
+- Behandlung richtig
+- Disposition richtig
 
-- Patient
-- Triage
-- Leitsymptom
-- Vitalwerte
-- Anamnese
-- erhobene Befunde
-- Arbeitsdiagnose
-- Versorgungsentscheidung
-- klinische Qualitätswertung
+Sicherheitschecks und saubere klinische Arbeit beeinflussen zusätzlich die Qualitätswertung.
+
+---
+
+# 📄 Klinischer Kurzbrief erweitert
+
+Der Kurzbrief enthält jetzt zusätzlich:
+
+- körperliche Untersuchung
+- Disposition
+- Sicherheitscheck
+- Qualitätswertung
 
 ---
 
 # 🏆 Neue Erfolge
 
-## Klinisch sauber
-Schließe 10 Fälle mit mindestens 80 klinischer Qualität ab.
+## Richtiger nächster Schritt
+20 korrekte Dispositionsentscheidungen.
 
-## Saubere Dokumentation
-Erreiche in einem Fall mindestens 95 klinische Qualität.
+## Sicherheitsroutine
+Bei 10 Fällen beide Sicherheitschecks vollständig durchführen.
 
 ---
 
-# Kampagne UND freie Schicht
+# Neue Statistiken
 
-Der erweiterte klinische Realismus gilt für beide Modi:
+Gespeichert werden jetzt zusätzlich:
+
+- korrekte Dispositionen
+- Anzahl körperlicher Untersuchungsaktionen
+- vollständige Sicherheitschecks
+- besonders saubere Realismusfälle
+
+---
+
+# Kampagne und Freie Schicht
+
+Clinical Realism 2.0 gilt weiterhin für beide Spielmodi.
 
 ## Kampagne
-Persönliche Karriere + realistischer Patientenworkflow.
+Story + Karriere + realistischer klinischer Ablauf.
 
 ## Freie Schicht
-Schnelles Klinikmanagement + realistischer Patientenworkflow.
+Klinikmanagement + realistischer klinischer Ablauf.
 
 ---
 
 # Technisch
 
-- weiterhin nur **eine `index.html`**
+- weiterhin eine einzige `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.23-Spielstand kompatibel
-- Realismus bei alten Spielständen automatisch aktiviert
-- keine externen JavaScript- oder CSS-Dateien
+- v0.24-Spielstand kompatibel
+- keine externen JS-/CSS-Dateien
 - kein Service Worker
-- JavaScript-Syntaxprüfung: **OK**
-- One-File-Prüfung: **OK**
+- JavaScript-Syntaxprüfung: OK
+- One-File-Prüfung: OK
 - keine Medikamentendosierungen hinzugefügt
-- richtige Diagnose bleibt in jedem Realismus-Differential enthalten
 
-> Sämtliche medizinischen Inhalte sind vereinfachtes, fiktives Gameplay und keine medizinische Beratung.
+> Die medizinischen Inhalte sind vereinfachtes, fiktives Gameplay und keine medizinische Beratung oder Behandlungsanweisung.
