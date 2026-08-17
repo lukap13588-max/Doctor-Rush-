@@ -1,111 +1,85 @@
-# Doctor Rush v0.29 – THREE DIFFICULTIES
+# Doctor Rush v0.30 – LIVE VITAL MONITOR
 
 ## Dateien
 - `index.html`
 - `README.md`
 
-## GitHub-Update
+## GitHub
 1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Einmal mit `?v=0.29` öffnen.
+3. Einmal mit `?v=0.30` öffnen.
 
-# Kein Schicht-Countdown mehr
-Ab v0.29 endet eine Schicht nicht mehr, weil eine Uhr auf 0 läuft. Du kannst lesen und überlegen, solange du möchtest. Simulierte Klinikzeit bleibt nur für Krankheitsverlauf und Befundlaufzeiten bestehen.
+# Neu in v0.30
 
-# Drei Schwierigkeitsstufen
+Die Vitalwerte stehen nicht mehr dauerhaft groß im Patientenbildschirm.
+
+Stattdessen gibt es einen kompakten Button:
+
+**❤️ Vitalmonitor öffnen**
+
+Beim Antippen öffnet sich ein kleines Monitor-Fenster über dem Spiel.
+
+Dadurch wird die Patientenoberfläche ruhiger und wirkt mehr wie eine echte klinische App.
 
 ## 🌱 Einsteiger
-Für Spieler ohne medizinisches Vorwissen.
+Der Monitor bleibt bewusst einfach.
 
-Sichtbar sind vor allem:
-- Beschwerden
-- grundlegende Vitalwerte
-- vereinfachte Diagnoseauswahl
-- vereinfachte Behandlungsauswahl
+Gezeigt werden:
+- Puls
+- Sauerstoffsättigung
+- Blutdruck
+- Temperatur
 
-Zusätzlich:
-- maximal drei Diagnoseoptionen
-- maximal drei Behandlungsoptionen
-- keine automatische Patientenverschlechterung
-- keine Kollaps-Mechanik im Wartezimmer
-- keine Anamnese-, Diagnostik-, Differentialdiagnose-, Konsil-, Dispositions- oder Reevaluationspflicht
-- eigener kurzer Einsteiger-Leitfaden
+Zusätzlich gibt es einen kurzen verständlichen Hinweis, ob die Werte im Spiel insgesamt stabil oder auffällig wirken.
+
+Kein Patientenzustandsverfall wird eingeblendet.
 
 ## 🩺 Klinisch
-Die Mittelstufe.
+Der Monitor zeigt:
+- Puls
+- SpO₂
+- Blutdruck
+- Atemfrequenz
+- Temperatur
+- Schmerzscore
+- Patientenzustand
+- Verlaufstrend
 
-Enthalten:
-- Patientenakte
-- dynamische Vitalwerte
-- Anamnese
-- körperliche Untersuchung
-- technische Diagnostik
-- realistischere Diagnosealternativen
-- Behandlung
-- Reevaluation
-- Disposition
-- Sicherheitschecks / Übergabe
-- klinische Qualitätswertung
-
-Vereinfacht gegenüber Profi:
-- keine verpflichtenden Differentialdiagnosen
-- keine Diagnosesicherheit
-- keine Konsile
-- keine verzögerten Befunde
-- technische Befunde erscheinen direkt
-- Patienten verschlechtern sich deutlich langsamer
-- mehr Toleranz im Wartezimmer
+Die Werte reagieren auf den dynamischen Patientenzustand.
 
 ## 🧠 Profi
-Das komplette Doctor-Rush-System.
+Zusätzlich zum vollständigen Monitor werden angezeigt:
+- Patientenzustand 0–100
+- Verlaufstrend
+- ausstehende Befunde
+- Anzahl Reevaluations-Checks
+- Status der Stabilisierung
 
-Enthalten:
-- Patientenakte
-- dynamische Vitalwerte
-- Patientenzustand
-- Anamnese
-- körperliche Untersuchung
-- technische Diagnostik
-- verzögerte Befunde
-- paralleles Arbeiten während Befundlaufzeiten
-- dringliche Befundmeldungen
-- Differentialdiagnosen
-- Diagnosesicherheit
-- Konsile
-- strukturierte Befundberichte
-- Behandlung
-- Therapieansprechen
-- Reevaluation
-- Disposition
-- Allergie-/Risiko-/Follow-up-Checks
-- vollständige klinische Qualitätswertung
-- Notfall- und Eingriffsworkflow
+Damit kann ein Profi den Zustand kompakt kontrollieren, ohne durch die komplette Patientenakte scrollen zu müssen.
 
-# Schwierigkeit jederzeit ändern
-Die Stufe kann auf der Startseite jederzeit geändert werden. Der Spielstand bleibt derselbe.
+## Live-Fenster
+Solange das Fenster geöffnet ist, wird die Anzeige regelmäßig aus dem aktuellen Spielzustand aktualisiert.
 
-Neue Spieler starten auf **Einsteiger**. Alte v0.28-Spielstände mit aktiviertem Realismus werden automatisch auf **Profi** migriert.
+Der Monitor erfindet dabei keine zufälligen Werte. Änderungen entstehen aus dem bereits vorhandenen dynamischen Patientenzustand und den Aktionen im Spiel.
 
-# Zeit ist kein Spielgegner mehr
-Klinische Abläufe können weiterhin eine simulierte Dauer haben. Das ist für Befundlaufzeiten und Krankheitsverlauf notwendig. Es gibt aber keinen Schicht-Countdown und kein Game Over wegen Zeitablauf.
+## Bedienung
+Das Fenster kann geschlossen werden durch:
+- X oben rechts
+- Tippen außerhalb des Fensters
+- Escape auf Geräten mit Tastatur
 
-# Weitere Anpassungen
-- Zeitmission durch Patientenanzahl-Mission ersetzt.
-- Wartezimmer-Upgrade zeigt nun Patientenkapazität statt Schichtzeit.
-- Forschung Effizienz zeigt ihren XP-Effekt.
-- Pflegepersonal reduziert den Zustandsverlust.
-- Schichtereignisse verkürzen keine Schicht mehr.
-- Flow zeigt klinischen Aufwand (AP) statt Restzeitdruck.
+## Mobile UI
+Die ursprüngliche große Vitalwerte-Zeile ist standardmäßig eingeklappt.
 
-# Technisch
-- eine `index.html`
+Der Monitor ist für kleine Handybildschirme optimiert.
+
+## Technisch
+- eine einzige `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.28-Spielstand kompatibel
-- drei persistente Schwierigkeitsstufen
-- kein Schichtende durch `timeLeft <= 0`
+- v0.29-Spielstand kompatibel
+- alle drei Schwierigkeitsstufen unterstützt
 - kein Service Worker
-- keine externen JS-/CSS-Dateien
-- JavaScript-Syntaxprüfung: **OK**
-- One-File-Prüfung: **OK**
+- JavaScript-Syntaxprüfung: OK
+- One-File-Prüfung: OK
 
-> Medizinische Inhalte bleiben vereinfachtes, fiktives Gameplay und ersetzen keine Ausbildung oder medizinische Beratung.
+> Die Vitalwerte sind Teil einer fiktiven Spielsimulation und keine medizinische Überwachung.
