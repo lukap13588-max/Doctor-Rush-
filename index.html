@@ -1854,13 +1854,42 @@ body.home-nav-active #app{padding-bottom:102px}
 .visual-report-row b.warn{color:#ffd37d}
 .visual-report-row b.critical{color:#ffb1bd}
 
+
+/* ===== v0.33 ADVANCED DIAGNOSTICS & SANDBOX ===== */
+.mode-grid{grid-template-columns:repeat(3,1fr)}
+.mode-card.sandbox{background:linear-gradient(155deg,rgba(82,56,128,.34),#10233e);border-color:rgba(184,145,255,.28)}
+.mode-card.sandbox button{background:linear-gradient(135deg,#7653c4,#9c72ef);color:#fff}
+.sandbox-meta{
+  margin-top:7px;padding:6px 7px;border-radius:9px;background:rgba(177,139,255,.07);
+  border:1px solid rgba(177,139,255,.14);font-size:7.2px;color:#d7c8ff;line-height:1.35
+}
+.sandbox-banner{
+  margin:8px 0;padding:9px 10px;border-radius:11px;background:rgba(157,113,239,.08);
+  border:1px solid rgba(157,113,239,.19);font-size:7.7px;line-height:1.4;color:#e5dafd
+}
+.lab-sheet{
+  border-radius:10px;background:#eef3f7;color:#17212c;padding:12px;font-family:ui-monospace,SFMono-Regular,Menlo,monospace;
+  box-shadow:inset 0 0 0 1px rgba(0,0,0,.12)
+}
+.lab-sheet-head{display:flex;justify-content:space-between;gap:8px;border-bottom:2px solid #8fa2b1;padding-bottom:7px;margin-bottom:7px}
+.lab-sheet-head b{font-size:10px}.lab-sheet-head span{font-size:7px;color:#526270}
+.lab-row{display:grid;grid-template-columns:1.15fr .9fr .55fr;gap:6px;padding:6px 0;border-bottom:1px solid #cbd5dc;font-size:7.6px}
+.lab-row:last-child{border-bottom:none}
+.lab-row span{color:#536371}.lab-row b{text-align:right}.lab-row i{font-style:normal;text-align:right;font-weight:900}
+.lab-row i.high{color:#b96200}.lab-row i.low{color:#1767a7}.lab-row i.alert{color:#b51d35}
+.visual-profi-note{
+  margin-top:8px;padding:8px 9px;border-radius:10px;background:rgba(255,202,92,.05);
+  border:1px solid rgba(255,202,92,.14);font-size:7.2px;line-height:1.4;color:#f1dfb6
+}
+@media(max-width:620px){.mode-grid{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.32 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.33 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1870,7 +1899,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.32 • VISUAL DIAGNOSTICS</h2>
+          <h2>Clinic Life v0.33 • ADVANCED DIAGNOSTICS & SANDBOX</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -1886,6 +1915,13 @@ body.home-nav-active #app{padding-bottom:102px}
               <p>Klinikbetrieb ohne Story-Zwang. Behandeln, verdienen und ausbauen – ohne Countdown.</p>
               <div class="mode-meta">Sofort spielen • voller Klinikbetrieb</div>
               <button id="freeShiftBtn" type="button">Freie Schicht starten</button>
+            </div>
+            <div class="mode-card sandbox">
+              <div class="mode-icon">🧪</div>
+              <h3>Sandbox</h3>
+              <p>Alles ausprobieren, ohne deinen Karriere-Spielstand oder deine Finanzen zu verändern.</p>
+              <div class="sandbox-meta">🔓 Alle Räume • Personal • Forschung • Ausbau • Medikamente • unbegrenztes Budget</div>
+              <button id="sandboxShiftBtn" type="button">Sandbox starten</button>
             </div>
           </div>
           <div class="difficulty-selector">
@@ -4778,11 +4814,14 @@ function escapeHtmlText(text){
 function isVisualExam(exam){
   if(!exam)return false;
   const text=`${exam.name||''} ${exam.result||''} ${exam.req||''}`.toLowerCase();
-  return /ekg|12-kanal|röntgen|roentgen|thorax|fraktur|pneumonie|pneumothorax/.test(text);
+  return /ekg|12-kanal|röntgen|roentgen|thorax|fraktur|pneumonie|pneumothorax|ct |ct-|ct$|ultraschall|sono|blutbild|crp|troponin|d-dimer|blutgas|labor/.test(text);
 }
 function visualExamType(exam){
   const text=`${exam.name||''} ${exam.result||''} ${exam.req||''}`.toLowerCase();
   if(/ekg|12-kanal|st-elevation|stemi|vorhofflimmern|tachykardie|bradykardie/.test(text))return 'ekg';
+  if(/ct |ct-|ct$|angiografie/.test(text))return 'ct';
+  if(/ultraschall|sono/.test(text))return 'ultrasound';
+  if(/blutbild|crp|troponin|d-dimer|blutgas|labor/.test(text))return 'lab';
   return 'xray';
 }
 function ekgPatternFromExam(exam){
@@ -4801,19 +4840,35 @@ function xrayPatternFromExam(exam){
   return 'normal';
 }
 function visualInterpretation(exam){
-  if(visualExamType(exam)==='ekg'){
-    const p=ekgPatternFromExam(exam);
-    if(p==='stemi')return {title:'ST-Hebungs-Muster', beginner:'Deutlich auffälliges EKG mit akutem Koronarsyndrom-Muster.', clinical:'Hebungen in mehreren Ableitungen, klinisch ernst zu nehmen.', expert:'Auffällige ST-Strecken-Hebungen – akute Ischämie / STEMI passend.', severity:'critical'};
-    if(p==='afib')return {title:'Vorhofflimmern', beginner:'Unregelmäßiger Herzrhythmus sichtbar.', clinical:'Irreguläre RR-Abstände ohne geordnete P-Wellen.', expert:'Absolut arrhythmischer Rhythmus, Vorhofflimmern vereinbar.', severity:'warn'};
-    if(p==='brady')return {title:'Bradykardie', beginner:'Langsamer Herzschlag.', clinical:'Regelmäßiger, aber verlangsamter Rhythmus.', expert:'Sinusbradykardie vereinbar.', severity:'warn'};
-    if(p==='tachy')return {title:'Sinustachykardie', beginner:'Schneller Herzschlag.', clinical:'Regelmäßiger, beschleunigter Rhythmus.', expert:'Sinustachykardes Bild, sonst kein grober Ischämiehinweis.', severity:'warn'};
-    return {title:'Unauffälliges EKG', beginner:'Kein grob auffälliges Muster.', clinical:'Regelmäßiger Rhythmus ohne grobe Auffälligkeit.', expert:'Sinusrhythmus, keine dominanten Akutveränderungen.', severity:'normal'};
+  const type=visualExamType(exam);
+  const text=`${exam.name||''} ${exam.result||''} ${current?current.correctDiagnosis:''}`.toLowerCase();
+
+  if(type==='lab'){
+    const abnormal=/erhöht|erniedrigt|positiv|48 mg|auffällig|patholog/i.test(text);
+    return {title:abnormal?'Labor mit Auffälligkeiten':'Laborübersicht',beginner:abnormal?'Mindestens ein Laborwert ist im Spiel auffällig.':'Keine grobe Laborauffälligkeit.',clinical:'Bewerte die markierten Laborparameter gemeinsam mit Beschwerden und klinischem Verlauf.',expert:'Laborwerte eigenständig in den klinischen Kontext einordnen.',severity:abnormal?'warn':'normal'};
   }
+  if(type==='ct'){
+    const critical=/blutung|infarkt|embolie|append|auffällig|ischäm|verschluss/i.test(text);
+    return {title:critical?'Auffällige CT-Serie':'CT-Serie',beginner:critical?'Auf den CT-Schnitten ist ein auffälliger Bereich markiert.':'Kein grober auffälliger Bereich.',clinical:'Querschnittsbild mit fokalem Befund – schriftlichen Befund und Klinik abgleichen.',expert:'CT-Serie ohne eingeblendete Diagnose eigenständig beurteilen.',severity:critical?'critical':'normal'};
+  }
+  if(type==='ultrasound'){
+    const abnormal=/stein|galle|flüss|entzünd|auffällig|thromb|append/i.test(text);
+    return {title:abnormal?'Auffälliger Ultraschall':'Ultraschall',beginner:abnormal?'Im Ultraschall ist ein auffälliger Bereich markiert.':'Kein grober auffälliger Bereich.',clinical:'Sonografischen Fokus mit Symptomlokalisation und Verlauf abgleichen.',expert:'Sonografischen Befund eigenständig interpretieren.',severity:abnormal?'warn':'normal'};
+  }
+  if(type==='ekg'){
+    const p=ekgPatternFromExam(exam);
+    if(p==='stemi')return {title:'ST-Hebungs-Muster',beginner:'Deutlich auffälliges EKG mit akutem Koronarsyndrom-Muster.',clinical:'Hebungen in mehreren Ableitungen, klinisch ernst zu nehmen.',expert:'EKG eigenständig auf Rhythmus, Frequenz und ST-Strecken beurteilen.',severity:'critical'};
+    if(p==='afib')return {title:'Vorhofflimmern',beginner:'Unregelmäßiger Herzrhythmus sichtbar.',clinical:'Irreguläre RR-Abstände ohne geordnete P-Wellen.',expert:'Rhythmus und Vorhofaktivität eigenständig beurteilen.',severity:'warn'};
+    if(p==='brady')return {title:'Bradykardie',beginner:'Langsamer Herzschlag.',clinical:'Regelmäßiger, aber verlangsamter Rhythmus.',expert:'Frequenz und Rhythmus eigenständig beurteilen.',severity:'warn'};
+    if(p==='tachy')return {title:'Sinustachykardie',beginner:'Schneller Herzschlag.',clinical:'Regelmäßiger, beschleunigter Rhythmus.',expert:'Frequenz, Rhythmus und ST-Strecken eigenständig beurteilen.',severity:'warn'};
+    return {title:'Unauffälliges EKG',beginner:'Kein grob auffälliges Muster.',clinical:'Regelmäßiger Rhythmus ohne grobe Auffälligkeit.',expert:'EKG eigenständig beurteilen.',severity:'normal'};
+  }
+
   const p=xrayPatternFromExam(exam);
-  if(p==='pneumothorax')return {title:'Pneumothorax', beginner:'Eine Lungenseite wirkt auffällig und erweitert sich nicht normal.', clinical:'Auf einer Seite wenig Lungenzeichnung – Pneumothorax passend.', expert:'Verminderte periphere Zeichnung mit pleuraler Linie – Pneumothorax vereinbar.', severity:'critical'};
-  if(p==='fracture')return {title:'Frakturhinweis', beginner:'Ein Knochen wirkt unterbrochen.', clinical:'Kortikale Unterbrechung / Frakturlinie sichtbar.', expert:'Diskrete bis klare Frakturlinie, je nach Projektion vereinbar.', severity:'warn'};
-  if(p==='pneumonia')return {title:'Infiltrat', beginner:'Ein Bereich der Lunge wirkt heller bzw. verdichtet.', clinical:'Lokalisiertes Infiltrat – Pneumonie passend.', expert:'Fokale Verdichtung / Infiltrat im betroffenen Areal.', severity:'warn'};
-  return {title:'Unauffälliges Röntgen', beginner:'Kein klarer auffälliger Bildbefund.', clinical:'Kein grob pathologischer Bildhinweis.', expert:'Keine dominanten Akutveränderungen erkennbar.', severity:'normal'};
+  if(p==='pneumothorax')return {title:'Pneumothorax',beginner:'Eine Lungenseite wirkt auffällig und erweitert sich nicht normal.',clinical:'Auf einer Seite wenig Lungenzeichnung – Pneumothorax passend.',expert:'Thoraxaufnahme eigenständig auf Pleuralinie und Lungenzeichnung beurteilen.',severity:'critical'};
+  if(p==='fracture')return {title:'Frakturhinweis',beginner:'Ein Knochen wirkt unterbrochen.',clinical:'Kortikale Unterbrechung / Frakturlinie sichtbar.',expert:'Knochenkontur, Achse und mögliche Frakturlinie eigenständig beurteilen.',severity:'warn'};
+  if(p==='pneumonia')return {title:'Infiltrat',beginner:'Ein Bereich der Lunge wirkt heller bzw. verdichtet.',clinical:'Lokalisiertes Infiltrat – Pneumonie passend.',expert:'Thoraxaufnahme eigenständig auf fokale Verdichtungen beurteilen.',severity:'warn'};
+  return {title:'Unauffälliges Röntgen',beginner:'Kein klarer auffälliger Bildbefund.',clinical:'Kein grob pathologischer Bildhinweis.',expert:'Röntgenaufnahme eigenständig beurteilen.',severity:'normal'};
 }
 function makeEkgSvg(pattern){
   const grid=[];
@@ -4875,44 +4930,122 @@ function makeXraySvg(pattern){
     <text x="30" y="338" fill="#c0d8ec" font-size="12" font-family="Arial">Röntgen • Thorax</text>
   </svg>`;
 }
+
+function makeCtSvg(exam){
+  const text=`${exam.name||''} ${exam.result||''}`.toLowerCase();
+  const head=/kopf|hirn|schlag|blutung/.test(text);
+  const abnormal=/blutung|infarkt|embolie|append|verschluss|auffällig|ischäm/.test(text);
+  const focus=head
+    ?'<ellipse cx="196" cy="153" rx="27" ry="19" fill="#f4f0e7" opacity=".55"/><circle cx="196" cy="153" r="34" fill="none" stroke="#ff9cad" stroke-width="3" stroke-dasharray="6 5"/>'
+    :'<ellipse cx="205" cy="188" rx="24" ry="18" fill="#f0e8d9" opacity=".52"/><circle cx="205" cy="188" r="31" fill="none" stroke="#ffcf85" stroke-width="3" stroke-dasharray="6 5"/>';
+  return `<svg viewBox="0 0 360 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="CT">
+    <rect width="360" height="330" fill="#050d15"/>
+    <text x="16" y="22" fill="#b9cedd" font-size="11" font-family="Arial">${escapeHtmlText(exam.name)}</text>
+    <circle cx="180" cy="168" r="112" fill="#c7d1d8" opacity=".34"/>
+    <circle cx="180" cy="168" r="91" fill="#151f27" stroke="#cfd9df" stroke-width="10" opacity=".95"/>
+    <ellipse cx="150" cy="155" rx="49" ry="64" fill="#798894" opacity=".55"/>
+    <ellipse cx="210" cy="155" rx="49" ry="64" fill="#798894" opacity=".55"/>
+    <ellipse cx="180" cy="206" rx="45" ry="31" fill="#515e68" opacity=".65"/>
+    ${abnormal?focus:''}
+    <text x="16" y="310" fill="#92a8b8" font-size="10" font-family="Arial">Axialer Trainingsschnitt • stilisierte Darstellung</text>
+  </svg>`;
+}
+function makeUltrasoundSvg(exam){
+  const text=`${exam.name||''} ${exam.result||''}`.toLowerCase();
+  const abnormal=/stein|galle|flüss|entzünd|thromb|append|auffällig/.test(text);
+  const dots=[];
+  for(let i=0;i<80;i++){
+    const x=72+((i*47)%220),y=62+((i*83)%180),r=1+((i*13)%4);
+    dots.push(`<circle cx="${x}" cy="${y}" r="${r}" fill="#dce5e9" opacity="${.10+((i%5)*.05)}"/>`);
+  }
+  return `<svg viewBox="0 0 360 300" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Ultraschall">
+    <rect width="360" height="300" fill="#03090e"/>
+    <text x="15" y="20" fill="#c2d0d8" font-size="10" font-family="Arial">${escapeHtmlText(exam.name)}</text>
+    <path d="M42 42 Q180 16 318 42 L285 262 Q180 286 75 262 Z" fill="#17232b" stroke="#526675" stroke-width="2"/>
+    <ellipse cx="182" cy="166" rx="96" ry="61" fill="#667782" opacity=".26"/>
+    <ellipse cx="185" cy="170" rx="58" ry="34" fill="#b4c0c7" opacity=".20"/>
+    ${dots.join('')}
+    ${abnormal?'<ellipse cx="212" cy="174" rx="24" ry="17" fill="#f0f4f6" opacity=".58"/><circle cx="212" cy="174" r="31" fill="none" stroke="#ffcc82" stroke-width="3" stroke-dasharray="6 5"/>':''}
+    <text x="16" y="286" fill="#8ea1ad" font-size="9" font-family="Arial">Sonografie • stilisierte Trainingsdarstellung</text>
+  </svg>`;
+}
+function makeLabSheetHtml(exam){
+  const rows=structuredExamRows(exam);
+  return `<div class="lab-sheet">
+    <div class="lab-sheet-head">
+      <div><b>DOCTOR RUSH LABOR</b><br><span>${escapeHtmlText(current?current.name:'Patient')} • ${escapeHtmlText(exam.name)}</span></div>
+      <span>TRAININGSBEFUND</span>
+    </div>
+    ${rows.map(r=>{
+      const flag=r[2]==='alert'?'KRIT':r[2]==='high'?'↑':r[2]==='low'?'↓':'—';
+      return `<div class="lab-row"><span>${escapeHtmlText(r[0])}</span><b>${escapeHtmlText(r[1])}</b><i class="${r[2]||''}">${flag}</i></div>`;
+    }).join('')}
+  </div>`;
+}
+function visualExamContent(exam){
+  const type=visualExamType(exam);
+  if(type==='ekg')return makeEkgSvg(ekgPatternFromExam(exam));
+  if(type==='ct')return makeCtSvg(exam);
+  if(type==='ultrasound')return makeUltrasoundSvg(exam);
+  if(type==='lab')return makeLabSheetHtml(exam);
+  return makeXraySvg(xrayPatternFromExam(exam));
+}
+function visualTypeLabel(type){
+  return type==='ekg'?'Elektrokardiogramm':type==='ct'?'Computertomografie':type==='ultrasound'?'Ultraschall':type==='lab'?'Laborblatt':'Röntgenaufnahme';
+}
+function visualTypeBadge(type){
+  return type==='ekg'?'📈 EKG':type==='ct'?'🧠 CT':type==='ultrasound'?'📡 ULTRASCHALL':type==='lab'?'🧪 LABOR':'🩻 RÖNTGEN';
+}
+
 function visualExamSvg(exam){
-  return visualExamType(exam)==='ekg' ? makeEkgSvg(ekgPatternFromExam(exam)) : makeXraySvg(xrayPatternFromExam(exam));
+  return visualExamContent(exam);
 }
 function visualHelpText(exam){
   const info=visualInterpretation(exam);
   if(isBeginner())return `🌱 ${info.beginner} Im Einsteiger-Modus reicht es meistens, auffällig vs. unauffällig zu unterscheiden.`;
   if(isClinical())return `🩺 ${info.clinical} Nutze Bild, Befundtext und Klinik gemeinsam für deine Entscheidung.`;
-  return `🧠 ${info.expert} Im Profi-Modus bekommst du keine direkte Lösung – der Bildbefund ist Teil deiner klinischen Interpretation.`;
+  return `🧠 ${info.expert} Die Diagnose wird im Profi-Fenster bewusst nicht vorweggenommen.`;
 }
 function visualButtonHtml(index,exam){
-  const icon=visualExamType(exam)==='ekg'?'📈':'🩻';
-  return `<button type="button" class="visual-view-btn" onclick="openVisualDiagnostic(${index})">${icon} Bild ansehen<small>${visualExamType(exam)==='ekg'?'EKG-Fenster öffnen':'Röntgen-Fenster öffnen'}</small></button>`;
+  const type=visualExamType(exam);
+  const icon=type==='ekg'?'📈':type==='ct'?'🧠':type==='ultrasound'?'📡':type==='lab'?'🧪':'🩻';
+  const action=type==='lab'?'Laborblatt öffnen':`${visualTypeLabel(type)} ansehen`;
+  return `<button type="button" class="visual-view-btn" onclick="openVisualDiagnostic(${index})">${icon} ${action}<small>Eigenes Diagnostik-Fenster öffnen</small></button>`;
 }
 function renderVisualDiagnostic(){
   const overlay=$('visualDiagnosticOverlay');
   if(!overlay||!overlay.classList.contains('open')||!current)return;
   const exam=current.exams[visualDiagnosticIndex];
   if(!exam)return;
-  const info=visualInterpretation(exam);
-  if($('visualDiagnosticBadge'))$('visualDiagnosticBadge').textContent=visualExamType(exam)==='ekg'?'📈 EKG':'🩻 RÖNTGEN';
-  if($('visualDiagnosticHeading'))$('visualDiagnosticHeading').textContent=info.title;
-  if($('visualDiagnosticSubhead'))$('visualDiagnosticSubhead').textContent=exam.name;
+  const type=visualExamType(exam),info=visualInterpretation(exam);
+  const expert=isExpert();
+
+  if($('visualDiagnosticBadge'))$('visualDiagnosticBadge').textContent=visualTypeBadge(type);
+  if($('visualDiagnosticHeading'))$('visualDiagnosticHeading').textContent=expert?exam.name:info.title;
+  if($('visualDiagnosticSubhead'))$('visualDiagnosticSubhead').textContent=expert?'Eigenständige Interpretation':exam.name;
   if($('visualPatientLine'))$('visualPatientLine').textContent=`${current.avatar||'🧑'} ${current.name}`;
   if($('visualExamLine'))$('visualExamLine').textContent=`${exam.name} • ${current.age} Jahre • ${current.urgency==='high'?'dringend':current.urgency==='medium'?'erhöhte Priorität':'stabil'}`;
   if($('visualDifficultyLine'))$('visualDifficultyLine').textContent=difficultyHudLabel();
-  if($('visualDiagnosticCanvas'))$('visualDiagnosticCanvas').innerHTML=visualExamSvg(exam);
+  if($('visualDiagnosticCanvas'))$('visualDiagnosticCanvas').innerHTML=visualExamContent(exam);
   if($('visualDiagnosticHelp'))$('visualDiagnosticHelp').textContent=visualHelpText(exam);
+
   const severityClass=info.severity==='critical'?'critical':info.severity==='warn'?'warn':'';
-  if($('visualDiagnosticReport'))$('visualDiagnosticReport').innerHTML=`
-    <div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
-    <div class="visual-report-row"><span>Bildtyp</span><b>${visualExamType(exam)==='ekg'?'Elektrokardiogramm':'Röntgenaufnahme'}</b></div>
-    <div class="visual-report-row"><span>Interpretation</span><b class="${severityClass}">${escapeHtmlText(info.title)}</b></div>
-    <div class="visual-report-row"><span>Schriftlicher Befund</span><b>${escapeHtmlText(exam.result||'—')}</b></div>`;
+  if($('visualDiagnosticReport')){
+    $('visualDiagnosticReport').innerHTML=expert
+      ?`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
+        <div class="visual-report-row"><span>Typ</span><b>${visualTypeLabel(type)}</b></div>
+        <div class="visual-report-row"><span>Aufgabe</span><b>Bild/Befund selbst interpretieren</b></div>
+        <div class="visual-profi-note">🧠 Profi: Nutze Bild, Vitalwerte, Anamnese und körperliche Untersuchung gemeinsam. Die Lösung wird hier nicht direkt eingeblendet.</div>`
+      :`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
+        <div class="visual-report-row"><span>Typ</span><b>${visualTypeLabel(type)}</b></div>
+        <div class="visual-report-row"><span>Interpretation</span><b class="${severityClass}">${escapeHtmlText(info.title)}</b></div>
+        <div class="visual-report-row"><span>Schriftlicher Befund</span><b>${escapeHtmlText(exam.result||'—')}</b></div>`;
+  }
 }
 function openVisualDiagnostic(index){
-  if(!current||!current.exams||!current.exams[index]){toast('Kein Bildbefund verfügbar.');return}
+  if(!current||!current.exams||!current.exams[index]){toast('Kein visueller Befund verfügbar.');return}
   const exam=current.exams[index];
-  if(!isVisualExam(exam)){toast('Für diese Untersuchung gibt es kein Bildfenster.');return}
+  if(!isVisualExam(exam)){toast('Für diese Untersuchung gibt es kein visuelles Diagnostik-Fenster.');return}
   const overlay=$('visualDiagnosticOverlay');
   if(!overlay)return;
   visualDiagnosticIndex=index;
@@ -6499,7 +6632,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, activeClinicalTab='overview', soundOn=true;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -6510,7 +6643,9 @@ let currentMission=getMissionForDay(state.day);
 const $=id=>document.getElementById(id);
 
 function save(){
-  try{ localStorage.setItem('doctorRushSaveV3',JSON.stringify(state)); }
+  try{
+    if(!sandboxActive)localStorage.setItem('doctorRushSaveV3',JSON.stringify(state));
+  }
   catch(e){ console.warn('Speichern fehlgeschlagen',e); }
   try{const home=$('homeScreen');if(home&&home.classList.contains('active'))renderHome();}
   catch(e){ console.warn('Home-UI Aktualisierung fehlgeschlagen',e); }
@@ -8091,16 +8226,136 @@ function setCareerSubtab(sub){
   renderHome();window.scrollTo({top:0,behavior:'smooth'});
 }
 function openCampaignMode(){state.lastGameMode='campaign';state.homeTab='career';state.careerSubtab='campaign';try{localStorage.setItem('doctorRushSaveV3',JSON.stringify(state))}catch(e){}setHomeTab('career')}
+
+function isSandboxMode(){
+  return !!sandboxActive || !!(run&&run.mode==='sandbox');
+}
+function createSandboxState(){
+  const s=JSON.parse(JSON.stringify(state));
+  s.money=999999;
+  s.financialReserve=999999;
+  s.rep=100;
+  s.xp=99999;
+  s.researchPoints=999;
+  s.equipmentCondition=100;
+  s.patientsTreated=Math.max(999,s.patientsTreated||0);
+  s.perfectCases=Math.max(999,s.perfectCases||0);
+  s.urgentSaved=Math.max(99,s.urgentSaved||0);
+  s.strongHistoryCases=Math.max(99,s.strongHistoryCases||0);
+  s.procedureCorrect=Math.max(99,s.procedureCorrect||0);
+  s.stableCasesTotal=Math.max(99,s.stableCasesTotal||0);
+  s.rescuedCasesTotal=Math.max(99,s.rescuedCasesTotal||0);
+
+  s.upgrades={...(s.upgrades||{}),
+    reception:true,training:true,lab:true,imaging:true,pharmacy:true,
+    emergency:true,cardio:true,surgery:true
+  };
+
+  s.roomLevels=s.roomLevels||{};
+  clinicRooms.forEach(room=>s.roomLevels[room.id]=room.maxLevel||3);
+
+  s.staff=s.staff||{};
+  staffMembers.forEach(member=>s.staff[member.id]=member.maxLevel||3);
+
+  s.staffProfiles=s.staffProfiles||{};
+  staffMembers.forEach((member,idx)=>{
+    const pool=staffNamePools[member.id]||['Sandbox Team'];
+    s.staffProfiles[member.id]={
+      name:(s.staffProfiles[member.id]&&s.staffProfiles[member.id].name)||pool[idx%pool.length],
+      xp:9999,fatigue:0,shifts:99
+    };
+  });
+
+  s.research=s.research||{};
+  researchTracks.forEach(track=>s.research[track.id]=3);
+
+  s.expansions=s.expansions||{};
+  hospitalProjects.forEach(project=>s.expansions[project.id]=true);
+  s.hospitalInvestment=99999;
+
+  s.contracts=s.contracts||{};
+  clinicContracts.forEach(contract=>s.contracts[contract.id]=true);
+
+  s.inventory=s.inventory||{};
+  medicines.forEach(med=>s.inventory[med.id]=99);
+
+  s.specialty='general';
+  return s;
+}
+function startSandboxShift(){
+  if(sandboxActive){toast('Sandbox läuft bereits.');return}
+  sandboxMainState=JSON.parse(JSON.stringify(state));
+  state=createSandboxState();
+  sandboxActive=true;
+  currentMission=getMissionForDay(state.day);
+  startShift('sandbox');
+}
+function restoreSandboxState(){
+  if(!sandboxActive)return;
+  if(sandboxMainState)state=sandboxMainState;
+  sandboxMainState=null;
+  sandboxActive=false;
+  run=null;
+  current=null;
+  currentMission=getMissionForDay(state.day);
+  try{localStorage.setItem('doctorRushSaveV3',JSON.stringify(state))}catch(e){}
+}
+function endSandboxShift(reason=''){
+  if(run)run.active=false;
+  finalizeShiftFlow();
+  const treated=run?run.treated:0;
+  const correct=run?run.correct:0;
+  const avgCondition=run&&run.conditionScores&&run.conditionScores.length
+    ?Math.round(run.conditionScores.reduce((a,b)=>a+b,0)/run.conditionScores.length):0;
+
+  $('shiftSummary').textContent=reason||'Sandbox beendet – keine Änderungen wurden in deinen normalen Spielstand übernommen.';
+  $('sumMoney').textContent='∞';
+  $('sumXp').textContent='Sandbox';
+  $('sumRep').textContent='—';
+  $('sumCorrect').textContent=`${correct}/${treated}`;
+
+  $('missionResult').innerHTML=`
+    <div class="sandbox-banner"><b>🧪 SANDBOX</b><br>
+    Alles war freigeschaltet. Geld, XP, Ruf, Forschung, Personal und Klinikfortschritt werden nicht gespeichert.</div>
+    🏥 Klinikstatus: <b>MEDICAL CENTER • vollständig ausgebaut</b><br>
+    👥 Personal: <b>alle Rollen auf Maximallevel</b><br>
+    🔬 Forschung: <b>alle Bereiche Level 3</b><br>
+    💊 Vorräte: <b>unbegrenzt für diese Sandbox</b><br>
+    ❤️‍🩹 Ø Patientenzustand: <b>${avgCondition}/100</b><br>
+    🩺 Behandelte Fälle: <b>${treated}</b>`;
+  $('newAchievements').innerHTML='<div class="sandbox-banner">🏆 Erfolge und Karrierefortschritt sind in der Sandbox deaktiviert.</div>';
+  showScreen('shiftScreen');
+}
+
 function startFreeShift(){state.lastGameMode='free';startShift('free')}
 function startCampaignShift(){if(!currentCampaignChapter()){toast('Die Kampagne ist bereits abgeschlossen.');return}state.lastGameMode='campaign';startShift('campaign')}
 function renderShiftModeBanners(){
   if(!run)return;
-  const campaign=run.mode==='campaign',chapter=currentCampaignChapter();
+  const campaign=run.mode==='campaign',sandbox=run.mode==='sandbox',chapter=currentCampaignChapter();
   const diff=difficultyHudLabel();
-  const text=campaign?`🎯 KAMPAGNE • ${diff} • ${doctorAvatar()} ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`:`⚡ FREIE SCHICHT • ${diff} • ohne Countdown`;
-  ['waitingModeBanner','gameModeBanner'].forEach(id=>{const el=$(id);if(!el)return;el.textContent=text;el.className='shift-mode-banner'+(campaign?' campaign':'')});
+  const text=sandbox
+    ?`🧪 SANDBOX • ${diff} • ALLES FREIGESCHALTET • Fortschritt wird nicht gespeichert`
+    :campaign
+      ?`🎯 KAMPAGNE • ${diff} • ${doctorAvatar()} ${doctorDisplayName()} • ${chapter?`Kapitel ${currentCampaignIndex()+1}: ${chapter.title}`:'Finale'}`
+      :`⚡ FREIE SCHICHT • ${diff} • ohne Countdown`;
+  ['waitingModeBanner','gameModeBanner'].forEach(id=>{
+    const el=$(id);if(!el)return;
+    el.textContent=text;
+    el.className='shift-mode-banner'+(campaign?' campaign':'');
+  });
 }
-function returnHomeAfterShift(){if(run&&run.mode==='campaign'){state.homeTab='career';state.careerSubtab='campaign'}else state.homeTab='home';showScreen('homeScreen')}
+function returnHomeAfterShift(){
+  if(sandboxActive){
+    restoreSandboxState();
+    state.homeTab='home';
+    showScreen('homeScreen');
+    toast('🧪 Sandbox verlassen • normaler Spielstand wiederhergestellt');
+    return;
+  }
+  if(run&&run.mode==='campaign'){state.homeTab='career';state.careerSubtab='campaign'}
+  else state.homeTab='home';
+  showScreen('homeScreen');
+}
 
 function renderHome(){
   $('homeMoney').textContent=state.money+' €';$('homeRep').textContent=state.rep;$('homeXp').textContent=state.xp+' XP';$('homeLevel').textContent=levelFromXp(state.xp);
@@ -8131,9 +8386,15 @@ document.querySelectorAll('[data-career-sub]').forEach(btn=>btn.addEventListener
 
 function startShift(mode='free'){
   const hospitalCap=hospitalPatientCapacity();
-  const pool=shuffle(patients).slice(0,Math.max(8,hospitalCap+2)).map((p,i)=>({...p,queueId:i,wait:0}));
-  run={active:true,mode:mode==='campaign'?'campaign':'free',queue:pool,treated:0,total:hospitalCap,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:10000,combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:totalPayroll(),operatingCost:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter()),noCountdown:true};
-  applyShiftEvent();fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
+  const sandbox=mode==='sandbox';
+  const total=sandbox?Math.min(12,patients.length):hospitalCap;
+  const pool=shuffle(patients).slice(0,Math.min(patients.length,Math.max(total+3,12))).map((p,i)=>({...p,queueId:i,wait:0}));
+  run={active:true,mode:mode==='campaign'?'campaign':sandbox?'sandbox':'free',queue:pool,treated:0,total,earned:0,xp:0,rep:0,correct:0,correctDiagnoses:0,examSpend:0,timeLeft:10000,combo:0,maxCombo:0,newAchievements:[],collapsed:0,researchEarned:0,protocolAttempts:0,protocolCorrect:0,procedureAttempts:0,procedureCorrect:0,stationUsage:blankStationUsage(),flowScores:[],flowTimes:[],historyQuestions:0,strongDiagnoses:0,conditionScores:[],stableCases:0,rescuedCases:0,staffPromotions:0,payroll:sandbox?0:totalPayroll(),operatingCost:sandbox?0:operatingCost(),reserveUsed:0,equipmentWear:0,campaignStartProgress:campaignChapterProgress(currentCampaignChapter()),noCountdown:true};
+  if(sandbox){
+    run.eventMoneyMultiplier=1;run.eventXpMultiplier=1;run.eventPharmacyDiscount=1;run.eventExamTimePenalty=0;run.eventConditionMultiplier=1;
+    if($('shiftEvent')){$('shiftEvent').className='event-banner good';$('shiftEvent').textContent='🧪 Sandbox: alle Systeme freigeschaltet • keine Wirtschaftskosten'}
+  }else applyShiftEvent();
+  fillWaitingRoom();renderMissionCard();renderShiftTeam();renderWaitingOps();renderShiftModeBanners();save();showWaitingRoom();
 }
 function fillWaitingRoom(){
   // queue already holds all remaining patients; display first up to 3 by arrival order
@@ -8228,10 +8489,10 @@ function renderExamButtons(){
     btn.className='choice'+(done?' done result-ready':ordered?' ordered':'')+(!available?' locked':'');
     if(usesExpertWorkflow()){
       const tat=examTurnaround(e),status=done?' • ✅ Befund verfügbar':ordered?' • ⏳ läuft noch':` • Befund ~${tat} min`;
-      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}${ordered&&!done?'<span class="order-tag">ANGEORDNET</span>':''}<small>${cost?cost+' € • ':''}Anordnung${status}${isVisualExam(e)?' • Bildfenster verfügbar':''}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
+      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}${ordered&&!done?'<span class="order-tag">ANGEORDNET</span>':''}<small>${cost?cost+' € • ':''}Anordnung${status}${isVisualExam(e)?' • Diagnostik-Fenster verfügbar':''}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
       btn.disabled=done||ordered||!available;btn.onclick=()=>orderExamRealism(e,i,cost);
     }else{
-      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}<small>${cost?cost+' € • ':''}Befund direkt verfügbar${isVisualExam(e)?' • Bildfenster verfügbar':''}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
+      btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}<small>${cost?cost+' € • ':''}Befund direkt verfügbar${isVisualExam(e)?' • Diagnostik-Fenster verfügbar':''}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
       btn.disabled=done||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}state.money-=cost;run.examSpend+=cost;examined.add(i);conditionDecayForTime(Math.max(1,time*.5),'Untersuchung');const station=examStation(e);markFlowStation(station,Math.max(1,time*.5));if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);appendResolvedFinding(e,i,false);renderExamButtons();renderRealismWorkup();updateHud();save()};
     }box.appendChild(btn);
   });renderPendingResults(true);
@@ -8460,6 +8721,7 @@ function finishCase(){
 function nextPatient(){if(run.treated>=run.total){endShift();return}showWaitingRoom()}
 
 function endShift(reason=''){
+  if(run&&run.mode==='sandbox'){endSandboxShift(reason);return}
   if(run)run.active=false;
   finalizeShiftFlow();
   grantStaffShiftProgress();
@@ -8535,7 +8797,7 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('critical10',(state.criticalResultsSeen||0)>=10);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
-$('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
+$('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('sandboxShiftBtn').onclick=startSandboxShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
 document.body.classList.add('home-nav-active');
 renderHome();
 

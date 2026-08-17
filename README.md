@@ -1,83 +1,155 @@
-# Doctor Rush v0.32 – VISUAL DIAGNOSTICS
+# Doctor Rush v0.33 – ADVANCED DIAGNOSTICS & SANDBOX
 
 ## Dateien
 - `index.html`
 - `README.md`
 
 ## GitHub
-1. Die bisherige `index.html` ersetzen.
+1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Danach einmal mit `?v=0.32` öffnen.
+3. Einmal mit `?v=0.33` öffnen.
 
-# Hauptneuerung
+# 🧪 Neuer Sandbox-Modus
 
-Doctor Rush hat jetzt erstmals **visuelle Diagnostik**.
+Auf der Startseite gibt es jetzt einen dritten Spielmodus:
 
-Bestimmte Untersuchungen erzeugen nicht nur Textbefunde, sondern zusätzlich ein kleines Bildfenster.
+## Sandbox
 
-## Enthalten in v0.32
+Die Sandbox ist vollständig vom normalen Spielstand getrennt.
 
-### 📈 EKG-Fenster
-Je nach Fall erscheinen visuelle EKG-Befunde, zum Beispiel:
-- unauffälliges EKG
-- Sinustachykardie
+Beim Start wird dein aktueller Spielstand intern gesichert.
+
+Für die Sandbox werden temporär freigeschaltet:
+
+- alle Klinikräume
+- alle Räume auf Maximallevel
+- Labor
+- Bildgebung
+- Kardiologie
+- Notfallbereich
+- Eingriffsraum
+- alle Krankenhaus-Großprojekte
+- alle Personalrollen auf Maximallevel
+- alle Forschungszweige Level 3
+- alle Verträge
+- voller Medikamentenbestand
+- Technikzustand 100 %
+- praktisch unbegrenztes Budget
+- praktisch unbegrenzte Rücklage
+
+Die Sandbox verwendet weiterhin den von dir gewählten Schwierigkeitsgrad.
+
+Du kannst also Sandbox spielen als:
+
+- 🌱 Einsteiger
+- 🩺 Klinisch
+- 🧠 Profi
+
+## Spielstand-Schutz
+
+Sandbox-Fortschritt wird nicht in `doctorRushSaveV3` geschrieben.
+
+Wenn du die Sandbox verlässt, wird dein normaler Spielstand wiederhergestellt.
+
+Geld, XP, Ruf, Erfolge und Karrierefortschritt aus der Sandbox zählen nicht für das Hauptspiel.
+
+---
+
+# 🩻 Advanced Visual Diagnostics
+
+Die visuelle Diagnostik wurde erweitert.
+
+## 📈 EKG
+Weiterhin enthalten:
+- normaler Rhythmus
+- Tachykardie
 - Bradykardie
 - Vorhofflimmern
-- ST-Hebungs-Muster / STEMI
+- ST-Hebungs-Muster
 
-### 🩻 Röntgen-Fenster
-Je nach Fall erscheinen visuelle Röntgenbilder, zum Beispiel:
-- unauffälliger Thorax
-- Pneumonie / Infiltrat
+## 🩻 Röntgen
+Weiterhin enthalten:
+- normaler Thorax
+- Infiltrat
 - Pneumothorax
 - Frakturhinweis
 
-## So funktioniert es
+## 🧠 CT – NEU
+CT-Untersuchungen wie:
+- CT Kopf
+- CT Abdomen
+- CT-Angiografie
 
-Wenn eine passende Untersuchung durchgeführt wurde, erscheint im Befundbereich ein Button:
+können jetzt ein eigenes stilisiertes CT-Fenster öffnen.
 
-**Bild ansehen**
+## 📡 Ultraschall – NEU
+Ultraschall- und Sonografie-Untersuchungen erhalten jetzt ein eigenes kleines Ultraschallfenster.
 
-Darüber öffnet sich ein eigenes Fenster.
+## 🧪 Laborblatt – NEU
+Laboruntersuchungen können jetzt als eigenes Laborblatt geöffnet werden.
 
-## Schwierigkeit
+Beispiele:
+- Blutbild
+- CRP
+- Troponin
+- D-Dimer
+- Blutgasanalyse
+- allgemeines Labor
 
-### 🌱 Einsteiger
-- einfache Erklärung
-- Fokus: auffällig vs. unauffällig
+Das Laborblatt zeigt die vorhandenen vereinfachten Spielbefunde strukturiert und markiert Auffälligkeiten.
 
-### 🩺 Klinisch
-- Bild + schriftlicher Befund
-- mehr Kontext zur Interpretation
+---
 
-### 🧠 Profi
-- Bild bleibt wichtiges Interpretationselement
-- keine komplette Lösung wird direkt vorgegeben
-- gedacht als Teil des klinischen Reasonings
+# Unterschied nach Schwierigkeit
 
-## UI
+## 🌱 Einsteiger
+Das Fenster erklärt relativ deutlich:
+- was auffällig ist
+- worauf man achten sollte
 
-Die Bilddiagnostik öffnet sich als eigenes Fenster über dem Spiel – ähnlich wie der Vitalmonitor.
+## 🩺 Klinisch
+Das Spiel gibt Befundkontext, aber du musst die klinische Bedeutung stärker selbst ableiten.
 
-Schließen über:
-- X oben rechts
-- Tippen außerhalb
-- Escape auf Geräten mit Tastatur
+## 🧠 Profi
+Wichtige Änderung:
 
-## Bestehende Systeme bleiben erhalten
-- kompakte klinische Tabs
-- drei Schwierigkeitsstufen
-- Live-Vitalmonitor
+Der Profi-Modus zeigt im visuellen Fenster nicht mehr einfach die Diagnose als Überschrift.
+
+Stattdessen musst du:
+- Bild / Laborblatt ansehen
+- Vitalwerte beachten
+- Anamnese berücksichtigen
+- körperliche Untersuchung einbeziehen
+- deine Differentialdiagnosen bilden
+
+Dadurch wird der Profi-Modus deutlich weniger „Multiple Choice mit Lösungshilfe“.
+
+---
+
+# Bestehende Systeme bleiben erhalten
+
+- drei Schwierigkeitsgrade
 - kein Schicht-Countdown
-- Kampagne und freie Schicht
+- kompakte klinische Tabs
+- Live-Vitalmonitor
+- dynamische Vitalwerte
+- verzögerte Befunde
+- Differentialdiagnosen
+- Diagnosesicherheit
+- Konsile
+- Reevaluation
+- Disposition
+- Kampagne
+- freie Schicht
 
 ## Technisch
-- weiterhin nur eine `index.html`
+- eine einzige `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.31-Spielstände kompatibel
-- keine externen Dateien
+- v0.32-Spielstand kompatibel
+- Sandbox überschreibt den Hauptspielstand nicht
 - kein Service Worker
+- keine externen JS-/CSS-Dateien
 - JavaScript-Syntaxprüfung: OK
 - One-File-Prüfung: OK
 
-> Alle Bildbefunde sind stilisierte, fiktive Spielsimulationen und kein echtes medizinisches Referenzmaterial.
+> Bild- und Laborbefunde sind stilisierte, vereinfachte Spielsimulationen und kein medizinisches Referenzmaterial.
