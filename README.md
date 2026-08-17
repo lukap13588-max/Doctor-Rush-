@@ -1,4 +1,4 @@
-# Doctor Rush v0.30 – LIVE VITAL MONITOR
+# Doctor Rush v0.31 – COMPACT CLINICAL UI
 
 ## Dateien
 - `index.html`
@@ -7,79 +7,86 @@
 ## GitHub
 1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Einmal mit `?v=0.30` öffnen.
+3. Einmal mit `?v=0.31` öffnen.
 
-# Neu in v0.30
+# Hauptänderung
 
-Die Vitalwerte stehen nicht mehr dauerhaft groß im Patientenbildschirm.
+Der Patientenbildschirm war wieder zu lang.
 
-Stattdessen gibt es einen kompakten Button:
+Ab v0.31 wird der Patientenfall in feste Bereiche aufgeteilt:
 
-**❤️ Vitalmonitor öffnen**
+- 👤 Übersicht
+- 💬 Anamnese
+- 🩺 Untersuchung
+- 🧪 Diagnostik
+- ✅ Entscheidung
 
-Beim Antippen öffnet sich ein kleines Monitor-Fenster über dem Spiel.
+**Immer nur ein Bereich ist gleichzeitig geöffnet.**
 
-Dadurch wird die Patientenoberfläche ruhiger und wirkt mehr wie eine echte klinische App.
+Die Leiste bleibt beim Scrollen sichtbar.
 
-## 🌱 Einsteiger
-Der Monitor bleibt bewusst einfach.
+## Einsteiger
+Einsteiger sehen nur:
+- Übersicht
+- Entscheidung
 
-Gezeigt werden:
-- Puls
-- Sauerstoffsättigung
-- Blutdruck
-- Temperatur
+## Klinisch / Profi
+Alle fünf Bereiche sind verfügbar.
 
-Zusätzlich gibt es einen kurzen verständlichen Hinweis, ob die Werte im Spiel insgesamt stabil oder auffällig wirken.
-
-Kein Patientenzustandsverfall wird eingeblendet.
-
-## 🩺 Klinisch
-Der Monitor zeigt:
-- Puls
-- SpO₂
-- Blutdruck
-- Atemfrequenz
-- Temperatur
-- Schmerzscore
+## Übersicht
+Enthält je nach Schwierigkeit:
+- Patientenakte
+- Patientenweg
 - Patientenzustand
-- Verlaufstrend
+- Notfallbereich
+- Einsteiger-Hilfe
 
-Die Werte reagieren auf den dynamischen Patientenzustand.
+Der Live-Vitalmonitor bleibt direkt bei der Patientenkarte.
 
-## 🧠 Profi
-Zusätzlich zum vollständigen Monitor werden angezeigt:
-- Patientenzustand 0–100
-- Verlaufstrend
-- ausstehende Befunde
-- Anzahl Reevaluations-Checks
-- Status der Stabilisierung
+## Anamnese
+Nur die Anamnese ist offen.
+Danach führt ein Button direkt zur Untersuchung.
 
-Damit kann ein Profi den Zustand kompakt kontrollieren, ohne durch die komplette Patientenakte scrollen zu müssen.
+## Untersuchung
+Nur die körperliche Untersuchung ist offen.
+Danach direkt zur Diagnostik.
 
-## Live-Fenster
-Solange das Fenster geöffnet ist, wird die Anzeige regelmäßig aus dem aktuellen Spielzustand aktualisiert.
+## Diagnostik
+Enthält:
+- Untersuchungen
+- Befunde
+- klinische Arbeitsgrundlage
+- Profi-Differentialdiagnosen
+- Konsile
+- verzögerte Befunde
 
-Der Monitor erfindet dabei keine zufälligen Werte. Änderungen entstehen aus dem bereits vorhandenen dynamischen Patientenzustand und den Aktionen im Spiel.
+## Entscheidung
+Enthält:
+- Arbeitsdiagnose
+- Behandlung
+- Eingriff
+- Reevaluation
+- Disposition
+- Übergabe
+- Fallabschluss
 
-## Bedienung
-Das Fenster kann geschlossen werden durch:
-- X oben rechts
-- Tippen außerhalb des Fensters
-- Escape auf Geräten mit Tastatur
+## Patientenkarte
+Dauerhaft sichtbar bleiben nur die wichtigsten Dinge:
+- Patient
+- Beschwerden
+- Dringlichkeit
+- Vitalmonitor
 
-## Mobile UI
-Die ursprüngliche große Vitalwerte-Zeile ist standardmäßig eingeklappt.
-
-Der Monitor ist für kleine Handybildschirme optimiert.
+Die ausführliche Patientenakte liegt im Tab Übersicht.
 
 ## Technisch
-- eine einzige `index.html`
-- Save-Key bleibt `doctorRushSaveV3`
-- v0.29-Spielstand kompatibel
-- alle drei Schwierigkeitsstufen unterstützt
-- kein Service Worker
+- eine `index.html`
+- Save-Key `doctorRushSaveV3`
+- v0.30-Spielstand kompatibel
+- Live-Vitalmonitor bleibt erhalten
+- drei Schwierigkeitsstufen bleiben erhalten
+- kein Schicht-Countdown
 - JavaScript-Syntaxprüfung: OK
 - One-File-Prüfung: OK
 
-> Die Vitalwerte sind Teil einer fiktiven Spielsimulation und keine medizinische Überwachung.
+> Medizinische Inhalte sind vereinfachtes, fiktives Gameplay.

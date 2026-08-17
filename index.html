@@ -1762,13 +1762,38 @@ body.home-nav-active #app{padding-bottom:102px}
   .vital-monitor-window{max-height:88vh}
 }
 
+
+/* ===== v0.31 COMPACT CLINICAL UI ===== */
+.clinical-tabs{
+  position:sticky;top:6px;z-index:80;margin:9px 0 10px;padding:6px;
+  border-radius:14px;background:rgba(7,24,42,.96);border:1px solid #29435f;
+  box-shadow:0 8px 24px rgba(0,0,0,.24);backdrop-filter:blur(12px)
+}
+.clinical-tabs-scroll{display:flex;gap:5px;overflow-x:auto;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.clinical-tabs-scroll::-webkit-scrollbar{display:none}
+.clinical-tab{
+  flex:0 0 auto;border:1px solid #29435f;background:#0d2138;color:#aabfd3;
+  border-radius:10px;padding:8px 9px;font-size:7.4px;font-weight:900;white-space:nowrap
+}
+.clinical-tab.active{background:rgba(82,145,208,.16);border-color:#588fc5;color:#e6f3ff}
+.clinical-tab.complete{border-color:rgba(72,210,143,.22)}
+.clinical-tab .tab-dot{display:inline-block;width:5px;height:5px;border-radius:999px;background:#536a80;margin-left:4px}
+.clinical-tab.complete .tab-dot{background:#5fd5a7}.clinical-tab.active .tab-dot{background:#75bfff}
+.clinical-tab-hidden{display:none!important}
+.clinical-tab-context{display:flex;justify-content:space-between;gap:8px;align-items:center;margin-top:5px;padding:0 3px;font-size:6.7px;color:var(--muted)}
+.clinical-tab-context b{color:#c7def3}
+.compact-overview-note{margin:8px 0;padding:8px 9px;border-radius:10px;background:rgba(112,160,255,.05);border:1px solid rgba(112,160,255,.14);font-size:7.5px;line-height:1.4;color:#d8e7f4}
+#gameScreen .patient-card{margin-bottom:0}
+.case-actions-panel{margin-top:9px;padding:9px;border-radius:13px;background:#0b1d32;border:1px solid #29435f}
+.case-actions-panel #submitBtn,.case-actions-panel #quitBtn{margin-top:7px}
+@media(max-width:380px){.clinical-tab{padding:8px 8px;font-size:7px}}
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.30 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.31 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1778,7 +1803,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.30 • LIVE VITAL MONITOR</h2>
+          <h2>Clinic Life v0.31 • COMPACT CLINICAL UI</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -2178,6 +2203,56 @@ body.home-nav-active #app{padding-bottom:102px}
         <div id="activeTeam" class="shift-team-strip"></div>
 
         <div id="roomRoute" class="room-route">🏥 <b>Behandlungsraum</b> • Patient wird untersucht</div>
+        <article class="patient-card">
+          <div class="patient-head">
+            <div id="avatar" class="avatar">👩</div>
+            <div>
+              <h2 id="patientName">Patient</h2>
+              <p id="patientMeta">Alter • Beruf</p>
+            </div>
+            <div id="urgency" class="urgency low">NORMAL</div>
+          </div>
+
+          <div class="complaint" id="complaint">„Ich habe Beschwerden.“</div>
+
+          <div id="vitalsGrid" class="vitals monitor-collapsed">
+            <div id="vPulseBox" class="vital-item"><small>Puls <i class="vital-dot"></i></small><b id="vPulse">—</b></div>
+            <div id="vTempBox" class="vital-item"><small>Temp. <i class="vital-dot"></i></small><b id="vTemp">—</b></div>
+            <div id="vSpo2Box" class="vital-item"><small>SpO₂ <i class="vital-dot"></i></small><b id="vSpo2">—</b></div>
+            <div id="vBpBox" class="vital-item"><small>RR <i class="vital-dot"></i></small><b id="vBp">—</b></div>
+            <div id="vRespBox" class="vital-item realism-extra"><small>AF <i class="vital-dot"></i></small><b id="vResp">—</b></div>
+            <div id="vPainBox" class="vital-item realism-extra"><small>Schmerz <i class="vital-dot"></i></small><b id="vPain">—</b></div>
+          </div>
+          <button id="openVitalMonitorBtn" type="button" class="vital-monitor-open" onclick="openVitalMonitor()">
+            <span>❤️ Vitalmonitor öffnen<small>Aktuelle Vitalwerte und Verlauf anzeigen</small></span>
+            <span class="monitor-live">● LIVE</span>
+          </button>
+        </article>
+
+
+
+        <nav id="clinicalTabs" class="clinical-tabs" aria-label="Patientenbereiche">
+          <div class="clinical-tabs-scroll">
+            <button id="clinicalTabOverview" type="button" class="clinical-tab active" onclick="switchClinicalTab('overview')">👤 Übersicht <i class="tab-dot"></i></button>
+            <button id="clinicalTabHistory" type="button" class="clinical-tab" onclick="switchClinicalTab('history')">💬 Anamnese <i class="tab-dot"></i></button>
+            <button id="clinicalTabExam" type="button" class="clinical-tab" onclick="switchClinicalTab('exam')">🩺 Untersuchung <i class="tab-dot"></i></button>
+            <button id="clinicalTabDiagnostics" type="button" class="clinical-tab" onclick="switchClinicalTab('diagnostics')">🧪 Diagnostik <i class="tab-dot"></i></button>
+            <button id="clinicalTabDecision" type="button" class="clinical-tab" onclick="switchClinicalTab('decision')">✅ Entscheidung <i class="tab-dot"></i></button>
+          </div>
+          <div class="clinical-tab-context">
+            <span id="clinicalTabHint">Patient überblicken und Vitalmonitor öffnen.</span>
+            <b id="clinicalTabDifficulty">🌱 Einsteiger</b>
+          </div>
+        </nav>
+
+        <div id="compactOverviewNote" class="compact-overview-note">
+          📱 Immer nur ein klinischer Bereich ist geöffnet. So bleibt der Patientenscreen kurz und übersichtlich.
+        </div>
+
+          <details id="patientRecord" class="patient-record">
+            <summary>📋 Patientenakte <span id="recordSummary">Triage • Anamnese • Medikation</span></summary>
+            <div id="patientRecordBody" class="record-body"></div>
+          </details>
         <section id="patientFlowPanel" class="patient-flow">
           <div class="patient-flow-head">
             <b>🧭 Patientenweg</b>
@@ -2205,38 +2280,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <button id="stabilizeBtn" type="button" class="stabilize-btn" onclick="manualStabilize()">🛡️ Monitoring & Stabilisierung • 4 min</button>
         </section>
 
-        <article class="patient-card">
-          <div class="patient-head">
-            <div id="avatar" class="avatar">👩</div>
-            <div>
-              <h2 id="patientName">Patient</h2>
-              <p id="patientMeta">Alter • Beruf</p>
-            </div>
-            <div id="urgency" class="urgency low">NORMAL</div>
-          </div>
-
-          <div class="complaint" id="complaint">„Ich habe Beschwerden.“</div>
-
-          <div id="vitalsGrid" class="vitals monitor-collapsed">
-            <div id="vPulseBox" class="vital-item"><small>Puls <i class="vital-dot"></i></small><b id="vPulse">—</b></div>
-            <div id="vTempBox" class="vital-item"><small>Temp. <i class="vital-dot"></i></small><b id="vTemp">—</b></div>
-            <div id="vSpo2Box" class="vital-item"><small>SpO₂ <i class="vital-dot"></i></small><b id="vSpo2">—</b></div>
-            <div id="vBpBox" class="vital-item"><small>RR <i class="vital-dot"></i></small><b id="vBp">—</b></div>
-            <div id="vRespBox" class="vital-item realism-extra"><small>AF <i class="vital-dot"></i></small><b id="vResp">—</b></div>
-            <div id="vPainBox" class="vital-item realism-extra"><small>Schmerz <i class="vital-dot"></i></small><b id="vPain">—</b></div>
-          </div>
-          <button id="openVitalMonitorBtn" type="button" class="vital-monitor-open" onclick="openVitalMonitor()">
-            <span>❤️ Vitalmonitor öffnen<small>Aktuelle Vitalwerte und Verlauf anzeigen</small></span>
-            <span class="monitor-live">● LIVE</span>
-          </button>
-          <details id="patientRecord" class="patient-record">
-            <summary>📋 Patientenakte <span id="recordSummary">Triage • Anamnese • Medikation</span></summary>
-            <div id="patientRecordBody" class="record-body"></div>
-          </details>
-        </article>
-
-
-        <div id="beginnerGuide" class="beginner-guide" style="display:none"><h4>🌱 Einfacher Ablauf</h4><p>Du brauchst kein medizinisches Vorwissen. Lies Beschwerden und Vitalwerte und entscheide Schritt für Schritt.</p><div class="beginner-steps"><div class="beginner-step"><b>1. ❤️</b><small>Vitalwerte ansehen</small></div><div class="beginner-step"><b>2. 🧠</b><small>Diagnose wählen</small></div><div class="beginner-step"><b>3. 💊</b><small>Behandlung wählen</small></div></div></div>
+        <div id="beginnerGuide" class="beginner-guide" style="display:none"><h4>🌱 Einfacher Ablauf</h4><p>Du brauchst kein medizinisches Vorwissen. Lies Beschwerden und Vitalwerte und entscheide Schritt für Schritt.</p><div class="beginner-steps"><div class="beginner-step"><b>1. ❤️</b><small>Vitalwerte ansehen</small></div><div class="beginner-step"><b>2. 🧠</b><small>Diagnose wählen</small></div><div class="beginner-step"><b>3. 💊</b><small>Behandlung wählen</small></div></div><button type="button" class="pending-wait" onclick="switchClinicalTab('decision')">Jetzt Diagnose & Behandlung wählen →</button></div>
 
         <section id="protocolPanel" class="protocol-panel hidden">
           <div class="protocol-head">
@@ -2251,7 +2295,7 @@ body.home-nav-active #app{padding-bottom:102px}
         </section>
 
 
-        <div id="realismSequence" class="realism-sequence">
+        <div id="realismSequence" class="realism-sequence clinical-tab-hidden">
           <b>Realistischer Ablauf:</b> Anamnese → Untersuchung → Diagnostik → Differentialdiagnosen → Arbeitsdiagnose → Behandlung → Reevaluation → Disposition
         </div>
 
@@ -2270,6 +2314,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="historyQuestions" class="history-questions"></div>
           <div id="historyFindings" class="history-findings"></div>
           <div id="clinicalHint" class="clinical-hint locked">🔒 Ab 60 Hinweis-Punkten erhältst du eine klinische Einordnung.</div>
+          <button type="button" class="pending-wait" onclick="switchClinicalTab('exam')">Weiter zur Untersuchung →</button>
         </section>
 
         <section id="physicalExamPanel" class="physical-panel">
@@ -2282,6 +2327,7 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
           <div id="physicalExamButtons" class="physical-buttons"></div>
           <div id="physicalExamFindings"></div>
+          <button type="button" class="pending-wait" onclick="switchClinicalTab('diagnostics')">Weiter zur Diagnostik →</button>
         </section>
 
         <section id="diagnosticsPanel" class="panel">
@@ -2297,6 +2343,7 @@ body.home-nav-active #app{padding-bottom:102px}
             <div id="criticalResultAlert" class="result-alert" style="display:none"></div>
           </div>
           <div id="findings" class="findings"></div>
+          <button type="button" class="pending-wait" onclick="switchClinicalTab('decision')">Weiter zur Entscheidung →</button>
         </section>
 
         <section id="realismWorkup" class="realism-workup">
@@ -2334,7 +2381,7 @@ body.home-nav-active #app{padding-bottom:102px}
           </div>
         </section>
 
-        <section class="panel">
+        <section id="diagnosisDecisionPanel" class="panel">
           <div class="panel-title">5. Arbeitsdiagnose</div>
           <div id="diagnosisButtons" class="choice-list two-col"></div>
           <div id="diagnosisConfidenceBox" class="reasoning-summary" style="margin-top:8px">
@@ -2360,7 +2407,7 @@ body.home-nav-active #app{padding-bottom:102px}
           <div id="procedureStatus" class="procedure-status"></div>
         </section>
 
-        <section class="panel">
+        <section id="treatmentDecisionPanel" class="panel">
           <div class="panel-title">6. Behandlung</div>
           <div id="treatmentButtons" class="choice-list two-col"></div>
         </section>
@@ -2396,9 +2443,12 @@ body.home-nav-active #app{padding-bottom:102px}
           <div class="handover-note">Eine saubere Übergabe bzw. Entlassungskommunikation verbessert im Realismusmodus die klinische Qualität.</div>
         </section>
 
-        <div id="caseSelectionStatus" class="case-selection-status">Noch keine Diagnose und Behandlung gewählt.</div>
-        <button id="submitBtn" type="button" class="primary big" onclick="finishCase()">Diagnose + Behandlung wählen</button>
-        <button id="quitBtn" class="secondary">Schicht vorzeitig beenden</button>
+        <div id="caseActionsPanel" class="case-actions-panel">
+          <div id="caseSelectionStatus" class="case-selection-status">Noch keine Diagnose und Behandlung gewählt.</div>
+          <button id="submitBtn" type="button" class="primary big" onclick="finishCase()">Diagnose + Behandlung wählen</button>
+          <button id="quitBtn" class="secondary">Schicht vorzeitig beenden</button>
+          <button type="button" class="secondary" onclick="switchClinicalTab('overview')">← Zur Patientenübersicht</button>
+        </div>
       </section>
 
       <section id="resultScreen" class="screen">
@@ -4173,6 +4223,69 @@ function renderReassessment(){
 }
 
 
+
+const clinicalTabMeta={
+  overview:{hint:'Patient überblicken, Akte prüfen und Vitalmonitor öffnen.'},
+  history:{hint:'Gezielte Fragen stellen und Hinweise sammeln.'},
+  exam:{hint:'Körperliche Untersuchung und klinische Befunde.'},
+  diagnostics:{hint:'Technische Diagnostik, Befunde und Reasoning.'},
+  decision:{hint:'Diagnose, Behandlung, Reevaluation und Disposition.'}
+};
+function availableClinicalTabs(){
+  return isBeginner()?['overview','decision']:['overview','history','exam','diagnostics','decision'];
+}
+function clinicalTabComplete(tab){
+  if(!current)return false;
+  if(tab==='overview')return true;
+  if(tab==='history')return !!(historyState&&historyState.asked&&historyState.asked.size>=2);
+  if(tab==='exam')return !!(physicalExamState&&physicalExamState.done&&physicalExamState.done.size>=1);
+  if(tab==='diagnostics'){
+    if(isExpert())return examined.size>0||pendingResultsCount()>0||selectedDifferentials.length>0;
+    return examined.size>0;
+  }
+  if(tab==='decision'){
+    if(isBeginner())return !!selectedDiagnosis&&!!selectedTreatment;
+    return !!selectedDiagnosis&&!!selectedTreatment&&!!selectedDisposition;
+  }
+  return false;
+}
+function setClinicalGroupVisibility(ids,on){
+  ids.forEach(id=>{const el=$(id);if(el)el.classList.toggle('clinical-tab-hidden',!on)});
+}
+function applyClinicalTabVisibility(){
+  if(!current)return;
+  const available=availableClinicalTabs();
+  if(!available.includes(activeClinicalTab))activeClinicalTab=available[0];
+  const on=tab=>activeClinicalTab===tab;
+
+  setClinicalGroupVisibility(['patientRecord','patientFlowPanel','patientConditionPanel','beginnerGuide','protocolPanel','compactOverviewNote'],on('overview'));
+  setClinicalGroupVisibility(['historyPanel'],on('history'));
+  setClinicalGroupVisibility(['physicalExamPanel'],on('exam'));
+  setClinicalGroupVisibility(['diagnosticsPanel','realismWorkup','reasoningPanel'],on('diagnostics'));
+  setClinicalGroupVisibility(['diagnosisDecisionPanel','procedurePanel','treatmentDecisionPanel','reassessmentPanel','dispositionPanel','caseActionsPanel'],on('decision'));
+
+  const sequence=$('realismSequence');
+  if(sequence)sequence.classList.add('clinical-tab-hidden');
+
+  Object.keys(clinicalTabMeta).forEach(tab=>{
+    const id='clinicalTab'+tab.charAt(0).toUpperCase()+tab.slice(1);
+    const btn=$(id);if(!btn)return;
+    btn.style.display=available.includes(tab)?'inline-block':'none';
+    btn.classList.toggle('active',activeClinicalTab===tab);
+    btn.classList.toggle('complete',clinicalTabComplete(tab));
+  });
+  if($('clinicalTabHint'))$('clinicalTabHint').textContent=clinicalTabMeta[activeClinicalTab].hint;
+  if($('clinicalTabDifficulty'))$('clinicalTabDifficulty').textContent=difficultyHudLabel();
+}
+function switchClinicalTab(tab){
+  if(!availableClinicalTabs().includes(tab))return;
+  activeClinicalTab=tab;
+  applyClinicalTabVisibility();
+  const nav=$('clinicalTabs');
+  if(nav)nav.scrollIntoView({behavior:'smooth',block:'start'});
+  beep(620,.035);
+}
+
 const difficultyProfiles={
   beginner:{id:'beginner',name:'Einsteiger',icon:'🌱',description:'Vitalwerte, Diagnose und Behandlung.'},
   clinical:{id:'clinical',name:'Klinisch',icon:'🩺',description:'Anamnese, Untersuchung, Diagnostik, Reevaluation und Disposition.'},
@@ -4188,7 +4301,7 @@ function usesExpertWorkflow(){return isExpert()}
 function difficultyConditionMultiplier(){return isBeginner()?0:isClinical()?.45:1}
 function difficultyWaitingTolerance(){return isBeginner()?999:isClinical()?2:0}
 function difficultyHudLabel(){const d=difficultyProfile();return `${d.icon} ${d.name}`}
-function setDifficulty(id){if(!difficultyProfiles[id])return;state.difficulty=id;state.realismMode=id!=='beginner';save();toast(`${difficultyProfiles[id].icon} Schwierigkeit: ${difficultyProfiles[id].name}`)}
+function setDifficulty(id){if(!difficultyProfiles[id])return;state.difficulty=id;state.realismMode=id!=='beginner';activeClinicalTab='overview';save();applyClinicalTabVisibility();toast(`${difficultyProfiles[id].icon} Schwierigkeit: ${difficultyProfiles[id].name}`)}
 function applyDifficultyVisibility(){
   const beginner=isBeginner(),expert=isExpert(),clinical=usesClinicalWorkflow();
   const monitorBtn=$('openVitalMonitorBtn');
@@ -4207,6 +4320,7 @@ function applyDifficultyVisibility(){
   if($('procedurePanel')&&!expert)$('procedurePanel').style.display='none';
   if($('pendingResultsPanel')&&!expert)$('pendingResultsPanel').classList.add('hidden');
   if($('protocolPanel')&&beginner)$('protocolPanel').classList.add('hidden');
+  applyClinicalTabVisibility();
 }
 function beginnerDiagnosisOptions(patient){const unique=[patient.correctDiagnosis,...(patient.diagnoses||[]).filter(x=>x!==patient.correctDiagnosis)];return deterministicShuffle(unique.slice(0,3),realismHash(patient.name+'beginnerDiagnosis'))}
 function treatmentOptionsFor(patient){if(!isBeginner())return patient.treatments;const unique=[patient.correctTreatment,...(patient.treatments||[]).filter(x=>x!==patient.correctTreatment)];return deterministicShuffle(unique.slice(0,3),realismHash(patient.name+'beginnerTreatment'))}
@@ -6152,7 +6266,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, soundOn=true;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, activeClinicalTab='overview', soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -7817,6 +7931,7 @@ function ageWaitingPatients(){
 
 function loadPatient(){
   closeVitalMonitor();
+  activeClinicalTab='overview';
   selectedDiagnosis=null;selectedTreatment=null;selectedDisposition=null;diagnosisConfidence=null;selectedDifferentials=[];examined=new Set();physicalExamState=newPhysicalExamState();reassessmentState=newReassessmentState();consultState=newConsultState();
   patientFlow=newPatientFlow(current);
   historyState=newHistoryState(current);
@@ -7841,7 +7956,7 @@ function loadPatient(){
   renderPatientRecord();
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();applyDifficultyVisibility();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();applyDifficultyVisibility();applyClinicalTabVisibility();updateSubmit();
 }
 function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=difficultyHudLabel();renderMissionCard()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
@@ -7913,6 +8028,7 @@ function updateSubmit(){
   const hasDiag=!!selectedDiagnosis,hasTreat=!!selectedTreatment,hasDisposition=!usesClinicalWorkflow()||!!selectedDisposition,hasReasoning=!usesExpertWorkflow()||(selectedDifferentials.length>0&&!!diagnosisConfidence),ready=hasDiag&&hasTreat&&hasDisposition&&hasReasoning;
   btn.disabled=false;btn.classList.toggle('ready',ready);btn.textContent=ready?'Fall abschließen ✓':isBeginner()?'Diagnose + Behandlung wählen':isClinical()?'Diagnose + Behandlung + Disposition':'Differentiale + Diagnose + Disposition';
   if(status){if(ready){if(isBeginner())status.textContent=`${difficultyHudLabel()} • Diagnose + Behandlung gewählt ✓`;else{const safety=realismCase&&realismCase.safetyChecks?realismCase.safetyChecks.size:0;status.textContent=`${difficultyHudLabel()} • ${dispositionLabel(selectedDisposition)} • Übergabe ${safety}/3 • Reevaluation ${reassessmentTotal()}`}}else if(!hasDiag)status.textContent='Jetzt Diagnose wählen.';else if(!hasTreat)status.textContent='Jetzt Behandlung wählen.';else if(usesExpertWorkflow()&&selectedDifferentials.length===0)status.textContent='Bitte mindestens eine Differentialdiagnose priorisieren.';else if(usesExpertWorkflow()&&!diagnosisConfidence)status.textContent='Bitte Diagnosesicherheit angeben.';else if(usesClinicalWorkflow()&&!selectedDisposition)status.textContent='Jetzt Disposition festlegen.'}
+  applyClinicalTabVisibility();
 }
 function emergencySupplyCost(treatment){
   let total=0;
