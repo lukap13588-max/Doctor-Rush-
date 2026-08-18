@@ -1970,13 +1970,104 @@ body.home-nav-active #app{padding-bottom:102px}
 }
 @media(max-width:390px){.visual-read-grid,.dicom-meta{grid-template-columns:1fr}}
 
+
+/* ===== v0.36 VISUAL REDESIGN ===== */
+body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%)}
+#app{max-width:1560px;padding:16px 12px 48px}
+.topbar{
+  position:sticky;top:8px;z-index:90;display:grid;grid-template-columns:1fr auto;gap:10px;
+  padding:14px 16px;border-radius:18px;background:linear-gradient(180deg,rgba(7,21,37,.96),rgba(5,16,29,.90));
+  border:1px solid rgba(88,144,207,.24);box-shadow:0 20px 45px rgba(0,0,0,.28);backdrop-filter:blur(12px)
+}
+.topbar h1{font-size:32px;letter-spacing:.02em}
+.topbar .eyebrow{color:#58a8ff;font-weight:900;letter-spacing:.16em}
+.global-command-bar{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
+.gc-card{padding:10px 12px;border-radius:14px;background:linear-gradient(180deg,#0c2036,#0a182b);border:1px solid rgba(84,140,204,.22);min-height:60px}
+.gc-card small{display:block;color:#84a6c4;font-size:11px;letter-spacing:.05em;text-transform:uppercase}.gc-card b{display:block;margin-top:6px;font-size:18px;color:#f1f8ff}
+#soundBtn{align-self:start;justify-self:end;width:48px;height:48px;border-radius:14px;border:1px solid rgba(89,146,209,.30);background:linear-gradient(180deg,#11283f,#0a1a2b)}
+#homeScreen .hero-card,#homeScreen section,#campaignStoryScreen .campaign-story-card,#resultScreen .result-card,#shiftScreen .summary-card{
+  background:linear-gradient(180deg,rgba(13,31,52,.96),rgba(9,22,37,.95));border:1px solid rgba(89,146,209,.18);box-shadow:0 18px 36px rgba(0,0,0,.24)
+}
+#homeScreen .mode-card,#homeScreen .home-quick,#homeScreen .finance-stat,#homeScreen .staff2-stat,#homeScreen .hospital-stat,#homeScreen .condition-stat,#homeScreen .diagnostic-stat,#homeScreen .flow-stat,#homeScreen .procedure-skill-stat,#homeScreen .emergency-skill-stat,#homeScreen .career-card,#homeScreen .achievement-card,#homeScreen .room-card,#homeScreen .expansion-card,#homeScreen .contract-card,#homeScreen .staff2-card{
+  box-shadow:0 10px 24px rgba(0,0,0,.18)
+}
+#waitingScreen,#gameScreen{padding-top:8px}
+.desktop-waiting-top,.desktop-game-top{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
+.desktop-top-chips{display:flex;gap:10px;flex-wrap:wrap}
+.desktop-top-chips .hud,.desktop-waiting-top .hud,.desktop-game-top .hud{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;background:none;padding:0}
+.desktop-waiting-top .hud span,.desktop-game-top .hud span{
+  margin:0;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#0d2035,#0b1727);border:1px solid rgba(89,146,209,.20);font-size:13px
+}
+.desktop-game-top .progress-wrap,.desktop-waiting-top .waiting-hero,.desktop-waiting-top #shiftEvent,.desktop-waiting-top .shift-team-strip,.desktop-game-top #gameModeBanner,.desktop-game-top .shift-team-strip,.desktop-game-top .progress-wrap{
+  background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);box-shadow:0 14px 28px rgba(0,0,0,.22)
+}
+.desktop-waiting-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
+.desktop-waiting-left,.desktop-waiting-right,.desktop-left,.desktop-center,.desktop-right{display:flex;flex-direction:column;gap:14px;min-width:0}
+.desktop-waiting-right .summary-box,.desktop-waiting-right .waiting-ops,.desktop-command-card,.desktop-live-card{background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);border-radius:18px;box-shadow:0 14px 28px rgba(0,0,0,.22)}
+.desktop-command-card{padding:14px}.desktop-command-card h3{margin:0 0 4px}.desktop-command-card p{margin:0 0 12px;color:var(--muted);font-size:13px}
+.desktop-command-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.desktop-command-grid button,.desktop-side-rail button{
+  border:1px solid rgba(94,146,204,.22);background:linear-gradient(180deg,#10253b,#0b1726);color:#edf6ff;border-radius:12px;padding:10px 12px;font-weight:800;text-align:left
+}
+.desktop-command-grid button:hover,.desktop-side-rail button:hover{border-color:rgba(120,177,238,.45);transform:translateY(-1px)}
+.desktop-game-shell{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;align-items:start}
+.desktop-side-rail{display:flex;flex-direction:column;gap:10px;position:sticky;top:158px}
+.desktop-side-rail button{display:flex;align-items:center;justify-content:center;min-height:68px;padding:8px;border-radius:18px;text-align:center;font-size:12px;line-height:1.15}
+.desktop-side-rail button b{display:block;font-size:20px;margin-bottom:3px}.desktop-side-rail button.active{border-color:#67b1ff;background:linear-gradient(180deg,#17416a,#123154);box-shadow:0 0 0 2px rgba(103,177,255,.16) inset}
+.desktop-game-grid{display:grid;grid-template-columns:320px minmax(0,1fr) 330px;gap:16px;align-items:start}
+.desktop-left .patient-card,.desktop-left .patient-condition-panel,.desktop-left .patient-flow,.desktop-center .clinical-tabs,.desktop-center .compact-overview-note,.desktop-center .patient-record,.desktop-center section,.desktop-right .case-actions-panel,.desktop-right .desktop-command-card,.desktop-right .desktop-live-card,.desktop-right .room-route{
+  background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);box-shadow:0 14px 28px rgba(0,0,0,.22)
+}
+.desktop-left .patient-card{padding:18px}
+.desktop-left .avatar{width:88px;height:88px;font-size:44px;border-radius:16px}
+.desktop-left .complaint{font-size:16px;line-height:1.45}
+.desktop-left .vitals{margin-top:12px}
+.desktop-left .vital-monitor-open,.desktop-right #submitBtn,.desktop-right #quitBtn,.desktop-right .secondary{width:100%}
+.desktop-right .case-actions-panel{position:sticky;top:158px;padding:16px}
+.desktop-right .case-actions-panel .primary.big{min-height:56px;font-size:18px}
+.desktop-live-card{padding:14px}.desktop-live-card h3{margin:0 0 4px}.desktop-live-card p{margin:0 0 10px;color:var(--muted);font-size:13px}
+.desktop-live-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.desktop-live-grid div{padding:10px 12px;border-radius:12px;background:#0a1624;border:1px solid rgba(88,144,207,.16)}
+.desktop-live-grid small{display:block;color:#8eadc7;font-size:11px}.desktop-live-grid b{display:block;margin-top:4px;font-size:16px}
+#gameScreen .clinical-tabs{padding:12px;border-radius:18px}
+#gameScreen .clinical-tabs-scroll{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
+#gameScreen .clinical-tab{margin:0;min-height:58px;border-radius:14px;font-weight:800;background:linear-gradient(180deg,#10253b,#0b1726);border:1px solid rgba(96,150,205,.18)}
+#gameScreen .clinical-tab.active{background:linear-gradient(180deg,#17416a,#123154);border-color:#67b1ff}
+#gameScreen .clinical-tab-context{margin-top:10px;padding-top:10px;border-top:1px solid rgba(107,153,201,.16)}
+#gameScreen .panel,#gameScreen .history-panel,#gameScreen .physical-panel,#gameScreen .reasoning-panel,#gameScreen .diagnosticsPanel,#gameScreen .reassess-panel,#gameScreen .disposition-panel,#gameScreen .protocol-panel,#gameScreen .procedure-panel,#gameScreen .realism-workup{border-radius:18px}
+#gameScreen .choice-list button,#gameScreen .diff-list button,#gameScreen .disposition-grid button,#gameScreen .pending-wait,#gameScreen .confidence-btn,#gameScreen .safety-check,#gameScreen .consult-btn,#gameScreen .stabilize-btn{border-radius:12px}
+#gameScreen .patient-record summary{padding:14px 16px}
+#gameScreen .room-route{padding:14px 16px;border-radius:18px;font-size:14px}
+#gameScreen .patient-flow,#gameScreen .patient-condition-panel{padding:16px;border-radius:18px}
+#gameScreen .compact-overview-note{padding:12px 14px;border-radius:14px}
+#gameScreen .beginner-guide{margin:0}
+.desktop-ribbon{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(88,168,255,.10);border:1px solid rgba(88,168,255,.18);font-size:12px;color:#b8d8ff;font-weight:900}
+@media (max-width:1220px){
+  .desktop-game-grid{grid-template-columns:280px minmax(0,1fr)}
+  .desktop-right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
+  .desktop-right .case-actions-panel{position:relative;top:auto}
+}
+@media (max-width:980px){
+  .global-command-bar,.desktop-game-top .hud,.desktop-waiting-top .hud{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .desktop-game-shell{grid-template-columns:1fr}
+  .desktop-side-rail{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:2px}
+  .desktop-game-grid,.desktop-waiting-grid{grid-template-columns:1fr}
+  .desktop-right{grid-column:auto;display:flex}
+}
+@media (max-width:640px){
+  #app{padding:10px 8px 36px}.topbar{top:0;border-radius:16px;padding:12px}.topbar h1{font-size:26px}
+  .global-command-bar,.desktop-game-top .hud,.desktop-waiting-top .hud{grid-template-columns:1fr 1fr}
+  .desktop-side-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
+  #gameScreen .clinical-tabs-scroll{grid-template-columns:1fr 1fr}
+  .desktop-command-grid,.desktop-live-grid{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.35 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.36 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1986,7 +2077,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.35 • RADIOLOGY WORKSTATION</h2>
+          <h2>Clinic Life v0.36 • VISUAL REDESIGN</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -9193,8 +9284,128 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('visualPerfect10',(state.perfectVisualReads||0)>=10);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
+
+function createGlobalCommandBar(){
+  const topbar=document.querySelector('.topbar');
+  if(!topbar||$('globalCommandBar'))return;
+  const bar=document.createElement('div');
+  bar.id='globalCommandBar';
+  bar.className='global-command-bar';
+  bar.innerHTML=`
+    <div class="gc-card"><small>Schwierigkeit</small><b id="gcDifficulty">${difficultyHudLabel()}</b></div>
+    <div class="gc-card"><small>Krankenhaus</small><b id="gcHospital">${hospitalTier()}</b></div>
+    <div class="gc-card"><small>Ruf</small><b id="gcRep">${Math.round(state.rep||0)}</b></div>
+    <div class="gc-card"><small>Konto</small><b id="gcMoney">${Math.round(state.money||0).toLocaleString('de-DE')} €</b></div>
+    <div class="gc-card"><small>Tag</small><b id="gcDay">Tag ${state.day||1}</b></div>`;
+  topbar.appendChild(bar);
+}
+function createDesktopCommandCard(){
+  const card=document.createElement('div');
+  card.className='desktop-command-card';
+  card.innerHTML=`<div class="desktop-ribbon">DOCTOR RUSH UI 2.0</div><h3>Quick Actions</h3><p>Die Bedienung wurde optisch näher an die gezeigten Konzeptbilder gebracht.</p>
+  <div class="desktop-command-grid">
+    <button type="button" onclick="switchClinicalTab('overview')">👤 Übersicht</button>
+    <button type="button" onclick="switchClinicalTab('history')">💬 Anamnese</button>
+    <button type="button" onclick="switchClinicalTab('exam')">🩺 Untersuchung</button>
+    <button type="button" onclick="switchClinicalTab('diagnostics')">🩻 Diagnostik</button>
+    <button type="button" onclick="switchClinicalTab('decision')">✅ Entscheidung</button>
+    <button type="button" onclick="openVitalMonitor()">❤️ Monitor</button>
+  </div>`;
+  return card;
+}
+function createDesktopLiveCard(){
+  const card=document.createElement('div');
+  card.className='desktop-live-card';
+  card.innerHTML=`<h3>Live Status</h3><p>Diese kompakte Seitenkarte zeigt die wichtigsten laufenden Werte.</p>
+    <div class="desktop-live-grid">
+      <div><small>Schicht</small><b id="liveShiftValue">0/0</b></div>
+      <div><small>Patient</small><b id="livePatientValue">—</b></div>
+      <div><small>Zustand</small><b id="liveConditionValue">—</b></div>
+      <div><small>Station</small><b id="liveRoomValue">—</b></div>
+    </div>`;
+  return card;
+}
+function setupWaitingDesktopLayout(){
+  const screen=$('waitingScreen');
+  if(!screen||screen.dataset.visualRedesignWaiting==='1')return;
+  screen.dataset.visualRedesignWaiting='1';
+  const top=document.createElement('div'); top.className='desktop-waiting-top';
+  const grid=document.createElement('div'); grid.className='desktop-waiting-grid';
+  const left=document.createElement('div'); left.className='desktop-waiting-left';
+  const right=document.createElement('div'); right.className='desktop-waiting-right';
+  screen.prepend(top); screen.appendChild(grid); grid.append(left,right);
+  const elements=[screen.querySelector('.hud'), screen.querySelector('.waiting-hero'), $('waitingModeBanner'), $('shiftEvent'), $('shiftTeam')];
+  elements.forEach(el=>{if(el)top.appendChild(el)});
+  ['triageHint','waitingPatients'].forEach(id=>{const el=$(id); if(el)left.appendChild(el)});
+  const quick=createDesktopCommandCard();
+  quick.querySelector('h3').textContent='Triage Board';
+  quick.querySelector('p').textContent='Wähle den nächsten Patienten und halte den Flow der Klinik aufrecht.';
+  right.appendChild(quick);
+  ['waitingOps','summaryBox'].forEach(()=>{});
+  const ops=screen.querySelector('.waiting-ops'); if(ops)right.appendChild(ops);
+  const summary=screen.querySelector('.summary-box'); if(summary)right.appendChild(summary);
+}
+function setupGameDesktopLayout(){
+  const screen=$('gameScreen');
+  if(!screen||screen.dataset.visualRedesignGame==='1')return;
+  screen.dataset.visualRedesignGame='1';
+
+  const top=document.createElement('div'); top.className='desktop-game-top';
+  screen.prepend(top);
+  [screen.querySelector('.hud'), $('gameModeBanner'), screen.querySelector('.progress-wrap'), $('activeTeam')].forEach(el=>{if(el)top.appendChild(el)});
+
+  const shell=document.createElement('div'); shell.className='desktop-game-shell';
+  const rail=document.createElement('div'); rail.className='desktop-side-rail';
+  rail.innerHTML=`
+    <button type="button" data-rail-tab="overview" onclick="switchClinicalTab('overview')"><span><b>👤</b>Übersicht</span></button>
+    <button type="button" data-rail-tab="history" onclick="switchClinicalTab('history')"><span><b>💬</b>Anamnese</span></button>
+    <button type="button" data-rail-tab="exam" onclick="switchClinicalTab('exam')"><span><b>🩺</b>Untersuchung</span></button>
+    <button type="button" data-rail-tab="diagnostics" onclick="switchClinicalTab('diagnostics')"><span><b>🩻</b>Diagnostik</span></button>
+    <button type="button" data-rail-tab="decision" onclick="switchClinicalTab('decision')"><span><b>✅</b>Entscheidung</span></button>
+    <button type="button" onclick="openVitalMonitor()"><span><b>❤️</b>Monitor</span></button>`;
+  const grid=document.createElement('div'); grid.className='desktop-game-grid';
+  const left=document.createElement('div'); left.className='desktop-left';
+  const center=document.createElement('div'); center.className='desktop-center';
+  const right=document.createElement('div'); right.className='desktop-right';
+  shell.append(rail,grid); grid.append(left,center,right); screen.appendChild(shell);
+
+  ['patient-card','roomRoute','patientConditionPanel','patientFlowPanel'].forEach(id=>{
+    const el=id==='patient-card'?screen.querySelector('.patient-card'):$(id);
+    if(el)left.appendChild(el);
+  });
+  ['clinicalTabs','compactOverviewNote','patientRecord','beginnerGuide','protocolPanel','realismSequence','historyPanel','physicalExamPanel','diagnosticsPanel','realismWorkup','reasoningPanel','diagnosisDecisionPanel','procedurePanel','treatmentDecisionPanel','reassessmentPanel','dispositionPanel'].forEach(id=>{
+    const el=$(id); if(el)center.appendChild(el);
+  });
+  right.appendChild(createDesktopCommandCard());
+  right.appendChild(createDesktopLiveCard());
+  const actions=$('caseActionsPanel'); if(actions)right.appendChild(actions);
+}
+function refreshVisualRedesignChrome(){
+  if($('gcDifficulty'))$('gcDifficulty').textContent=difficultyHudLabel();
+  if($('gcHospital'))$('gcHospital').textContent=hospitalTier();
+  if($('gcRep'))$('gcRep').textContent=Math.round(state.rep||0);
+  if($('gcMoney'))$('gcMoney').textContent=`${Math.round(state.money||0).toLocaleString('de-DE')} €`;
+  if($('gcDay'))$('gcDay').textContent=`Tag ${state.day||1}`;
+  document.querySelectorAll('.desktop-side-rail [data-rail-tab]').forEach(btn=>btn.classList.toggle('active',btn.dataset.railTab===activeClinicalTab));
+  if($('liveShiftValue'))$('liveShiftValue').textContent=run?`${run.treated+1}/${run.total}`:'—';
+  if($('livePatientValue'))$('livePatientValue').textContent=current?current.name:'—';
+  if($('liveConditionValue'))$('liveConditionValue').textContent=$('conditionStatus')?$('conditionStatus').textContent:'—';
+  if($('liveRoomValue'))$('liveRoomValue').textContent=$('roomRoute')?$('roomRoute').textContent.replace('🏥 ',''):'—';
+}
+function applyVisualRedesignV036(){
+  createGlobalCommandBar();
+  setupWaitingDesktopLayout();
+  setupGameDesktopLayout();
+  refreshVisualRedesignChrome();
+}
+
+const __v036_showScreen=showScreen;showScreen=function(id){__v036_showScreen(id);refreshVisualRedesignChrome()};
+const __v036_renderHome=renderHome;renderHome=function(){__v036_renderHome();refreshVisualRedesignChrome()};
+const __v036_renderWaitingRoom=renderWaitingRoom;renderWaitingRoom=function(){__v036_renderWaitingRoom();refreshVisualRedesignChrome()};
+const __v036_loadPatient=loadPatient;loadPatient=function(){__v036_loadPatient();refreshVisualRedesignChrome()};
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('sandboxShiftBtn').onclick=startSandboxShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
 document.body.classList.add('home-nav-active');
+applyVisualRedesignV036();
 renderHome();
 
 </script>

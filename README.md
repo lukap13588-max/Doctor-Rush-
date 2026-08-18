@@ -1,4 +1,4 @@
-# Doctor Rush v0.35 – RADIOLOGY WORKSTATION
+# Doctor Rush v0.36 – VISUAL REDESIGN
 
 ## Dateien
 - `index.html`
@@ -7,144 +7,72 @@
 ## GitHub
 1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Einmal mit `?v=0.35` öffnen.
+3. Danach einmal mit `?v=0.36` öffnen.
 
-# Größte Änderung
+# Was neu ist
 
-Visuelle Diagnostik ist jetzt nicht mehr nur „Bild öffnen und Text lesen“.
+Diese Version bringt eine große optische Überarbeitung, damit Doctor Rush deutlich näher an den Konzeptbildern wirkt.
 
-Auf **Klinisch** und **Profi** musst du eine Aufnahme zuerst selbst interpretieren.
+## Neue Optik
+- dunklere, hochwertigere Klinik-/Dashboard-Optik
+- größere Desktop-/Management-Game-Anmutung
+- neuer Command-Bar-Header mit:
+  - Schwierigkeit
+  - Krankenhaus-Stufe
+  - Ruf
+  - Konto
+  - Tag
+- deutlich stärker panelisierte UI
+- modernere Karten, Schatten, Konturen und Statusflächen
 
-Erst danach wird der schriftliche Trainingsbefund freigeschaltet.
+## Wartezimmer neu strukturiert
+- Top-Bereich wie in einer Klinik-Leitstelle
+- zweigeteiltes Layout
+- Patientenliste links
+- Klinikbetrieb / Flow / Hinweise rechts
 
-## Neue Bildbefundung
+## Behandlungsscreen neu strukturiert
+Der Behandlungsscreen ist jetzt deutlich näher an den gesendeten Bildern:
 
-Je nach Untersuchungsart bekommst du passende Interpretationsmöglichkeiten.
+- linke Seitenleiste mit Schnellnavigation
+- linker Bereich für Patientenzusammenfassung
+- großer Mittelbereich für den klinischen Workflow
+- rechte Seitenkarte für Quick Actions und Live-Status
+- sticky Aktionsbereich für Fallabschluss
 
-### EKG
-- Sinusrhythmus
-- Sinustachykardie
-- Vorhofflimmern
-- Bradykardie
-- ST-Hebungs-Muster
+## Neue Sidebar im Fallscreen
+Schnellzugriff auf:
+- Übersicht
+- Anamnese
+- Untersuchung
+- Diagnostik
+- Entscheidung
+- Vitalmonitor
 
-### Röntgen
-- unauffällige Aufnahme
-- Infiltrat / Verdichtung
-- Pneumothorax
-- Fraktur
+## Live-Statuskarte
+Im rechten Bereich werden zusätzlich laufend kompakt gezeigt:
+- Schichtfortschritt
+- aktueller Patient
+- Zustand
+- aktueller Abschnitt / Raum
 
-### CT
-- kein Akutbefund
-- intrakranielle Blutung
-- ischämischer Befund
-- embolischer / Gefäßbefund
-
-### Ultraschall
-- unauffälliger Befund
-- Konkrement / Stein
-- entzündliche Veränderung
-- freie Flüssigkeit
-
-### Labor
-- weitgehend unauffällig
-- entzündliche Konstellation
-- Herz-/Ischämiemarker auffällig
-- Stoffwechsel-/Glukoseauffälligkeit
-
-# Schwierigkeit
-
-## 🌱 Einsteiger
-Der Befund bleibt direkt erklärt.
-
-## 🩺 Klinisch
-Du musst zuerst eine Interpretation wählen.
-Danach bekommst du sofort Feedback und den schriftlichen Befund.
-
-## 🧠 Profi
-Du musst zuerst selbst befunden.
-Die Lösung wird im Bildfenster **nicht sofort verraten**.
-Der endgültige Abgleich erscheint erst in der Fallauswertung.
-
-# DICOM-/Workstation-Werkzeuge
-
-Das Diagnostikfenster hat jetzt zusätzliche Werkzeuge:
-
-- Helligkeit − / +
-- Kontrast − / +
-- Invertierung
-- Reset
-
-Außerdem werden angezeigt:
-
-- Serie
-- simulierte Aufnahmezeit
-- Seitenmarker L / R
-- Bildqualität
-
-Der bestehende Bild-Zoom bleibt erhalten.
-
-# Qualitätswertung
-
-Die korrekte visuelle Befundung fließt jetzt in die klinische Qualitätswertung ein.
-
-Im Profi-Modus reicht es damit nicht mehr, die richtige Diagnose einfach auswendig zu kennen.
-
-# Drei neue bildbasierte Fälle
-
-## Erika S. – Vorhofflimmern
-Mit:
-- unregelmäßigem Puls
-- 12-Kanal-EKG
-- bild-/kurvenbasierter Interpretation
-
-## Peter A. – intrazerebrale Blutung
-Mit:
-- akutem Kopfschmerz
-- neurologischer Auffälligkeit
-- CT Kopf nativ
-
-## Nadine H. – Cholelithiasis
-Mit:
-- rechtsseitigem Oberbauchschmerz
-- Ultraschall Oberbauch
-- Konkrement-/Steinbefund
-
-# Neue Erfolge
-
-## Befunder
-20 visuelle Befundungen dokumentieren.
-
-## Scharfer Blick
-In 10 Fällen alle visuellen Untersuchungen korrekt befunden.
-
-# Weiterhin enthalten
-
-- realistischere eingebettete Röntgen- und EKG-Aufnahmen aus v0.34
+# Bestehende Funktionen bleiben erhalten
+- Radiology Workstation
+- eigene Bildbefundung
 - Sandbox
 - Kampagne
-- Freie Schicht
+- freie Schicht
 - drei Schwierigkeitsstufen
 - kein Countdown
-- Live-Vitalmonitor
-- kompakte Tabs
-- CT
-- Ultraschall
-- Laborblatt
-- verzögerte Befunde
-- Differentialdiagnosen
-- Konsile
-- Reevaluation
-- Disposition
+- Realismusmodus
+- CT / Ultraschall / Labor / EKG / Röntgen
+- Vitalmonitor
 
-## Technisch
-
+# Technisch
 - weiterhin eine einzige `index.html`
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.34-Spielstand kompatibel
+- v0.35-Spielstand kompatibel
 - keine externen Dateien
 - kein Service Worker
-- JavaScript-Syntaxprüfung: OK
-- One-File-Prüfung: OK
 
-> Bildbefunde bleiben vereinfachte bzw. KI-generierte Trainingsdarstellungen und sind kein medizinisches Referenzmaterial.
+> Diese Version ist vor allem ein großer visueller Umbau in Richtung der gezeigten Konzeptbilder.
