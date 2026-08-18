@@ -1971,95 +1971,38 @@ body.home-nav-active #app{padding-bottom:102px}
 @media(max-width:390px){.visual-read-grid,.dicom-meta{grid-template-columns:1fr}}
 
 
-/* ===== v0.36 VISUAL REDESIGN ===== */
-body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%)}
-#app{max-width:1560px;padding:16px 12px 48px}
-.topbar{
-  position:sticky;top:8px;z-index:90;display:grid;grid-template-columns:1fr auto;gap:10px;
-  padding:14px 16px;border-radius:18px;background:linear-gradient(180deg,rgba(7,21,37,.96),rgba(5,16,29,.90));
-  border:1px solid rgba(88,144,207,.24);box-shadow:0 20px 45px rgba(0,0,0,.28);backdrop-filter:blur(12px)
-}
-.topbar h1{font-size:32px;letter-spacing:.02em}
-.topbar .eyebrow{color:#58a8ff;font-weight:900;letter-spacing:.16em}
-.global-command-bar{grid-column:1/-1;display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px}
-.gc-card{padding:10px 12px;border-radius:14px;background:linear-gradient(180deg,#0c2036,#0a182b);border:1px solid rgba(84,140,204,.22);min-height:60px}
-.gc-card small{display:block;color:#84a6c4;font-size:11px;letter-spacing:.05em;text-transform:uppercase}.gc-card b{display:block;margin-top:6px;font-size:18px;color:#f1f8ff}
-#soundBtn{align-self:start;justify-self:end;width:48px;height:48px;border-radius:14px;border:1px solid rgba(89,146,209,.30);background:linear-gradient(180deg,#11283f,#0a1a2b)}
-#homeScreen .hero-card,#homeScreen section,#campaignStoryScreen .campaign-story-card,#resultScreen .result-card,#shiftScreen .summary-card{
-  background:linear-gradient(180deg,rgba(13,31,52,.96),rgba(9,22,37,.95));border:1px solid rgba(89,146,209,.18);box-shadow:0 18px 36px rgba(0,0,0,.24)
-}
-#homeScreen .mode-card,#homeScreen .home-quick,#homeScreen .finance-stat,#homeScreen .staff2-stat,#homeScreen .hospital-stat,#homeScreen .condition-stat,#homeScreen .diagnostic-stat,#homeScreen .flow-stat,#homeScreen .procedure-skill-stat,#homeScreen .emergency-skill-stat,#homeScreen .career-card,#homeScreen .achievement-card,#homeScreen .room-card,#homeScreen .expansion-card,#homeScreen .contract-card,#homeScreen .staff2-card{
-  box-shadow:0 10px 24px rgba(0,0,0,.18)
-}
-#waitingScreen,#gameScreen{padding-top:8px}
-.desktop-waiting-top,.desktop-game-top{display:flex;flex-direction:column;gap:12px;margin-bottom:14px}
-.desktop-top-chips{display:flex;gap:10px;flex-wrap:wrap}
-.desktop-top-chips .hud,.desktop-waiting-top .hud,.desktop-game-top .hud{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;background:none;padding:0}
-.desktop-waiting-top .hud span,.desktop-game-top .hud span{
-  margin:0;padding:12px 14px;border-radius:14px;background:linear-gradient(180deg,#0d2035,#0b1727);border:1px solid rgba(89,146,209,.20);font-size:13px
-}
-.desktop-game-top .progress-wrap,.desktop-waiting-top .waiting-hero,.desktop-waiting-top #shiftEvent,.desktop-waiting-top .shift-team-strip,.desktop-game-top #gameModeBanner,.desktop-game-top .shift-team-strip,.desktop-game-top .progress-wrap{
-  background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);box-shadow:0 14px 28px rgba(0,0,0,.22)
-}
-.desktop-waiting-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:16px;align-items:start}
-.desktop-waiting-left,.desktop-waiting-right,.desktop-left,.desktop-center,.desktop-right{display:flex;flex-direction:column;gap:14px;min-width:0}
-.desktop-waiting-right .summary-box,.desktop-waiting-right .waiting-ops,.desktop-command-card,.desktop-live-card{background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);border-radius:18px;box-shadow:0 14px 28px rgba(0,0,0,.22)}
-.desktop-command-card{padding:14px}.desktop-command-card h3{margin:0 0 4px}.desktop-command-card p{margin:0 0 12px;color:var(--muted);font-size:13px}
-.desktop-command-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
-.desktop-command-grid button,.desktop-side-rail button{
-  border:1px solid rgba(94,146,204,.22);background:linear-gradient(180deg,#10253b,#0b1726);color:#edf6ff;border-radius:12px;padding:10px 12px;font-weight:800;text-align:left
-}
-.desktop-command-grid button:hover,.desktop-side-rail button:hover{border-color:rgba(120,177,238,.45);transform:translateY(-1px)}
-.desktop-game-shell{display:grid;grid-template-columns:90px minmax(0,1fr);gap:16px;align-items:start}
-.desktop-side-rail{display:flex;flex-direction:column;gap:10px;position:sticky;top:158px}
-.desktop-side-rail button{display:flex;align-items:center;justify-content:center;min-height:68px;padding:8px;border-radius:18px;text-align:center;font-size:12px;line-height:1.15}
-.desktop-side-rail button b{display:block;font-size:20px;margin-bottom:3px}.desktop-side-rail button.active{border-color:#67b1ff;background:linear-gradient(180deg,#17416a,#123154);box-shadow:0 0 0 2px rgba(103,177,255,.16) inset}
-.desktop-game-grid{display:grid;grid-template-columns:320px minmax(0,1fr) 330px;gap:16px;align-items:start}
-.desktop-left .patient-card,.desktop-left .patient-condition-panel,.desktop-left .patient-flow,.desktop-center .clinical-tabs,.desktop-center .compact-overview-note,.desktop-center .patient-record,.desktop-center section,.desktop-right .case-actions-panel,.desktop-right .desktop-command-card,.desktop-right .desktop-live-card,.desktop-right .room-route{
-  background:linear-gradient(180deg,rgba(12,31,51,.97),rgba(8,20,34,.94));border:1px solid rgba(89,146,209,.18);box-shadow:0 14px 28px rgba(0,0,0,.22)
-}
-.desktop-left .patient-card{padding:18px}
-.desktop-left .avatar{width:88px;height:88px;font-size:44px;border-radius:16px}
-.desktop-left .complaint{font-size:16px;line-height:1.45}
-.desktop-left .vitals{margin-top:12px}
-.desktop-left .vital-monitor-open,.desktop-right #submitBtn,.desktop-right #quitBtn,.desktop-right .secondary{width:100%}
-.desktop-right .case-actions-panel{position:sticky;top:158px;padding:16px}
-.desktop-right .case-actions-panel .primary.big{min-height:56px;font-size:18px}
-.desktop-live-card{padding:14px}.desktop-live-card h3{margin:0 0 4px}.desktop-live-card p{margin:0 0 10px;color:var(--muted);font-size:13px}
-.desktop-live-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.desktop-live-grid div{padding:10px 12px;border-radius:12px;background:#0a1624;border:1px solid rgba(88,144,207,.16)}
-.desktop-live-grid small{display:block;color:#8eadc7;font-size:11px}.desktop-live-grid b{display:block;margin-top:4px;font-size:16px}
-#gameScreen .clinical-tabs{padding:12px;border-radius:18px}
-#gameScreen .clinical-tabs-scroll{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}
-#gameScreen .clinical-tab{margin:0;min-height:58px;border-radius:14px;font-weight:800;background:linear-gradient(180deg,#10253b,#0b1726);border:1px solid rgba(96,150,205,.18)}
-#gameScreen .clinical-tab.active{background:linear-gradient(180deg,#17416a,#123154);border-color:#67b1ff}
-#gameScreen .clinical-tab-context{margin-top:10px;padding-top:10px;border-top:1px solid rgba(107,153,201,.16)}
-#gameScreen .panel,#gameScreen .history-panel,#gameScreen .physical-panel,#gameScreen .reasoning-panel,#gameScreen .diagnosticsPanel,#gameScreen .reassess-panel,#gameScreen .disposition-panel,#gameScreen .protocol-panel,#gameScreen .procedure-panel,#gameScreen .realism-workup{border-radius:18px}
-#gameScreen .choice-list button,#gameScreen .diff-list button,#gameScreen .disposition-grid button,#gameScreen .pending-wait,#gameScreen .confidence-btn,#gameScreen .safety-check,#gameScreen .consult-btn,#gameScreen .stabilize-btn{border-radius:12px}
-#gameScreen .patient-record summary{padding:14px 16px}
-#gameScreen .room-route{padding:14px 16px;border-radius:18px;font-size:14px}
-#gameScreen .patient-flow,#gameScreen .patient-condition-panel{padding:16px;border-radius:18px}
-#gameScreen .compact-overview-note{padding:12px 14px;border-radius:14px}
-#gameScreen .beginner-guide{margin:0}
-.desktop-ribbon{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:rgba(88,168,255,.10);border:1px solid rgba(88,168,255,.18);font-size:12px;color:#b8d8ff;font-weight:900}
-@media (max-width:1220px){
-  .desktop-game-grid{grid-template-columns:280px minmax(0,1fr)}
-  .desktop-right{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:14px}
-  .desktop-right .case-actions-panel{position:relative;top:auto}
-}
-@media (max-width:980px){
-  .global-command-bar,.desktop-game-top .hud,.desktop-waiting-top .hud{grid-template-columns:repeat(2,minmax(0,1fr))}
-  .desktop-game-shell{grid-template-columns:1fr}
-  .desktop-side-rail{position:static;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));margin-bottom:2px}
-  .desktop-game-grid,.desktop-waiting-grid{grid-template-columns:1fr}
-  .desktop-right{grid-column:auto;display:flex}
-}
-@media (max-width:640px){
-  #app{padding:10px 8px 36px}.topbar{top:0;border-radius:16px;padding:12px}.topbar h1{font-size:26px}
-  .global-command-bar,.desktop-game-top .hud,.desktop-waiting-top .hud{grid-template-columns:1fr 1fr}
-  .desktop-side-rail{grid-template-columns:repeat(2,minmax(0,1fr))}
-  #gameScreen .clinical-tabs-scroll{grid-template-columns:1fr 1fr}
-  .desktop-command-grid,.desktop-live-grid{grid-template-columns:1fr}
-}
+/* ===== v0.36 VISUAL OVERHAUL ===== */
+:root{--ui-bg:#020814;--ui-panel:#071726;--ui-panel-2:#0b2134;--ui-panel-3:#10293f;--ui-line:#1b3c59;--ui-line-2:#295479;--ui-text:#eef6ff;--ui-soft:#93a8bc;--ui-blue:#1787ff;--ui-cyan:#31c5ff;--ui-green:#35d07f;--ui-orange:#ffb23d;--ui-red:#ff4b4b;--ui-shadow:0 18px 40px rgba(0,0,0,.40), inset 0 1px 0 rgba(255,255,255,.04);}
+body{background:radial-gradient(circle at 20% 0%, rgba(24,98,174,.20), transparent 28%),radial-gradient(circle at 80% 0%, rgba(0,176,255,.12), transparent 20%),linear-gradient(180deg,#020713 0%,#04111c 45%,#020814 100%);color:var(--ui-text)}
+body::before{content:"";position:fixed;inset:0;pointer-events:none;opacity:.20;background:linear-gradient(rgba(75,128,190,.08) 1px, transparent 1px),linear-gradient(90deg, rgba(75,128,190,.08) 1px, transparent 1px);background-size:26px 26px;mask-image:linear-gradient(180deg,rgba(255,255,255,.42),transparent 85%)}
+#app{max-width:1600px;width:min(1600px,calc(100vw - 18px))}
+.topbar{padding:10px 4px 14px;margin-bottom:10px;border-bottom:1px solid rgba(44,93,132,.55)}
+.topbar h1{font-size:24px;letter-spacing:.03em;text-transform:none}.eyebrow{color:#5fb4ff;letter-spacing:.16em}
+.icon-btn,.secondary,.primary,.choice,.history-question,.clinical-tab,.difficulty-card,.mode-card button,.pending-wait,.consult-btn,.safety-check,.diff-choice,.confidence-btn,.disposition-grid button,.reassess-actions button{border-radius:12px!important}
+button,.choice,.history-question,.clinical-tab,.secondary,.primary,.pending-wait,.consult-btn,.diff-choice,.confidence-btn,.safety-check{transition:transform .15s ease,background .18s ease,border-color .18s ease,box-shadow .18s ease}
+button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondary:hover,.primary:hover,.pending-wait:hover,.consult-btn:hover,.diff-choice:hover,.confidence-btn:hover,.safety-check:hover{transform:translateY(-1px);box-shadow:0 8px 18px rgba(0,0,0,.22)}
+#homeScreen .hero-card,#waitingScreen .waiting-hero,#waitingScreen .waiting-ops,#waitingScreen .summary-box,#campaignStoryScreen .story-card,#resultScreen .result-card,#shiftScreen .shift-card,#gameScreen .hud,#gameScreen .progress-wrap,#gameScreen .shift-team-strip,#gameScreen .room-route,#gameScreen .compact-overview-note,#gameScreen .patient-record,#gameScreen .patient-flow,#gameScreen .patient-condition-panel,#gameScreen .history-panel,#gameScreen .physical-panel,#gameScreen .panel,#gameScreen .realism-workup,#gameScreen .reasoning-panel,#gameScreen .reassess-panel,#gameScreen .disposition-panel,#gameScreen .case-actions-panel,#gameScreen .protocol-panel,#gameScreen .beginner-guide,#visualDiagnosticOverlay .visual-diagnostic-window,#vitalMonitorOverlay .vital-monitor-window{background:linear-gradient(180deg, rgba(11,34,54,.96), rgba(5,18,31,.98))!important;border:1px solid rgba(49,102,145,.65)!important;box-shadow:var(--ui-shadow)}
+.hud{display:grid!important;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px;padding:0!important;overflow:hidden}.hud span{display:flex;align-items:center;justify-content:center;min-height:52px;padding:8px 10px;border-right:1px solid rgba(41,84,121,.58);background:linear-gradient(180deg, rgba(8,22,36,.92), rgba(5,14,24,.98));font-size:12px}.hud span:last-child{border-right:none}.hud b{font-size:18px;color:#fff}
+#gameScreen > .patient-card{display:none!important}
+.premium-patient-hero{display:grid;grid-template-columns:170px minmax(0,1.4fr) minmax(240px,.8fr) minmax(240px,.95fr);gap:12px;margin:12px 0 14px;padding:12px;border-radius:18px;background:radial-gradient(circle at 12% 10%, rgba(84,139,214,.22), transparent 35%),linear-gradient(180deg, rgba(11,35,58,.98), rgba(5,20,35,.98));border:1px solid rgba(53,106,149,.72);box-shadow:var(--ui-shadow)}
+.premium-patient-portrait{border-radius:14px;overflow:hidden;min-height:170px;display:flex;align-items:center;justify-content:center;font-size:90px;font-weight:900;color:#dcecff;background:radial-gradient(circle at 50% 20%, rgba(255,255,255,.18), transparent 28%),linear-gradient(160deg,#173650,#0a1723 78%);border:1px solid rgba(89,138,180,.55)}
+.premium-patient-main,.premium-patient-vitals,.premium-patient-side{border-radius:14px;padding:12px 14px;background:linear-gradient(180deg, rgba(8,24,38,.72), rgba(6,18,30,.82));border:1px solid rgba(41,84,121,.52)}
+.premium-kicker{color:#9fcfff;font-size:11px;letter-spacing:.18em;text-transform:uppercase}.premium-patient-title{display:flex;align-items:flex-start;justify-content:space-between;gap:10px;margin-top:4px}.premium-patient-title h2{margin:0;font-size:34px;line-height:1.04}.premium-patient-meta{display:flex;flex-wrap:wrap;gap:14px 18px;margin-top:6px;color:#d7e8f4;font-size:14px}.premium-patient-meta span b{color:#73c5ff}
+.premium-lead-box{margin-top:10px;padding:10px 12px;border-radius:12px;border:1px solid rgba(150,51,51,.75);background:linear-gradient(180deg, rgba(44,8,8,.55), rgba(23,6,6,.65))}.premium-lead-box b{display:block;color:#ff716a;font-size:13px;margin-bottom:4px}.premium-lead-box p{margin:0;font-size:15px;line-height:1.45}
+.premium-vitals-head,.premium-side-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}.premium-vitals-head b,.premium-side-head b{font-size:16px}.premium-vitals-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}.premium-vital{padding:10px 10px;border-radius:12px;background:linear-gradient(180deg, rgba(13,30,47,.88), rgba(6,18,31,.92));border:1px solid rgba(45,88,124,.55)}.premium-vital small{display:block;color:#8fa9bf;font-size:11px}.premium-vital strong{display:block;margin-top:4px;font-size:26px;color:#fff}.premium-vital .accent-green{color:#51e49c}.premium-vital .accent-orange{color:#ffbd54}.premium-vital .accent-blue{color:#51bcff}.premium-vital .accent-red{color:#ff6b6b}
+.premium-monitor-btn{width:100%;margin-top:10px;border-radius:12px;padding:12px;border:1px solid rgba(75,133,180,.72);background:linear-gradient(180deg, rgba(24,92,157,.32), rgba(10,33,53,.88));color:#eef6ff;font-weight:900}
+.premium-side-list{display:grid;gap:8px}.premium-suspect{display:flex;align-items:center;justify-content:space-between;gap:8px;padding:10px 10px;border-radius:12px;background:linear-gradient(180deg, rgba(13,30,47,.88), rgba(6,18,31,.92));border:1px solid rgba(45,88,124,.55)}.premium-suspect .tag{border-radius:999px;padding:4px 8px;font-size:11px;font-weight:900;background:rgba(18,128,255,.18);border:1px solid rgba(77,167,255,.34);color:#cfe8ff}.premium-suspect.red .tag{background:rgba(255,72,72,.18);border-color:rgba(255,72,72,.34);color:#ffd2d2}.premium-suspect.orange .tag{background:rgba(255,178,61,.18);border-color:rgba(255,178,61,.34);color:#ffe2b7}
+.premium-workspace{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:16px;align-items:start}.premium-main-column{min-width:0}.premium-right-rail{display:grid;gap:14px;position:sticky;top:14px}.premium-rail-card{border-radius:16px;padding:12px;background:linear-gradient(180deg, rgba(9,29,46,.98), rgba(4,16,29,.98));border:1px solid rgba(49,102,145,.62);box-shadow:var(--ui-shadow)}.premium-rail-card h4{margin:0 0 10px;font-size:14px;letter-spacing:.05em;text-transform:uppercase;color:#ebf6ff}.premium-rail-list{display:grid;gap:8px}
+.premium-finding-item{border-radius:12px;padding:10px 10px;background:linear-gradient(180deg, rgba(12,31,49,.92), rgba(6,18,31,.98));border:1px solid rgba(39,79,111,.55)}.premium-finding-item b{display:block;font-size:14px}.premium-finding-item small{display:block;color:#97afc3;line-height:1.45;margin-top:4px}.premium-finding-row{display:flex;align-items:center;justify-content:space-between;gap:8px}.premium-status-chip{white-space:nowrap;font-size:11px;font-weight:900;padding:4px 8px;border-radius:999px;background:rgba(255,74,74,.16);color:#ff8f8f;border:1px solid rgba(255,74,74,.26)}.premium-status-chip.ok{background:rgba(53,208,127,.16);color:#8ef0ba;border-color:rgba(53,208,127,.26)}.premium-status-chip.wait{background:rgba(255,178,61,.16);color:#ffd9a0;border-color:rgba(255,178,61,.26)}
+.premium-mini-btn,.premium-action-btn,.premium-finish-btn{width:100%;border-radius:11px;padding:10px 11px;border:1px solid rgba(53,95,129,.62);background:linear-gradient(180deg, rgba(18,36,54,.92), rgba(10,24,39,.98));color:#eef6ff;font-weight:800;text-align:left}.premium-mini-btn{margin-top:7px}.premium-action-btn.active{border-color:#3290ff;background:linear-gradient(180deg, rgba(21,74,127,.46), rgba(9,28,45,.96))}.premium-action-btn small,.premium-finish-btn small{display:block;color:#98b1c6;font-weight:500;margin-top:3px;font-size:11px}.premium-finish-btn{background:linear-gradient(180deg, rgba(22,120,55,.78), rgba(12,69,34,.94));border-color:rgba(89,180,119,.65)}
+.clinical-tabs{margin-top:4px;padding:0;border:none;background:none}.clinical-tabs-scroll{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:8px}.clinical-tab{min-height:58px;justify-content:center;background:linear-gradient(180deg, rgba(15,38,58,.98), rgba(7,21,35,.98))!important;border:1px solid rgba(49,102,145,.62)!important;color:#dbeeff!important;font-weight:900}.clinical-tab.active{background:linear-gradient(180deg, rgba(24,88,157,.82), rgba(11,47,87,.98))!important;border-color:#5aa7ff!important;box-shadow:0 12px 26px rgba(4,34,68,.40)}.clinical-tab.complete::after{background:#43d285!important}.clinical-tab-context{margin-top:10px;border-radius:12px;padding:10px 12px;background:linear-gradient(180deg, rgba(10,26,42,.94), rgba(6,18,31,.98));border:1px solid rgba(49,102,145,.42)}
+#gameScreen .panel-head,#gameScreen .history-head,#gameScreen .physical-head,#gameScreen .reasoning-head,#gameScreen .reassess-head,#gameScreen .disposition-head{border-bottom:1px solid rgba(40,76,106,.55);padding-bottom:10px;margin-bottom:12px}.panel-title,.history-title,.protocol-title,.procedure-title,.procedure-skill-title,.emergency-skill-title{color:#fff}.choice-list,.diff-list,.disposition-grid,.reassess-actions,.physical-buttons,.history-questions{gap:10px!important}.choice,.history-question,.diff-choice,.confidence-btn,.consult-btn,.pending-wait,.reassess-actions button,.disposition-grid button{background:linear-gradient(180deg, rgba(14,35,54,.96), rgba(8,21,35,.98))!important;border:1px solid rgba(49,102,145,.56)!important;color:#eef6ff!important}.choice.selected,.confidence-btn.selected,.diff-choice.selected,.disposition-grid button.selected,.reassess-actions button.selected{background:linear-gradient(180deg, rgba(21,82,142,.58), rgba(10,37,62,.98))!important;border-color:#5aa7ff!important}
+.finding{border-radius:14px;padding:10px;background:linear-gradient(180deg, rgba(10,30,46,.98), rgba(7,19,31,.98));border:1px solid rgba(49,102,145,.45);margin-bottom:10px}.pending-item,.history-clue,.result-alert,.consult-opinion,.reassess-status,.reassess-log,.disposition-status,.maintenance-note,.economy-warning,.condition-events,.flow-case-score,.payroll-strip,.story-evaluation{background:linear-gradient(180deg, rgba(9,23,37,.90), rgba(6,16,27,.96))!important;border:1px solid rgba(40,76,106,.48);border-radius:12px}.summary-box,.no-timer-note,.triage-hint,.waiting-ops-head,.shift-mode-banner,.event-banner{border-radius:14px!important}
+#waitingScreen .waiting-patients{display:grid;gap:10px}#waitingScreen .waiting-patient{background:linear-gradient(180deg, rgba(10,29,47,.96), rgba(6,18,31,.98));border:1px solid rgba(49,102,145,.52);border-radius:14px}
+#homeScreen .mode-grid{gap:14px}#homeScreen .mode-card,#homeScreen .home-quick,#homeScreen .difficulty-card,#homeScreen .campaign-dashboard,#homeScreen .finance-dashboard,#homeScreen .staff2-dashboard,#homeScreen .hospital-expansion,#homeScreen .condition-dashboard,#homeScreen .diagnostic-dashboard,#homeScreen .flow-dashboard,#homeScreen .procedure-skill-card,#homeScreen .emergency-skill-card,#homeScreen .career-card{background:linear-gradient(180deg, rgba(9,29,46,.98), rgba(4,16,29,.98))!important;border:1px solid rgba(49,102,145,.56)!important;box-shadow:var(--ui-shadow)}#homeScreen .mode-card.campaign{background:radial-gradient(circle at 14% 12%, rgba(90,153,236,.18), transparent 35%),linear-gradient(180deg, rgba(9,29,46,.98), rgba(4,16,29,.98))!important}#homeScreen .difficulty-card.active,#homeScreen .home-quick.active{border-color:#61afff!important}
+#gameScreen .screen-note,#gameScreen .handover-note,#gameScreen .monitor-footer{color:#9ab6ca}
+@media (max-width:1180px){.premium-patient-hero{grid-template-columns:130px minmax(0,1fr)}.premium-workspace{grid-template-columns:1fr}.premium-right-rail{position:static;grid-template-columns:1fr 1fr}}
+@media (max-width:820px){.hud{grid-template-columns:repeat(2,minmax(0,1fr))}.clinical-tabs-scroll{grid-template-columns:1fr 1fr}.premium-patient-hero{grid-template-columns:1fr}.premium-patient-portrait{min-height:130px;font-size:72px}.premium-right-rail{grid-template-columns:1fr}}
 
 </style>
 </head>
@@ -2067,8 +2010,8 @@ body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.36 ONE-FILE</div>
-        <h1>Doctor Rush</h1>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.36 VISUAL OVERHAUL</div>
+        <h1>Clinic Life</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
     </header>
@@ -2077,7 +2020,7 @@ body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.36 • VISUAL REDESIGN</h2>
+          <h2>Clinic Life v0.36 • VISUAL OVERHAUL</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -2476,6 +2419,8 @@ body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%
 
         <div id="gameModeBanner" class="shift-mode-banner">⚡ FREIE SCHICHT</div>
 
+        <div id="premiumPatientHero" class="premium-patient-hero"></div>
+
         <div class="progress-wrap">
           <div class="progress-label"><span>Schicht</span><span id="shiftText">Patient 1/6</span></div>
           <div class="progress"><div id="shiftProgress"></div></div>
@@ -2526,6 +2471,8 @@ body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%
           </div>
         </nav>
 
+        <div class="premium-workspace">
+          <div class="premium-main-column">
         <div id="compactOverviewNote" class="compact-overview-note">
           📱 Immer nur ein klinischer Bereich ist geöffnet. So bleibt der Patientenscreen kurz und übersichtlich.
         </div>
@@ -2729,6 +2676,23 @@ body{background:radial-gradient(circle at top,#0f2743 0,#071321 34%,#030913 100%
           <button id="submitBtn" type="button" class="primary big" onclick="finishCase()">Diagnose + Behandlung wählen</button>
           <button id="quitBtn" class="secondary">Schicht vorzeitig beenden</button>
           <button type="button" class="secondary" onclick="switchClinicalTab('overview')">← Zur Patientenübersicht</button>
+        </div>
+          </div>
+
+          <aside id="premiumRightRail" class="premium-right-rail">
+            <section class="premium-rail-card">
+              <h4>Arbeitsdiagnosen</h4>
+              <div id="premiumDifferentials" class="premium-rail-list"></div>
+            </section>
+            <section class="premium-rail-card">
+              <h4>Befunde</h4>
+              <div id="premiumFindings" class="premium-rail-list"></div>
+            </section>
+            <section class="premium-rail-card">
+              <h4>Aktionen</h4>
+              <div id="premiumActions" class="premium-rail-list"></div>
+            </section>
+          </aside>
         </div>
       </section>
 
@@ -4462,7 +4426,7 @@ function renderDiagnosticReasoning(){
   document.querySelectorAll('#confidenceButtons .confidence-btn').forEach((btn,i)=>btn.classList.toggle('selected',diagnosisConfidence===['low','medium','high'][i]));
   const consultBtn=$('consultBtn'),opinion=$('consultOpinion');
   if(consultBtn){consultBtn.disabled=!!(consultState&&consultState.done);consultBtn.textContent=consultState&&consultState.done?`✅ ${consultSpecialtyFor(current)} konsultiert`:`Konsil ${consultSpecialtyFor(current)} anfordern`}
-  if(opinion){opinion.style.display=consultState&&consultState.done?'block':'none';opinion.textContent=consultState&&consultState.done?consultState.opinion:''}
+  if(opinion){opinion.style.display=consultState&&consultState.done?'block':'none';opinion.textContent=consultState&&consultState.done?consultState.opinion:''}renderPremiumUI();
 }
 function structuredExamRows(exam){
   const name=(exam.name||'').toLowerCase(),diag=(current.correctDiagnosis||'').toLowerCase(),rows=[];
@@ -4636,7 +4600,7 @@ function applyClinicalTabVisibility(){
 function switchClinicalTab(tab){
   if(!availableClinicalTabs().includes(tab))return;
   activeClinicalTab=tab;
-  applyClinicalTabVisibility();
+  applyClinicalTabVisibility();renderPremiumUI();
   const nav=$('clinicalTabs');
   if(nav)nav.scrollIntoView({behavior:'smooth',block:'start'});
   beep(620,.035);
@@ -4893,7 +4857,7 @@ function appendResolvedFinding(exam,index,critical=false){
     : `<div class="structured-report"><div class="structured-report-head"><span>${examTypeLabel(exam)}</span><b>${escapeHtmlText(exam.name)}</b></div><div class="structured-report-body"><div class="report-line"><span>Befund</span><b>${escapeHtmlText(exam.result)}</b></div></div></div>`;
   f.innerHTML=base+(isVisualExam(exam)?visualButtonHtml(index,exam):'');
   if(critical)f.classList.add('critical-finding');
-  findings.appendChild(f);
+  findings.appendChild(f);renderPremiumUI();
 }
 function resolveReadyResults(){
   if(!usesExpertWorkflow()||!realismCase||!run||!current)return false;
@@ -5253,6 +5217,19 @@ function renderVisualReadPanel(exam){
           :read.correct?'✅ Interpretation passt zum Trainingsbefund.':'⚠️ Interpretation weicht vom Trainingsbefund ab.'
     }</div>`;
 }
+
+
+function premiumCaseId(){if(!current)return'—';const base=String(Math.abs(realismHash(`${current.name}${current.age}${state.day||1}`)));return `#DR-${String(state.day||1).padStart(2,'0')}-${base.slice(0,6)}`}
+function premiumLeadSymptom(){if(!current)return'—';const raw=(intakeComplaint(current)||current.complaint||'').replace(/[„“"]/g,'').trim();if(!raw)return'—';return raw.length>86?`${raw.slice(0,83)}…`:raw}
+function premiumStatusChipForExam(exam,index){if(examined.has(index)){const text=`${exam.name||''} ${exam.result||''} ${current.correctDiagnosis||''}`.toLowerCase();const ok=/kein|unauffällig|normal|ohne/.test(text)&&!/kein\s+freie/i.test(text)&&!/keine\s+luxation/i.test(text);return `<span class="premium-status-chip ${ok?'ok':''}">${ok?'unauffällig':'auffällig'}</span>`}if(isExamOrdered(index))return '<span class="premium-status-chip wait">läuft</span>';return '<span class="premium-status-chip wait">offen</span>'}
+function premiumPreviewText(exam,index){if(isExamOrdered(index)&&!examined.has(index))return 'Befund angefordert – Ergebnis steht noch aus.';if(isVisualExam(exam)){const info=visualInterpretation(exam);return info&&info.title?info.title:(exam.result||'Bildgebung verfügbar')}return exam.result||'Befund dokumentiert'}
+function premiumDiagnosisSeeds(){if(!current)return[];let items=(selectedDifferentials&&selectedDifferentials.length?selectedDifferentials.slice():[]);if(selectedDiagnosis&&!items.includes(selectedDiagnosis))items.unshift(selectedDiagnosis);if(!items.length)items=(diagnosisOptionsFor(current)||[]).slice(0,3);return items.slice(0,4)}
+function premiumDiagnosisTag(index,item){if(selectedDiagnosis===item)return{cls:'red',label:'aktiv'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===0)return{cls:'red',label:'hoch'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===1)return{cls:'orange',label:'mittel'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===2)return{cls:'',label:'niedrig'};return{cls:index===0?'red':index===1?'orange':'',label:index===0?'hoch':index===1?'mittel':'niedrig'}}
+function renderPremiumPatientHero(){const box=$('premiumPatientHero');if(!box)return;if(!current){box.innerHTML='';return}const seeds=premiumDiagnosisSeeds();const rr=(current.vitals&&current.vitals.bp)||'—';box.innerHTML=`<div class="premium-patient-portrait">${current.avatar||'🧑'}</div><div class="premium-patient-main"><div class="premium-kicker">Patient</div><div class="premium-patient-title"><div><h2>${escapeHtmlText(current.name)}</h2><div class="premium-patient-meta"><span>${current.age} Jahre</span><span>${escapeHtmlText(current.job||'—')}</span><span>ID <b>${premiumCaseId()}</b></span><span>Priorität <b>${current.urgency==='high'?'Notfall':current.urgency==='medium'?'Erhöht':'Stabil'}</b></span></div></div><div class="urgency ${current.urgency||'low'}">${current.urgency==='high'?'NOTFALL':current.urgency==='medium'?'ERHÖHT':'STABIL'}</div></div><div class="premium-lead-box"><b>Leitsymptom</b><p>${escapeHtmlText(premiumLeadSymptom())}</p></div></div><div class="premium-patient-vitals"><div class="premium-vitals-head"><b>Vitalmonitor</b><span>${difficultyHudLabel()}</span></div><div class="premium-vitals-grid"><div class="premium-vital"><small>HF</small><strong class="accent-red">${escapeHtmlText(current.vitals?.pulse||'—')}</strong></div><div class="premium-vital"><small>RR</small><strong class="accent-orange">${escapeHtmlText(rr)}</strong></div><div class="premium-vital"><small>SpO₂</small><strong class="accent-blue">${escapeHtmlText(current.vitals?.spo2||'—')}</strong></div><div class="premium-vital"><small>Temp.</small><strong class="accent-green">${escapeHtmlText(current.vitals?.temp||'—')}</strong></div></div><button type="button" class="premium-monitor-btn" onclick="openVitalMonitor()">❤️ Vitalmonitor öffnen</button></div><div class="premium-patient-side"><div class="premium-side-head"><b>Verdachtsdiagnosen</b><span>${selectedDiagnosis?'festgelegt':'vorläufig'}</span></div><div class="premium-side-list">${seeds.length?seeds.map((item,index)=>{const tag=premiumDiagnosisTag(index,item);return `<div class="premium-suspect ${tag.cls}"><div><b>${index+1}. ${escapeHtmlText(item)}</b></div><span class="tag">${tag.label.toUpperCase()}</span></div>`}).join(''):'<div class="premium-suspect"><div><b>Noch keine Verdachtsdiagnose</b></div><span class="tag">OFFEN</span></div>'}</div></div>`}
+function renderPremiumDifferentials(){const box=$('premiumDifferentials');if(!box)return;if(!current){box.innerHTML='';return}const items=premiumDiagnosisSeeds();box.innerHTML=items.length?items.map((item,index)=>{const tag=premiumDiagnosisTag(index,item);return `<div class="premium-finding-item"><div class="premium-finding-row"><b>${index+1}. ${escapeHtmlText(item)}</b><span class="premium-status-chip ${tag.cls===''?'ok':tag.cls==='orange'?'wait':''}">${tag.label}</span></div><small>${selectedDiagnosis===item?'Aktuell gewählte Diagnose.':selectedDifferentials.includes(item)?'Als Differentialdiagnose priorisiert.':'Noch nicht priorisiert.'}</small></div>`}).join(''):'<div class="premium-finding-item"><b>Noch leer</b><small>Im Profi-Modus werden hier deine priorisierten Differentialdiagnosen angezeigt.</small></div>'}
+function renderPremiumFindings(){const box=$('premiumFindings');if(!box)return;if(!current){box.innerHTML='';return}const rows=(current.exams||[]).map((exam,index)=>({exam,index})).filter(x=>examined.has(x.index)||isExamOrdered(x.index)).slice(0,7);if(!rows.length){box.innerHTML='<div class="premium-finding-item"><b>Noch keine Befunde</b><small>Gehe zu Diagnostik und ordne Untersuchungen an.</small></div>';return}box.innerHTML=rows.map(({exam,index})=>`<div class="premium-finding-item"><div class="premium-finding-row"><b>${escapeHtmlText(exam.name)}</b>${premiumStatusChipForExam(exam,index)}</div><small>${escapeHtmlText(premiumPreviewText(exam,index))}</small>${isVisualExam(exam)&&examined.has(index)?`<button type="button" class="premium-mini-btn" onclick="openVisualDiagnostic(${index})">🩻 Bild ansehen</button>`:''}</div>`).join('')}
+function renderPremiumActions(){const box=$('premiumActions');if(!box)return;const tabs=availableClinicalTabs?availableClinicalTabs():['overview','history','exam','diagnostics','decision'];const defs=[{id:'overview',label:'Übersicht',desc:'Patient, Vitale, Überblick'},{id:'history',label:'Anamnese',desc:'Gezielte Fragen stellen'},{id:'exam',label:'Untersuchung',desc:'Körperliche Befunde'},{id:'diagnostics',label:'Diagnostik',desc:'Labor, EKG, Bildgebung'},{id:'decision',label:'Entscheidung',desc:'Diagnose, Therapie, Disposition'}].filter(x=>tabs.includes(x.id));box.innerHTML=defs.map(def=>`<button type="button" class="premium-action-btn ${activeClinicalTab===def.id?'active':''}" onclick="switchClinicalTab('${def.id}')">${def.label}<small>${def.desc}</small></button>`).join('')+`<button type="button" class="premium-finish-btn" onclick="switchClinicalTab('decision')">Zur Entscheidung<small>Diagnose, Therapie und Disposition abschließen.</small></button>`}
+function renderPremiumUI(){renderPremiumPatientHero();renderPremiumDifferentials();renderPremiumFindings();renderPremiumActions()}
 
 function escapeHtmlText(text){
   return String(text||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
@@ -5639,6 +5616,7 @@ function renderRealismWorkup(){
     else if(score>=85)advice.textContent='✅ Gute klinische Arbeitsgrundlage: Anamnese und Befunde sind ausreichend dokumentiert.';
     else advice.textContent=`📋 Status: ${realismWorkupLabel()}. Weitere gezielte Informationen können die Entscheidung absichern.`;
   }
+  renderPremiumUI();
 }
 function noteExamForRealism(){
   if(!state.realismMode||!realismCase||!current)return;
@@ -5833,7 +5811,7 @@ function renderHistoryPanel(){
       findings.appendChild(clue);
     }
   });
-  updateHistoryUI();
+  updateHistoryUI();renderPremiumUI();
 }
 function askHistoryQuestion(index){
   if(!historyState||historyState.asked.has(index)||!run)return;
@@ -8933,9 +8911,9 @@ function loadPatient(){
   renderPatientRecord();
   const urg=$('urgency');urg.className='urgency '+current.urgency;urg.textContent=current.urgency==='high'?'DRINGEND':current.urgency==='medium'?'ERHÖHT':'NORMAL';
   updateHud();$('shiftText').textContent=`Behandelt ${run.treated}/${run.total}`;$('shiftProgress').style.width=`${(run.treated/run.total)*100}%`;$('findings').innerHTML='';
-  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();applyDifficultyVisibility();applyClinicalTabVisibility();updateSubmit();
+  renderShiftModeBanners();renderPatientFlow();renderConditionPanel();renderEmergencyProtocol();renderHistoryPanel();renderPhysicalExam();renderExamButtons();renderRealismWorkup();renderDiagnosticReasoning();renderChoiceButtons('diagnosisButtons',diagnosisOptionsFor(current),'diagnosis');renderProcedurePanel();renderTreatmentButtons();renderReassessment();renderDisposition();renderPendingResults();applyDifficultyVisibility();applyClinicalTabVisibility();updateSubmit();renderPremiumUI();
 }
-function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=difficultyHudLabel();renderMissionCard()}
+function updateHud(){$('money').textContent=state.money;$('rep').textContent=state.rep;$('xp').textContent=state.xp;$('day').textContent=state.day;$('timeLeft').textContent=difficultyHudLabel();renderMissionCard();renderPremiumUI()}
 function examAvailable(exam){return!exam.req||hasDept(exam.req)}
 function adjustedCost(exam){
   let cost=Number(exam.cost)||0;
@@ -8977,9 +8955,9 @@ function renderExamButtons(){
       btn.innerHTML=`<span class="exam-type">${examTypeLabel(e)}</span>${e.name}<small>${cost?cost+' € • ':''}Befund direkt verfügbar${isVisualExam(e)?' • Diagnostik-Fenster verfügbar':''}${!available?` • braucht ${deptName(e.req)}`:''}</small>`;
       btn.disabled=done||!available;btn.onclick=()=>{if(state.money<cost){toast('Nicht genug Budget');return}state.money-=cost;run.examSpend+=cost;examined.add(i);conditionDecayForTime(Math.max(1,time*.5),'Untersuchung');const station=examStation(e);markFlowStation(station,Math.max(1,time*.5));if(!patientNeedsStation(current,station))patientFlow.unnecessaryExams++;beep(560);appendResolvedFinding(e,i,false);renderExamButtons();renderRealismWorkup();updateHud();save()};
     }box.appendChild(btn);
-  });renderPendingResults(true);
+  });renderPendingResults(true);renderPremiumUI();
 }
-function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis'){selectedDiagnosis=item;renderDiagnosticReasoning()}else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit()};box.appendChild(btn)})}
+function renderChoiceButtons(id,items,type){const box=$(id);box.innerHTML='';items.forEach(item=>{const btn=document.createElement('button');btn.type='button';btn.className='choice';btn.textContent=item;btn.onclick=()=>{if(type==='diagnosis'){selectedDiagnosis=item;renderDiagnosticReasoning()}else selectedTreatment=item;[...box.children].forEach(b=>b.classList.remove('selected'));btn.classList.add('selected');beep(700);updateSubmit();renderPremiumUI()};box.appendChild(btn)})}
 function requiredStock(treatment){return treatmentStock[treatment]||[]}
 function stockAvailable(treatment){return requiredStock(treatment).every(id=>(state.inventory[id]||0)>0)}
 function renderTreatmentButtons(){
@@ -9284,128 +9262,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('visualPerfect10',(state.perfectVisualReads||0)>=10);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
-
-function createGlobalCommandBar(){
-  const topbar=document.querySelector('.topbar');
-  if(!topbar||$('globalCommandBar'))return;
-  const bar=document.createElement('div');
-  bar.id='globalCommandBar';
-  bar.className='global-command-bar';
-  bar.innerHTML=`
-    <div class="gc-card"><small>Schwierigkeit</small><b id="gcDifficulty">${difficultyHudLabel()}</b></div>
-    <div class="gc-card"><small>Krankenhaus</small><b id="gcHospital">${hospitalTier()}</b></div>
-    <div class="gc-card"><small>Ruf</small><b id="gcRep">${Math.round(state.rep||0)}</b></div>
-    <div class="gc-card"><small>Konto</small><b id="gcMoney">${Math.round(state.money||0).toLocaleString('de-DE')} €</b></div>
-    <div class="gc-card"><small>Tag</small><b id="gcDay">Tag ${state.day||1}</b></div>`;
-  topbar.appendChild(bar);
-}
-function createDesktopCommandCard(){
-  const card=document.createElement('div');
-  card.className='desktop-command-card';
-  card.innerHTML=`<div class="desktop-ribbon">DOCTOR RUSH UI 2.0</div><h3>Quick Actions</h3><p>Die Bedienung wurde optisch näher an die gezeigten Konzeptbilder gebracht.</p>
-  <div class="desktop-command-grid">
-    <button type="button" onclick="switchClinicalTab('overview')">👤 Übersicht</button>
-    <button type="button" onclick="switchClinicalTab('history')">💬 Anamnese</button>
-    <button type="button" onclick="switchClinicalTab('exam')">🩺 Untersuchung</button>
-    <button type="button" onclick="switchClinicalTab('diagnostics')">🩻 Diagnostik</button>
-    <button type="button" onclick="switchClinicalTab('decision')">✅ Entscheidung</button>
-    <button type="button" onclick="openVitalMonitor()">❤️ Monitor</button>
-  </div>`;
-  return card;
-}
-function createDesktopLiveCard(){
-  const card=document.createElement('div');
-  card.className='desktop-live-card';
-  card.innerHTML=`<h3>Live Status</h3><p>Diese kompakte Seitenkarte zeigt die wichtigsten laufenden Werte.</p>
-    <div class="desktop-live-grid">
-      <div><small>Schicht</small><b id="liveShiftValue">0/0</b></div>
-      <div><small>Patient</small><b id="livePatientValue">—</b></div>
-      <div><small>Zustand</small><b id="liveConditionValue">—</b></div>
-      <div><small>Station</small><b id="liveRoomValue">—</b></div>
-    </div>`;
-  return card;
-}
-function setupWaitingDesktopLayout(){
-  const screen=$('waitingScreen');
-  if(!screen||screen.dataset.visualRedesignWaiting==='1')return;
-  screen.dataset.visualRedesignWaiting='1';
-  const top=document.createElement('div'); top.className='desktop-waiting-top';
-  const grid=document.createElement('div'); grid.className='desktop-waiting-grid';
-  const left=document.createElement('div'); left.className='desktop-waiting-left';
-  const right=document.createElement('div'); right.className='desktop-waiting-right';
-  screen.prepend(top); screen.appendChild(grid); grid.append(left,right);
-  const elements=[screen.querySelector('.hud'), screen.querySelector('.waiting-hero'), $('waitingModeBanner'), $('shiftEvent'), $('shiftTeam')];
-  elements.forEach(el=>{if(el)top.appendChild(el)});
-  ['triageHint','waitingPatients'].forEach(id=>{const el=$(id); if(el)left.appendChild(el)});
-  const quick=createDesktopCommandCard();
-  quick.querySelector('h3').textContent='Triage Board';
-  quick.querySelector('p').textContent='Wähle den nächsten Patienten und halte den Flow der Klinik aufrecht.';
-  right.appendChild(quick);
-  ['waitingOps','summaryBox'].forEach(()=>{});
-  const ops=screen.querySelector('.waiting-ops'); if(ops)right.appendChild(ops);
-  const summary=screen.querySelector('.summary-box'); if(summary)right.appendChild(summary);
-}
-function setupGameDesktopLayout(){
-  const screen=$('gameScreen');
-  if(!screen||screen.dataset.visualRedesignGame==='1')return;
-  screen.dataset.visualRedesignGame='1';
-
-  const top=document.createElement('div'); top.className='desktop-game-top';
-  screen.prepend(top);
-  [screen.querySelector('.hud'), $('gameModeBanner'), screen.querySelector('.progress-wrap'), $('activeTeam')].forEach(el=>{if(el)top.appendChild(el)});
-
-  const shell=document.createElement('div'); shell.className='desktop-game-shell';
-  const rail=document.createElement('div'); rail.className='desktop-side-rail';
-  rail.innerHTML=`
-    <button type="button" data-rail-tab="overview" onclick="switchClinicalTab('overview')"><span><b>👤</b>Übersicht</span></button>
-    <button type="button" data-rail-tab="history" onclick="switchClinicalTab('history')"><span><b>💬</b>Anamnese</span></button>
-    <button type="button" data-rail-tab="exam" onclick="switchClinicalTab('exam')"><span><b>🩺</b>Untersuchung</span></button>
-    <button type="button" data-rail-tab="diagnostics" onclick="switchClinicalTab('diagnostics')"><span><b>🩻</b>Diagnostik</span></button>
-    <button type="button" data-rail-tab="decision" onclick="switchClinicalTab('decision')"><span><b>✅</b>Entscheidung</span></button>
-    <button type="button" onclick="openVitalMonitor()"><span><b>❤️</b>Monitor</span></button>`;
-  const grid=document.createElement('div'); grid.className='desktop-game-grid';
-  const left=document.createElement('div'); left.className='desktop-left';
-  const center=document.createElement('div'); center.className='desktop-center';
-  const right=document.createElement('div'); right.className='desktop-right';
-  shell.append(rail,grid); grid.append(left,center,right); screen.appendChild(shell);
-
-  ['patient-card','roomRoute','patientConditionPanel','patientFlowPanel'].forEach(id=>{
-    const el=id==='patient-card'?screen.querySelector('.patient-card'):$(id);
-    if(el)left.appendChild(el);
-  });
-  ['clinicalTabs','compactOverviewNote','patientRecord','beginnerGuide','protocolPanel','realismSequence','historyPanel','physicalExamPanel','diagnosticsPanel','realismWorkup','reasoningPanel','diagnosisDecisionPanel','procedurePanel','treatmentDecisionPanel','reassessmentPanel','dispositionPanel'].forEach(id=>{
-    const el=$(id); if(el)center.appendChild(el);
-  });
-  right.appendChild(createDesktopCommandCard());
-  right.appendChild(createDesktopLiveCard());
-  const actions=$('caseActionsPanel'); if(actions)right.appendChild(actions);
-}
-function refreshVisualRedesignChrome(){
-  if($('gcDifficulty'))$('gcDifficulty').textContent=difficultyHudLabel();
-  if($('gcHospital'))$('gcHospital').textContent=hospitalTier();
-  if($('gcRep'))$('gcRep').textContent=Math.round(state.rep||0);
-  if($('gcMoney'))$('gcMoney').textContent=`${Math.round(state.money||0).toLocaleString('de-DE')} €`;
-  if($('gcDay'))$('gcDay').textContent=`Tag ${state.day||1}`;
-  document.querySelectorAll('.desktop-side-rail [data-rail-tab]').forEach(btn=>btn.classList.toggle('active',btn.dataset.railTab===activeClinicalTab));
-  if($('liveShiftValue'))$('liveShiftValue').textContent=run?`${run.treated+1}/${run.total}`:'—';
-  if($('livePatientValue'))$('livePatientValue').textContent=current?current.name:'—';
-  if($('liveConditionValue'))$('liveConditionValue').textContent=$('conditionStatus')?$('conditionStatus').textContent:'—';
-  if($('liveRoomValue'))$('liveRoomValue').textContent=$('roomRoute')?$('roomRoute').textContent.replace('🏥 ',''):'—';
-}
-function applyVisualRedesignV036(){
-  createGlobalCommandBar();
-  setupWaitingDesktopLayout();
-  setupGameDesktopLayout();
-  refreshVisualRedesignChrome();
-}
-
-const __v036_showScreen=showScreen;showScreen=function(id){__v036_showScreen(id);refreshVisualRedesignChrome()};
-const __v036_renderHome=renderHome;renderHome=function(){__v036_renderHome();refreshVisualRedesignChrome()};
-const __v036_renderWaitingRoom=renderWaitingRoom;renderWaitingRoom=function(){__v036_renderWaitingRoom();refreshVisualRedesignChrome()};
-const __v036_loadPatient=loadPatient;loadPatient=function(){__v036_loadPatient();refreshVisualRedesignChrome()};
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('sandboxShiftBtn').onclick=startSandboxShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
 document.body.classList.add('home-nav-active');
-applyVisualRedesignV036();
 renderHome();
 
 </script>

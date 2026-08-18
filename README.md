@@ -1,78 +1,30 @@
-# Doctor Rush v0.36 – VISUAL REDESIGN
+# Doctor Rush / Clinic Life v0.36 – VISUAL OVERHAUL
+
+## Fokus
+Diese Version bringt das Spiel optisch **deutlich näher** an die zuvor gezeigten Referenzbilder.
+
+## Neu in v0.36
+- neues Premium-UI im Stil einer medizinischen Workstation
+- große Patienten-Kopfkarte mit Leitsymptom, Fall-ID und Vitalmonitor
+- rechte Rail für Arbeitsdiagnosen, Befunde und Aktionen
+- deutlich dunklere High-Tech-Klinikoptik
+- überarbeitete Tabs und Panels
+- weiterhin One-File (`index.html`)
 
 ## Dateien
 - `index.html`
 - `README.md`
 
-## GitHub
-1. Alte `index.html` ersetzen.
-2. Commit speichern.
-3. Danach einmal mit `?v=0.36` öffnen.
+## GitHub Pages
+Nach dem Ersetzen der `index.html` am besten einmal mit Parameter neu laden:
 
-# Was neu ist
+`?v=0.36`
 
-Diese Version bringt eine große optische Überarbeitung, damit Doctor Rush deutlich näher an den Konzeptbildern wirkt.
+Beispiel:
+`https://DEIN-NAME.github.io/DEIN-REPO/?v=0.36`
 
-## Neue Optik
-- dunklere, hochwertigere Klinik-/Dashboard-Optik
-- größere Desktop-/Management-Game-Anmutung
-- neuer Command-Bar-Header mit:
-  - Schwierigkeit
-  - Krankenhaus-Stufe
-  - Ruf
-  - Konto
-  - Tag
-- deutlich stärker panelisierte UI
-- modernere Karten, Schatten, Konturen und Statusflächen
-
-## Wartezimmer neu strukturiert
-- Top-Bereich wie in einer Klinik-Leitstelle
-- zweigeteiltes Layout
-- Patientenliste links
-- Klinikbetrieb / Flow / Hinweise rechts
-
-## Behandlungsscreen neu strukturiert
-Der Behandlungsscreen ist jetzt deutlich näher an den gesendeten Bildern:
-
-- linke Seitenleiste mit Schnellnavigation
-- linker Bereich für Patientenzusammenfassung
-- großer Mittelbereich für den klinischen Workflow
-- rechte Seitenkarte für Quick Actions und Live-Status
-- sticky Aktionsbereich für Fallabschluss
-
-## Neue Sidebar im Fallscreen
-Schnellzugriff auf:
-- Übersicht
-- Anamnese
-- Untersuchung
-- Diagnostik
-- Entscheidung
-- Vitalmonitor
-
-## Live-Statuskarte
-Im rechten Bereich werden zusätzlich laufend kompakt gezeigt:
-- Schichtfortschritt
-- aktueller Patient
-- Zustand
-- aktueller Abschnitt / Raum
-
-# Bestehende Funktionen bleiben erhalten
-- Radiology Workstation
-- eigene Bildbefundung
-- Sandbox
-- Kampagne
-- freie Schicht
-- drei Schwierigkeitsstufen
-- kein Countdown
-- Realismusmodus
-- CT / Ultraschall / Labor / EKG / Röntgen
-- Vitalmonitor
-
-# Technisch
-- weiterhin eine einzige `index.html`
-- Save-Key bleibt `doctorRushSaveV3`
-- v0.35-Spielstand kompatibel
-- keine externen Dateien
-- kein Service Worker
-
-> Diese Version ist vor allem ein großer visueller Umbau in Richtung der gezeigten Konzeptbilder.
+## Nächster sinnvoller Schritt
+Wenn dir die Richtung gefällt, ist der nächste Schritt eine **v0.37 UI REBUILD** mit:
+1. linker Patientenliste
+2. stärkerem Bild-Dock
+3. noch mehr Desktop-/Workstation-Look
