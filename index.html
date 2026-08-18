@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <title>Doctor Rush: Clinic Life v0.42 v0.42</title>
+  <title>Doctor Rush: Clinic Life v0.43 v0.43</title>
 
   <!-- Doctor Rush v0.3.3: alter Cache wird entfernt, danach kein Service-Worker mehr. -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -2072,7 +2072,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 .ws-study-preview svg.clean-ecg-svg{width:100%!important;height:100%!important;object-fit:contain;background:#fff}
 
 
-/* ===== v0.42 IMAGING QUALITY PASS ===== */
+/* ===== v0.43 ADVANCED IMAGING VIEWER ===== */
 .floating-vitals-panel{
   position:fixed;right:16px;bottom:74px;z-index:145;width:286px;
   border:1px solid #2d5e82;border-radius:12px;overflow:hidden;
@@ -2095,11 +2095,39 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media(max-width:620px){.floating-vitals-panel{right:7px;bottom:67px;width:238px}.floating-vitals-panel:not(.mobile-expanded){width:auto;border-radius:999px}.floating-vitals-panel:not(.mobile-expanded) .floating-vitals-body{display:none}.floating-vitals-panel:not(.mobile-expanded) .floating-vitals-head{border-radius:999px}.floating-vitals-panel:not(.mobile-expanded) .float-label{display:none}}
 
 
-/* ===== v0.42 IMAGING QUALITY PASS ===== */
+/* ===== v0.43 ADVANCED IMAGING VIEWER ===== */
 .ws-study-preview{background:#000!important}
 .ws-study-preview img{object-fit:contain!important;filter:grayscale(1)!important;background:#000!important;padding:4px}
 .ws-finding-thumb img,.ws-finding-thumb svg,.ws-finding-thumb canvas,.ws-finding-thumb .lab-sheet{object-fit:contain!important;background:#000!important}
 .visual-diagnostic-media img{object-fit:contain!important;background:#000!important}
+
+
+/* ===== v0.43 ADVANCED IMAGING VIEWER ===== */
+.visual-diagnostic-window{max-width:min(96vw,1480px)!important}
+.visual-diagnostic-body{display:grid;grid-template-columns:minmax(0,1fr) 320px;gap:12px}
+.visual-main-col,.visual-side-col{display:flex;flex-direction:column;gap:10px;min-width:0}
+.viewer-preset-bar{display:flex;flex-wrap:wrap;gap:6px}
+.viewer-preset{border:1px solid rgba(122,160,194,.45);background:linear-gradient(180deg,#15324f,#0d2236);color:#e9f4ff;border-radius:999px;padding:7px 11px;font-size:11px;font-weight:800}
+.viewer-preset.active{background:linear-gradient(180deg,#d9eefc,#a9d3f2);color:#102130;border-color:#c7e8ff}
+.visual-mini-card{border:1px solid rgba(82,124,163,.45);background:linear-gradient(180deg,rgba(8,26,41,.98),rgba(6,18,29,.98));border-radius:14px;padding:12px;box-shadow:0 10px 30px rgba(0,0,0,.22)}
+.visual-mini-portrait{display:grid;grid-template-columns:84px 1fr;gap:10px;align-items:center}
+.visual-mini-avatar,.portrait-big-avatar{display:flex;align-items:center;justify-content:center;border-radius:16px;background:radial-gradient(circle at 30% 25%,#2a4663,#102031 65%,#0b1724 100%);border:1px solid rgba(145,184,214,.25);box-shadow:inset 0 0 0 1px rgba(255,255,255,.03)}
+.visual-mini-avatar{height:84px;font-size:42px;position:relative;overflow:hidden}
+.visual-mini-avatar::after,.portrait-big-avatar::after{content:"";position:absolute;inset:auto 10px 8px 10px;height:16px;border-radius:999px;background:rgba(150,210,255,.08)}
+.visual-mini-avatar .initials,.portrait-big-avatar .initials{position:absolute;right:8px;bottom:7px;font-size:11px;font-weight:900;color:#d8ecfb;background:rgba(6,17,27,.75);padding:2px 6px;border-radius:999px;border:1px solid rgba(255,255,255,.08)}
+.portrait-big-avatar{height:100%;min-height:210px;font-size:88px;position:relative;overflow:hidden}
+.portrait-big-avatar .initials{font-size:13px}
+.visual-mini-meta b{display:block;color:#fff;font-size:15px}
+.visual-mini-meta small{display:block;color:#a9c3d8;line-height:1.45;margin-top:2px}
+.viewer-quick-list{display:grid;gap:8px}
+.viewer-quick-item{padding:9px 10px;border-radius:10px;background:rgba(255,255,255,.03);border:1px solid rgba(255,255,255,.05)}
+.viewer-quick-item small{display:block;color:#8fb4ce;font-size:10px;text-transform:uppercase;letter-spacing:.08em;margin-bottom:2px}
+.viewer-quick-item b{color:#fff;font-size:13px}
+.visual-diagnostic-body .visual-report{margin-top:0!important}
+.visual-canvas{min-height:420px}
+.visual-canvas img{width:100%;height:100%;object-fit:contain;background:#000}
+.ws-study-preview img{image-rendering:auto}
+@media(max-width:1100px){.visual-diagnostic-body{grid-template-columns:1fr}.visual-mini-portrait{grid-template-columns:72px 1fr}.visual-canvas{min-height:320px}}
 
 </style>
 </head>
@@ -2117,7 +2145,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Doctor Rush v0.42 • IMAGING QUALITY PASS</h2>
+          <h2>Doctor Rush v0.43 • ADVANCED IMAGING VIEWER</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -5272,6 +5300,7 @@ function toggleViewerInvert(){
   viewerInvert=!viewerInvert;applyViewerFilter();
 }
 function resetViewerWindow(){
+  if(current&&current.exams&&current.exams[visualDiagnosticIndex]){autoViewerPresetForExam(current.exams[visualDiagnosticIndex]);renderViewerPresetBar(current.exams[visualDiagnosticIndex]);return;}
   viewerBrightness=100;viewerContrast=100;viewerInvert=false;applyViewerFilter();
 }
 function visualReadOptions(exam){
@@ -5465,6 +5494,57 @@ function premiumStatusChipForExam(exam,index){if(examined.has(index)){const text
 function premiumPreviewText(exam,index){if(isExamOrdered(index)&&!examined.has(index))return 'Befund angefordert – Ergebnis steht noch aus.';if(isVisualExam(exam)){const info=visualInterpretation(exam);return info&&info.title?info.title:(exam.result||'Bildgebung verfügbar')}return exam.result||'Befund dokumentiert'}
 function premiumDiagnosisSeeds(){if(!current)return[];let items=(selectedDifferentials&&selectedDifferentials.length?selectedDifferentials.slice():[]);if(selectedDiagnosis&&!items.includes(selectedDiagnosis))items.unshift(selectedDiagnosis);if(!items.length)items=(diagnosisOptionsFor(current)||[]).slice(0,3);return items.slice(0,4)}
 function premiumDiagnosisTag(index,item){if(selectedDiagnosis===item)return{cls:'red',label:'aktiv'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===0)return{cls:'red',label:'hoch'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===1)return{cls:'orange',label:'mittel'};if(selectedDifferentials&&selectedDifferentials.indexOf(item)===2)return{cls:'',label:'niedrig'};return{cls:index===0?'red':index===1?'orange':'',label:index===0?'hoch':index===1?'mittel':'niedrig'}}
+function patientInitials(name){return String(name||'Patient').split(/\s+/).filter(Boolean).slice(0,2).map(s=>s[0]).join('').toUpperCase()||'PT';}
+function premiumPortraitMarkup(patient,compact=false){
+  const initials=patientInitials(patient?.name);
+  const avatar=patient?.avatar||'🧑';
+  if(compact){
+    return `<div class="visual-mini-portrait"><div class="visual-mini-avatar">${avatar}<span class="initials">${initials}</span></div><div class="visual-mini-meta"><b>${escapeHtmlText(patient?.name||'Patient')}</b><small>${patient?.age||'—'} Jahre • ${escapeHtmlText(patient?.job||'Patient')}<br>${patient?.urgency==='high'?'Dringend':'Routinefall'} • Fall ${premiumCaseId()}</small></div></div>`;
+  }
+  return `<div class="portrait-big-avatar">${avatar}<span class="initials">${initials}</span></div>`;
+}
+function viewerPresetOptions(exam){
+  const type=visualExamType(exam);
+  if(type==='ct')return [{id:'auto',label:'Auto'},{id:'ct_brain',label:'Gehirn'},{id:'ct_soft',label:'Weichteil'}];
+  if(type==='ultrasound')return [{id:'auto',label:'Auto'},{id:'us_abdomen',label:'Abdomen'},{id:'us_detail',label:'Detail'}];
+  if(type==='ekg')return [{id:'auto',label:'Auto'},{id:'ekg_read',label:'Lesemodus'}];
+  return [{id:'auto',label:'Auto'},{id:'xray_lung',label:'Thorax'},{id:'xray_bone',label:'Knochen'}];
+}
+function applyViewerPreset(preset,skipRender=false){
+  viewerPreset=preset||'auto';
+  const map={
+    auto:[100,100,false],
+    xray_lung:[106,134,false],xray_bone:[98,150,false],
+    ct_brain:[108,145,false],ct_soft:[112,122,false],
+    us_abdomen:[98,118,false],us_detail:[103,132,false],
+    ekg_read:[102,118,false]
+  };
+  const vals=map[viewerPreset]||map.auto;
+  viewerBrightness=vals[0];viewerContrast=vals[1];viewerInvert=vals[2];
+  applyViewerFilter();
+  if(!skipRender)renderViewerPresetBar(current?.exams?.[visualDiagnosticIndex]);
+}
+function autoViewerPresetForExam(exam){
+  const type=visualExamType(exam);
+  const preset=type==='ct'?'ct_brain':type==='ultrasound'?'us_abdomen':type==='ekg'?'ekg_read':/fraktur|radius|ulna|gelenk|knochen/i.test(`${exam.name||''} ${exam.result||''}`)?'xray_bone':'xray_lung';
+  applyViewerPreset(preset,true);
+  viewerPreset='auto';
+}
+function renderViewerPresetBar(exam){
+  const box=$('viewerPresetBar');if(!box||!exam)return;
+  box.innerHTML=viewerPresetOptions(exam).map(opt=>`<button type="button" class="viewer-preset ${viewerPreset===opt.id?'active':''}" onclick="${opt.id==='auto'?'autoViewerPresetForExam(current.exams[visualDiagnosticIndex]);renderViewerPresetBar(current.exams[visualDiagnosticIndex])':'applyViewerPreset(\''+opt.id+'\')'}">${opt.label}</button>`).join('');
+}
+function renderViewerPatientCard(exam){
+  const box=$('visualViewerPatientCard');if(!box||!current||!exam)return;
+  const dyn=dynamicVitalsFor(current);
+  box.innerHTML=`<div class="visual-mini-card">${premiumPortraitMarkup(current,true)}</div>
+  <div class="visual-mini-card"><div class="viewer-quick-list">
+    <div class="viewer-quick-item"><small>Leitsymptom</small><b>${escapeHtmlText(premiumLeadSymptom())}</b></div>
+    <div class="viewer-quick-item"><small>Untersuchung</small><b>${escapeHtmlText(exam.name)}</b></div>
+    <div class="viewer-quick-item"><small>Live-Vitalwerte</small><b>HF ${escapeHtmlText(dyn.pulse)} /min • SpO₂ ${escapeHtmlText(dyn.spo2)} % • RR ${escapeHtmlText(dyn.bp)}</b></div>
+    <div class="viewer-quick-item"><small>Status</small><b>${current.urgency==='high'?'Hohe Priorität':'Standardpriorität'} • ${difficultyHudLabel()}</b></div>
+  </div></div>`;
+}
 function renderPremiumPatientHero(){
   const box=$('premiumPatientHero');if(!box)return;if(!current){box.innerHTML='';return}
   const seeds=premiumDiagnosisSeeds();
@@ -5473,7 +5553,7 @@ function renderPremiumPatientHero(){
   const cond=conditionState?Math.round(conditionState.value):100;
   const conf=diagnosisConfidence==='high'?85:diagnosisConfidence==='medium'?60:diagnosisConfidence==='low'?35:10;
   box.innerHTML=`
-    <div class="premium-patient-portrait"><div class="ws-portrait-frame"><div class="ws-photo-face">${current.avatar||'🧑'}</div></div></div>
+    <div class="premium-patient-portrait">${premiumPortraitMarkup(current,false)}</div>
     <div class="premium-patient-main">
       <div class="premium-kicker">PATIENT</div>
       <div class="premium-patient-title"><div><h2>${escapeHtmlText(current.name)}</h2>
@@ -5851,6 +5931,8 @@ function renderVisualDiagnostic(){
   if($('visualDifficultyLine'))$('visualDifficultyLine').textContent=difficultyHudLabel();
 
   if($('visualDiagnosticCanvas'))$('visualDiagnosticCanvas').innerHTML=visualExamContent(exam);
+  renderViewerPresetBar(exam);
+  renderViewerPatientCard(exam);
   applyViewerFilter();
 
   if($('viewerSeriesMeta'))$('viewerSeriesMeta').textContent=viewerSeriesLabel(exam);
@@ -5888,7 +5970,8 @@ function openVisualDiagnostic(index){
   const overlay=$('visualDiagnosticOverlay');
   if(!overlay)return;
   visualDiagnosticIndex=index;
-  viewerBrightness=100;viewerContrast=100;viewerInvert=false;
+  viewerBrightness=100;viewerContrast=100;viewerInvert=false;viewerPreset='auto';
+  autoViewerPresetForExam(exam);
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden','false');
   state.visualDiagnosticsViewed=(state.visualDiagnosticsViewed||0)+1;
@@ -7484,7 +7567,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, viewerBrightness=100, viewerContrast=100, viewerInvert=false, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true, liveVitalsUiTimer=null, lastLiveVitalsStamp=0, liveVitalHistory=[], floatingVitalsExpanded=true, lastLiveVitalSampleAt=0;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, viewerBrightness=100, viewerContrast=100, viewerInvert=false, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true, liveVitalsUiTimer=null, lastLiveVitalsStamp=0, liveVitalHistory=[], floatingVitalsExpanded=true, lastLiveVitalSampleAt=0, viewerPreset='auto';
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -9724,31 +9807,37 @@ ensureLiveVitalsTicker();
       <button type="button" class="visual-diagnostic-close" onclick="closeVisualDiagnostic()" aria-label="Fenster schließen">×</button>
     </div>
     <div class="visual-diagnostic-body">
-      <div class="visual-case-line">
-        <div>
-          <b id="visualPatientLine">Patient</b>
-          <small id="visualExamLine">Untersuchung</small>
+      <div class="visual-main-col">
+        <div class="visual-case-line">
+          <div>
+            <b id="visualPatientLine">Patient</b>
+            <small id="visualExamLine">Untersuchung</small>
+          </div>
+          <div id="visualDifficultyLine" class="visual-stage">🌱 Einsteiger</div>
         </div>
-        <div id="visualDifficultyLine" class="visual-stage">🌱 Einsteiger</div>
+        <div id="visualDiagnosticCanvas" class="visual-canvas dicom-canvas-filter"></div>
+        <div class="dicom-toolbar">
+          <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(-10)">☀️ −</button>
+          <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(10)">☀️ +</button>
+          <button type="button" class="dicom-tool" onclick="adjustViewerContrast(-10)">◐ −</button>
+          <button type="button" class="dicom-tool" onclick="adjustViewerContrast(10)">◐ +</button>
+          <button id="viewerInvertBtn" type="button" class="dicom-tool" onclick="toggleViewerInvert()">◑ Invert</button>
+          <button type="button" class="dicom-tool" onclick="resetViewerWindow()">↺ Reset</button>
+        </div>
+        <div id="viewerPresetBar" class="viewer-preset-bar"></div>
+        <div class="dicom-meta">
+          <div><small>Serie</small><b id="viewerSeriesMeta">—</b></div>
+          <div><small>Aufnahme</small><b id="viewerTimeMeta">—</b></div>
+          <div><small>Seite</small><b id="viewerSideMeta">—</b></div>
+          <div><small>Qualität</small><b id="viewerQualityMeta">diagnostisch</b></div>
+        </div>
+        <div id="visualDiagnosticHelp" class="visual-help"></div>
+        <div id="visualReadPanel" class="visual-read-panel"></div>
       </div>
-      <div id="visualDiagnosticCanvas" class="visual-canvas dicom-canvas-filter"></div>
-      <div class="dicom-toolbar">
-        <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(-10)">☀️ −</button>
-        <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(10)">☀️ +</button>
-        <button type="button" class="dicom-tool" onclick="adjustViewerContrast(-10)">◐ −</button>
-        <button type="button" class="dicom-tool" onclick="adjustViewerContrast(10)">◐ +</button>
-        <button id="viewerInvertBtn" type="button" class="dicom-tool" onclick="toggleViewerInvert()">◑ Invert</button>
-        <button type="button" class="dicom-tool" onclick="resetViewerWindow()">↺ Reset</button>
+      <div class="visual-side-col">
+        <div id="visualViewerPatientCard"></div>
+        <div id="visualDiagnosticReport" class="visual-report"></div>
       </div>
-      <div class="dicom-meta">
-        <div><small>Serie</small><b id="viewerSeriesMeta">—</b></div>
-        <div><small>Aufnahme</small><b id="viewerTimeMeta">—</b></div>
-        <div><small>Seite</small><b id="viewerSideMeta">—</b></div>
-        <div><small>Qualität</small><b id="viewerQualityMeta">diagnostisch</b></div>
-      </div>
-      <div id="visualDiagnosticHelp" class="visual-help"></div>
-      <div id="visualReadPanel" class="visual-read-panel"></div>
-      <div id="visualDiagnosticReport" class="visual-report"></div>
     </div>
   </div>
 </div>
