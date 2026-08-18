@@ -1,28 +1,48 @@
-# Doctor Rush v0.38.1 – REFERENCE HOTFIX
+# Doctor Rush v0.39 – LIVE VITALS + IMAGING
 
-## Behoben
-In v0.38 konnten Patientenfälle im Wartezimmer scheinbar nicht mehr geöffnet werden.
+## Neu in v0.39
 
-Ursache: Beim UI-Rebuild war die zentrale Funktion `renderPremiumUI()` versehentlich nicht mehr im Build enthalten. Beim Anklicken eines Patienten brach `loadPatient()` dadurch mit einem JavaScript-Fehler ab.
+### Realistischere Bildgebung
+Neue eingebettete Trainingsbilder für:
+- CT Kopf mit intrazerebraler Blutung
+- CT Kopf ohne groben Akutbefund
+- Ultraschall Gallenblase mit Gallensteinen
+- FAST / RUQ Ultraschall mit freier Flüssigkeit
 
-## Fix
-- `renderPremiumUI()` wiederhergestellt
-- fehlende `escapeHtmlText()`-Hilfsfunktion wiederhergestellt
-- Premium-Aktionsbereich wiederhergestellt
-- Fallauswahl mit zusätzlicher Fehlerabsicherung versehen
-- neue Workstation-Optik bleibt vollständig erhalten
+Die neuen Aufnahmen erscheinen automatisch bei passenden Fällen. Die bisherigen Röntgen- und EKG-Bilder bleiben erhalten.
+
+### Live-Vitalwerte
+Während ein Patient geöffnet ist, verändern sich die Vitalwerte fortlaufend:
+- Puls
+- Blutdruck
+- Atemfrequenz
+- SpO₂
+- Temperatur
+- Schmerz
+
+Die Werte schwanken nicht nur zufällig, sondern berücksichtigen weiterhin den Patientenzustand und die Dringlichkeit des Falls. Bei instabileren Patienten werden die Schwankungen stärker.
+
+Die Live-Werte aktualisieren sich ungefähr alle 1,5 Sekunden in:
+- Patienten-Header / Workstation
+- Vitalmonitor
+- klinischer Vitalwert-Anzeige
+- Patientenakte
+
+Behandlungen, Stabilisierung und Verschlechterungen des Patientenzustands wirken weiterhin auf die Werte.
+
+## Technisch
+- Basis: v0.38.1 HOTFIX
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.38-Spielstand kompatibel
+- bestehender Spielstand bleibt kompatibel
+- weiterhin nur eine `index.html`
+- CT-/Ultraschallbilder sind in die HTML-Datei eingebettet
+- keine externen Bilddateien nötig
+- JavaScript-Syntaxprüfung: OK
+- optimierte Dateigröße: ca. 1,6 MB
 
-## GitHub
-1. `index.html` ersetzen
-2. Commit speichern
-3. einmal mit `?v=0.38.1` öffnen
+## GitHub Pages
+1. Alte `index.html` ersetzen.
+2. Commit speichern.
+3. Seite mit `?v=0.39` öffnen.
 
-## Test
-- JavaScript-Syntax: OK
-- Freie Schicht starten: OK
-- Patientenkarte anklicken: OK
-- GameScreen öffnet: OK
-- Workstation-Header rendert: OK
-- Browser-Integrationstest: OK
+> Die Bildgebung ist eine Spiel-/Trainingssimulation und kein medizinisches Referenzmaterial.
