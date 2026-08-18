@@ -1,21 +1,23 @@
-# Doctor Rush v0.40 – QUICK VITALS + CLEAN ECG
+# Doctor Rush v0.41 – LIVE MONITOR 2.0 + ECG 2.0
 
 ## Neu
-- kleiner schwebender **❤️ Vitalwerte**-Button während jedes Falls
-- Button zeigt den aktuellen Puls live an
-- ein Tipp öffnet direkt den bestehenden Live-Vitalmonitor
-- kein Hochscrollen mehr nötig
-- EKG wurde neu aufgebaut
-- echte getrennte 12-Kanal-Anordnung: I, II, III, aVR, aVL, aVF, V1–V6
-- keine ineinanderlaufenden Ableitungen mehr
-- EKG bleibt im Dock und im großen Diagnostikfenster lesbar
+- permanenter Mini-Live-Monitor während eines Falls
+- zeigt Puls direkt im Kopfbereich sowie SpO₂, RR, AF und Schmerz
+- laufender Trend mit Pfeil
+- kleine Live-Kurve für Puls und SpO₂
+- Mini-Monitor ein-/ausklappbar
+- großer Vitalmonitor zeigt jetzt ebenfalls einen Live-Verlauf
+- EKG komplett neu gezeichnet
+- 12 Ableitungen sauber getrennt
+- jede Ableitung hat einen eigenen abgegrenzten Bereich
+- zusätzlicher langer Rhythmusstreifen Ableitung II
+- keine ineinanderlaufenden EKG-Kurven mehr
 
-## Bestehende Funktionen bleiben
-- Live-Vitalwerte aus v0.39
-- CT- und Ultraschallbilder
-- Workstation-UI
-- Sandbox / Kampagne / Freie Schicht
-- Save-Key bleibt kompatibel
+## Technisch
+- Basis: v0.40
+- Save-Key unverändert
+- One-file `index.html`
+- JavaScript-Syntaxprüfung: OK
 
 ## GitHub
-`index.html` ersetzen und anschließend mit `?v=0.40` neu laden.
+`index.html` ersetzen und mit `?v=0.41` neu öffnen.

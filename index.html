@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <title>Doctor Rush: Clinic Life v0.40</title>
+  <title>Doctor Rush: Clinic Life v0.41</title>
 
   <!-- Doctor Rush v0.3.3: alter Cache wird entfernt, danach kein Service-Worker mehr. -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -2071,6 +2071,29 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media(max-width:620px){.floating-vitals-btn{right:8px;bottom:68px}.floating-vitals-btn .label-text{display:none}}
 .ws-study-preview svg.clean-ecg-svg{width:100%!important;height:100%!important;object-fit:contain;background:#fff}
 
+
+/* ===== v0.41 LIVE MONITOR 2.0 + ECG 2.0 ===== */
+.floating-vitals-panel{
+  position:fixed;right:16px;bottom:74px;z-index:145;width:286px;
+  border:1px solid #2d5e82;border-radius:12px;overflow:hidden;
+  background:linear-gradient(180deg,rgba(7,28,45,.98),rgba(4,17,29,.99));
+  box-shadow:0 16px 38px rgba(0,0,0,.48),0 0 0 1px rgba(85,174,238,.06) inset;
+  backdrop-filter:blur(10px)
+}
+.floating-vitals-head{display:flex;align-items:center;gap:7px;min-height:38px;padding:7px 9px;background:linear-gradient(180deg,#124a76,#0b3151);color:#fff}
+.floating-vitals-head .live-dot{width:7px;height:7px;border-radius:50%;background:#45e18b;box-shadow:0 0 10px rgba(69,225,139,.75);animation:floatingVitalPulse 1.15s infinite}
+.floating-vitals-head b{font-size:11px;letter-spacing:.03em}.floating-vitals-head .float-hr{margin-left:auto;font-size:15px;color:#fff}.floating-vitals-head .float-hr small{font-size:8px;color:#b8d4e8;font-weight:700}
+.floating-vitals-toggle{border:0;background:rgba(255,255,255,.08);color:#d8efff;width:25px;height:25px;border-radius:7px;font-weight:900;cursor:pointer}
+.floating-vitals-body{padding:8px;display:grid;gap:7px}.floating-vitals-panel.collapsed{width:auto}.floating-vitals-panel.collapsed .floating-vitals-body{display:none}.floating-vitals-panel.collapsed .floating-vitals-head{border-radius:999px;padding:7px 8px 7px 10px}.floating-vitals-panel.collapsed{border-radius:999px;overflow:visible}
+.float-vitals-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:5px}.float-vital{padding:6px;border:1px solid #23435c;border-radius:8px;background:#081b2c}.float-vital small{display:block;font-size:7px;color:#91abc0}.float-vital strong{display:block;margin-top:2px;font-size:13px;color:#edf7ff}.float-vital.warn strong{color:#ffc15a}.float-vital.critical strong{color:#ff6f75}
+.float-trend-line{display:flex;align-items:center;justify-content:space-between;gap:7px;font-size:8px;color:#9eb7c9}.float-trend-line b{color:#dcefff;font-size:9px}.float-trend-up{color:#ff8b73!important}.float-trend-down{color:#78c9ff!important}.float-trend-flat{color:#6ee3a4!important}
+.float-spark-shell{height:42px;border:1px solid #1f3c54;border-radius:8px;background:#04111d;overflow:hidden}.float-spark-shell svg{width:100%;height:100%;display:block}
+.float-open-full{width:100%;border:1px solid #35688e;border-radius:8px;background:linear-gradient(180deg,#174f7b,#103957);color:white;padding:8px;font-size:9px;font-weight:900}
+.monitor-live-chart{margin-top:9px;padding:8px;border:1px solid #25445f;border-radius:11px;background:#051522}.monitor-live-chart-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:5px;color:#a9c2d5;font-size:8px}.monitor-live-chart-head b{color:#e4f3ff}.monitor-live-chart svg{width:100%;height:80px;display:block;border-radius:7px;background:#020b12}
+.clean-ecg-svg .ecg-panel-border{fill:rgba(255,255,255,.04);stroke:#dbaaaa;stroke-width:.55}.clean-ecg-svg .ecg-lead-label{font-family:Arial,sans-serif;font-size:10px;font-weight:700;fill:#283844}.clean-ecg-svg .ecg-wave{fill:none;stroke:#14191e;stroke-width:1.45;vector-effect:non-scaling-stroke;stroke-linecap:round;stroke-linejoin:round}.clean-ecg-svg .ecg-rhythm{stroke-width:1.6}.clean-ecg-svg .ecg-cal{fill:none;stroke:#1d252b;stroke-width:1.2}
+@media(max-width:1000px){.floating-vitals-panel{right:9px;bottom:70px;width:260px}.float-vitals-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:620px){.floating-vitals-panel{right:7px;bottom:67px;width:238px}.floating-vitals-panel:not(.mobile-expanded){width:auto;border-radius:999px}.floating-vitals-panel:not(.mobile-expanded) .floating-vitals-body{display:none}.floating-vitals-panel:not(.mobile-expanded) .floating-vitals-head{border-radius:999px}.floating-vitals-panel:not(.mobile-expanded) .float-label{display:none}}
+
 </style>
 </head>
 <body>
@@ -2087,7 +2110,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Doctor Rush v0.40 • QUICK VITALS + CLEAN ECG</h2>
+          <h2>Doctor Rush v0.41 • LIVE MONITOR 2.0 + ECG 2.0</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -2775,7 +2798,20 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
         </div>
 
         <div id="workstationImagingDock" class="workstation-imaging-dock"></div>
-        <button id="floatingVitalsBtn" class="floating-vitals-btn" type="button" onclick="openVitalMonitor()" aria-label="Live Vitalwerte öffnen"><span class="live-dot"></span><span class="label-text">❤️ Vitalwerte</span><b id="floatingPulseValue">—</b></button>
+        <div id="floatingVitalsPanel" class="floating-vitals-panel" aria-label="Mini Live Vitalmonitor">
+          <div class="floating-vitals-head">
+            <span class="live-dot"></span>
+            <b class="float-label">LIVE VITALS</b>
+            <div class="float-hr"><span id="floatingPulseValue">—</span> <small>/min</small></div>
+            <button id="floatingVitalsToggle" class="floating-vitals-toggle" type="button" onclick="toggleFloatingVitalsMini()" aria-label="Mini Vitalmonitor ein-/ausklappen">−</button>
+          </div>
+          <div class="floating-vitals-body">
+            <div id="floatingVitalsGrid" class="float-vitals-grid"></div>
+            <div class="float-trend-line"><span>Trend</span><b id="floatingVitalsTrend" class="float-trend-flat">→ stabil</b></div>
+            <div id="floatingVitalSpark" class="float-spark-shell"></div>
+            <button type="button" class="float-open-full" onclick="openVitalMonitor()">❤️ Großen Vitalmonitor öffnen</button>
+          </div>
+        </div>
         <div id="workstationFooter" class="workstation-footer"></div>
           </div>
         </div>
@@ -5084,6 +5120,7 @@ function renderVitalMonitor(){
       <div class="monitor-vital-note">${v.note}</div>
     </div>`).join('');
   }
+  const chart=$('monitorLiveChart');if(chart)chart.innerHTML=liveVitalSparkSvg(true);
   const conditionValue=isBeginner()?100:(conditionState?Math.round(conditionState.value):80);
   const trend=isBeginner()?'→ kein Zustandsverfall':realismVitalTrend().text;
   if($('monitorConditionBar'))$('monitorConditionBar').style.width=`${Math.max(10,Math.min(100,conditionValue))}%`;
@@ -5489,6 +5526,41 @@ function renderPremiumFindings(){
   box.innerHTML=rows.map(({exam,index})=>{const st=workstationFindingState(exam,index);return `<div class="premium-finding-item ws-finding"><div class="ws-finding-thumb">${workstationFindingVisual(exam,index)}</div><div class="ws-finding-meta"><b>${escapeHtmlText(exam.name)}</b><small>${workstationExamClock(index)}<br>${escapeHtmlText(workstationStudyStatus(exam,index))}</small>${isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="openVisualDiagnostic(${index})">Bild ansehen</a>`:''}${!isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="switchClinicalTab('diagnostics')">Befund ansehen</a>`:''}</div><div class="ws-find-status ${st.cls}">${st.text}</div></div>`}).join('')
 }
 function renderPremiumActions(){renderWorkstationActions()}
+function pushLiveVitalSample(dyn){
+  const now=Date.now();
+  if(now-lastLiveVitalSampleAt<900)return;
+  lastLiveVitalSampleAt=now;
+  liveVitalHistory.push({t:now,pulse:Number(dyn.pulse)||0,spo2:Number(dyn.spo2)||0,resp:Number(dyn.resp)||0,bp:String(dyn.bp||'')});
+  if(liveVitalHistory.length>28)liveVitalHistory.splice(0,liveVitalHistory.length-28);
+}
+function liveVitalTrendInfo(){
+  if(liveVitalHistory.length<3)return {text:'→ stabil',cls:'float-trend-flat'};
+  const a=liveVitalHistory[Math.max(0,liveVitalHistory.length-6)],b=liveVitalHistory[liveVitalHistory.length-1],d=b.pulse-a.pulse;
+  if(d>=3)return {text:`↑ Puls +${d}`,cls:'float-trend-up'};
+  if(d<=-3)return {text:`↓ Puls ${d}`,cls:'float-trend-down'};
+  return {text:'→ stabil',cls:'float-trend-flat'};
+}
+function liveVitalSparkSvg(big=false){
+  const arr=liveVitalHistory.slice(big?-28:-18);
+  const w=big?520:270,h=big?80:42,pad=big?8:4;
+  if(arr.length<2)return `<svg viewBox="0 0 ${w} ${h}"><text x="${w/2}" y="${h/2}" fill="#7892a6" text-anchor="middle" font-size="${big?11:8}">Live-Daten werden gesammelt …</text></svg>`;
+  const pathFor=(key,min,max)=>arr.map((p,i)=>{const x=pad+i*(w-pad*2)/(arr.length-1),v=Math.max(min,Math.min(max,Number(p[key])||min)),y=h-pad-(v-min)/(max-min)*(h-pad*2);return `${i?'L':'M'} ${x.toFixed(1)} ${y.toFixed(1)}`}).join(' ');
+  return `<svg viewBox="0 0 ${w} ${h}" preserveAspectRatio="none"><path d="${pathFor('pulse',40,170)}" fill="none" stroke="#ff6f78" stroke-width="${big?2.2:1.6}" vector-effect="non-scaling-stroke"/><path d="${pathFor('spo2',75,100)}" fill="none" stroke="#55c3ff" stroke-width="${big?1.8:1.35}" vector-effect="non-scaling-stroke" opacity=".9"/></svg>`;
+}
+function floatVitalClass(key,val){const s=vitalSeverity(current,key,val);return s==='critical'?' critical':s==='warning'?' warn':''}
+function renderFloatingVitalsMini(dyn){
+  const panel=$('floatingVitalsPanel');if(!panel||!current)return;
+  pushLiveVitalSample(dyn);
+  if($('floatingPulseValue'))$('floatingPulseValue').textContent=dyn.pulse;
+  const grid=$('floatingVitalsGrid');
+  if(grid)grid.innerHTML=`<div class="float-vital${floatVitalClass('spo2',dyn.spo2)}"><small>SpO₂</small><strong>${dyn.spo2}%</strong></div><div class="float-vital${floatVitalClass('bp',dyn.bp)}"><small>RR</small><strong>${dyn.bp}</strong></div><div class="float-vital${floatVitalClass('resp',dyn.resp)}"><small>AF</small><strong>${dyn.resp}</strong></div><div class="float-vital${floatVitalClass('pain',dyn.pain)}"><small>Schmerz</small><strong>${dyn.pain}/10</strong></div>`;
+  const trend=liveVitalTrendInfo(),te=$('floatingVitalsTrend');if(te){te.textContent=trend.text;te.className=trend.cls}
+  if($('floatingVitalSpark'))$('floatingVitalSpark').innerHTML=liveVitalSparkSvg(false);
+  panel.classList.toggle('collapsed',!floatingVitalsExpanded&&window.innerWidth>620);
+  panel.classList.toggle('mobile-expanded',floatingVitalsExpanded&&window.innerWidth<=620);
+  const t=$('floatingVitalsToggle');if(t)t.textContent=floatingVitalsExpanded?'−':'+';
+}
+function toggleFloatingVitalsMini(){floatingVitalsExpanded=!floatingVitalsExpanded;if(current)renderFloatingVitalsMini(dynamicVitalsFor(current))}
 function renderPremiumUI(){
   if(!current)return;
   lastLiveVitalsStamp=0;
@@ -5500,7 +5572,7 @@ function renderPremiumUI(){
   updateWorkstationLeftNav();
   renderWorkstationImagingDock();
   renderWorkstationFooter();
-  const liveDyn=dynamicVitalsFor(current);if($('floatingPulseValue'))$('floatingPulseValue').textContent=liveDyn.pulse;
+  const liveDyn=dynamicVitalsFor(current);renderFloatingVitalsMini(liveDyn);
   renderLiveVitalsTick(true);
 }
 
@@ -5516,7 +5588,7 @@ function renderLiveVitalsTick(force=false){
     renderWorkstationTopbar();
   }
   const liveDyn=dynamicVitalsFor(current);
-  if($('floatingPulseValue'))$('floatingPulseValue').textContent=liveDyn.pulse;
+  renderFloatingVitalsMini(liveDyn);
   if($('patientRecordBody'))renderPatientRecord();
   if($('patientConditionPanel'))renderConditionPanel();
 }
@@ -5607,45 +5679,50 @@ function visualInterpretation(exam){
 }
 function makeEkgSvg(pattern){
   const leads=['I','II','III','aVR','aVL','aVF','V1','V2','V3','V4','V5','V6'];
-  const cols=4, rows=3, panelW=150, panelH=66, marginX=34, marginY=26;
-  const width=marginX*2+cols*panelW, height=marginY*2+rows*panelH+28;
+  const cols=4,rows=3,panelW=170,panelH=72,left=38,top=30,rhythmH=54;
+  const width=left+cols*panelW+14,height=top+rows*panelH+rhythmH+34;
   const grid=[];
-  for(let x=0;x<=width;x+=5)grid.push(`<line x1="${x}" y1="0" x2="${x}" y2="${height}" stroke="#efb5b5" stroke-width="${x%25===0?1.05:.45}" opacity="${x%25===0?.65:.34}"/>`);
-  for(let y=0;y<=height;y+=5)grid.push(`<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="#efb5b5" stroke-width="${y%25===0?1.05:.45}" opacity="${y%25===0?.65:.34}"/>`);
+  for(let x=0;x<=width;x+=5)grid.push(`<line x1="${x}" y1="0" x2="${x}" y2="${height}" stroke="#efb4b4" stroke-width="${x%25===0?1:.42}" opacity="${x%25===0?.60:.27}"/>`);
+  for(let y=0;y<=height;y+=5)grid.push(`<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="#efb4b4" stroke-width="${y%25===0?1:.42}" opacity="${y%25===0?.60:.27}"/>`);
 
-  function leadWave(lead,index,x0,y0,w){
-    const pts=[];
-    const stemi=pattern==='stemi' && ['II','III','aVF','V4','V5','V6'].includes(lead);
-    const afib=pattern==='afib';
-    const brady=pattern==='brady';
-    const tachy=pattern==='tachy';
-    const cycles=tachy?4:brady?2:3;
-    const cycleW=w/cycles;
-    for(let c=0;c<cycles;c++){
-      const x=x0+c*cycleW;
-      const base=y0;
-      const amp=(lead==='aVR'?-1:1)*(lead.startsWith('V')?1.05:.9);
-      const noise=afib?Math.sin((c+index)*2.2)*1.8:0;
-      const seq=[
-        [0,0],[.08,-2*amp],[.15,0],[.25,0],[.31,-6*amp],[.35,18*amp],[.39,-10*amp],[.45,0],
-        [.58,0],[.68,stemi?-6*amp:0],[.78,stemi?-6*amp:-2*amp],[.88,stemi?1*amp:-5*amp],[1,0]
-      ];
-      seq.forEach(([f,dy])=>pts.push([x+f*cycleW,base+dy+noise]));
-      if(afib){
-        for(let j=1;j<6;j++)pts.push([x+(j/7)*cycleW,base+Math.sin(j*2.9+index)*2.2]);
-      }
-    }
-    return pts.map(p=>p.join(',')).join(' ');
+  function leadPolarity(lead){return lead==='aVR'?-1:(lead==='V1'?-0.55:lead==='V2'?.45:lead==='V3'?.72:lead==='V4'?1.0:lead==='V5'?.9:lead==='V6'?.72:1)}
+  function beatY(phase,lead,index){
+    const pol=leadPolarity(lead),afib=pattern==='afib';
+    let y=0;
+    if(!afib && phase>.08&&phase<.15)y+=-2.8*pol*Math.sin((phase-.08)/.07*Math.PI);
+    if(phase>.18&&phase<.205)y+=4.8*pol*Math.sin((phase-.18)/.025*Math.PI);
+    if(phase>=.205&&phase<.235)y+=-19*pol*Math.sin((phase-.205)/.03*Math.PI);
+    if(phase>=.235&&phase<.27)y+=8.5*pol*Math.sin((phase-.235)/.035*Math.PI);
+    const stemi=pattern==='stemi'&&['II','III','aVF','V4','V5','V6'].includes(lead);
+    if(phase>=.29&&phase<.53)y+=stemi?-6.0*pol:0;
+    if(phase>=.55&&phase<.80)y+=-4.3*pol*Math.sin((phase-.55)/.25*Math.PI);
+    if(afib)y+=Math.sin(phase*55+index*.9)*1.25+Math.sin(phase*91+index)*.6;
+    return y;
   }
-
-  const panels=leads.map((lead,index)=>{
-    const col=index%cols,row=Math.floor(index/cols);
-    const x=marginX+col*panelW,y=marginY+row*panelH;
-    const yMid=y+panelH/2;
-    return `<g><text x="${x-24}" y="${yMid+4}" fill="#243342" font-size="10" font-family="Arial" font-weight="700">${lead}</text><polyline points="${leadWave(lead,index,x,yMid,panelW-10)}" fill="none" stroke="#18212a" stroke-width="1.35" vector-effect="non-scaling-stroke"/></g>`;
-  }).join('');
-  const label=pattern==='stemi'?'12-Kanal-EKG • ST-Hebungen in mehreren Ableitungen':pattern==='afib'?'12-Kanal-EKG • irregulärer Rhythmus':pattern==='brady'?'12-Kanal-EKG • Bradykardie':pattern==='tachy'?'12-Kanal-EKG • Tachykardie':'12-Kanal-EKG';
-  return `<svg class="clean-ecg-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="12-Kanal-EKG"><rect width="${width}" height="${height}" fill="#fff7f7"/>${grid.join('')}<text x="14" y="17" fill="#34485a" font-size="11" font-family="Arial" font-weight="700">${label}</text>${panels}<text x="${width-150}" y="${height-10}" fill="#596a77" font-size="9" font-family="Arial">25 mm/s • 10 mm/mV</text></svg>`;
+  function makePath(lead,index,x0,y0,w,duration=2.5){
+    const bpm=pattern==='tachy'?118:pattern==='brady'?48:pattern==='afib'?126:82;
+    const beatSec=60/bpm,samples=Math.max(150,Math.round(w*1.4));
+    let d='';
+    for(let i=0;i<=samples;i++){
+      const frac=i/samples,t=frac*duration,phase=(t%beatSec)/beatSec;
+      const wander=Math.sin(t*2.2+index*.7)*.38;
+      const irregular=pattern==='afib'?Math.sin(t*5.1+index)*.35:0;
+      const yy=y0+beatY(phase,lead,index)+wander+irregular;
+      const xx=x0+frac*w;
+      d+=(i?' L ':'M ')+xx.toFixed(2)+' '+yy.toFixed(2);
+    }
+    return d;
+  }
+  const defs=[];const panels=[];
+  leads.forEach((lead,index)=>{
+    const col=index%cols,row=Math.floor(index/cols),x=left+col*panelW,y=top+row*panelH,mid=y+panelH/2;
+    const clip=`ecgclip${index}`;defs.push(`<clipPath id="${clip}"><rect x="${x+2}" y="${y+2}" width="${panelW-4}" height="${panelH-4}" rx="2"/></clipPath>`);
+    panels.push(`<g><rect class="ecg-panel-border" x="${x}" y="${y}" width="${panelW}" height="${panelH}"/><text class="ecg-lead-label" x="${x+6}" y="${y+13}">${lead}</text><path class="ecg-wave" clip-path="url(#${clip})" d="${makePath(lead,index,x+7,mid,panelW-14)}"/></g>`);
+  });
+  const rhythmY=top+rows*panelH+8,rhythmMid=rhythmY+rhythmH/2;
+  defs.push(`<clipPath id="ecgrhythm"><rect x="${left+2}" y="${rhythmY+2}" width="${cols*panelW-4}" height="${rhythmH-4}"/></clipPath>`);
+  const label=pattern==='stemi'?'12-Kanal-EKG • ST-Hebungs-Muster':pattern==='afib'?'12-Kanal-EKG • Vorhofflimmern':pattern==='brady'?'12-Kanal-EKG • Bradykardie':pattern==='tachy'?'12-Kanal-EKG • Tachykardie':'12-Kanal-EKG • Sinusrhythmus';
+  return `<svg class="clean-ecg-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="12-Kanal-EKG"><defs>${defs.join('')}</defs><rect width="${width}" height="${height}" fill="#fff8f8"/>${grid.join('')}<text x="12" y="18" fill="#324655" font-size="11" font-family="Arial" font-weight="700">${label}</text><path class="ecg-cal" d="M ${width-125} 18 h10 v-10 h10 v10 h10"/>${panels.join('')}<g><rect class="ecg-panel-border" x="${left}" y="${rhythmY}" width="${cols*panelW}" height="${rhythmH}"/><text class="ecg-lead-label" x="${left+6}" y="${rhythmY+13}">II • Rhythmusstreifen</text><path class="ecg-wave ecg-rhythm" clip-path="url(#ecgrhythm)" d="${makePath('II',1,left+10,rhythmMid,cols*panelW-20,8)}"/></g><text x="${width-126}" y="${height-8}" fill="#596a77" font-size="9" font-family="Arial">25 mm/s • 10 mm/mV</text></svg>`;
 }
 function makeXraySvg(pattern){
   if(pattern==='fracture'){
@@ -7420,7 +7497,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, viewerBrightness=100, viewerContrast=100, viewerInvert=false, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true, liveVitalsUiTimer=null, lastLiveVitalsStamp=0;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, viewerBrightness=100, viewerContrast=100, viewerInvert=false, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true, liveVitalsUiTimer=null, lastLiveVitalsStamp=0, liveVitalHistory=[], floatingVitalsExpanded=true, lastLiveVitalSampleAt=0;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -9223,7 +9300,7 @@ function ageWaitingPatients(){
 function loadPatient(){
   closeVitalMonitor();
   closeVisualDiagnostic();
-  activeClinicalTab='overview';
+  activeClinicalTab='overview';liveVitalHistory=[];lastLiveVitalSampleAt=0;
   selectedDiagnosis=null;selectedTreatment=null;selectedDisposition=null;diagnosisConfidence=null;selectedDifferentials=[];examined=new Set();physicalExamState=newPhysicalExamState();reassessmentState=newReassessmentState();consultState=newConsultState();
   patientFlow=newPatientFlow(current);
   historyState=newHistoryState(current);
@@ -9628,6 +9705,10 @@ ensureLiveVitalsTicker();
       </div>
 
       <div id="monitorVitalsGrid" class="monitor-grid"></div>
+      <div class="monitor-live-chart">
+        <div class="monitor-live-chart-head"><b>Live-Verlauf</b><span>letzte Messpunkte • Puls / SpO₂</span></div>
+        <div id="monitorLiveChart"></div>
+      </div>
 
       <div id="monitorTrendPanel" class="monitor-trend">
         <div class="monitor-trend-top">
