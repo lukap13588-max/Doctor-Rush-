@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0f172a"/>
   <meta name="apple-mobile-web-app-capable" content="yes"/>
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent"/>
-  <title>Doctor Rush: Clinic Life v0.39</title>
+  <title>Doctor Rush: Clinic Life v0.40</title>
 
   <!-- Doctor Rush v0.3.3: alter Cache wird entfernt, danach kein Service-Worker mehr. -->
   <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate"/>
@@ -2055,6 +2055,22 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media (max-width:1200px){.premium-right-rail{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr 1fr!important}.workstation-footer{grid-template-columns:1fr 1fr!important}}
 @media (max-width:900px){.workstation-stage{grid-template-columns:1fr!important}.workstation-left-nav{height:auto!important;position:relative!important;display:grid!important;grid-template-columns:repeat(3,1fr);padding:8px!important}.premium-patient-hero{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr!important}.premium-patient-meta{grid-template-columns:1fr!important}}
 
+
+/* ===== v0.40 QUICK VITALS + CLEAN ECG ===== */
+.floating-vitals-btn{
+  position:fixed;right:18px;bottom:76px;z-index:140;
+  display:flex;align-items:center;gap:7px;
+  min-height:38px;padding:8px 12px;border-radius:999px;
+  border:1px solid #2f6fa3;background:linear-gradient(180deg,#124b79,#0a2e4d);
+  color:#fff;font-size:11px;font-weight:900;box-shadow:0 10px 28px rgba(0,0,0,.38),0 0 0 1px rgba(99,186,255,.08) inset;
+}
+.floating-vitals-btn .live-dot{width:7px;height:7px;border-radius:50%;background:#48e28a;box-shadow:0 0 10px rgba(72,226,138,.7);animation:floatingVitalPulse 1.35s infinite}
+.floating-vitals-btn b{font-size:12px;color:#dff4ff}
+@keyframes floatingVitalPulse{0%,100%{opacity:.45;transform:scale(.85)}50%{opacity:1;transform:scale(1.15)}}
+@media(max-width:1000px){.floating-vitals-btn{right:10px;bottom:70px;min-height:34px;padding:7px 10px;font-size:10px}}
+@media(max-width:620px){.floating-vitals-btn{right:8px;bottom:68px}.floating-vitals-btn .label-text{display:none}}
+.ws-study-preview svg.clean-ecg-svg{width:100%!important;height:100%!important;object-fit:contain;background:#fff}
+
 </style>
 </head>
 <body>
@@ -2071,7 +2087,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Doctor Rush v0.39 • LIVE VITALS + IMAGING</h2>
+          <h2>Doctor Rush v0.40 • QUICK VITALS + CLEAN ECG</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -2759,6 +2775,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
         </div>
 
         <div id="workstationImagingDock" class="workstation-imaging-dock"></div>
+        <button id="floatingVitalsBtn" class="floating-vitals-btn" type="button" onclick="openVitalMonitor()" aria-label="Live Vitalwerte öffnen"><span class="live-dot"></span><span class="label-text">❤️ Vitalwerte</span><b id="floatingPulseValue">—</b></button>
         <div id="workstationFooter" class="workstation-footer"></div>
           </div>
         </div>
@@ -5152,7 +5169,7 @@ const realisticMedicalImages={
 };
 function realisticImageForExam(exam){
   const type=visualExamType(exam);
-  if(type==='ekg'&&ekgPatternFromExam(exam)==='stemi')return realisticMedicalImages.stemi;
+  if(type==='ekg')return null;
   if(type==='xray'){
     const p=xrayPatternFromExam(exam);
     if(p==='pneumonia')return realisticMedicalImages.pneumonia;
@@ -5483,6 +5500,7 @@ function renderPremiumUI(){
   updateWorkstationLeftNav();
   renderWorkstationImagingDock();
   renderWorkstationFooter();
+  const liveDyn=dynamicVitalsFor(current);if($('floatingPulseValue'))$('floatingPulseValue').textContent=liveDyn.pulse;
   renderLiveVitalsTick(true);
 }
 
@@ -5497,6 +5515,8 @@ function renderLiveVitalsTick(force=false){
     renderPremiumPatientHero();
     renderWorkstationTopbar();
   }
+  const liveDyn=dynamicVitalsFor(current);
+  if($('floatingPulseValue'))$('floatingPulseValue').textContent=liveDyn.pulse;
   if($('patientRecordBody'))renderPatientRecord();
   if($('patientConditionPanel'))renderConditionPanel();
 }
@@ -5586,32 +5606,46 @@ function visualInterpretation(exam){
   return {title:'Unauffälliges Röntgen',beginner:'Kein klarer auffälliger Bildbefund.',clinical:'Kein grob pathologischer Bildhinweis.',expert:'Röntgenaufnahme eigenständig beurteilen.',severity:'normal'};
 }
 function makeEkgSvg(pattern){
+  const leads=['I','II','III','aVR','aVL','aVF','V1','V2','V3','V4','V5','V6'];
+  const cols=4, rows=3, panelW=150, panelH=66, marginX=34, marginY=26;
+  const width=marginX*2+cols*panelW, height=marginY*2+rows*panelH+28;
   const grid=[];
-  for(let i=0;i<=360;i+=10)grid.push(`<line x1="${i}" y1="0" x2="${i}" y2="170" stroke="#4aa2aa" stroke-width="${i%50===0?2:1}"/>`);
-  for(let i=0;i<=170;i+=10)grid.push(`<line x1="0" y1="${i}" x2="360" y2="${i}" stroke="#4aa2aa" stroke-width="${i%50===0?2:1}"/>`);
-  const pts=[];
-  const cycles=pattern==='tachy'?8:pattern==='brady'?4:6;
-  const spacing=pattern==='tachy'?40:pattern==='brady'?72:52;
-  for(let c=0;c<cycles;c++){
-    const x=8+c*spacing, base=100;
-    pts.push([x,base],[x+6,base-4],[x+12,base],[x+18,base],[x+24,base-14],[x+28,base+28],[x+32,base-52],[x+36,base+12],[x+42,base],[x+48,base]);
-    if(pattern==='stemi'){
-      pts.push([x+52,base],[x+58,base-1],[x+66,base-1],[x+74,base+8],[x+84,base+8],[x+92,base]);
-    }else if(pattern==='afib'){
-      pts.push([x+52,base+2],[x+58,base-4],[x+64,base+1],[x+70,base-3],[x+76,base+2],[x+84,base]);
-    }else{
-      pts.push([x+52,base],[x+60,base-3],[x+68,base-5],[x+76,base-2],[x+84,base]);
+  for(let x=0;x<=width;x+=5)grid.push(`<line x1="${x}" y1="0" x2="${x}" y2="${height}" stroke="#efb5b5" stroke-width="${x%25===0?1.05:.45}" opacity="${x%25===0?.65:.34}"/>`);
+  for(let y=0;y<=height;y+=5)grid.push(`<line x1="0" y1="${y}" x2="${width}" y2="${y}" stroke="#efb5b5" stroke-width="${y%25===0?1.05:.45}" opacity="${y%25===0?.65:.34}"/>`);
+
+  function leadWave(lead,index,x0,y0,w){
+    const pts=[];
+    const stemi=pattern==='stemi' && ['II','III','aVF','V4','V5','V6'].includes(lead);
+    const afib=pattern==='afib';
+    const brady=pattern==='brady';
+    const tachy=pattern==='tachy';
+    const cycles=tachy?4:brady?2:3;
+    const cycleW=w/cycles;
+    for(let c=0;c<cycles;c++){
+      const x=x0+c*cycleW;
+      const base=y0;
+      const amp=(lead==='aVR'?-1:1)*(lead.startsWith('V')?1.05:.9);
+      const noise=afib?Math.sin((c+index)*2.2)*1.8:0;
+      const seq=[
+        [0,0],[.08,-2*amp],[.15,0],[.25,0],[.31,-6*amp],[.35,18*amp],[.39,-10*amp],[.45,0],
+        [.58,0],[.68,stemi?-6*amp:0],[.78,stemi?-6*amp:-2*amp],[.88,stemi?1*amp:-5*amp],[1,0]
+      ];
+      seq.forEach(([f,dy])=>pts.push([x+f*cycleW,base+dy+noise]));
+      if(afib){
+        for(let j=1;j<6;j++)pts.push([x+(j/7)*cycleW,base+Math.sin(j*2.9+index)*2.2]);
+      }
     }
+    return pts.map(p=>p.join(',')).join(' ');
   }
-  const hr=pattern==='tachy'?'HR 118':pattern==='brady'?'HR 48':pattern==='afib'?'HR 132 irr.':'HR 84';
-  const label=pattern==='stemi'?'12-Kanal-EKG • Ableitungen auffällig':'Monitoring-Ableitung II';
-  return `<svg viewBox="0 0 360 170" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="EKG">
-    <rect x="0" y="0" width="360" height="170" fill="#05111d"/>
-    <g opacity=".18">${grid.join('')}</g>
-    <text x="12" y="20" fill="#a9d9d9" font-size="10" font-family="Arial">${label}</text>
-    <text x="286" y="20" fill="#a9d9d9" font-size="10" font-family="Arial">${hr}</text>
-    <polyline fill="none" stroke="#7cf0cf" stroke-width="3" points="${pts.map(p=>p.join(',')).join(' ')}"/>
-  </svg>`;
+
+  const panels=leads.map((lead,index)=>{
+    const col=index%cols,row=Math.floor(index/cols);
+    const x=marginX+col*panelW,y=marginY+row*panelH;
+    const yMid=y+panelH/2;
+    return `<g><text x="${x-24}" y="${yMid+4}" fill="#243342" font-size="10" font-family="Arial" font-weight="700">${lead}</text><polyline points="${leadWave(lead,index,x,yMid,panelW-10)}" fill="none" stroke="#18212a" stroke-width="1.35" vector-effect="non-scaling-stroke"/></g>`;
+  }).join('');
+  const label=pattern==='stemi'?'12-Kanal-EKG • ST-Hebungen in mehreren Ableitungen':pattern==='afib'?'12-Kanal-EKG • irregulärer Rhythmus':pattern==='brady'?'12-Kanal-EKG • Bradykardie':pattern==='tachy'?'12-Kanal-EKG • Tachykardie':'12-Kanal-EKG';
+  return `<svg class="clean-ecg-svg" viewBox="0 0 ${width} ${height}" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="12-Kanal-EKG"><rect width="${width}" height="${height}" fill="#fff7f7"/>${grid.join('')}<text x="14" y="17" fill="#34485a" font-size="11" font-family="Arial" font-weight="700">${label}</text>${panels}<text x="${width-150}" y="${height-10}" fill="#596a77" font-size="9" font-family="Arial">25 mm/s • 10 mm/mV</text></svg>`;
 }
 function makeXraySvg(pattern){
   if(pattern==='fracture'){
