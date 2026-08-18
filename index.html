@@ -2033,7 +2033,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media(max-width:620px){.workstation-topbar{grid-template-columns:1fr 1fr}.ws-top-cell:nth-of-type(4),.ws-top-cell:nth-of-type(5){display:none}.workstation-left-nav{grid-template-columns:repeat(3,1fr)}.premium-patient-hero{grid-template-columns:1fr!important}.premium-patient-portrait{min-height:115px!important;font-size:68px!important}.premium-patient-title h2{font-size:25px!important}.clinical-tabs-scroll{grid-template-columns:1fr 1fr!important}.premium-right-rail{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr}.ws-study-card{min-height:230px}.workstation-footer{grid-template-columns:1fr 1fr}}
 
 
-/* ===== v0.38 REFERENCE REBUILD ===== */
+/* ===== v0.38.1 REFERENCE HOTFIX ===== */
 .workstation-topbar{background:linear-gradient(180deg,#051326,#06111d)!important;border:1px solid #163651!important;border-radius:0 0 8px 8px!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important;padding:0 10px!important;min-height:64px!important}
 .ws-top-brand{min-width:240px!important;padding:0 10px 0 4px!important}.ws-brand-word{font-size:18px!important;letter-spacing:.06em!important}.ws-brand-ecg{font-size:24px!important;margin:0 8px!important;color:#1fa6ff!important}.ws-version{font-size:13px!important;color:#d2e6f8!important}
 .ws-top-cell{min-height:64px!important;padding:8px 14px!important;border-left:1px solid rgba(45,83,118,.55)!important}.ws-top-cell small{font-size:10px!important;color:#ddeaf6!important;opacity:.85}.ws-top-cell b{font-size:15px!important;color:#fff!important}.ws-top-cell b.green{color:#4ce282!important}.ws-top-cell b.purple{color:#e26cff!important}.ws-stars{letter-spacing:1px;color:#ffca47!important}.ws-top-actions{gap:0!important;border-left:1px solid rgba(45,83,118,.55)!important}.ws-top-action{min-height:64px!important;min-width:72px!important;border-radius:0!important;border-left:1px solid rgba(45,83,118,.4)!important;background:transparent!important}
@@ -2071,7 +2071,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Doctor Rush v0.38 • REFERENCE REBUILD</h2>
+          <h2>Doctor Rush v0.38.1 • REFERENCE HOTFIX</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -5300,7 +5300,7 @@ function renderWorkstationTopbar(){
   const tier=typeof hospitalTier==='function'?hospitalTier():'Klinik';
   const stars=Math.max(1,Math.min(5,Math.ceil((state.rep||0)/20)));
   box.innerHTML=`
-    <div class="ws-top-brand"><span class="ws-brand-word">DOCTOR RUSH</span><span class="ws-brand-ecg">⌁</span><span class="ws-version">v0.38 REFERENCE REBUILD</span></div>
+    <div class="ws-top-brand"><span class="ws-brand-word">DOCTOR RUSH</span><span class="ws-brand-ecg">⌁</span><span class="ws-version">v0.38.1 REFERENCE HOTFIX</span></div>
     <div class="ws-top-cell"><small>Schwierigkeit</small><b class="purple">${difficultyProfile().name.toUpperCase()}</b></div>
     <div class="ws-top-cell"><small>Krankenhaus</small><b>St. Anna ${escapeHtmlText(tier)}</b></div>
     <div class="ws-top-cell"><small>Bewertung</small><b class="ws-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</b></div>
@@ -5422,6 +5422,23 @@ function renderPremiumFindings(){
   if(!rows.length){box.innerHTML='<div class="premium-finding-item"><b>Noch keine Befunde</b><small>Gehe zu Diagnostik und ordne Untersuchungen an.</small></div>';return}
   box.innerHTML=rows.map(({exam,index})=>{const st=workstationFindingState(exam,index);return `<div class="premium-finding-item ws-finding"><div class="ws-finding-thumb">${workstationFindingVisual(exam,index)}</div><div class="ws-finding-meta"><b>${escapeHtmlText(exam.name)}</b><small>${workstationExamClock(index)}<br>${escapeHtmlText(workstationStudyStatus(exam,index))}</small>${isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="openVisualDiagnostic(${index})">Bild ansehen</a>`:''}${!isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="switchClinicalTab('diagnostics')">Befund ansehen</a>`:''}</div><div class="ws-find-status ${st.cls}">${st.text}</div></div>`}).join('')
 }
+function renderPremiumActions(){renderWorkstationActions()}
+function renderPremiumUI(){
+  if(!current)return;
+  renderPremiumPatientHero();
+  renderPremiumDifferentials();
+  renderPremiumFindings();
+  renderPremiumActions();
+  renderWorkstationTopbar();
+  updateWorkstationLeftNav();
+  renderWorkstationImagingDock();
+  renderWorkstationFooter();
+}
+
+function escapeHtmlText(text){
+  return String(text||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+}
+
 function isVisualExam(exam){
   if(!exam)return false;
   const text=`${exam.name||''} ${exam.result||''} ${exam.req||''}`.toLowerCase();
@@ -9060,9 +9077,18 @@ function renderWaitingRoom(){
 }
 function selectPatient(id){
   const idx=run.queue.findIndex(p=>p.queueId===id);if(idx<0)return;
-  current=run.queue.splice(idx,1)[0];
-  ageWaitingPatients();
-  loadPatient();showScreen('gameScreen');
+  try{
+    current=run.queue.splice(idx,1)[0];
+    ageWaitingPatients();
+    loadPatient();
+    showScreen('gameScreen');
+  }catch(err){
+    console.error('Fall konnte nicht geöffnet werden',err);
+    if(current&&current.queueId===id&&!run.queue.some(p=>p.queueId===id))run.queue.unshift(current);
+    current=null;
+    toast('⚠️ Fall konnte nicht geöffnet werden. Bitte Seite neu laden.');
+    renderWaitingRoom();
+  }
 }
 function ageWaitingPatients(){
   if(isBeginner()){for(const p of run.queue)p.wait++;return}
