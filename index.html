@@ -2005,7 +2005,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media (max-width:820px){.hud{grid-template-columns:repeat(2,minmax(0,1fr))}.clinical-tabs-scroll{grid-template-columns:1fr 1fr}.premium-patient-hero{grid-template-columns:1fr}.premium-patient-portrait{min-height:130px;font-size:72px}.premium-right-rail{grid-template-columns:1fr}}
 
 
-/* ===== v0.37 FULL WORKSTATION UI ===== */
+/* ===== v0.37 REFERENCE REBUILD ===== */
 .workstation-active{overflow-x:hidden}
 .workstation-active #app{width:min(1680px,100vw);max-width:1680px;padding:0 8px 86px}
 .workstation-active #app>.topbar{display:none}
@@ -2032,6 +2032,29 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
 @media(max-width:1000px){.workstation-active #app{padding:0 8px 88px}.workstation-topbar{grid-template-columns:1fr 1fr 1fr}.ws-top-brand{grid-column:1/-1}.ws-top-actions{display:none}.workstation-stage{grid-template-columns:1fr}.workstation-left-nav{position:sticky;top:0;z-index:90;height:auto;display:grid;grid-template-columns:repeat(6,1fr);gap:4px;padding:4px;background:#04101b;border:1px solid #17344d}.ws-left-btn{min-height:52px;font-size:8px}.ws-left-btn .ico{font-size:20px}.ws-left-spacer{display:none}.premium-patient-hero{grid-template-columns:1fr 1fr!important}.premium-patient-portrait{min-height:150px!important}.premium-workspace{grid-template-columns:1fr!important}.premium-right-rail{grid-template-columns:1fr 1fr!important}.workstation-imaging-dock{grid-template-columns:repeat(2,minmax(0,1fr))}.workstation-footer{position:fixed;left:0;right:0;bottom:0;margin:0;grid-template-columns:1fr 1fr}.workstation-footer>.ws-footer-cell{display:none}.workstation-footer>.ws-footer-primary,.workstation-footer>.ws-footer-alarm{margin:7px}}
 @media(max-width:620px){.workstation-topbar{grid-template-columns:1fr 1fr}.ws-top-cell:nth-of-type(4),.ws-top-cell:nth-of-type(5){display:none}.workstation-left-nav{grid-template-columns:repeat(3,1fr)}.premium-patient-hero{grid-template-columns:1fr!important}.premium-patient-portrait{min-height:115px!important;font-size:68px!important}.premium-patient-title h2{font-size:25px!important}.clinical-tabs-scroll{grid-template-columns:1fr 1fr!important}.premium-right-rail{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr}.ws-study-card{min-height:230px}.workstation-footer{grid-template-columns:1fr 1fr}}
 
+
+/* ===== v0.38 REFERENCE REBUILD ===== */
+.workstation-topbar{background:linear-gradient(180deg,#051326,#06111d)!important;border:1px solid #163651!important;border-radius:0 0 8px 8px!important;box-shadow:0 12px 30px rgba(0,0,0,.35)!important;padding:0 10px!important;min-height:64px!important}
+.ws-top-brand{min-width:240px!important;padding:0 10px 0 4px!important}.ws-brand-word{font-size:18px!important;letter-spacing:.06em!important}.ws-brand-ecg{font-size:24px!important;margin:0 8px!important;color:#1fa6ff!important}.ws-version{font-size:13px!important;color:#d2e6f8!important}
+.ws-top-cell{min-height:64px!important;padding:8px 14px!important;border-left:1px solid rgba(45,83,118,.55)!important}.ws-top-cell small{font-size:10px!important;color:#ddeaf6!important;opacity:.85}.ws-top-cell b{font-size:15px!important;color:#fff!important}.ws-top-cell b.green{color:#4ce282!important}.ws-top-cell b.purple{color:#e26cff!important}.ws-stars{letter-spacing:1px;color:#ffca47!important}.ws-top-actions{gap:0!important;border-left:1px solid rgba(45,83,118,.55)!important}.ws-top-action{min-height:64px!important;min-width:72px!important;border-radius:0!important;border-left:1px solid rgba(45,83,118,.4)!important;background:transparent!important}
+.workstation-stage{gap:12px!important;grid-template-columns:104px minmax(0,1fr)!important}
+.workstation-left-nav{background:linear-gradient(180deg,#082645,#071626)!important;border:1px solid #17385a!important;border-radius:8px!important;padding:8px!important;height:calc(100vh - 96px)!important}.ws-left-btn{min-height:84px!important;border-radius:8px!important;box-shadow:inset 0 1px 0 rgba(255,255,255,.04)}.ws-left-btn .ico{font-size:24px!important}.ws-left-vitals{margin-top:10px!important}
+.premium-patient-hero{background:linear-gradient(90deg,#0b2033 0%,#081a2b 56%,#0b2033 100%)!important;border:1px solid #284d6d!important;border-radius:6px!important;padding:10px!important;box-shadow:0 10px 24px rgba(0,0,0,.24)!important}
+.premium-patient-portrait{padding:0!important;overflow:hidden!important;background:#0f2233!important}.ws-portrait-frame{width:100%;height:100%;min-height:220px;border:1px solid #40617c;background:linear-gradient(180deg,#bfc8ce,#6c7a86 52%,#36404a 100%);display:flex;align-items:flex-end;justify-content:center;position:relative}.ws-portrait-frame::before{content:"";position:absolute;inset:0;background:radial-gradient(circle at 50% 25%, rgba(255,255,255,.46), transparent 22%),linear-gradient(180deg, rgba(255,255,255,.10), transparent 45%)}.ws-photo-face{position:relative;z-index:1;font-size:110px;filter:grayscale(1);opacity:.95;transform:translateY(8px)}
+.premium-patient-main,.premium-patient-vitals,.premium-patient-side{background:linear-gradient(180deg,#0d2438,#091b2d)!important;border:1px solid #2a4d68!important}.premium-kicker{font-size:10px!important}.premium-patient-title h2{font-size:22px!important;letter-spacing:.01em!important}.premium-patient-meta{display:grid!important;grid-template-columns:repeat(2,minmax(0,1fr));gap:6px 14px!important;margin-top:10px!important}.premium-patient-meta span{font-size:12px!important;color:#c8dced!important}.premium-patient-meta span b{display:inline-block;min-width:74px;color:#fff!important}
+.premium-lead-box{background:linear-gradient(180deg,#091521,#0c1f30)!important;border:1px solid #26465e!important;color:#f16d5e!important}.premium-lead-box b{color:#ff6d5c!important;font-size:12px!important}.premium-lead-box p{font-size:13px!important;color:#ff7261!important}
+.premium-vitals-head b,.premium-side-head b{font-size:15px!important}.premium-vital{background:transparent!important;border:none!important;padding:5px 0!important}.premium-vital small{font-size:11px!important;color:#d1e5f6!important}.premium-vital strong{font-size:14px!important}.premium-vitals-grid{grid-template-columns:1fr 1fr!important;gap:2px 10px!important}.premium-monitor-btn{background:linear-gradient(180deg,#255584,#174260)!important;border:1px solid #4679a4!important;font-size:13px!important}
+.premium-side-list{gap:4px!important}.premium-suspect{background:transparent!important;border:none!important;padding:4px 0!important;align-items:flex-start!important}.premium-suspect b{font-size:14px!important;font-weight:900!important;color:#fff!important}.premium-suspect .tag{padding:2px 7px!important;font-size:10px!important}
+.premium-main-column{background:#eef2f5!important;border:1px solid #bac7d1!important}.premium-main-column .clinical-tabs{background:#0a2540!important;padding:0!important;border-bottom:1px solid #244563!important}.clinical-tabs-scroll{gap:0!important;grid-template-columns:repeat(5,1fr)!important}.clinical-tab{min-height:44px!important;border-radius:0!important;border-right:1px solid #274768!important;border-left:none!important;border-top:none!important;border-bottom:none!important;background:linear-gradient(180deg,#133150,#0b2339)!important;font-size:12px!important}.clinical-tab.active{background:linear-gradient(180deg,#1b5b95,#11456f)!important}
+.compact-overview-note,.patient-record,.patient-flow,.patient-condition-panel,.history-panel,.physical-panel,.panel,.realism-workup,.reasoning-panel,.reassess-panel,.disposition-panel,.case-actions-panel,.protocol-panel,.beginner-guide{background:#eef2f5!important;border:none!important;box-shadow:none!important;color:#101820!important}.panel-head,.history-head,.physical-head,.reasoning-head,.reassess-head,.disposition-head{border-bottom:1px solid #c8d2d9!important}.panel-title,.history-title,.protocol-title,.procedure-title,.procedure-skill-title,.emergency-skill-title,.screen-note,.handover-note,.monitor-footer{color:#112234!important}.panel p,.panel li,.history-panel p,.history-panel li,.physical-panel p,.physical-panel li,.realism-workup p,.reasoning-panel p,.disposition-panel p,.reassess-panel p{color:#1f3344!important}
+.premium-right-rail{grid-template-columns:265px 250px!important}.premium-right-rail .premium-rail-card:nth-child(2),.premium-right-rail .premium-rail-card:nth-child(3){border:1px solid #bcc9d3!important;background:#eef2f5!important}.premium-right-rail .premium-rail-card h4{background:linear-gradient(180deg,#0b2033,#0a1a2b)!important;color:#fff!important;font-size:12px!important}
+.ws-finding{display:grid;grid-template-columns:52px 1fr auto;gap:8px;align-items:start}.ws-finding-thumb{width:52px;height:52px;border-radius:2px;overflow:hidden;background:#0b1016;border:1px solid #ccd5dc}.ws-finding-thumb img,.ws-finding-thumb svg,.ws-finding-thumb canvas,.ws-finding-thumb .lab-sheet{width:100%!important;height:100%!important;object-fit:cover}.ws-finding-meta b{font-size:12px!important}.ws-finding-meta small{font-size:10px!important;line-height:1.35!important}.ws-finding-link{display:inline-block;margin-top:3px;font-size:10px;font-weight:900;color:#0a5ca5}.ws-find-status{font-size:11px;font-weight:900}.ws-find-status.bad{color:#d63d34}.ws-find-status.good{color:#2b9a4f}.ws-find-status.wait{color:#d98a16}
+.premium-right-rail .premium-mini-btn,.premium-right-rail .premium-action-btn,.premium-right-rail .premium-finish-btn{background:linear-gradient(180deg,#fefefe,#dbe3e8)!important;border:1px solid #c0cad1!important;color:#13202b!important;border-radius:4px!important;font-size:12px!important;padding:8px 9px!important}.premium-right-rail .premium-action-btn.active{background:linear-gradient(180deg,#d6e8f6,#bcd8ec)!important;border-color:#87afd2!important}
+.workstation-imaging-dock{margin-top:8px!important;gap:8px!important;grid-template-columns:repeat(5,minmax(0,1fr))!important}.ws-study-card{background:linear-gradient(180deg,#0a1e31,#071625)!important;border:1px solid #274665!important;border-radius:6px!important;min-height:298px!important}.ws-study-head{background:linear-gradient(180deg,#122d49,#0b2034)!important;padding:8px 10px!important;font-size:11px!important}.ws-study-preview{height:178px!important;background:#0a0f14!important}.ws-study-body{background:#eef2f5!important;color:#112234!important;min-height:77px!important;border-top:1px solid #c4d0d8!important}.ws-study-body b{color:#101820!important;font-size:12px!important}.ws-study-actions{background:linear-gradient(180deg,#10283f,#0a1e31)!important;padding:9px!important}.ws-study-actions button{background:linear-gradient(180deg,#fefefe,#dbe3e8)!important;border:1px solid #bfcbd3!important;color:#13202b!important;border-radius:4px!important;font-size:12px!important}
+.workstation-footer{border-radius:8px!important;background:linear-gradient(180deg,#091f33,#071726)!important;border:1px solid #214564!important;grid-template-columns:1.15fr 1.15fr 1fr .95fr 1fr!important}.ws-footer-cell{min-height:52px!important;font-size:12px!important}.ws-footer-primary{min-height:52px!important;border-radius:4px!important;font-size:12px!important}.ws-footer-alarm{min-height:52px!important;border-radius:4px!important;font-size:12px!important}
+@media (max-width:1200px){.premium-right-rail{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr 1fr!important}.workstation-footer{grid-template-columns:1fr 1fr!important}}
+@media (max-width:900px){.workstation-stage{grid-template-columns:1fr!important}.workstation-left-nav{height:auto!important;position:relative!important;display:grid!important;grid-template-columns:repeat(3,1fr);padding:8px!important}.premium-patient-hero{grid-template-columns:1fr!important}.workstation-imaging-dock{grid-template-columns:1fr!important}.premium-patient-meta{grid-template-columns:1fr!important}}
+
 </style>
 </head>
 <body>
@@ -2048,7 +2071,7 @@ button:hover,.choice:hover,.history-question:hover,.clinical-tab:hover,.secondar
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Doctor Rush v0.37 • FULL WORKSTATION UI</h2>
+          <h2>Doctor Rush v0.38 • REFERENCE REBUILD</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -5267,13 +5290,18 @@ function renderVisualReadPanel(exam){
 
 function workstationMoney(v){return Number(v||0).toLocaleString('de-DE')}
 function workstationClockText(){const d=new Date();return `${String(d.getHours()).padStart(2,'0')}:${String(d.getMinutes()).padStart(2,'0')}`}
+
+function workstationExamClock(index){const h=10+((index||0)%3),m=15+((index||0)*2);return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')} Uhr`}
+function workstationFindingVisual(exam,index){if(isVisualExam(exam)){const real=typeof realisticImageForExam==='function'?realisticImageForExam(exam):null;if(real&&real.src)return `<img src="${real.src}" alt="${escapeHtmlText(exam.name)}">`;try{return visualExamContent(exam)}catch(e){return '<div class="ws-study-placeholder">🩻</div>'}}return `<div class="ws-study-placeholder">${exam.req==='lab'?'🧪':'📄'}</div>`}
+function workstationFindingState(exam,index){if(isExamOrdered(index)&&!examined.has(index))return {text:'ausstehend',cls:'wait'};const info=(premiumStatusChipForExam(exam,index)||'').toLowerCase();if(info.includes('unauffällig'))return {text:'unauffällig',cls:'good'};if(info.includes('auffällig'))return {text:'auffällig',cls:'bad'};return {text:'offen',cls:'wait'}}
+
 function renderWorkstationTopbar(){
   const box=$('workstationTopbar');if(!box)return;
-  const tier=typeof hospitalTier==='function'?hospitalTier():'KLINIK';
+  const tier=typeof hospitalTier==='function'?hospitalTier():'Klinik';
   const stars=Math.max(1,Math.min(5,Math.ceil((state.rep||0)/20)));
   box.innerHTML=`
-    <div class="ws-top-brand"><span class="ws-brand-word">DOCTOR RUSH</span><span class="ws-brand-ecg">⌁</span><span class="ws-version">v0.37</span></div>
-    <div class="ws-top-cell"><small>Schwierigkeit</small><b class="purple">${difficultyProfile().name.toUpperCase()}⌄</b></div>
+    <div class="ws-top-brand"><span class="ws-brand-word">DOCTOR RUSH</span><span class="ws-brand-ecg">⌁</span><span class="ws-version">v0.38 REFERENCE REBUILD</span></div>
+    <div class="ws-top-cell"><small>Schwierigkeit</small><b class="purple">${difficultyProfile().name.toUpperCase()}</b></div>
     <div class="ws-top-cell"><small>Krankenhaus</small><b>St. Anna ${escapeHtmlText(tier)}</b></div>
     <div class="ws-top-cell"><small>Bewertung</small><b class="ws-stars">${'★'.repeat(stars)}${'☆'.repeat(5-stars)}</b></div>
     <div class="ws-top-cell"><small>Ruf</small><b>${workstationMoney(state.rep)}</b></div>
@@ -5281,9 +5309,9 @@ function renderWorkstationTopbar(){
     <div class="ws-top-cell"><small>Tag ${state.day||1}</small><b>${workstationClockText()} Uhr</b></div>
     <div class="ws-top-actions">
       <button class="ws-top-action" onclick="toast('⚙️ Einstellungen über das Hauptmenü')">⚙️<small>Einstellungen</small></button>
-      <button class="ws-top-action" onclick="toast('❔ Tipp: Nutze links die klinischen Bereiche.')">❔<small>Hilfe</small></button>
+      <button class="ws-top-action" onclick="toast('❔ Hilfebereich folgt noch')">❔<small>Hilfe</small></button>
       <button class="ws-top-action" onclick="save();toast('💾 Spielstand gespeichert')">💾<small>Speichern</small></button>
-      <button class="ws-top-action" onclick="toast('☰ Schließe zuerst den aktuellen Fall.')">☰<small>Menü</small></button>
+      <button class="ws-top-action" onclick="toast('☰ Menü kommt im nächsten Ausbau')">☰<small>Menü</small></button>
     </div>`;
 }
 function updateWorkstationLeftNav(){
@@ -5327,7 +5355,7 @@ function renderWorkstationActions(){
   const treatments=treatmentOptionsFor(current).slice(0,5);
   const dispositions=usesClinicalWorkflow()?dispositionOptions:[];
   box.innerHTML=`<div class="premium-finding-item"><b>Weitere Diagnostik</b><small>${examRows.length?'Untersuchungen anfordern':'Keine offenen Untersuchungen'}</small></div>${examRows.map(x=>`<button class="premium-action-btn" onclick="workstationOpenExam(${x.i})">${escapeHtmlText(x.e.name)}</button>`).join('')}
-  <div class="premium-finding-item"><b>Therapie</b><small>Behandlungsentscheidung</small></div>${treatments.map(t=>`<button class="premium-action-btn ${selectedTreatment===t?'active':''}" onclick="workstationSelectTreatment('${String(t).replace(/'/g,"\\'")}')">${escapeHtmlText(t)}</button>`).join('')}
+  <div class="premium-finding-item"><b>Therapie</b><small>Behandlungsentscheidung</small></div>${treatments.map(t=>`<button class="premium-action-btn ${selectedTreatment===t?'active':''}" onclick="workstationSelectTreatment('${String(t).replace(/'/g,"\'")}')">${escapeHtmlText(t)}</button>`).join('')}
   ${dispositions.length?`<div class="premium-finding-item"><b>Disposition</b><small>Weiterer Versorgungsweg</small></div><div style="display:grid;grid-template-columns:1fr 1fr;gap:5px">${dispositions.map(d=>`<button class="premium-action-btn ${selectedDisposition===d.id?'active':''}" onclick="workstationSelectDisposition('${d.id}')">${d.name}</button>`).join('')}</div>`:''}`;
 }
 function workstationFooterPrimary(){
@@ -5353,15 +5381,46 @@ function renderPremiumPatientHero(){
   const seeds=premiumDiagnosisSeeds();
   const dyn=usesClinicalWorkflow()?dynamicVitalsFor(current):{pulse:current.vitals?.pulse,bp:current.vitals?.bp,spo2:current.vitals?.spo2,temp:current.vitals?.temp,resp:'—',pain:'—'};
   const cond=conditionState?Math.round(conditionState.value):100;
-  box.innerHTML=`<div class="premium-patient-portrait">${current.avatar||'🧑'}</div><div class="premium-patient-main"><div class="premium-kicker">PATIENT</div><div class="premium-patient-title"><div><h2>${escapeHtmlText(current.name)}</h2><div class="premium-patient-meta"><span>${current.age} Jahre</span><span>${escapeHtmlText(current.job||'—')}</span><span>ID <b>${premiumCaseId()}</b></span><span>Aufnahme <b>${workstationClockText()} Uhr</b></span><span>Status <b>${cond<55?'instabil':'ambulant'}</b></span></div></div></div><div class="premium-lead-box"><b>⚠ Leitsymptom</b><p>${escapeHtmlText(premiumLeadSymptom())}</p></div></div><div class="premium-patient-vitals"><div class="premium-vitals-head"><b>❤️ Vitalmonitor</b><button class="premium-mini-btn" style="width:auto;margin:0" onclick="openVitalMonitor()">öffnen</button></div><div class="premium-vitals-grid"><div class="premium-vital"><small>HF</small><strong class="accent-red">${escapeHtmlText(dyn.pulse||'—')}</strong></div><div class="premium-vital"><small>RR</small><strong class="accent-orange">${escapeHtmlText(dyn.bp||'—')}</strong></div><div class="premium-vital"><small>AF</small><strong class="accent-orange">${escapeHtmlText(dyn.resp||'—')}</strong></div><div class="premium-vital"><small>SpO₂</small><strong class="accent-blue">${escapeHtmlText(dyn.spo2||'—')}</strong></div><div class="premium-vital"><small>Temp.</small><strong class="accent-green">${escapeHtmlText(dyn.temp||'—')}</strong></div><div class="premium-vital"><small>Schmerz</small><strong class="accent-orange">${escapeHtmlText(dyn.pain||'—')}</strong></div></div><div class="premium-lead-box" style="margin-top:8px"><b>Zustand: ${cond<55?'instabil':cond<75?'beobachten':'stabil'}</b></div></div><div class="premium-patient-side"><div class="premium-side-head"><b>VERDACHTSDIAGNOSEN</b><span>${diagnosisConfidence?confidenceLabel(diagnosisConfidence):'—'}</span></div><div class="premium-side-list">${seeds.length?seeds.map((item,index)=>{const tag=premiumDiagnosisTag(index,item);return `<div class="premium-suspect ${tag.cls}"><div><b>${index+1}. ${escapeHtmlText(item)}</b></div><span class="tag">${tag.label.toUpperCase()}</span></div>`}).join(''):'<div class="premium-suspect"><div><b>Noch keine Verdachtsdiagnose</b></div><span class="tag">OFFEN</span></div>'}</div>${usesExpertWorkflow()?`<div style="margin-top:15px;border-top:1px solid #294762;padding-top:10px"><small>DIAGNOSESICHERHEIT</small><div class="history-bar" style="margin-top:6px"><i style="width:${diagnosisConfidence==='high'?85:diagnosisConfidence==='medium'?55:diagnosisConfidence==='low'?30:10}%"></i></div></div>`:''}</div>`;
+  const conf=diagnosisConfidence==='high'?85:diagnosisConfidence==='medium'?60:diagnosisConfidence==='low'?35:10;
+  box.innerHTML=`
+    <div class="premium-patient-portrait"><div class="ws-portrait-frame"><div class="ws-photo-face">${current.avatar||'🧑'}</div></div></div>
+    <div class="premium-patient-main">
+      <div class="premium-kicker">PATIENT</div>
+      <div class="premium-patient-title"><div><h2>${escapeHtmlText(current.name)}</h2>
+      <div class="premium-patient-meta">
+        <span><b>${current.age} Jahre</b></span>
+        <span><b>${escapeHtmlText(current.job||'Patient')}</b></span>
+        <span>ID <b>${premiumCaseId()}</b></span>
+        <span>AAK <b>GEK</b></span>
+        <span>Aufnahme <b>${workstationClockText()} Uhr</b></span>
+        <span>Status <b>${cond<55?'instabil':'ambulant'}</b></span>
+      </div></div></div>
+      <div class="premium-lead-box"><b>⚠ Leitsymptom</b><p>${escapeHtmlText(premiumLeadSymptom())}</p></div>
+    </div>
+    <div class="premium-patient-vitals">
+      <div class="premium-vitals-head"><b>❤️ Vitalmonitor</b><button class="premium-mini-btn" style="width:auto;margin:0" onclick="openVitalMonitor()">Vitalmonitor öffnen</button></div>
+      <div class="premium-vitals-grid">
+        <div class="premium-vital"><small>HF</small><strong class="accent-red">${escapeHtmlText(dyn.pulse||'—')} /min</strong></div>
+        <div class="premium-vital"><small>RR</small><strong class="accent-orange">${escapeHtmlText(dyn.bp||'—')} mmHg</strong></div>
+        <div class="premium-vital"><small>AF</small><strong class="accent-orange">${escapeHtmlText(dyn.resp||'—')} /min</strong></div>
+        <div class="premium-vital"><small>SpO₂</small><strong class="accent-blue">${escapeHtmlText(dyn.spo2||'—')} %</strong></div>
+        <div class="premium-vital"><small>Temp.</small><strong class="accent-green">${escapeHtmlText(dyn.temp||'—')} °C</strong></div>
+        <div class="premium-vital"><small>Schmerz</small><strong class="accent-orange">${escapeHtmlText(dyn.pain||'—')} /10</strong></div>
+      </div>
+      <div class="premium-lead-box" style="margin-top:8px"><b>Zustand: ${cond<55?'instabil':cond<75?'beobachten':'stabil'}</b></div>
+    </div>
+    <div class="premium-patient-side">
+      <div class="premium-side-head"><b>VERDACHTSDIAGNOSEN</b><span>${diagnosisConfidence?confidenceLabel(diagnosisConfidence):'—'}</span></div>
+      <div class="premium-side-list">${seeds.length?seeds.map((item,index)=>{const tag=premiumDiagnosisTag(index,item);return `<div class="premium-suspect ${tag.cls}"><div><b>${index+1}. ${escapeHtmlText(item)}</b></div><span class="tag">${tag.label.toUpperCase()}</span></div>`}).join(''):'<div class="premium-suspect"><div><b>Noch keine Verdachtsdiagnose</b></div><span class="tag">OFFEN</span></div>'}</div>
+      <div style="margin-top:12px;border-top:1px solid #294762;padding-top:10px"><small>DIAGNOSESICHERHEIT</small><div class="history-bar" style="margin-top:6px"><i style="width:${conf}%"></i></div></div>
+    </div>`;
 }
 function renderPremiumDifferentials(){const box=$('premiumDifferentials');if(!box)return;if(!current){box.innerHTML='';return}const items=premiumDiagnosisSeeds();box.innerHTML=items.length?items.map((item,index)=>{const tag=premiumDiagnosisTag(index,item);return `<div class="premium-finding-item"><div class="premium-finding-row"><b>${index+1}. ${escapeHtmlText(item)}</b><span class="premium-status-chip ${tag.cls===''?'ok':tag.cls==='orange'?'wait':''}">${tag.label}</span></div><small>${selectedDiagnosis===item?'Aktuell gewählte Diagnose.':selectedDifferentials.includes(item)?'Als Differentialdiagnose priorisiert.':'Noch nicht priorisiert.'}</small></div>`}).join(''):'<div class="premium-finding-item"><b>Noch leer</b><small>Im Profi-Modus werden hier deine priorisierten Differentialdiagnosen angezeigt.</small></div>'}
-function renderPremiumFindings(){const box=$('premiumFindings');if(!box)return;if(!current){box.innerHTML='';return}const rows=(current.exams||[]).map((exam,index)=>({exam,index})).filter(x=>examined.has(x.index)||isExamOrdered(x.index)).slice(0,7);if(!rows.length){box.innerHTML='<div class="premium-finding-item"><b>Noch keine Befunde</b><small>Gehe zu Diagnostik und ordne Untersuchungen an.</small></div>';return}box.innerHTML=rows.map(({exam,index})=>`<div class="premium-finding-item"><div class="premium-finding-row"><b>${escapeHtmlText(exam.name)}</b>${premiumStatusChipForExam(exam,index)}</div><small>${escapeHtmlText(premiumPreviewText(exam,index))}</small>${isVisualExam(exam)&&examined.has(index)?`<button type="button" class="premium-mini-btn" onclick="openVisualDiagnostic(${index})">🩻 Bild ansehen</button>`:''}</div>`).join('')}
-function renderPremiumActions(){renderWorkstationActions()}
-function renderPremiumUI(){renderPremiumPatientHero();renderPremiumDifferentials();renderPremiumFindings();renderPremiumActions();renderWorkstationTopbar();updateWorkstationLeftNav();renderWorkstationImagingDock();renderWorkstationFooter()}
-
-function escapeHtmlText(text){
-  return String(text||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+function renderPremiumFindings(){
+  const box=$('premiumFindings');if(!box)return;if(!current){box.innerHTML='';return}
+  const rows=(current.exams||[]).map((exam,index)=>({exam,index})).filter(x=>examined.has(x.index)||isExamOrdered(x.index)).slice(0,5);
+  if(!rows.length){box.innerHTML='<div class="premium-finding-item"><b>Noch keine Befunde</b><small>Gehe zu Diagnostik und ordne Untersuchungen an.</small></div>';return}
+  box.innerHTML=rows.map(({exam,index})=>{const st=workstationFindingState(exam,index);return `<div class="premium-finding-item ws-finding"><div class="ws-finding-thumb">${workstationFindingVisual(exam,index)}</div><div class="ws-finding-meta"><b>${escapeHtmlText(exam.name)}</b><small>${workstationExamClock(index)}<br>${escapeHtmlText(workstationStudyStatus(exam,index))}</small>${isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="openVisualDiagnostic(${index})">Bild ansehen</a>`:''}${!isVisualExam(exam)&&examined.has(index)?`<a class="ws-finding-link" href="javascript:void(0)" onclick="switchClinicalTab('diagnostics')">Befund ansehen</a>`:''}</div><div class="ws-find-status ${st.cls}">${st.text}</div></div>`}).join('')
 }
 function isVisualExam(exam){
   if(!exam)return false;

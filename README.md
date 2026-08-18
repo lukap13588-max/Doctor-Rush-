@@ -1,43 +1,31 @@
-# Doctor Rush v0.37 – FULL WORKSTATION UI
+# Doctor Rush v0.38 – REFERENCE REBUILD
 
-Diese Version baut den Patientenbildschirm strukturell nach der gewünschten Referenzoberfläche um.
+## Ziel
+Diese Version wurde **gezielt näher an dein Referenzbild** gebaut.
 
-## Neu
-- komplette obere Krankenhaus-/Statusleiste mit Doctor-Rush-Branding
-- Schwierigkeit, Krankenhaus, Bewertung, Ruf, Konto, Tag und Uhrzeit oben
-- linke vertikale Navigation: Übersicht, Anamnese, Untersuchung, Diagnostik, Entscheidung, Vitalmonitor
-- große Patientenkarte im Workstation-Stil
-- Vitalwerte direkt neben dem Patienten
-- Verdachtsdiagnosen direkt im Kopfbereich
-- helle zentrale Patientenakte / klinischer Arbeitsbereich
-- rechte Spalte mit Befunden und echten Schnellaktionen
-- permanente Diagnostik-Leiste unten mit bis zu fünf Studien
-- visuelle Untersuchungen können direkt aus dem Dock geöffnet werden
-- untere Klinikstatusleiste mit Wartezimmer, behandelter Anzahl, nächstem Patienten und Notfallalarm
-- responsive Version für Handy und Tablet
+## Neu in v0.38
+- stärkere Annäherung an die Struktur des Referenzbildes
+- überarbeitete obere Krankenhaus-/Statusleiste
+- linke Navigation noch näher am Mockup
+- Patientenbereich mit fotoähnlichem Porträtfeld, ID, AAK, Aufnahme, Status und Leitsymptom
+- Vitalmonitor-Panel im Stil der Vorlage
+- Verdachtsdiagnosen + Diagnosesicherheit deutlicher wie im Bild
+- rechte Befundspalte mit Thumbnail, Uhrzeit, Status und Link
+- rechte Aktionsspalte mit Diagnose/Therapie/Disposition wie im Bild
+- unteres Bilddock stärker an die Vorlage angenähert
+- Footer/Statusleiste näher an der Vorlage
 
-## Spielmechanik
-Die vorhandenen Systeme bleiben erhalten:
-- Kampagne
-- Freie Schicht
-- Sandbox
-- Einsteiger / Klinisch / Profi
-- kein Schicht-Countdown
-- Vitalmonitor
-- EKG, Röntgen, CT, Ultraschall, Labor
-- Radiology Workstation
-- Differentialdiagnosen
-- Behandlung, Reevaluation und Disposition
+## Dateien
+- `index.html`
+- `README.md`
 
 ## GitHub
-1. `index.html` ersetzen
-2. Commit speichern
-3. Seite einmal mit `?v=0.37` öffnen
+Nach dem Upload mit `?v=0.38` neu laden.
 
-## Technisch
-- eine einzige `index.html`
-- Save-Key weiterhin `doctorRushSaveV3`
-- v0.36-Spielstände kompatibel
-- keine externen JS-/CSS-Dateien
-- kein Service Worker
-- JavaScript-Syntaxprüfung: OK
+## Nächster möglicher Schritt
+Wenn du noch näher an das Bild willst, wäre der nächste Schritt ein **v0.39 PIXEL-PASS**, wo wir ganz gezielt noch Feindetails angleichen:
+- exaktere Abstände
+- noch passendere Typografie
+- bessere Patientenporträts
+- noch genauere Befundkarten
+- noch genauere Dock-Optik
