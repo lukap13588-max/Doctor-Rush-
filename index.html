@@ -1920,13 +1920,63 @@ body.home-nav-active #app{padding-bottom:102px}
   color:#a8bfd1;font-size:6.8px;line-height:1.4
 }
 
+
+/* ===== v0.35 RADIOLOGY WORKSTATION ===== */
+.dicom-toolbar{
+  display:flex;gap:6px;overflow-x:auto;margin-top:8px;padding:6px;
+  border-radius:10px;background:#081725;border:1px solid #29435f;scrollbar-width:none
+}
+.dicom-toolbar::-webkit-scrollbar{display:none}
+.dicom-tool{
+  flex:0 0 auto;border:1px solid #36536d;background:#102338;color:#dcebf6;
+  border-radius:8px;padding:7px 8px;font-size:6.8px;font-weight:900;white-space:nowrap
+}
+.dicom-tool.active{border-color:#70aaf0;background:rgba(88,151,219,.14)}
+.dicom-meta{
+  display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px
+}
+.dicom-meta div{
+  padding:7px 8px;border-radius:9px;background:#091a2e;border:1px solid #29435f
+}
+.dicom-meta small{display:block;color:#8199ad;font-size:6.3px}
+.dicom-meta b{display:block;margin-top:2px;color:#e0edf6;font-size:7.2px}
+.visual-read-panel{
+  margin-top:9px;padding:9px 10px;border-radius:11px;background:#0b1e34;border:1px solid #29435f
+}
+.visual-read-panel h4{margin:0;font-size:8.8px}
+.visual-read-panel p{margin:3px 0 0;color:var(--muted);font-size:7px;line-height:1.4}
+.visual-read-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px}
+.visual-read-choice{
+  border:1px solid #34516c;background:#10233a;color:#e6f1f8;border-radius:9px;
+  padding:8px;font-size:7.1px;font-weight:900;text-align:left
+}
+.visual-read-choice.selected{border-color:#75aef0;background:rgba(85,147,214,.14)}
+.visual-read-choice.correct{border-color:rgba(72,210,143,.40);background:rgba(72,210,143,.09)}
+.visual-read-choice.wrong{border-color:rgba(255,105,125,.35);background:rgba(255,91,112,.07)}
+.visual-read-status{
+  margin-top:7px;padding:7px 8px;border-radius:9px;background:#081725;border:1px solid #263f58;
+  font-size:7px;line-height:1.4;color:#c8d9e7
+}
+.visual-report.blinded{display:none}
+.dicom-canvas-filter{transition:filter .12s ease}
+.viewer-marker{
+  position:absolute;bottom:12px;left:12px;padding:3px 5px;border-radius:5px;
+  background:rgba(0,0,0,.55);border:1px solid rgba(255,255,255,.18);
+  color:#fff;font-size:8px;font-weight:900
+}
+.viewer-series{
+  margin-top:8px;padding:7px 8px;border-radius:9px;background:#071522;
+  border:1px solid #28435f;font-size:6.8px;color:#94adbf;line-height:1.4
+}
+@media(max-width:390px){.visual-read-grid,.dicom-meta{grid-template-columns:1fr}}
+
 </style>
 </head>
 <body>
   <div id="app">
     <header class="topbar">
       <div>
-        <div class="eyebrow">MOBILE MEDICAL GAME • v0.34 ONE-FILE</div>
+        <div class="eyebrow">MOBILE MEDICAL GAME • v0.35 ONE-FILE</div>
         <h1>Doctor Rush</h1>
       </div>
       <button id="soundBtn" class="icon-btn" aria-label="Sound">🔊</button>
@@ -1936,7 +1986,7 @@ body.home-nav-active #app{padding-bottom:102px}
       <section id="homeScreen" class="screen active">
         <div id="homeHero" class="hero-card">
           <div class="hero-icon">🩺</div>
-          <h2>Clinic Life v0.34 • REAL MEDICAL IMAGING</h2>
+          <h2>Clinic Life v0.35 • RADIOLOGY WORKSTATION</h2>
           <p>Wähle, wie du Doctor Rush spielen möchtest.</p>
           <div class="mode-grid">
             <div class="mode-card campaign">
@@ -3272,6 +3322,51 @@ const patients = [
     treatments:["Ruhigstellung + unfallchirurgische Weiterbehandlung","Nur Schmerzgel und sofort belasten","Antibiotikum","Inhalation"],
     correctTreatment:"Ruhigstellung + unfallchirurgische Weiterbehandlung",
     reward:205, xp:98
+  },
+  {
+    name:"Erika S.", age:73, job:"Pensionistin", avatar:"👵🏻", urgency:"medium",
+    complaint:"Seit heute stolpert mein Herz immer wieder, mir ist schwindlig und ich fühle mich deutlich weniger belastbar.",
+    vitals:{pulse:"132",temp:"36,7°",spo2:"97%",bp:"126/82"},
+    exams:[
+      {name:"Puls klinisch prüfen", result:"Puls deutlich unregelmäßig und beschleunigt.", cost:0, time:3},
+      {name:"12-Kanal-EKG", result:"Absolut arrhythmischer Rhythmus ohne regelhafte P-Wellen, passend zu Vorhofflimmern.", cost:35, time:9, req:"cardio"},
+      {name:"Labor Basis", result:"Keine grobe Elektrolytauffälligkeit im Trainingsbefund.", cost:28, time:8, req:"lab"}
+    ],
+    diagnoses:["Vorhofflimmern","Sinustachykardie","Panikattacke","Pneumonie"],
+    correctDiagnosis:"Vorhofflimmern",
+    treatments:["Überwachte kardiologische Weiterbehandlung und rhythmusbezogene Therapieplanung","Nur Bettruhe zuhause","Antibiotikum","Gipsverband"],
+    correctTreatment:"Überwachte kardiologische Weiterbehandlung und rhythmusbezogene Therapieplanung",
+    reward:235, xp:112
+  },
+  {
+    name:"Peter A.", age:66, job:"Busfahrer", avatar:"👨🏻‍🦳", urgency:"high",
+    complaint:"Plötzlich habe ich sehr starke Kopfschmerzen bekommen. Meine Frau sagt, ich wirke verwirrt und spreche anders.",
+    vitals:{pulse:"92",temp:"36,8°",spo2:"96%",bp:"188/104"},
+    exams:[
+      {name:"Neurologischer Kurzstatus", result:"Bewusstseinslage leicht beeinträchtigt, fokale Auffälligkeit im Trainingsstatus.", cost:0, time:4},
+      {name:"CT Kopf nativ", result:"Hyperdense intrazerebrale Blutung im rechten Hemisphärenbereich.", cost:120, time:16, req:"imaging"},
+      {name:"Blutbild / Gerinnung", result:"Basislabor zur Akutbeurteilung abgenommen.", cost:38, time:9, req:"lab"}
+    ],
+    diagnoses:["Intrazerebrale Blutung","Migräne","Hypoglykämie","Panikattacke"],
+    correctDiagnosis:"Intrazerebrale Blutung",
+    treatments:["Sofortige überwachte neurologisch-neurochirurgische Weiterbehandlung","Nur Schmerzmittel und Entlassung","Antibiotikum","Ruhigstellung"],
+    correctTreatment:"Sofortige überwachte neurologisch-neurochirurgische Weiterbehandlung",
+    reward:330, xp:160
+  },
+  {
+    name:"Nadine H.", age:49, job:"Bürokauffrau", avatar:"👩🏻", urgency:"medium",
+    complaint:"Nach dem Essen bekomme ich immer wieder heftige Schmerzen rechts oben im Bauch, heute ist es deutlich schlimmer.",
+    vitals:{pulse:"102",temp:"37,8°",spo2:"99%",bp:"132/84"},
+    exams:[
+      {name:"Abdomen untersuchen", result:"Druckschmerz im rechten Oberbauch.", cost:0, time:4},
+      {name:"Ultraschall Oberbauch", result:"Mehrere echoreiche Konkremente mit dorsalem Schallschatten in der Gallenblase.", cost:58, time:12, req:"imaging"},
+      {name:"CRP / Blutbild", result:"Entzündungswerte im Trainingsbefund mäßig erhöht.", cost:30, time:9, req:"lab"}
+    ],
+    diagnoses:["Cholelithiasis","Appendizitis","Gastroenteritis","Nierenstein"],
+    correctDiagnosis:"Cholelithiasis",
+    treatments:["Schmerz- und Verlaufskontrolle mit chirurgischer Weiterbeurteilung","Nur Inhalation","Gipsverband","Insulin"],
+    correctTreatment:"Schmerz- und Verlaufskontrolle mit chirurgischer Weiterbeurteilung",
+    reward:215, xp:104
   }
 ];
 
@@ -4922,6 +5017,152 @@ function realisticImageHtml(exam){
   <div class="real-image-disclaimer">Stilisierte, KI-generierte Trainingsaufnahme für das Spiel. Nicht als medizinisches Referenzbild verwenden.</div>`;
 }
 
+
+function viewerSeriesLabel(exam){
+  const type=visualExamType(exam);
+  if(type==='ekg')return '12-Kanal • 25 mm/s • 10 mm/mV';
+  if(type==='ct')return /kopf|hirn/i.test(`${exam.name} ${exam.result}`)?'CT Kopf • axial • nativ':'CT • axial • Weichteilfenster';
+  if(type==='ultrasound')return 'Sonografie • B-Mode';
+  if(type==='lab')return 'Labor • validierter Trainingsbefund';
+  if(/hand|unterarm|gelenk|fraktur/i.test(`${exam.name} ${exam.result}`))return 'Röntgen • 2 Ebenen';
+  return 'Thorax • p.a.';
+}
+function viewerSideLabel(exam){
+  const text=`${exam.name||''} ${exam.result||''}`.toLowerCase();
+  if(/links|linke|left/.test(text))return 'L';
+  if(/rechts|rechte|right/.test(text))return 'R';
+  return '—';
+}
+function viewerQualityLabel(exam){
+  const seed=realismHash(`${current?current.name:''}${exam.name||''}quality`);
+  return seed%5===0?'leicht eingeschränkt':'diagnostisch';
+}
+function viewerAcquisitionTime(exam){
+  const seed=realismHash(`${current?current.name:''}${exam.name||''}time`);
+  const h=8+(seed%11),m=(seed*7)%60;
+  return `${String(h).padStart(2,'0')}:${String(m).padStart(2,'0')} Uhr`;
+}
+function applyViewerFilter(){
+  const canvas=$('visualDiagnosticCanvas');
+  if(!canvas)return;
+  canvas.style.filter=`brightness(${viewerBrightness}%) contrast(${viewerContrast}%) ${viewerInvert?'invert(1)':'invert(0)'}`;
+  if($('viewerInvertBtn'))$('viewerInvertBtn').classList.toggle('active',viewerInvert);
+}
+function adjustViewerBrightness(delta){
+  viewerBrightness=Math.max(55,Math.min(160,viewerBrightness+delta));
+  applyViewerFilter();
+}
+function adjustViewerContrast(delta){
+  viewerContrast=Math.max(55,Math.min(180,viewerContrast+delta));
+  applyViewerFilter();
+}
+function toggleViewerInvert(){
+  viewerInvert=!viewerInvert;applyViewerFilter();
+}
+function resetViewerWindow(){
+  viewerBrightness=100;viewerContrast=100;viewerInvert=false;applyViewerFilter();
+}
+function visualReadOptions(exam){
+  const type=visualExamType(exam);
+  if(type==='ekg')return ['Sinusrhythmus','Sinustachykardie','Vorhofflimmern','Bradykardie','ST-Hebungs-Muster'];
+  if(type==='ct')return ['Kein Akutbefund','Intrakranielle Blutung','Ischämischer Befund','Embolischer/Gefäßbefund'];
+  if(type==='ultrasound')return ['Unauffälliger Befund','Konkrement/Stein','Entzündliche Veränderung','Freie Flüssigkeit'];
+  if(type==='lab')return ['Weitgehend unauffällig','Entzündliche Konstellation','Ischämie-/Herzmarker auffällig','Stoffwechsel-/Glukoseauffälligkeit'];
+  return ['Unauffällige Aufnahme','Infiltrat/Verdichtung','Pneumothorax','Fraktur'];
+}
+function correctVisualRead(exam){
+  const type=visualExamType(exam);
+  if(type==='ekg'){
+    const p=ekgPatternFromExam(exam);
+    return p==='stemi'?'ST-Hebungs-Muster':p==='afib'?'Vorhofflimmern':p==='brady'?'Bradykardie':p==='tachy'?'Sinustachykardie':'Sinusrhythmus';
+  }
+  if(type==='ct'){
+    const text=`${exam.name||''} ${exam.result||''} ${current?current.correctDiagnosis:''}`.toLowerCase();
+    if(/blutung|hämatom|intrazerebral|subarach/.test(text))return 'Intrakranielle Blutung';
+    if(/ischäm|infarkt|schlaganfall/.test(text))return 'Ischämischer Befund';
+    if(/embolie|verschluss|thromb/.test(text))return 'Embolischer/Gefäßbefund';
+    return 'Kein Akutbefund';
+  }
+  if(type==='ultrasound'){
+    const text=`${exam.name||''} ${exam.result||''} ${current?current.correctDiagnosis:''}`.toLowerCase();
+    if(/stein|konkrement|cholelith/.test(text))return 'Konkrement/Stein';
+    if(/entzünd|cholezyst|append/.test(text))return 'Entzündliche Veränderung';
+    if(/freie flüss|erguss/.test(text))return 'Freie Flüssigkeit';
+    return 'Unauffälliger Befund';
+  }
+  if(type==='lab'){
+    const text=`${exam.name||''} ${exam.result||''} ${current?current.correctDiagnosis:''}`.toLowerCase();
+    if(/troponin|koronar|infarkt/.test(text))return 'Ischämie-/Herzmarker auffällig';
+    if(/crp|leuko|sepsis|pneum|infekt|entzünd/.test(text))return 'Entzündliche Konstellation';
+    if(/glukose|hypoglyk|diabetes/.test(text))return 'Stoffwechsel-/Glukoseauffälligkeit';
+    return 'Weitgehend unauffällig';
+  }
+  const p=xrayPatternFromExam(exam);
+  return p==='pneumonia'?'Infiltrat/Verdichtung':p==='pneumothorax'?'Pneumothorax':p==='fracture'?'Fraktur':'Unauffällige Aufnahme';
+}
+function visualReadForIndex(index){
+  if(!realismCase||!realismCase.visualReads)return null;
+  return realismCase.visualReads[String(index)]||null;
+}
+function submitVisualRead(choice){
+  if(visualDiagnosticIndex===null||!current||!realismCase)return;
+  const exam=current.exams[visualDiagnosticIndex];
+  if(!exam)return;
+  if(!realismCase.visualReads)realismCase.visualReads={};
+  const key=String(visualDiagnosticIndex);
+  if(realismCase.visualReads[key])return;
+  const correct=choice===correctVisualRead(exam);
+  realismCase.visualReads[key]={choice,correct};
+  state.visualReadsTotal=(state.visualReadsTotal||0)+1;
+  if(correct)state.visualReadsCorrect=(state.visualReadsCorrect||0)+1;
+  beep(correct?840:390,.06);
+  renderVisualDiagnostic();
+  renderRealismWorkup();
+  save();
+}
+function visualReadCaseStats(){
+  if(!realismCase||!realismCase.visualReads)return {total:0,correct:0};
+  const vals=Object.values(realismCase.visualReads);
+  return {total:vals.length,correct:vals.filter(x=>x.correct).length};
+}
+function visualReadingScore(){
+  if(!usesClinicalWorkflow())return 1;
+  const visualIndexes=current&&current.exams?current.exams.map((e,i)=>isVisualExam(e)?i:null).filter(i=>i!==null&&examined.has(i)):[];
+  if(!visualIndexes.length)return 1;
+  const reads=visualIndexes.map(i=>visualReadForIndex(i)).filter(Boolean);
+  if(!reads.length)return isExpert()?0:.55;
+  return Math.max(0,Math.min(1,reads.filter(r=>r.correct).length/visualIndexes.length));
+}
+function renderVisualReadPanel(exam){
+  const panel=$('visualReadPanel');
+  if(!panel)return;
+  if(isBeginner()){
+    panel.style.display='none';
+    return;
+  }
+  panel.style.display='block';
+  const read=visualReadForIndex(visualDiagnosticIndex);
+  const options=visualReadOptions(exam);
+  panel.innerHTML=`<h4>🔎 Eigene Befundung</h4>
+    <p>${isExpert()?'Profi: Befunde das Bild zuerst selbst, bevor der schriftliche Befund freigegeben wird.':'Wähle die passendste Bildinterpretation.'}</p>
+    <div class="visual-read-grid">${options.map(opt=>{
+      let cls='';
+      if(read){
+        if(opt===read.choice)cls+=' selected';
+        if(!isExpert()&&opt===correctVisualRead(exam))cls+=' correct';
+        if(!isExpert()&&opt===read.choice&&!read.correct)cls+=' wrong';
+      }
+      return `<button type="button" class="visual-read-choice${cls}" ${read?'disabled':''} onclick="submitVisualRead('${opt.replace(/'/g,"\\'")}')">${opt}</button>`;
+    }).join('')}</div>
+    <div class="visual-read-status">${
+      !read
+        ?'Noch keine Interpretation dokumentiert.'
+        :isExpert()
+          ?'✅ Interpretation gespeichert. Die Bewertung siehst du in der Fallauswertung.'
+          :read.correct?'✅ Interpretation passt zum Trainingsbefund.':'⚠️ Interpretation weicht vom Trainingsbefund ab.'
+    }</div>`;
+}
+
 function escapeHtmlText(text){
   return String(text||'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
 }
@@ -5133,34 +5374,53 @@ function renderVisualDiagnostic(){
   if(!overlay||!overlay.classList.contains('open')||!current)return;
   const exam=current.exams[visualDiagnosticIndex];
   if(!exam)return;
-  const type=visualExamType(exam),info=visualInterpretation(exam);
-  const expert=isExpert();
+
+  const type=visualExamType(exam),info=visualInterpretation(exam),expert=isExpert();
+  const read=visualReadForIndex(visualDiagnosticIndex);
+  const canReveal=isBeginner()||!!read;
 
   if($('visualDiagnosticBadge'))$('visualDiagnosticBadge').textContent=visualTypeBadge(type);
-  if($('visualDiagnosticHeading'))$('visualDiagnosticHeading').textContent=expert?exam.name:info.title;
+  if($('visualDiagnosticHeading'))$('visualDiagnosticHeading').textContent=expert?exam.name:(canReveal?info.title:exam.name);
   if($('visualDiagnosticSubhead')){
     const real=!!realisticImageForExam(exam);
     $('visualDiagnosticSubhead').textContent=expert
-      ?(real?'Realistische Trainingsaufnahme • eigenständige Interpretation':'Eigenständige Interpretation')
+      ?(real?'Radiology Workstation • eigenständige Befundung':'Workstation • eigenständige Befundung')
       :(real?`${exam.name} • realistische Trainingsaufnahme`:exam.name);
   }
+
   if($('visualPatientLine'))$('visualPatientLine').textContent=`${current.avatar||'🧑'} ${current.name}`;
   if($('visualExamLine'))$('visualExamLine').textContent=`${exam.name} • ${current.age} Jahre • ${current.urgency==='high'?'dringend':current.urgency==='medium'?'erhöhte Priorität':'stabil'}`;
   if($('visualDifficultyLine'))$('visualDifficultyLine').textContent=difficultyHudLabel();
+
   if($('visualDiagnosticCanvas'))$('visualDiagnosticCanvas').innerHTML=visualExamContent(exam);
-  if($('visualDiagnosticHelp'))$('visualDiagnosticHelp').textContent=visualHelpText(exam);
+  applyViewerFilter();
+
+  if($('viewerSeriesMeta'))$('viewerSeriesMeta').textContent=viewerSeriesLabel(exam);
+  if($('viewerTimeMeta'))$('viewerTimeMeta').textContent=viewerAcquisitionTime(exam);
+  if($('viewerSideMeta'))$('viewerSideMeta').textContent=viewerSideLabel(exam);
+  if($('viewerQualityMeta'))$('viewerQualityMeta').textContent=viewerQualityLabel(exam);
+
+  if($('visualDiagnosticHelp')){
+    if(isBeginner())$('visualDiagnosticHelp').textContent=visualHelpText(exam);
+    else if(!read)$('visualDiagnosticHelp').textContent='🔎 Befunde zuerst selbst. Der schriftliche Trainingsbefund wird nach deiner Interpretation freigegeben.';
+    else $('visualDiagnosticHelp').textContent=visualHelpText(exam);
+  }
+
+  renderVisualReadPanel(exam);
 
   const severityClass=info.severity==='critical'?'critical':info.severity==='warn'?'warn':'';
   if($('visualDiagnosticReport')){
-    $('visualDiagnosticReport').innerHTML=expert
-      ?`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
-        <div class="visual-report-row"><span>Typ</span><b>${visualTypeLabel(type)}</b></div>
-        <div class="visual-report-row"><span>Aufgabe</span><b>Bild/Befund selbst interpretieren</b></div>
-        <div class="visual-profi-note">🧠 Profi: Nutze Bild, Vitalwerte, Anamnese und körperliche Untersuchung gemeinsam. Die Lösung wird hier nicht direkt eingeblendet.</div>`
-      :`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
-        <div class="visual-report-row"><span>Typ</span><b>${visualTypeLabel(type)}</b></div>
-        <div class="visual-report-row"><span>Interpretation</span><b class="${severityClass}">${escapeHtmlText(info.title)}</b></div>
-        <div class="visual-report-row"><span>Schriftlicher Befund</span><b>${escapeHtmlText(exam.result||'—')}</b></div>`;
+    $('visualDiagnosticReport').classList.toggle('blinded',!canReveal);
+    $('visualDiagnosticReport').innerHTML=!canReveal
+      ?''
+      :expert
+        ?`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
+          <div class="visual-report-row"><span>Deine Befundung</span><b>${escapeHtmlText(read?read.choice:'—')}</b></div>
+          <div class="visual-profi-note">🧠 Der vollständige Lösungsabgleich erfolgt erst in der Fallauswertung.</div>`
+        :`<div class="visual-report-row"><span>Untersuchung</span><b>${escapeHtmlText(exam.name)}</b></div>
+          <div class="visual-report-row"><span>Typ</span><b>${visualTypeLabel(type)}</b></div>
+          <div class="visual-report-row"><span>Interpretation</span><b class="${severityClass}">${escapeHtmlText(info.title)}</b></div>
+          <div class="visual-report-row"><span>Schriftlicher Befund</span><b>${escapeHtmlText(exam.result||'—')}</b></div>`;
   }
 }
 function openVisualDiagnostic(index){
@@ -5170,6 +5430,7 @@ function openVisualDiagnostic(index){
   const overlay=$('visualDiagnosticOverlay');
   if(!overlay)return;
   visualDiagnosticIndex=index;
+  viewerBrightness=100;viewerContrast=100;viewerInvert=false;
   overlay.classList.add('open');
   overlay.setAttribute('aria-hidden','false');
   state.visualDiagnosticsViewed=(state.visualDiagnosticsViewed||0)+1;
@@ -5180,6 +5441,7 @@ function openVisualDiagnostic(index){
 function closeVisualDiagnostic(){
   const overlay=$('visualDiagnosticOverlay');
   visualDiagnosticIndex=null;
+  viewerBrightness=100;viewerContrast=100;viewerInvert=false;
   if(overlay){
     overlay.classList.remove('open');
     overlay.setAttribute('aria-hidden','true');
@@ -5239,7 +5501,7 @@ function examTypeLabel(exam){
   if(exam.req==='cardio')return'KARDIO';
   return'KLINISCH';
 }
-function newRealismCase(){return {testsOrdered:0,broadTests:0,historyAtFirstExam:null,safetyChecks:new Set(),pendingTests:[],resolvedTests:[],resultAlert:''};}
+function newRealismCase(){return {testsOrdered:0,broadTests:0,historyAtFirstExam:null,safetyChecks:new Set(),pendingTests:[],resolvedTests:[],resultAlert:'',visualReads:{}};}
 function clinicalEvidenceScore(){
   if(!state.realismMode)return 100;
   const history=Math.max(0,Math.min(100,historyScore()));
@@ -5296,13 +5558,13 @@ function noteExamForRealism(){
 function clinicalQualityFor(diagOK,treatOK,dispositionOK){
   if(!state.realismMode)return {score:100,xp:0,label:'Standard'};
   const evidence=clinicalEvidenceScore(),broad=realismCase?realismCase.broadTests:0,safety=realismSafetyScore(),reassessment=reassessmentQuality();
-  const reasoning=differentialReasoningScore(),calibration=diagnosticCalibration(diagOK),consult=consultationJudgementScore(),results=resultManagementScore();
-  let score=(diagOK?14:0)+(treatOK?11:0)+(dispositionOK?11:0)+Math.round(evidence*.20)+Math.round(safety*9)+Math.round(reassessment*9)+Math.round(reasoning*9)+Math.round(calibration*6)+Math.round(consult*2)+Math.round(results*9)+Math.max(0,5-broad*3);
+  const reasoning=differentialReasoningScore(),calibration=diagnosticCalibration(diagOK),consult=consultationJudgementScore(),results=resultManagementScore(),visual=visualReadingScore();
+  let score=(diagOK?13:0)+(treatOK?10:0)+(dispositionOK?10:0)+Math.round(evidence*.19)+Math.round(safety*8)+Math.round(reassessment*8)+Math.round(reasoning*8)+Math.round(calibration*5)+Math.round(consult*2)+Math.round(results*8)+Math.round(visual*8)+Math.max(0,5-broad*3);
   if(current&&current.urgency==='high'&&protocolOutcome&&protocolOutcome.attempted&&protocolOutcome.correct)score+=5;
   if(current&&current.urgency!=='normal'&&reassessmentTotal()===0)score-=4;
   if(pendingResultsCount()>0)score-=Math.min(12,pendingResultsCount()*4);
   score=Math.max(0,Math.min(100,Math.round(score)));
-  return {score,xp:score>=93?18:score>=84?12:score>=74?7:0,label:score>=93?'EXZELLENT':score>=84?'SEHR GUT':score>=74?'SOLIDE':score>=60?'AUSREICHEND':'LÜCKENHAFT'};
+  return {score,xp:score>=93?19:score>=84?13:score>=74?8:0,label:score>=93?'EXZELLENT':score>=84?'SEHR GUT':score>=74?'SOLIDE':score>=60?'AUSREICHEND':'LÜCKENHAFT'};
 }
 function clinicalQualityClass(score){return score>=80?'quality-good':score>=60?'quality-mid':'quality-low';}
 function buildClinicalSummary(diagOK,treatOK,dispositionOK,quality){
@@ -6428,7 +6690,9 @@ const achievements = [
   {id:'differential20', name:'Differentialdiagnostiker', desc:'Priorisiere bei 20 Fällen die richtige Diagnose an erster Stelle.'},
   {id:'calibration15', name:'Gut kalibriert', desc:'Schätze deine Diagnosesicherheit in 15 Fällen passend ein.'},
   {id:'results30', name:'Befunde im Blick', desc:'Lasse 30 zeitverzögerte Untersuchungsbefunde vollständig einlaufen.'},
-  {id:'critical10', name:'Alarm erkannt', desc:'Erhalte 10 dringliche Befundmeldungen im Realismusmodus.'}
+  {id:'critical10', name:'Alarm erkannt', desc:'Erhalte 10 dringliche Befundmeldungen im Realismusmodus.'},
+  {id:'visual20', name:'Befunder', desc:'Dokumentiere 20 visuelle Befundungen.'},
+  {id:'visualPerfect10', name:'Scharfer Blick', desc:'Befunde in 10 Fällen alle visuellen Untersuchungen korrekt.'}
 ];
 
 const missions = [
@@ -6586,7 +6850,10 @@ const defaultState = {
   testsOrderedTotal:0,
   casesWithPendingResults:0,
   vitalMonitorOpens:0,
-  visualDiagnosticsViewed:0
+  visualDiagnosticsViewed:0,
+  visualReadsTotal:0,
+  visualReadsCorrect:0,
+  perfectVisualReads:0
 };
 
 let state;
@@ -6732,6 +6999,9 @@ state.testsOrderedTotal=Number.isFinite(Number(state.testsOrderedTotal))&&Number
 state.casesWithPendingResults=Number.isFinite(Number(state.casesWithPendingResults))&&Number(state.casesWithPendingResults)>=0?Math.floor(Number(state.casesWithPendingResults)):0;
 state.vitalMonitorOpens=Number.isFinite(Number(state.vitalMonitorOpens))&&Number(state.vitalMonitorOpens)>=0?Math.floor(Number(state.vitalMonitorOpens)):0;
 state.visualDiagnosticsViewed=Number.isFinite(Number(state.visualDiagnosticsViewed))&&Number(state.visualDiagnosticsViewed)>=0?Math.floor(Number(state.visualDiagnosticsViewed)):0;
+state.visualReadsTotal=Number.isFinite(Number(state.visualReadsTotal))&&Number(state.visualReadsTotal)>=0?Math.floor(Number(state.visualReadsTotal)):0;
+state.visualReadsCorrect=Number.isFinite(Number(state.visualReadsCorrect))&&Number(state.visualReadsCorrect)>=0?Math.floor(Number(state.visualReadsCorrect)):0;
+state.perfectVisualReads=Number.isFinite(Number(state.perfectVisualReads))&&Number(state.perfectVisualReads)>=0?Math.floor(Number(state.perfectVisualReads)):0;
 for(const track of researchTracks){
   const n=Number(state.research[track.id]);
   state.research[track.id]=Number.isFinite(n)&&n>=0?Math.min(3,Math.floor(n)):0;
@@ -6753,7 +7023,7 @@ for(const key of ['money','rep','xp','day','patientsTreated','perfectCases','urg
   const n=Number(state[key]);
   state[key]=Number.isFinite(n) ? n : fallback;
 }
-let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true;
+let run=null, current=null, selectedDiagnosis=null, selectedTreatment=null, selectedDisposition=null, diagnosisConfidence=null, selectedDifferentials=[], examined=new Set(), physicalExamState=null, reassessmentState=null, consultState=null, vitalMonitorTimer=null, visualDiagnosticIndex=null, viewerBrightness=100, viewerContrast=100, viewerInvert=false, activeClinicalTab='overview', sandboxActive=false, sandboxMainState=null, soundOn=true;
 let protocolOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,rep:0};
 let procedureOutcome={attempted:false,correct:false,money:0,xp:0,rp:0,step:0,sequence:[]};
 let patientFlow=null;
@@ -8754,6 +9024,8 @@ function finishCase(){
       if(reassessmentTotal()>0)state.reassessmentCases=(state.reassessmentCases||0)+1;
       if(usesExpertWorkflow()){state.reasoningCases=(state.reasoningCases||0)+1;if(realismCase&&realismCase.pendingTests&&realismCase.pendingTests.length&&pendingResultsCount()>0)state.casesWithPendingResults=(state.casesWithPendingResults||0)+1;if(selectedDifferentials[0]===current.correctDiagnosis)state.correctTopDifferentials=(state.correctTopDifferentials||0)+1;if(isCalibratedDiagnosis(diagOK))state.calibratedDiagnosisCases=(state.calibratedDiagnosisCases||0)+1}
       if(diagOK&&treatOK&&dispositionOK&&clinicalQuality.score>=82)state.realismPerfectCases=(state.realismPerfectCases||0)+1;
+      const visualStats=visualReadCaseStats();
+      if(visualStats.total>0&&visualStats.correct===visualStats.total)state.perfectVisualReads=(state.perfectVisualReads||0)+1;
     }
     recordCasebook(current,diagOK,perfect);
     const researchGain=awardResearch(diagOK,perfect,current);
@@ -8786,7 +9058,8 @@ function finishCase(){
     $('resultBreakdown').innerHTML=`
       <div class='result-line'><span>Diagnose</span><b>${diagOK?'✅ Richtig':'❌ Falsch'}</b></div>
       <div class='result-line'><span>Behandlung</span><b>${treatOK?'✅ Richtig':'❌ Falsch'}</b></div>
-      ${usesClinicalWorkflow()?`${usesExpertWorkflow()?`<div class='result-line'><span>Befundmanagement</span><b>${pendingResultsCount()===0?'✅ alle angeordneten Befunde verfügbar':`⚠️ ${pendingResultsCount()} Befund(e) ausstehend`}</b></div>
+      ${usesClinicalWorkflow()?`<div class='result-line'><span>Bildbefundung</span><b>${visualReadCaseStats().total?`${visualReadCaseStats().correct}/${visualReadCaseStats().total} korrekt`:'keine visuelle Befundung'}</b></div>
+      ${usesExpertWorkflow()?`<div class='result-line'><span>Befundmanagement</span><b>${pendingResultsCount()===0?'✅ alle angeordneten Befunde verfügbar':`⚠️ ${pendingResultsCount()} Befund(e) ausstehend`}</b></div>
       <div class='result-line'><span>Differentiale</span><b>${selectedDifferentials[0]===current.correctDiagnosis?'✅ führend korrekt':selectedDifferentials.includes(current.correctDiagnosis)?'🟡 enthalten':'❌ nicht enthalten'}</b></div>
       <div class='result-line'><span>Diagnosesicherheit</span><b>${confidenceLabel(diagnosisConfidence)} • ${Math.round(diagnosticCalibration(diagOK)*100)}% kalibriert</b></div>`:''}
       <div class='result-line'><span>Disposition</span><b>${dispositionOK?'✅ '+dispositionLabel(selectedDisposition):'❌ '+dispositionLabel(selectedDisposition)}</b></div>
@@ -8916,6 +9189,8 @@ function unlockAchievements(){const got=[];const check=(id,c)=>{if(c&&!state.ach
   check('calibration15',(state.calibratedDiagnosisCases||0)>=15);
   check('results30',(state.delayedResultsCompleted||0)>=30);
   check('critical10',(state.criticalResultsSeen||0)>=10);
+  check('visual20',(state.visualReadsTotal||0)>=20);
+  check('visualPerfect10',(state.perfectVisualReads||0)>=10);
   if(got.length)toast('🏆 Neuer Erfolg!');return got}
 
 $('freeShiftBtn').onclick=startFreeShift;$('campaignModeBtn').onclick=openCampaignMode;$('sandboxShiftBtn').onclick=startSandboxShift;$('nextBtn').onclick=nextPatient;$('quitBtn').onclick=()=>endShift('Schicht wurde vorzeitig beendet.');$('backHomeBtn').onclick=returnHomeAfterShift;$('soundBtn').onclick=()=>{soundOn=!soundOn;$('soundBtn').textContent=soundOn?'🔊':'🔇'};
@@ -8981,8 +9256,23 @@ renderHome();
         </div>
         <div id="visualDifficultyLine" class="visual-stage">🌱 Einsteiger</div>
       </div>
-      <div id="visualDiagnosticCanvas" class="visual-canvas"></div>
+      <div id="visualDiagnosticCanvas" class="visual-canvas dicom-canvas-filter"></div>
+      <div class="dicom-toolbar">
+        <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(-10)">☀️ −</button>
+        <button type="button" class="dicom-tool" onclick="adjustViewerBrightness(10)">☀️ +</button>
+        <button type="button" class="dicom-tool" onclick="adjustViewerContrast(-10)">◐ −</button>
+        <button type="button" class="dicom-tool" onclick="adjustViewerContrast(10)">◐ +</button>
+        <button id="viewerInvertBtn" type="button" class="dicom-tool" onclick="toggleViewerInvert()">◑ Invert</button>
+        <button type="button" class="dicom-tool" onclick="resetViewerWindow()">↺ Reset</button>
+      </div>
+      <div class="dicom-meta">
+        <div><small>Serie</small><b id="viewerSeriesMeta">—</b></div>
+        <div><small>Aufnahme</small><b id="viewerTimeMeta">—</b></div>
+        <div><small>Seite</small><b id="viewerSideMeta">—</b></div>
+        <div><small>Qualität</small><b id="viewerQualityMeta">diagnostisch</b></div>
+      </div>
       <div id="visualDiagnosticHelp" class="visual-help"></div>
+      <div id="visualReadPanel" class="visual-read-panel"></div>
       <div id="visualDiagnosticReport" class="visual-report"></div>
     </div>
   </div>

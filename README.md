@@ -1,105 +1,150 @@
-# Doctor Rush v0.34 – REAL MEDICAL IMAGING
+# Doctor Rush v0.35 – RADIOLOGY WORKSTATION
 
 ## Dateien
 - `index.html`
 - `README.md`
 
 ## GitHub
-1. Die bisherige `index.html` ersetzen.
+1. Alte `index.html` ersetzen.
 2. Commit speichern.
-3. Doctor Rush einmal mit `?v=0.34` öffnen.
+3. Einmal mit `?v=0.35` öffnen.
 
-# 🩻 Realistischere medizinische Bilder
+# Größte Änderung
 
-Die wichtigsten visuellen Befunde bestehen jetzt nicht mehr nur aus stilisierten SVG-Zeichnungen.
+Visuelle Diagnostik ist jetzt nicht mehr nur „Bild öffnen und Text lesen“.
 
-Vier realistisch wirkende Trainingsaufnahmen sind direkt in die `index.html` eingebettet:
+Auf **Klinisch** und **Profi** musst du eine Aufnahme zuerst selbst interpretieren.
 
-- Thorax-Röntgen mit rechtsbasaler Pneumonie
-- Thorax-Röntgen mit linksseitigem Pneumothorax
-- Handgelenk-/Unterarm-Röntgen mit distaler Radiusfraktur
-- 12-Kanal-EKG mit ST-Hebungs-Muster
+Erst danach wird der schriftliche Trainingsbefund freigeschaltet.
 
-Die Bilder benötigen keine zusätzlichen Dateien auf GitHub.
+## Neue Bildbefundung
 
-## Bild-Zoom
+Je nach Untersuchungsart bekommst du passende Interpretationsmöglichkeiten.
 
-Im Diagnostik-Fenster kann eine realistische Aufnahme angetippt werden.
+### EKG
+- Sinusrhythmus
+- Sinustachykardie
+- Vorhofflimmern
+- Bradykardie
+- ST-Hebungs-Muster
 
-Dadurch wird sie vergrößert und kann im Fenster genauer betrachtet werden.
+### Röntgen
+- unauffällige Aufnahme
+- Infiltrat / Verdichtung
+- Pneumothorax
+- Fraktur
 
-Erneutes Antippen setzt die Darstellung zurück.
+### CT
+- kein Akutbefund
+- intrakranielle Blutung
+- ischämischer Befund
+- embolischer / Gefäßbefund
 
-## Automatische Bildauswahl
+### Ultraschall
+- unauffälliger Befund
+- Konkrement / Stein
+- entzündliche Veränderung
+- freie Flüssigkeit
 
-Doctor Rush entscheidet anhand des Falles und des Befundes, welches Bild angezeigt wird.
+### Labor
+- weitgehend unauffällig
+- entzündliche Konstellation
+- Herz-/Ischämiemarker auffällig
+- Stoffwechsel-/Glukoseauffälligkeit
 
-Beispiele:
-
-- `Röntgen Thorax` + Infiltrat → Pneumonie-Aufnahme
-- `Röntgen Thorax` + Pneumothorax → Pneumothorax-Aufnahme
-- Handgelenk-Röntgen + Fraktur → Fraktur-Aufnahme
-- 12-Kanal-EKG + ST-Hebungen → realistischeres STEMI-EKG
-
-Alle anderen Befunde verwenden weiterhin die vorhandenen Fallback-Grafiken.
-
-# Zwei neue Patientenfälle
-
-## Lukas W. – Pneumothorax
-Ein akuter Fall mit:
-- plötzlichem Brustschmerz
-- Dyspnoe
-- erniedrigter SpO₂
-- abgeschwächtem Atemgeräusch
-- realistischem Thorax-Röntgen
-
-## Julia F. – distale Radiusfraktur
-Ein Verletzungsfall mit:
-- Sturz auf die ausgestreckte Hand
-- Schwellung
-- Bewegungseinschränkung
-- DMS-Kontrolle
-- realistischem Röntgen in zwei Ebenen
-
-# Schwierigkeitsgrade bleiben erhalten
+# Schwierigkeit
 
 ## 🌱 Einsteiger
-Das Bild wird stärker erklärt.
+Der Befund bleibt direkt erklärt.
 
 ## 🩺 Klinisch
-Bild + schriftlicher Befund müssen gemeinsam bewertet werden.
+Du musst zuerst eine Interpretation wählen.
+Danach bekommst du sofort Feedback und den schriftlichen Befund.
 
 ## 🧠 Profi
-Die Diagnose wird im Bildfenster weiterhin bewusst nicht direkt vorgegeben.
+Du musst zuerst selbst befunden.
+Die Lösung wird im Bildfenster **nicht sofort verraten**.
+Der endgültige Abgleich erscheint erst in der Fallauswertung.
 
-# Bestehende Systeme bleiben erhalten
+# DICOM-/Workstation-Werkzeuge
 
-- Sandbox-Modus
+Das Diagnostikfenster hat jetzt zusätzliche Werkzeuge:
+
+- Helligkeit − / +
+- Kontrast − / +
+- Invertierung
+- Reset
+
+Außerdem werden angezeigt:
+
+- Serie
+- simulierte Aufnahmezeit
+- Seitenmarker L / R
+- Bildqualität
+
+Der bestehende Bild-Zoom bleibt erhalten.
+
+# Qualitätswertung
+
+Die korrekte visuelle Befundung fließt jetzt in die klinische Qualitätswertung ein.
+
+Im Profi-Modus reicht es damit nicht mehr, die richtige Diagnose einfach auswendig zu kennen.
+
+# Drei neue bildbasierte Fälle
+
+## Erika S. – Vorhofflimmern
+Mit:
+- unregelmäßigem Puls
+- 12-Kanal-EKG
+- bild-/kurvenbasierter Interpretation
+
+## Peter A. – intrazerebrale Blutung
+Mit:
+- akutem Kopfschmerz
+- neurologischer Auffälligkeit
+- CT Kopf nativ
+
+## Nadine H. – Cholelithiasis
+Mit:
+- rechtsseitigem Oberbauchschmerz
+- Ultraschall Oberbauch
+- Konkrement-/Steinbefund
+
+# Neue Erfolge
+
+## Befunder
+20 visuelle Befundungen dokumentieren.
+
+## Scharfer Blick
+In 10 Fällen alle visuellen Untersuchungen korrekt befunden.
+
+# Weiterhin enthalten
+
+- realistischere eingebettete Röntgen- und EKG-Aufnahmen aus v0.34
+- Sandbox
 - Kampagne
-- freie Schicht
+- Freie Schicht
 - drei Schwierigkeitsstufen
-- kein Schicht-Countdown
-- kompakte klinische Tabs
+- kein Countdown
 - Live-Vitalmonitor
-- visuelle Diagnostik
+- kompakte Tabs
 - CT
 - Ultraschall
 - Laborblatt
+- verzögerte Befunde
 - Differentialdiagnosen
 - Konsile
 - Reevaluation
 - Disposition
 
-# Technisch
+## Technisch
 
 - weiterhin eine einzige `index.html`
-- alle 4 Bilder Base64-intern eingebettet
-- keine separaten Bilddateien auf GitHub nötig
 - Save-Key bleibt `doctorRushSaveV3`
-- v0.33-Spielstand kompatibel
+- v0.34-Spielstand kompatibel
+- keine externen Dateien
 - kein Service Worker
-- keine externen JS-/CSS-Dateien
 - JavaScript-Syntaxprüfung: OK
 - One-File-Prüfung: OK
 
-> Die Aufnahmen sind KI-generierte, stilisierte Trainingsbilder für das Spiel und kein medizinisches Referenzmaterial.
+> Bildbefunde bleiben vereinfachte bzw. KI-generierte Trainingsdarstellungen und sind kein medizinisches Referenzmaterial.
